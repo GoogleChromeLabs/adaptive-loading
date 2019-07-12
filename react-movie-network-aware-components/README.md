@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 ```
-git clone https://github.com/GoogleChromeLabs/react-movie-network-aware-components
+git clone https://github.com/GoogleChromeLabs/network-aware-components
 cd react-movie-network-aware-components
 npm install
 npm start
