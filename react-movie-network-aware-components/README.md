@@ -1,35 +1,15 @@
-# React Movie rmdb
-[Link to App](https://anton-karlovskiy-react-movie.glitch.me)
-![project image](https://oliver-gomes.github.io/images/github%20images/react-movie.png)
 
+# Demo: React-movie network-aware resource loading in React
 
-## Table of Contents
+Similar to before, this version will use the Network Information API to determine whether to load a low-fidelity or high-fidelity image based on movie posters.
 
-* [How to Load the App](#howtoloadtheapp)
-* [About the App](#about)
-* [How to Use the App](#how-to-use-the-app)
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-### How to Load the App
-`@rehooks/network-status` package has some [issue](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react) with dependency.
+## Installation
 ```
-git clone https://api.glitch.com/git/anton-karlovskiy-react-movie
+git clone https://github.com/GoogleChromeLabs/react-movie-network-aware-components
+cd react-movie-network-aware-components
 npm install
 npm start
 npm run build
 ```
-## About
-Modern fast movie database web app with React using The Movie DB API. All the new popular movies are populated along with search bar for your own movie search. Clicking on specific movies bring you all data about the movie including actors, directors, time, budget, revenue, rating and many more.
-
-## How to Use the App
-
-- Find the most popular movie at the moment on the front page
-- Click on specific movie to view full-blown information
-- Use the Search bar to find you favorites movies and their information
-- Bookmark and use the App at your own pace!
-
-## Glitch Source
-* [Link to Glitch App](https://anton-karlovskiy-react-movie.glitch.me)
-* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-react-movie)
-
-# Hope You Enjoy the App !
-
