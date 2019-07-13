@@ -1,6 +1,6 @@
 # Environment-aware Components
 
-Nothing to see here...yet.
+An exploration into loading and rendering the most suitable version of a component based on signals exposed to the web (network, CPU, memory etc).
 
 ## Network-aware Components
 
