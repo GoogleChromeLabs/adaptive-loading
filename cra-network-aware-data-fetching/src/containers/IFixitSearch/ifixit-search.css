@@ -2,3 +2,15 @@
 .ifixit-search {
   width: 100%;
 }
+
+.ifixit-search-status-panel {
+  padding: 8px 12px;
+}
+
+.ifixit-search-status-panel p {
+  margin: 0;
+}
+
+.ifixit-search-status-panel p:last-child {
+  padding: 0 48px;
+}

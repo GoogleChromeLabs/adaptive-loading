@@ -51,6 +51,11 @@ const IFixitSearch = () => {
 
   return (
     <div className='ifixit-search'>
+      <div className='ifixit-search-status-panel'>
+        <p>{`Current Network Connection: ${connectionEffectiveType}`}</p>
+        <p>Number of results on Network Connection:</p>
+        <p>4G: 40 results, 3G: 15 results, 2G: 5 results, slow-2g: 5 results</p>
+      </div>
       <SearchBar search={searchHandler} />
       { loading ? (
         <Spinner />
