@@ -55,7 +55,6 @@ const IFixitSearch = () => {
       .then(response => response.json())
       .then(response => {
         setLoading(false);
-        console.log('ray : response => ', response);
         setSearchResults(response.results);
       })
       .catch(error => {
