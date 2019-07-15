@@ -67,7 +67,7 @@ const IFixitSearch = () => {
     <div className='ifixit-search'>
       <div className='ifixit-search-status-panel'>
         <p>{`Current effective network connection: ${connectionEffectiveType}`}</p>
-        <p>Number of results on Network Connection:</p>
+        <p>Number of results on effective network connection:</p>
         <p>4G: 40 results, 3G: 15 results, 2G: 5 results, slow-2g: 5 results</p>
       </div>
       <SearchBar search={searchHandler} />

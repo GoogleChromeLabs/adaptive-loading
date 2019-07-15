@@ -25,6 +25,12 @@ const SearchBar = ({ search }) => {
     setSearchKey(event.target.value);
   };
 
+  const enterKeyHandler = event => {
+    if (event.key === 'Enter') {
+      goSearchHandler();
+    }
+  };
+
   const goSearchHandler = () => {
     search(searchKey);
   };
@@ -37,6 +43,7 @@ const SearchBar = ({ search }) => {
           type='text'
           className='searchbar-input'
           placeholder='Search'
+          onKeyDown={enterKeyHandler}
           onChange={searchKeyChangeHandler}
           value={searchKey} />
       </div>
