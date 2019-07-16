@@ -27,7 +27,7 @@ const IFixitSearch = () => {
   const [searchResults, setSearchResults] = useState([]);
   const connectionEffectiveType = useConnectionEffectiveType();
   let searchLimit;
-  switch(connectionEffectiveType) {
+  switch (connectionEffectiveType) {
     // case 'offline':
     //   break;
     case 'slow-2g':
@@ -38,16 +38,16 @@ const IFixitSearch = () => {
       searchLimit = 15;
       break;
     case '4g':
-      searchLimit = 40;
+      searchLimit = 50;
       break;
     default:
-      searchLimit = 40;
+      searchLimit = 50;
       break;
   }
 
   const searchHandler = searchKey => {
     if (!searchKey) return;
-    
+
     setLoading(true);
     const endpoint = `https://www.ifixit.com/api/2.0/search/${searchKey}?limit=${searchLimit}`;
 
@@ -66,16 +66,15 @@ const IFixitSearch = () => {
   return (
     <div className='ifixit-search'>
       <div className='ifixit-search-status-panel'>
-        <p>{`Current effective network connection: ${connectionEffectiveType}`}</p>
-        <p>Number of results on effective network connection:</p>
-        <p>4G: 40 results, 3G: 15 results, 2G: 5 results, slow-2g: 5 results</p>
+        <p><strong>Current effective network connection:</strong>{` ${connectionEffectiveType}`}</p>
+        <p><strong>Results:</strong> 4G: 50, 3G: 15, 2G: 5, slow-2g: 5</p>
       </div>
       <SearchBar search={searchHandler} />
-      { loading ? (
+      {loading ? (
         <Spinner />
       ) : (
-        <List items={searchResults} />
-      ) }
+          <List items={searchResults} />
+        )}
     </div>
   )
 };

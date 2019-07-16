@@ -44,7 +44,7 @@
   background-size: cover;
   cursor: pointer;
   position: absolute;
-  left: 20px;
+  right: 20px;
   top: 12px;
 }
 
@@ -52,8 +52,8 @@
   font-family: 'Abel', sans-serif;
   font-size: 38px;
   position: absolute;
-  left: 70px;
-  top: 7px;
+  left: 40px;
+  top: 5px;
   border: 0;
   background: transparent;
   height: 40px;
