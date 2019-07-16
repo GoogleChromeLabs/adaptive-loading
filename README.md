@@ -12,12 +12,14 @@ This approach can enable a number of use-cases:
 
 * Network-aware components
 * Network-aware code-splitting
+* Network-aware data-fetching
 
 ## Examples
 
 ### Simple
 * [Network-aware loading](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/cra-network-aware-component) with create-react-app
 * [Network-aware code-splitting](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/cra-network-aware-code-splitting) with create-react-app
+* [Network-aware data-fetching](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-network-aware-data-fetching)
 
 ### Advanced
 * [React Movie - network-aware components](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-movie-network-aware-components)
