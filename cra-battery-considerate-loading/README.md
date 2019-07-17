@@ -7,13 +7,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 ```
-git clone https://github.com/anton-karlovskiy/battery-considerate-loading.git
-(git clone https://api.glitch.com/git/anton-karlovskiy-battery-considerate-loading)
+git clone https://github.com/GoogleChromeLabs/network-aware-components
+cd cra-battery-considerate-loading
 npm install
 npm start
 npm run build
 ```
-
-## Glitch Source
-* [Link to Glitch App](https://anton-karlovskiy-battery-considerate-loading.glitch.me)
-* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-battery-considerate-loading)
