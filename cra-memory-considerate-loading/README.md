@@ -11,6 +11,7 @@ If you give it a try in your browser console, you may notice that the numbers of
 ## Installation
 ```
 git clone https://github.com/GoogleChromeLabs/cra-memory-considerate-loading
+cd cra-memory-considerate-loading
 npm install
 npm start
 npm run build
