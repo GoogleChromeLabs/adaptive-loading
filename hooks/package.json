@@ -1,0 +1,15 @@
+{
+  "name": "environment-aware-hooks",
+  "version": "0.0.1",
+  "description": "Hooks for network, memory, battery and other environment signals.",
+  "main": "index.js",
+  "repository": "https://github.com/GoogleChromeLabs/environment-aware-components",
+  "author": "Google Chrome",
+  "license": "Apache-2.0",
+  "private": false,
+  "devDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "ua-parser-js": "^0.7.20"
+  }
+}
