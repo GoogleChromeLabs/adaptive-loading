@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import useConnectionEffectiveType from '../../utils/hooks';
+import { useConnectionEffectiveType } from '../../utils/hooks';
 import './connection-aware-media.css';
 
 const ConnectionAwareMedia = () => {

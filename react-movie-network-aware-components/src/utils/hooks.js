@@ -39,4 +39,4 @@ const useConnectionEffectiveType = () => {
   return connectionEffectiveType;
 };
 
-export default useConnectionEffectiveType;
+export { useConnectionEffectiveType };

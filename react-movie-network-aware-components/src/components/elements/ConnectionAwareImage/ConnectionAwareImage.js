@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import useConnectionEffectiveType from '../../../utils/hooks';
+import { useConnectionEffectiveType } from '../../../utils/hooks';
 import { IMAGE_BASE_URL, POSTER_SIZES } from '../../../config';
 
 const ConnectionAwareImage = ({ path, alt, ...rest }) => {
