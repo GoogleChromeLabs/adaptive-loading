@@ -10,6 +10,7 @@ An exploration into loading and rendering the most suitable version of a compone
 * [Network-aware data-fetching](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-network-aware-data-fetching) with create-react-app
 * [Battery considerate loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-battery-considerate-loading) with create-react-app
 * [Memory considerate loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-memory-considerate-loading) with create-react-app
+* [Memory considerate loading (SketchFab version)](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-memory-considerate-loading-sketchfab) with create-react-app
 * [UA-aware code-splitting](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-ua-aware-code-splitting) with create-react-app
 
 ### Advanced
