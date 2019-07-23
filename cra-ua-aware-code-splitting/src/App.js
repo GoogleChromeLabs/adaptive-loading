@@ -14,35 +14,18 @@
  * limitations under the License.
  */
 
-import React, { lazy, Suspense } from 'react';
-import { getDeviceClass } from "./utils/helpers";
-import './App.css';
+import React from 'react';
 
-const Product = lazy(() => {
-  return new Promise(resolve => {
-    resolve(getDeviceClass());
-  }).then(
-    deviceClass => {
-      console.log('[ProductView] device class => ', deviceClass);
-      switch (deviceClass) {
-        case 'heavy':
-          return import(/* webpackChunkName: "heavy" */ './components/Heavy');
-        case 'light':
-          return import(/* webpackChunkName: "light" */ './components/Light');
-        default:
-          return import(/* webpackChunkName: "heavy" */ './components/Heavy');
-      }
-    }
-  );
-});
+import Product from './components/Product';
+import './App.css';
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Product imageUrl="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" width={500} />
-        </Suspense>
+        <Product
+          imageUrl="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+          width={500} />
       </header>
     </div>
   );
