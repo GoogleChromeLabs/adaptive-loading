@@ -1,19 +1,29 @@
 
-## Heroku Source
-* [Link to Heroku App](https://device-atlas.herokuapp.com)
+# Demo: Device class aware resource loading in React
 
-## Glitch Source
-* [Link to Glitch App](https://anton-karlovskiy-device-atlas-based-device-class.glitch.me)
-* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-device-atlas-based-device-class)
+A demo showing how to use device class aware resource loading in React.
 
-## local development
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Installation
+```
+git clone https://github.com/GoogleChromeLabs/network-aware-components
+cd cra-device-class-aware-loading
+```
+### local development
+```
 npm install  
 npm run dev
+```
 
-## production build
+### production build
+```
 npm install  
 npm run build
+```
 
-## production start(e.g. on Glitch)
+### production run(e.g. on Glitch)
+```
 npm install  
 npm start
+```
