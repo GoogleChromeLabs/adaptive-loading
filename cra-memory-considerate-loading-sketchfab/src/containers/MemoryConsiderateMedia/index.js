@@ -20,12 +20,12 @@ import Loading from '../../components/Loading';
 import MemoryStatusUI from '../../components/MemoryStatusUI';
 import ModelViewer from '../../components/ModelViewer';
 import { useMemoryStatus } from '../../utils/hooks';
-import './memory-based-media.css';
+import './memory-considerate-media.css';
 
-const MemoryBasedMedia = () => {
+const MemoryConsiderateMedia = () => {
   const memoryStatus = useMemoryStatus();
 
-  console.log('[MemoryBasedMedia] memoryStatus => ', memoryStatus);
+  console.log('[MemoryConsiderateMedia] memoryStatus => ', memoryStatus);
   if (!memoryStatus) return <Loading />;
 
   return (
@@ -37,4 +37,4 @@ const MemoryBasedMedia = () => {
   );
 };
 
-export default MemoryBasedMedia;
+export default MemoryConsiderateMedia;
