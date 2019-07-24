@@ -17,14 +17,9 @@
 
 const DEVICE_API_URL = '/api/device/';
 
-// TODO: device properties testing -> remove on release
-// const DEVICE_PROPERTIES_API_URL = '/api/device-properties/;
-
 const Multicore_Score_Threshold = 4000;
 
 export {
   DEVICE_API_URL,
-  // TODO: device properties testing -> remove on release
-  // DEVICE_PROPERTIES_API_URL,
   Multicore_Score_Threshold
 };
