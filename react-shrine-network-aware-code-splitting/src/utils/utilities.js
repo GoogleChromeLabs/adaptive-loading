@@ -14,21 +14,24 @@
  * limitations under the License.
  */
 
-import { products } from './links';
+import { categories } from './links';
 
-const getCategoryGroupByName = category => {
-  return products.find(categoryGroup => categoryGroup.category.toLowerCase() === category.toLowerCase());
+const getCategoryByName = name => {
+  if (name) {
+    return categories.find(category => category.name.toLowerCase() === name.toLowerCase());
+  } else {
+    return categories[0];
+  }
 };
 
-const getCategoryGroupById = id => {
-  return products.find(categoryGroup => categoryGroup.id.toString() === id.toString());
+const getCategoryById = id => {
+  return categories.find(category => category.id.toString() === id.toString());
 };
 
 const getDetailedProduct = (category, id) => {
-  const categoryGroup = getCategoryGroupByName(category);
-  const detailedProduct = categoryGroup.items.find(item => item.id.toString() === id.toString());
+  const categoryDetails = getCategoryByName(category);
+  const detailedProduct = categoryDetails.products.find(product => product.id.toString() === id);
   return detailedProduct;
 };
 
-export { getCategoryGroupByName, getCategoryGroupById, getDetailedProduct };
- 
+export { getCategoryByName, getCategoryById, getDetailedProduct };
