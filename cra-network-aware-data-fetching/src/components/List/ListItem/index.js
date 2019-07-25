@@ -29,7 +29,7 @@ const ListItem = ({ item, index }) => {
         {item.dataType}
       </p>
       <div className='list-item-thumbnail'>
-        <img src={item.image.thumbnail} alt='thumbnail' />
+        <img src={item.image && item.image.thumbnail} alt='thumbnail' />
       </div>
     </div>
   )
