@@ -1,6 +1,7 @@
 {
   "name": "device-atlas-based-device-class",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
