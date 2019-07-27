@@ -21,13 +21,14 @@ const cors = require('cors');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
+const SIMILARITY_THRESHOLD = .88;
 
 app.disable('x-powered-by');
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'build')));
 
 // DeviceAtlas server-side API
-const deviceApi = (function () {
+const deviceApi = (() => {
   const devApi = new DeviceApiWeb();
   
   try {
@@ -40,7 +41,7 @@ const deviceApi = (function () {
   return devApi;
 })();
 
-app.get('/api/device', function (req, res) {
+app.get('/api/device', (req, res) => {
   console.log('[server] user-agent => ', req.headers['user-agent']);
 
   if (deviceApi.error) {
@@ -54,7 +55,7 @@ app.get('/api/device', function (req, res) {
   const isMobileDevice = properties.get('mobileDevice').getValue();
   if (!isMobileDevice) {
     return res.status(400).json({
-      message: 'Currently only support Android/iOS devices.'
+      message: 'We currently only support detecting Android and iOS devices.'
     });
   }
 
@@ -71,11 +72,10 @@ app.get('/api/device', function (req, res) {
   const bestMatchIndex = bestMatch.bestMatchIndex;
   const bestMatchRating = bestMatch.ratings[bestMatchIndex].rating;
 
-  // .88 is similarity threshold
   console.log('[server] bestMatchRating => ', bestMatchRating);
-  if (bestMatchRating < .88) {
+  if (bestMatchRating < SIMILARITY_THRESHOLD) {
     return res.status(404).json({
-      message: 'Not found matched benchmark!'
+      message: 'A matching benchmark could not be found.'
     });
   }
   
@@ -85,12 +85,12 @@ app.get('/api/device', function (req, res) {
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 // the react-router do the route part
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.listen(
   process.env.PORT || 5000,
-  function () {
+  () => {
     console.log(`Frontend start on http://localhost:5000`);
   }
 );
