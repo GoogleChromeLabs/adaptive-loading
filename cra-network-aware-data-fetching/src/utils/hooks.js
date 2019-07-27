@@ -18,24 +18,24 @@ import { useState, useEffect } from 'react';
 
 const navigatorConnection = navigator.connection;
 
-const getConnectionEffectiveType = () => {
+const getEffectiveConnectionType = () => {
   return navigatorConnection ? navigatorConnection.effectiveType : null;
 };
 
-const useConnectionEffectiveType = () => {
-  const [connectionEffectiveType, setConnectionEffectiveType] = useState(getConnectionEffectiveType());
+const useEffectiveConnectionType = () => {
+  const [effectiveConnectionType, setEffectiveConnectionType] = useState(getEffectiveConnectionType());
 
-  const updateCETStatus = () => {
-    setConnectionEffectiveType(getConnectionEffectiveType());
+  const updateECTStatus = () => {
+    setEffectiveConnectionType(getEffectiveConnectionType());
   };
   useEffect(() => {
-    navigatorConnection && navigatorConnection.addEventListener('change', updateCETStatus);
+    navigatorConnection && navigatorConnection.addEventListener('change', updateECTStatus);
     return () => {
-      navigatorConnection && navigatorConnection.removeEventListener('change', updateCETStatus);
+      navigatorConnection && navigatorConnection.removeEventListener('change', updateECTStatus);
     };
   }, []);
 
-  return connectionEffectiveType;
+  return effectiveConnectionType;
 };
 
-export { useConnectionEffectiveType };
+export { useEffectiveConnectionType };

@@ -16,15 +16,15 @@
 
 import React from 'react';
 
-import { useConnectionEffectiveType } from '../../../utils/hooks';
+import { useEffectiveConnectionType } from '../../../utils/hooks';
 import { IMAGE_BASE_URL, POSTER_SIZES } from '../../../config';
 
 const ConnectionAwareImage = ({ path, alt, ...rest }) => {
-  const connectionEffectiveType = useConnectionEffectiveType();
+  const effectiveConnectionType = useEffectiveConnectionType();
 
   let posterSize;
 
-  switch(connectionEffectiveType) {
+  switch(effectiveConnectionType) {
     // case 'offline':
     //   break;
     case 'slow-2g':

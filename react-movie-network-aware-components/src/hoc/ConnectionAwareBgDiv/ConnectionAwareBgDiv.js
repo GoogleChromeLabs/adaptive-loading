@@ -16,14 +16,14 @@
 
 import React from 'react';
 
-import { useConnectionEffectiveType } from '../../utils/hooks';
+import { useEffectiveConnectionType } from '../../utils/hooks';
 import { IMAGE_BASE_URL, BACKDROP_SIZES } from '../../config';
 
 const ConnectionAwareBgDiv = ({ children, backdropPath, ...rest }) => {
-  const connectionEffectiveType = useConnectionEffectiveType();
+  const effectiveConnectionType = useEffectiveConnectionType();
 
   let backdropSize;
-  switch(connectionEffectiveType) {
+  switch(effectiveConnectionType) {
     // case 'offline':
     //   break;
     case 'slow-2g':

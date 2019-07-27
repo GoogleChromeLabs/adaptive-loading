@@ -16,16 +16,16 @@
 
 import React from 'react';
 
-import { useConnectionEffectiveType } from '../../utils/hooks';
+import { useEffectiveConnectionType } from '../../utils/hooks';
 import './connection-aware-media.css';
 
 const ConnectionAwareMedia = () => {
-  const connectionEffectiveType = useConnectionEffectiveType();
+  const effectiveConnectionType = useEffectiveConnectionType();
 
-  console.log('[ConnectionAwareMedia] connectionEffectiveType => ', connectionEffectiveType);
+  console.log('[ConnectionAwareMedia] effectiveConnectionType => ', effectiveConnectionType);
 
   let media;
-  switch (connectionEffectiveType) {
+  switch (effectiveConnectionType) {
     case 'slow-2g':
       media = <img className="responsive" src="https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912" alt="minimum size" />;
       break;

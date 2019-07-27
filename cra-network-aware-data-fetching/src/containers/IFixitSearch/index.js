@@ -20,14 +20,14 @@ import './ifixit-search.css';
 import SearchBar from '../../components/SearchBar';
 import List from '../../components/List';
 import Spinner from '../../components/Spinner';
-import { useConnectionEffectiveType } from '../../utils/hooks';
+import { useEffectiveConnectionType } from '../../utils/hooks';
 
 const IFixitSearch = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const connectionEffectiveType = useConnectionEffectiveType();
+  const effectiveConnectionType = useEffectiveConnectionType();
   let searchLimit;
-  switch (connectionEffectiveType) {
+  switch (effectiveConnectionType) {
     // case 'offline':
     //   break;
     case 'slow-2g':
@@ -66,7 +66,7 @@ const IFixitSearch = () => {
   return (
     <div className='ifixit-search'>
       <div className='ifixit-search-status-panel'>
-        <p><strong>Current effective network connection:</strong>{` ${connectionEffectiveType}`}</p>
+        <p><strong>Current effective network connection:</strong>{` ${effectiveConnectionType}`}</p>
         <p><strong>Results:</strong> 4G: 50, 3G: 15, 2G: 5, slow-2g: 5</p>
       </div>
       <SearchBar search={searchHandler} />
