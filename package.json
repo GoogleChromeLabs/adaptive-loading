@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && npm run test && node server.js",
-    "test": "cd react-movie-network-aware-components && npm install && npm run build && mkdirp ../builds/react-movie-network-aware-components && cp -r build/* ../builds/react-movie-network-aware-components/",
-    "build": "cd cra-device-class-aware-loading && npm install && npm run build && mkdirp ../builds/cra-device-class-aware-loading && cp -r build/* ../builds/cra-device-class-aware-loading/"
+    "start": "npm install && npm run build && node server.js",
+    "build": "build.sh"
   },
   "keywords": [],
   "author": "",

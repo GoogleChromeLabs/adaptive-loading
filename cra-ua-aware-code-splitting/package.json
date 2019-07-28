@@ -1,6 +1,7 @@
 {
-  "name": "my-other-app",
+  "name": "cra-ua-aware-code-splitting",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",

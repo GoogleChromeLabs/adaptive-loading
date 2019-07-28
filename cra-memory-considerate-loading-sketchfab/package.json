@@ -1,6 +1,7 @@
 {
-  "name": "memory-based-loading",
+  "name": "cra-memory-considerate-loading-sketchfab",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@google/model-viewer": "^0.5.0",

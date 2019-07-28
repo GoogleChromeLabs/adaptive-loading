@@ -1,6 +1,7 @@
 {
-  "name": "my-app",
+  "name": "cra-network-aware-component",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",

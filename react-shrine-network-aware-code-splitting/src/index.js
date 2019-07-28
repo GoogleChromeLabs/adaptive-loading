@@ -48,7 +48,7 @@ ReactDOM.render((
     <ConnectedRouter history={history}>
       <ScrollToTop>
         <MuiThemeProvider theme={theme}>
-          <Router>
+          <Router basename="/react-shrine-network-aware-code-splitting">
             <App />
           </Router>
         </MuiThemeProvider>
