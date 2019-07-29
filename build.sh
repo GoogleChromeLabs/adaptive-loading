@@ -13,11 +13,14 @@ craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareComponents="react-movie-network-aware-components"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 
+# cd cra-battery-considerate-loading
 cd $craBatteryConsiderateLoading
 rm -rf node_modules build
 npm install
 npm run build
+# mkdir -p ../builds/cra-battery-considerate-loading
 mkdir -p "${multipleBuildsPath}${craBatteryConsiderateLoading}"
+# cp -r build/* ../builds/cra-battery-considerate-loading
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${craBatteryConsiderateLoading}"
 cd ..
 
