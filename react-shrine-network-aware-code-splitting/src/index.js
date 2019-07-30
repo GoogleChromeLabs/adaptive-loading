@@ -48,6 +48,7 @@ ReactDOM.render((
     <ConnectedRouter history={history}>
       <ScrollToTop>
         <MuiThemeProvider theme={theme}>
+          {/* set basename prop for Building for Relative Paths from https://facebook.github.io/create-react-app/docs/deployment */}
           <Router basename='/react-shrine-network-aware-code-splitting'>
             <App />
           </Router>

@@ -32,5 +32,6 @@
   },
   "devDependencies": {
     "ua-parser-js": "^0.7.20"
-  }
+  },
+  "license": "Apache-2.0"
 }
