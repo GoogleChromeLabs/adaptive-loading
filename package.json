@@ -4,18 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && npm run build && node server.js",
+    "serve": "cd functions && firebase serve --project env-aware",
+    "deploy": "cd functions && firebase deploy --project env-aware",
     "clean": "chmod u+x clean.sh && bash clean.sh",
-    "build": "chmod u+x build.sh && bash build.sh"
+    "build": "chmod u+x build.sh && bash build.sh && cd functions && npm install"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "deviceatlas-deviceapi": "file:lib/device-atlas/deviceatlas-enterprise-nodejs-2.1.3/Api/deviceatlas-deviceapi-2.1.3.tgz",
-    "express": "^4.17.1",
-    "mkdirp": "^0.5.1",
-    "string-similarity": "^3.0.0"
-  }
+  "license": "ISC"
 }

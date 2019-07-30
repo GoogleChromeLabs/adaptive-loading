@@ -1,0 +1,66 @@
+[debug] [2019-07-29T20:50:45.874Z] ----------------------------------------------------------------------
+[debug] [2019-07-29T20:50:45.876Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\JIN\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-07-29T20:50:45.876Z] CLI Version:   7.2.1
+[debug] [2019-07-29T20:50:45.877Z] Platform:      win32
+[debug] [2019-07-29T20:50:45.877Z] Node Version:  v10.15.3
+[debug] [2019-07-29T20:50:45.877Z] Time:          Mon Jul 29 2019 23:50:45 GMT+0300 (Moscow Standard Time)
+[debug] [2019-07-29T20:50:45.877Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-29T20:50:45.883Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-29T20:50:45.883Z] > authorizing via signed-in user
+[debug] [2019-07-29T20:50:45.883Z] [iam] checking project env-aware for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-07-29T20:50:45.884Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/env-aware:testIamPermissions  
+
+[debug] [2019-07-29T20:50:47.084Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'env-aware'...
+[info] 
+[info] i  deploying functions
+[debug] [2019-07-29T20:50:51.023Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0",
+    "cors": "^2.8.5",
+    "deviceatlas-deviceapi": "file:lib/device-atlas/deviceatlas-enterprise-nodejs-2.1.3/Api/deviceatlas-deviceapi-2.1.3.tgz",
+    "express": "^4.17.1",
+    "mkdirp": "^0.5.1",
+    "string-similarity": "^3.0.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-07-29T20:50:51.023Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/env-aware/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-07-29T20:50:51.024Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/env-aware/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-07-29T20:50:52.565Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-29T20:50:52.586Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2019-07-29T20:50:52.587Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/env-aware/adminSdkConfig  
+ 
+[debug] [2019-07-29T20:50:53.403Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2019-07-29T20:50:53.405Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/env-aware/configs  
+ 
+[debug] [2019-07-29T20:50:53.961Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (11.23 MB) for uploading
+[debug] [2019-07-29T20:50:56.306Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/env-aware/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2019-07-29T20:51:30.013Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-29T20:51:30.013Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-9687512f-d70b-43eb-94e5-0f81623f4e03/a5529413-47b9-4f07-9851-326a8154adfb.zip?GoogleAccessId=service-1029663082851@gcf-admin-robot.iam.gserviceaccount.com&Expires=1564435290&Signature=fBsqdp8kXti0gNDWzKgEfhc%2BKqn4sIGOU7bG2CIVzDrvhuYpjAUU4uXzxneayiulqEhbve%2BRaZPZrD4Zv3v8r5kFGRE%2FZ34vCR9aBBxS49Zj2PMaCRc8AeFl5B6WXTOaVVepq0MELicaDNCl937ppZTY2XPRkn9TnBvIAyk2pGkcT8tLfu1CprOowwWcXco22r%2FSP0RqVB51AJqF7bk%2BbJc63xj4XKTl59Iwz1IT9k8GBZNbIfeMGD4IktPlXoTzvN0mkpEUzxnaR3PbaRucAqr%2F1FFDqhwOqQpKrXvYaWlTDNr7bLBx1J1Vbh5WQWTL9DfMjut1%2BVrpY2gNY%2Fa2CQ%3D%3D  
+ <request body omitted>

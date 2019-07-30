@@ -1,5 +1,5 @@
 #!/bin/bash
-multipleBuildsPath="../builds/"
+multipleBuildsPath="../functions/builds/"
 individualBuildAllFiles="build/*"
 
 craBatteryConsiderateLoading="cra-battery-considerate-loading"
@@ -13,7 +13,9 @@ craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareComponents="react-movie-network-aware-components"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 
+cd functions
 rm -rf node_modules builds
+cd ..
 
 cd $craBatteryConsiderateLoading
 rm -rf node_modules build

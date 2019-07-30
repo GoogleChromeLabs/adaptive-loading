@@ -1,5 +1,5 @@
 #!/bin/bash
-multipleBuildsPath="../builds/"
+multipleBuildsPath="../functions/builds/"
 individualBuildAllFiles="build/*"
 
 craBatteryConsiderateLoading="cra-battery-considerate-loading"
@@ -18,9 +18,9 @@ cd $craBatteryConsiderateLoading
 rm -rf node_modules build
 npm install
 npm run build
-# mkdir -p ../builds/cra-battery-considerate-loading
+# mkdir -p ../functions/builds/cra-battery-considerate-loading
 mkdir -p "${multipleBuildsPath}${craBatteryConsiderateLoading}"
-# cp -r build/* ../builds/cra-battery-considerate-loading
+# cp -r build/* ../functions/builds/cra-battery-considerate-loading
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${craBatteryConsiderateLoading}"
 cd ..
 

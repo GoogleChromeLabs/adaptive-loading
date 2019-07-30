@@ -1,7 +1,7 @@
 {
   "name": "react-movie-network-aware-components",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "/react-movie-network-aware-components",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",

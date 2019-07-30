@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+const functions = require('firebase-functions');
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//  response.send("Hello from Firebase!");
+// });
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -40,6 +49,12 @@ const deviceApi = (() => {
   
   return devApi;
 })();
+
+// ray test touch <
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+// ray test touch >
 
 app.get('/api/device', (req, res) => {
   console.log('[server] user-agent => ', req.headers['user-agent']);
@@ -94,3 +109,5 @@ app.listen(
     console.log(`Frontend start on http://localhost:5000`);
   }
 );
+
+exports.app = functions.https.onRequest(app);

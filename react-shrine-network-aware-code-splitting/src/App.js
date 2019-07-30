@@ -14,21 +14,15 @@
  * limitations under the License.
  */
 
-import React, { useEffect, lazy, Suspense, Fragment } from 'react';
-import { Route, withRouter } from 'react-router-dom';
-import quicklink from 'quicklink/dist/quicklink.mjs';
+import React, { lazy, Suspense, Fragment } from 'react';
+import { Route } from 'react-router-dom';
 
 import './App.css';
 
 const LazyLanding = lazy(() => import(/* webpackChunkName: "landing" */ './containers/Landing/Landing'));
 const LazySaleProducts = lazy(() => import(/* webpackChunkName: "sale-products" */ './containers/SaleProducts/SaleProducts'));
 
-const App = ({ location }) => {
-  useEffect(() => {
-    console.log('[App] quicklink call');
-    quicklink();
-  }, [location.pathname]);
-
+const App = () => {
   return (
     <div className='app-wrapper'>
       <Suspense fallback={<Fragment>Loading...</Fragment>}>
@@ -40,4 +34,4 @@ const App = ({ location }) => {
   );
 };
 
-export default withRouter(App);
+export default App;
