@@ -7,9 +7,19 @@
   "author": "Google Chrome",
   "license": "Apache-2.0",
   "private": false,
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "ua-parser-js": "^0.7.20"
+    "react-test-renderer": "16.8.3",
+    "@testing-library/react-hooks": "^1.1.0"
+  },
+  "dependencies": {
+    "jest": "^24.8.0"
   }
 }
