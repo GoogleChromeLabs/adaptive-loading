@@ -1,6 +1,7 @@
 {
-  "name": "react-shrine-new",
+  "name": "react-shrine-network-aware-code-splitting",
   "version": "0.1.0",
+  "homepage": "/react-shrine-network-aware-code-splitting",
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
@@ -142,5 +143,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "license": "Apache-2.0"
 }

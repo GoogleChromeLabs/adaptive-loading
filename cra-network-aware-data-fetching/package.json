@@ -1,6 +1,7 @@
 {
   "name": "cra-network-aware-data-fetching",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
@@ -27,5 +28,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "license": "Apache-2.0"
 }

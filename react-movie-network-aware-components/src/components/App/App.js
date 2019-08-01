@@ -7,7 +7,8 @@ import NotFound from "../elements/NotFound/NotFound";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    // set basename prop for Building for Relative Paths from https://facebook.github.io/create-react-app/docs/deployment
+    <BrowserRouter basename="/react-movie-network-aware-components">
       <Fragment>
         <Header />
         <Switch>

@@ -1,0 +1,15 @@
+{
+  "name": "environment-aware-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "cd functions && firebase serve --project env-aware",
+    "deploy": "cd functions && firebase deploy --project env-aware",
+    "clean": "chmod u+x clean.sh && bash clean.sh",
+    "build": "chmod u+x build.sh && bash build.sh && cd functions && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0"
+}
