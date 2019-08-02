@@ -5,8 +5,8 @@ import { useBatteryStatus } from '../../utils/hooks';
 import './battery-considerate-media.css';
 
 const BatteryConsiderateMedia = () => {
-   const batteryStatus = useBatteryStatus();
-   if (!batteryStatus) return <Fragment>Loading...</Fragment>;
+  const { batteryStatus } = useBatteryStatus();
+  if (!batteryStatus) return <Fragment>Loading...</Fragment>;
 
   console.log('[BatteryConsiderateMedia] batteryStatus, batteryStatus.unsupportMessage => ', batteryStatus, batteryStatus.unsupportMessage);
 

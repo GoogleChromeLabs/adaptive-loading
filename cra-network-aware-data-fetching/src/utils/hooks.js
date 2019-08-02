@@ -37,7 +37,7 @@ const useEffectiveConnectionType = () => {
   // eslint-disable-next-line
   }, []);
 
-  return effectiveConnectionType;
+  return { effectiveConnectionType, updateECTStatus };
 };
 
 export { useEffectiveConnectionType };

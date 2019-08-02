@@ -35,7 +35,7 @@ const useBatteryStatus = () => {
   // eslint-disable-next-line
   }, []);
 
-  return batteryStatus;
+  return { batteryStatus, updateBatteryStatus };
 };
 
 export { useBatteryStatus };

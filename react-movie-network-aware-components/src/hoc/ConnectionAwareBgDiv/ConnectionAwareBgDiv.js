@@ -20,7 +20,7 @@ import { useEffectiveConnectionType } from '../../utils/hooks';
 import { IMAGE_BASE_URL, BACKDROP_SIZES } from '../../config';
 
 const ConnectionAwareBgDiv = ({ children, backdropPath, ...rest }) => {
-  const effectiveConnectionType = useEffectiveConnectionType();
+  const { effectiveConnectionType } = useEffectiveConnectionType();
 
   let backdropSize;
   switch(effectiveConnectionType) {

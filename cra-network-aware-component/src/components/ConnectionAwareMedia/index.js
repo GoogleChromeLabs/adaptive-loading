@@ -20,7 +20,7 @@ import { useEffectiveConnectionType } from '../../utils/hooks';
 import './connection-aware-media.css';
 
 const ConnectionAwareMedia = () => {
-  const effectiveConnectionType = useEffectiveConnectionType();
+  const { effectiveConnectionType } = useEffectiveConnectionType();
 
   console.log('[ConnectionAwareMedia] effectiveConnectionType => ', effectiveConnectionType);
 

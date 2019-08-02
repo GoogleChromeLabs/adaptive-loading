@@ -20,7 +20,7 @@ import { useEffectiveConnectionType } from '../../../utils/hooks';
 import { IMAGE_BASE_URL, POSTER_SIZES } from '../../../config';
 
 const ConnectionAwareImage = ({ path, alt, ...rest }) => {
-  const effectiveConnectionType = useEffectiveConnectionType();
+  const { effectiveConnectionType } = useEffectiveConnectionType();
 
   let posterSize;
 
