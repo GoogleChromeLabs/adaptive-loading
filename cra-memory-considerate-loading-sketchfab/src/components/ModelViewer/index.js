@@ -22,32 +22,17 @@ const SketchFabEmbed = lazy(() => import('./SketchFabEmbed'));
 const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
 
 const ModelViewer = ({ model, fallbackSrc, memoryStatus }) => {
-  const { usedMemoryPercent } = memoryStatus;
+  const { overLoad } = memoryStatus;
 
-  let viewer = null;
-  switch (true) {
-    case usedMemoryPercent > 75:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <LazyModelImageViewer src={fallbackSrc} />
-        </Suspense>
-      );
-      break;
-    case usedMemoryPercent > 0:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <SketchFabEmbed model={model} />
-        </Suspense>
-      );
-      break;
-    default:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <SketchFabEmbed model={model} />
-        </Suspense>
-      );
-      break;
-  }
+  const viewer = overLoad ? (
+    <Suspense fallback={<Loading />}>
+      <LazyModelImageViewer src={fallbackSrc} />
+    </Suspense>
+  ) : (
+    <Suspense fallback={<Loading />}>
+      <SketchFabEmbed model={model} />
+    </Suspense>
+  );
 
   return (
     <Fragment>
