@@ -50,11 +50,9 @@ const deviceApi = (() => {
   return devApi;
 })();
 
-// ray test touch <
 app.get('/ping', (req, res) => {
   res.send('pong');
 });
-// ray test touch >
 
 app.get('/api/device', (req, res) => {
   console.log('[server] user-agent => ', req.headers['user-agent']);
