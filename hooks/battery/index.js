@@ -16,7 +16,7 @@
 
 import { useState, useEffect } from 'react';
 
-const unsupportMessage = 'The Battery Status API is not supported on this platform.';
+export const unsupportMessage = 'The Battery Status API is not supported on this platform.';
 
 const useBatteryStatus = () => {
   const [batteryStatus, setBatteryStatus] = useState(null);
@@ -50,7 +50,7 @@ const useBatteryStatus = () => {
   // eslint-disable-next-line
   }, []);
 
-  return batteryStatus;
+  return { batteryStatus, updateBatteryStatus };
 };
 
 export { useBatteryStatus };

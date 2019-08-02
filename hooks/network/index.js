@@ -29,16 +29,15 @@ const useEffectiveConnectionType = () => {
   const updateECTStatus = () => {
     setEffectiveConnectionType(getEffectiveConnectionType());
   };
-
+  
   useEffect(() => {
     navigatorConnection && navigatorConnection.addEventListener('change', updateECTStatus);
     return () => {
       navigatorConnection && navigatorConnection.removeEventListener('change', updateECTStatus);
     };
-  // eslint-disable-next-line
   }, []);
 
-  return effectiveConnectionType;
+  return { effectiveConnectionType, updateECTStatus };
 };
 
 export { useEffectiveConnectionType };

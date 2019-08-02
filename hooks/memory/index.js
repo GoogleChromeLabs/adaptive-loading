@@ -16,11 +16,11 @@
 
 import { useState, useEffect } from 'react';
 
-const unsupportMessage = 'The Memory Status API is not supported on this platform.';
+export const unsupportMessage = 'The Memory Status API is not supported on this platform.';
 
 // Tune these for your application
-const MAX_MEMORY_LIMIT = 50 * 1048576; // 20MB
-const MAX_PERCENT_THRESHOLD = 90;
+export const MAX_MEMORY_LIMIT = 50 * 1048576; // 20MB
+export const MAX_PERCENT_THRESHOLD = 90;
 
 const useMemoryStatus = () => {
   const windowPerformance = window.performance;
