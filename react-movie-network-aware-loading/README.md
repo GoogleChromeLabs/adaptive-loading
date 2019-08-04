@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation
 ```
 git clone https://github.com/GoogleChromeLabs/environment-aware-components
-cd react-movie-network-aware-components
+cd react-movie-network-aware-loading
 npm install
 npm start
 npm run build
