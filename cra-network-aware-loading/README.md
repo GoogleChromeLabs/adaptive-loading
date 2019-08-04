@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation
 ```
 git clone https://github.com/GoogleChromeLabs/network-aware-components
-cd cra-network-aware-component
+cd cra-network-aware-loading
 npm install
 npm start
 npm run build
