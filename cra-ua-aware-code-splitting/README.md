@@ -9,7 +9,7 @@ Note: Device classification in this example is extremely basic. See [device-year
 
 ## Installation
 ```
-git clone https://github.com/GoogleChromeLabs/network-aware-components
+git clone https://github.com/GoogleChromeLabs/environment-aware-components
 cd cra-ua-aware-code-splitting
 npm install
 npm start

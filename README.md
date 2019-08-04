@@ -15,8 +15,8 @@ An exploration into loading and rendering the most suitable version of a compone
 * [UA-aware code-splitting](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-ua-aware-code-splitting) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-ua-aware-code-splitting/))
 
 ### Advanced
-* [React Movie - network-aware components](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-movie-network-aware-components)
-* [React Shrine - network-aware code-splitting](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-shrine-network-aware-code-splitting)
+* [React Movie - network-aware components](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/react-movie-network-aware-components)
+* [React Shrine - network-aware code-splitting](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/react-shrine-network-aware-code-splitting)
 
 ## Team
 
