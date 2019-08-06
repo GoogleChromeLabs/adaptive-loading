@@ -46,23 +46,21 @@ describe('useBatteryStatus', () => {
     });
   });
   
-  test('should return mockBattery status', async () => {
-    const originalError = console.error
-    console.error = jest.fn()
+  test('should return mockGetBattery status', async () => {
+    const originalError = console.error;
+    console.error = jest.fn();
   
-    const mockBattery = jest.fn().mockImplementation(() => Promise.resolve({
+    const mockGetBattery = jest.fn().mockImplementation(() => Promise.resolve({
       chargingTime: 20,
       dischargingTime: 40,
       level: 50,
       charging: true,
       addEventListener: jest.fn()
     }));
-  
-    global.navigator.getBattery = mockBattery;
+    global.navigator.getBattery = mockGetBattery;
   
     try {
       const { result, waitForNextUpdate } = renderHook(() => useBatteryStatus());
-    
       await waitForNextUpdate();
       
       expect(result.current.batteryStatus).toEqual({

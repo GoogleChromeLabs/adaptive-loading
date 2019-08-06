@@ -17,8 +17,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useEffectiveConnectionType } from './';
 
-// TODO: addEventListener change trigger mocking
-
 describe('useEffectiveConnectionType', () => {
   test('should return 4g of effectiveConnectionType', () => {
     global.navigator.connection = {
