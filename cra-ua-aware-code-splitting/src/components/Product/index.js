@@ -15,6 +15,8 @@
  */
 
 import React, { lazy, Suspense, Fragment } from 'react';
+
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useDeviceClass } from '../../utils/hooks';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: 'heavy' */ './Heavy'));
@@ -24,13 +26,15 @@ const Loading = <Fragment>Loading...</Fragment>;
 const Product = ({ ...rest }) => {
   const deviceClass = useDeviceClass();
   return (
-    <Suspense fallback={Loading}>
-      { deviceClass === 'heavy' ? (
-        <LazyHeavy {...rest} />
-      ) : (
-        <LazyLight {...rest} />
-      ) }
-    </Suspense>
+    <LazyLoadingErrorBoundary>
+      <Suspense fallback={Loading}>
+        { deviceClass === 'heavy' ? (
+          <LazyHeavy {...rest} />
+        ) : (
+          <LazyLight {...rest} />
+        ) }
+      </Suspense>
+    </LazyLoadingErrorBoundary>
   );
 };
 

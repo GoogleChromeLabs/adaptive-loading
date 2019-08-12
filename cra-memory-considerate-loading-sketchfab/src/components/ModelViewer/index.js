@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-import React, { Fragment, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 
 import Loading from '../Loading';
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
 const SketchFabEmbed = lazy(() => import('./SketchFabEmbed'));
 const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
@@ -25,19 +26,17 @@ const ModelViewer = ({ model, fallbackSrc, memoryStatus }) => {
   const { overLoad } = memoryStatus;
 
   const viewer = overLoad ? (
-    <Suspense fallback={<Loading />}>
-      <LazyModelImageViewer src={fallbackSrc} />
-    </Suspense>
+    <LazyModelImageViewer src={fallbackSrc} />
   ) : (
-    <Suspense fallback={<Loading />}>
-      <SketchFabEmbed model={model} />
-    </Suspense>
+    <SketchFabEmbed model={model} />
   );
 
   return (
-    <Fragment>
-      {viewer}
-    </Fragment>
+    <LazyLoadingErrorBoundary>
+      <Suspense fallback={<Loading />}>
+        {viewer}
+      </Suspense>
+    </LazyLoadingErrorBoundary>
   );
 };
 

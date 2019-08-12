@@ -16,6 +16,8 @@
 
 import React, { lazy, Fragment, Suspense } from 'react';
 
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
+
 const LazyAdaptiveProductImage = lazy(() => {
   return new Promise(resolve => {
     navigator.connection ? resolve(navigator.connection.effectiveType) : resolve(null);
@@ -37,9 +39,11 @@ const LazyAdaptiveProductImage = lazy(() => {
 });
 
 const ProductImage = ({ ...rest }) => (
-  <Suspense fallback={<Fragment>Loading...</Fragment>}>
-    <LazyAdaptiveProductImage { ...rest } />
-  </Suspense>
+  <LazyLoadingErrorBoundary>
+    <Suspense fallback={<Fragment>Loading...</Fragment>}>
+      <LazyAdaptiveProductImage { ...rest } />
+    </Suspense>
+  </LazyLoadingErrorBoundary>
 );
 
 export default ProductImage;

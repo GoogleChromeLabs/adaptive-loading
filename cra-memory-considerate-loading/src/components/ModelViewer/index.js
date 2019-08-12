@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-import React, { Fragment, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 
 import Loading from '../Loading';
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
 const LazyModel3DViewer = lazy(() => import('./Model3DViewer'));
 const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
@@ -25,19 +26,17 @@ const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
   const { overLoad } = memoryStatus;
 
   const viewer = overLoad ? (
-    <Suspense fallback={<Loading />}>
-      <LazyModelImageViewer src={fallbackSrc} />
-    </Suspense>
+    <LazyModelImageViewer src={fallbackSrc} />
   ) : (
-    <Suspense fallback={<Loading />}>
-      <LazyModel3DViewer src={src} />
-    </Suspense>
+    <LazyModel3DViewer src={src} />
   );
 
   return (
-    <Fragment>
+    <LazyLoadingErrorBoundary>
+      <Suspense fallback={<Loading />}>
       {viewer}
-    </Fragment>
+      </Suspense>
+    </LazyLoadingErrorBoundary>
   );
 };
 
