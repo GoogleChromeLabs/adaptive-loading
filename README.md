@@ -5,17 +5,18 @@ An exploration into loading and rendering the most suitable version of a compone
 ## Demos
 
 ### Simpler
-* [Network-aware loading](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/cra-network-aware-component) with create-react-app
-* [Network-aware code-splitting](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/cra-network-aware-code-splitting) with create-react-app
-* [Network-aware data-fetching](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-network-aware-data-fetching) with create-react-app
-* [Battery considerate loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-battery-considerate-loading) with create-react-app
-* [Memory considerate loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-memory-considerate-loading) with create-react-app
-* [Memory considerate loading (SketchFab version)](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-memory-considerate-loading-sketchfab) with create-react-app
-* [UA-aware code-splitting](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-ua-aware-code-splitting) with create-react-app
+* [Network-aware loading](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/cra-network-aware-component) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-network-aware-component/))
+* [Network-aware code-splitting](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/cra-network-aware-code-splitting) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-network-aware-code-splitting/))
+* [Network-aware data-fetching](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-network-aware-data-fetching) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-network-aware-data-fetching/))
+* [Battery considerate loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-battery-considerate-loading) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-battery-considerate-loading/))
+* [Memory considerate loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-memory-considerate-loading) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-memory-considerate-loading/))
+* [Memory considerate loading (SketchFab version)](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-memory-considerate-loading-sketchfab) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-memory-considerate-loading-sketchfab/))
+* [Device-class aware loading](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-device-class-aware-loading) ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-device-class-aware-loading/))
+* [UA-aware code-splitting](https://github.com/GoogleChromeLabs/environment-aware-components/tree/master/cra-ua-aware-code-splitting) with create-react-app ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/cra-ua-aware-code-splitting/))
 
 ### Advanced
-* [React Movie - network-aware components](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-movie-network-aware-components)
-* [React Shrine - network-aware code-splitting](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-shrine-network-aware-code-splitting)
+* [React Movie - network-aware components](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-movie-network-aware-components) ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/react-movie-network-aware-components))
+* [React Shrine - network-aware code-splitting](https://github.com/GoogleChromeLabs/network-aware-components/tree/master/react-shrine-network-aware-code-splitting) ([demo](https://us-central1-adaptive-loading.cloudfunctions.net/app/react-shrine-network-aware-code-splitting))
 
 ## Team
 
