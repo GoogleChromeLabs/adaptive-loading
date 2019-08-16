@@ -14,45 +14,29 @@
  * limitations under the License.
  */
 
-import React, { Fragment, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 
 import Loading from '../Loading';
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
-const SketchFabEmbed = lazy(() => import('./SketchFabEmbed'));
-const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
+const SketchFabEmbed = lazy(() => import(/* webpackChunkName: "heavy-sketch-fab-embed" */ './SketchFabEmbed'));
+const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image-viewer" */ './ModelImageViewer'));
 
 const ModelViewer = ({ model, fallbackSrc, memoryStatus }) => {
-  const { usedMemoryPercent } = memoryStatus;
+  const { overLoad } = memoryStatus;
 
-  let viewer = null;
-  switch (true) {
-    case usedMemoryPercent > 75:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <LazyModelImageViewer src={fallbackSrc} />
-        </Suspense>
-      );
-      break;
-    case usedMemoryPercent > 0:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <SketchFabEmbed model={model} />
-        </Suspense>
-      );
-      break;
-    default:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <SketchFabEmbed model={model} />
-        </Suspense>
-      );
-      break;
-  }
+  const viewer = overLoad ? (
+    <LazyModelImageViewer src={fallbackSrc} />
+  ) : (
+    <SketchFabEmbed model={model} />
+  );
 
   return (
-    <Fragment>
-      {viewer}
-    </Fragment>
+    <LazyLoadingErrorBoundary>
+      <Suspense fallback={<Loading />}>
+        {viewer}
+      </Suspense>
+    </LazyLoadingErrorBoundary>
   );
 };
 

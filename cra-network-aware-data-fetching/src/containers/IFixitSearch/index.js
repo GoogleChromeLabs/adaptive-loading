@@ -25,7 +25,7 @@ import { useEffectiveConnectionType } from '../../utils/hooks';
 const IFixitSearch = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const effectiveConnectionType = useEffectiveConnectionType();
+  const { effectiveConnectionType } = useEffectiveConnectionType();
   let searchLimit;
   switch (effectiveConnectionType) {
     // case 'offline':

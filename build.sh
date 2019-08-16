@@ -7,10 +7,10 @@ craDeviceClassAwareLoading="cra-device-class-aware-loading"
 craMemoryConsiderateLoading="cra-memory-considerate-loading"
 craMemoryConsiderateLoadingSketchfab="cra-memory-considerate-loading-sketchfab"
 craNetworkAwareCodeSplitting="cra-network-aware-code-splitting"
-craNetworkAwareComponent="cra-network-aware-component"
+craNetworkAwareComponent="cra-network-aware-loading"
 craNetworkAwareDataFetching="cra-network-aware-data-fetching"
 craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
-reactMovieNetworkAwareComponents="react-movie-network-aware-components"
+reactMovieNetworkAwareComponents="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 
 # cd cra-battery-considerate-loading

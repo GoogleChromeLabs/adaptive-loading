@@ -14,45 +14,29 @@
  * limitations under the License.
  */
 
-import React, { Fragment, Suspense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 
 import Loading from '../Loading';
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
-const LazyModel3DViewer = lazy(() => import('./Model3DViewer'));
-const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
+const LazyModel3DViewer = lazy(() => import(/* webpackChunkName: "heavy-3d-viewer" */ './Model3DViewer'));
+const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image-viewer" */ './ModelImageViewer'));
 
 const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
-  const { usedMemoryPercent } = memoryStatus;
+  const { overLoad } = memoryStatus;
 
-  let viewer = null;
-  switch(true) {
-    case usedMemoryPercent > 75:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <LazyModelImageViewer src={fallbackSrc} />
-        </Suspense>
-      );
-      break;
-    case usedMemoryPercent > 0:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <LazyModel3DViewer src={src} />
-        </Suspense>
-      );
-      break;
-    default:
-      viewer = (
-        <Suspense fallback={<Loading />}>
-          <LazyModel3DViewer src={src} />
-        </Suspense>
-      );
-      break;
-  }
+  const viewer = overLoad ? (
+    <LazyModelImageViewer src={fallbackSrc} />
+  ) : (
+    <LazyModel3DViewer src={src} />
+  );
 
   return (
-    <Fragment>
+    <LazyLoadingErrorBoundary>
+      <Suspense fallback={<Loading />}>
       {viewer}
-    </Fragment>
+      </Suspense>
+    </LazyLoadingErrorBoundary>
   );
 };
 

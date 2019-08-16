@@ -16,6 +16,7 @@
 
 import React, { lazy, Suspense, Fragment } from 'react';
 
+import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useDeviceParams } from '../../utils/hooks';
 import { Multicore_Score_Threshold } from '../../config';
 
@@ -49,13 +50,15 @@ const Product = ({ imageUrl, ...rest }) => {
         unsupportMessage={unsupportMessage}
         modelName={name}
         multicoreScore={multicore_score} />
-      <Suspense fallback={Loading}>
-        { multicore_score > Multicore_Score_Threshold || unsupportMessage ? (
-          <LazyHeavy imageUrl={imageUrl} {...rest} />
-        ) : (
-          <LazyLight imageUrl={imageUrl} {...rest} />
-        ) }
-      </Suspense>
+      <LazyLoadingErrorBoundary>
+        <Suspense fallback={Loading}>
+          { multicore_score > Multicore_Score_Threshold || unsupportMessage ? (
+            <LazyHeavy imageUrl={imageUrl} {...rest} />
+          ) : (
+            <LazyLight imageUrl={imageUrl} {...rest} />
+          ) }
+        </Suspense>
+      </LazyLoadingErrorBoundary>
     </Fragment>
   );
 };

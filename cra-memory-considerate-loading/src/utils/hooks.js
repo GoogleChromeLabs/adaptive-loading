@@ -17,16 +17,17 @@
 import { useState, useEffect } from 'react';
 
 const unsupportMessage = 'The Memory Status API is not supported on this platform.';
-const windowPerformance = window.performance;
 
-const MAX_MEMORY_LIMIT = 20 * 1048576; // 20MB
-// const MAX_PERCENT_THRESHOLD = 90;
-
-const isMemorySupported = () => {
-  return windowPerformance && windowPerformance.memory;
-};
+// Tune these for your application
+const MAX_MEMORY_LIMIT = 50 * 1048576; // 50MB
+const MAX_PERCENT_THRESHOLD = 90;
 
 const useMemoryStatus = () => {
+  const windowPerformance = window.performance;
+  const isMemorySupported = () => {
+    return windowPerformance && windowPerformance.memory;
+  };
+
   const [memoryStatus, setMemoryStatus] = useState(null);
 
   const getTotalJSHeapSize = () => windowPerformance.memory.totalJSHeapSize;
@@ -48,12 +49,22 @@ const useMemoryStatus = () => {
 
   useEffect(() => {
     if (isMemorySupported()) {
+      const overUsedMemorySize = getOverUsedMemorySize();
+      const usedMemoryPercent = getUsedMemoryPercent();
+      let overLoad = false;
+      // Check if we've exceeded absolute memory limit
+      if (overUsedMemorySize > 0) {
+        overLoad = true;
+      }
+      // Check if we've exceeded relative memory limit for client
+      if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
+        overLoad = true;
+      }
       setMemoryStatus({
         totalJSHeapSize: getTotalJSHeapSize(),
         usedJSHeapSize: getUsedJSHeapSize(),
         jsHeapSizeLimit: getJSHeapSizeLimit(),
-        overUsedMemorySize: getOverUsedMemorySize(),
-        usedMemoryPercent: getUsedMemoryPercent()
+        overLoad
       });
     } else {
       setMemoryStatus({unsupportMessage});

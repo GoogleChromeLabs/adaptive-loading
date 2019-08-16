@@ -17,18 +17,19 @@
 // inspired by https://github.com/rehooks/network-status
 import { useState, useEffect } from 'react';
 
-const navigatorConnection = navigator.connection;
-
-const getEffectiveConnectionType = () => {
-  return navigatorConnection ? navigatorConnection.effectiveType : null;
-};
-
 const useEffectiveConnectionType = () => {
+  const navigatorConnection = navigator.connection;
+  
+  const getEffectiveConnectionType = () => {
+    return navigatorConnection ? navigatorConnection.effectiveType : null;
+  };
+
   const [effectiveConnectionType, setEffectiveConnectionType] = useState(getEffectiveConnectionType());
 
   const updateECTStatus = () => {
     setEffectiveConnectionType(getEffectiveConnectionType());
   };
+  
   useEffect(() => {
     navigatorConnection && navigatorConnection.addEventListener('change', updateECTStatus);
     return () => {
@@ -36,7 +37,7 @@ const useEffectiveConnectionType = () => {
     };
   }, []);
 
-  return effectiveConnectionType;
+  return { effectiveConnectionType, updateECTStatus };
 };
 
 export { useEffectiveConnectionType };

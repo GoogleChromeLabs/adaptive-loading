@@ -17,6 +17,7 @@
 import React, { lazy, Suspense, Fragment } from 'react';
 import { Route } from 'react-router-dom';
 
+import LazyLoadingErrorBoundary from './components/LazyLoadingErrorBoundary';
 import './App.css';
 
 const LazyLanding = lazy(() => import(/* webpackChunkName: "landing" */ './containers/Landing/Landing'));
@@ -25,11 +26,13 @@ const LazySaleProducts = lazy(() => import(/* webpackChunkName: "sale-products" 
 const App = () => {
   return (
     <div className='app-wrapper'>
-      <Suspense fallback={<Fragment>Loading...</Fragment>}>
-        <Route exact path='/category/:categoryName/:productId' component={LazySaleProducts} />
-        <Route exact path='/category/:categoryName' component={LazyLanding} />
-        <Route exact path='/' component={LazyLanding} />
-      </Suspense>
+      <LazyLoadingErrorBoundary>
+        <Suspense fallback={<Fragment>Loading...</Fragment>}>
+          <Route exact path='/category/:categoryName/:productId' component={LazySaleProducts} />
+          <Route exact path='/category/:categoryName' component={LazyLanding} />
+          <Route exact path='/' component={LazyLanding} />
+        </Suspense>
+      </LazyLoadingErrorBoundary>
     </div>
   );
 };
