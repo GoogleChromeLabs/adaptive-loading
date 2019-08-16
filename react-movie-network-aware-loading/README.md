@@ -5,6 +5,8 @@
 
 This version of React movie uses network-aware loading to determine whether to load low-fidelity or high-fidelity movie posters based on the user's effective connection type (e.g 2G -> lo-fi, 4G -> hi-fi).
 
+[Live Demo](https://env-aware.firebaseapp.com/react-movie-network-aware-components)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Installation
