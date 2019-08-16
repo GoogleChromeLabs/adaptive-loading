@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "cd functions && firebase serve --project env-aware",
-    "deploy": "cd functions && firebase deploy --project adaptive-loading",
+    "serve": "cd functions && npm run serve",
+    "deploy": "cd functions && npm run deploy",
     "clean": "chmod u+x clean.sh && bash clean.sh",
     "build": "chmod u+x build.sh && bash build.sh && cd functions && npm install"
   },

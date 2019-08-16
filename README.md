@@ -2,6 +2,12 @@
 
 An exploration into loading and rendering the most suitable version of a component based on signals exposed to the web (network, CPU, memory etc).
 
+## Deployment
+```
+npm run build
+npm run deploy
+```
+
 ## Demos
 
 ### Simpler
