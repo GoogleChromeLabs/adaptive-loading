@@ -19,8 +19,8 @@ import React, { Suspense, lazy } from 'react';
 import Loading from '../Loading';
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
-const SketchFabEmbed = lazy(() => import('./SketchFabEmbed'));
-const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
+const SketchFabEmbed = lazy(() => import(/* webpackChunkName: "heavy-sketch-fab-embed" */ './SketchFabEmbed'));
+const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image-viewer" */ './ModelImageViewer'));
 
 const ModelViewer = ({ model, fallbackSrc, memoryStatus }) => {
   const { overLoad } = memoryStatus;

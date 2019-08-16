@@ -19,8 +19,8 @@ import React, { Suspense, lazy } from 'react';
 import Loading from '../Loading';
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
-const LazyModel3DViewer = lazy(() => import('./Model3DViewer'));
-const LazyModelImageViewer = lazy(() => import('./ModelImageViewer'));
+const LazyModel3DViewer = lazy(() => import(/* webpackChunkName: "heavy-3d-viewer" */ './Model3DViewer'));
+const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image-viewer" */ './ModelImageViewer'));
 
 const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
   const { overLoad } = memoryStatus;
