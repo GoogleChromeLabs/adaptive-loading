@@ -25,6 +25,10 @@ const Loading = <Fragment>Loading...</Fragment>;
 
 const Product = ({ ...rest }) => {
   const deviceClass = useDeviceClass();
+
+  // without this at first Light rendered regardless of deviceClass because the initial deviceClass is null
+  if (!deviceClass) return Loading;
+
   return (
     <LazyLoadingErrorBoundary>
       <Suspense fallback={Loading}>
