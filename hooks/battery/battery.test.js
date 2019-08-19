@@ -38,7 +38,7 @@ describe('useBatteryStatus', () => {
   
     expect(result.current.batteryStatus).toEqual({
       chargingTime: '20 Seconds',
-      dichargeTime: '40 Seconds',
+      dischargeTime: '40 Seconds',
       level: 50,
       chargingState: 'Charging'
     });
@@ -63,7 +63,7 @@ describe('useBatteryStatus', () => {
       
       expect(result.current.batteryStatus).toEqual({
         chargingTime: '20 Seconds',
-        dichargeTime: '40 Seconds',
+        dischargeTime: '40 Seconds',
         level: 50,
         chargingState: 'Charging'
       });
@@ -105,7 +105,7 @@ describe('useBatteryStatus', () => {
       // batteryStatus is supposed to be updated because updateBatteryStatus should be called internally
       expect(result.current.batteryStatus).toEqual({
         chargingTime: '20 Seconds',
-        dichargeTime: '40 Seconds',
+        dischargeTime: '40 Seconds',
         level: 50,
         chargingState: 'Charging'
       });
@@ -119,7 +119,7 @@ describe('useBatteryStatus', () => {
 
       expect(result.current.batteryStatus).toEqual({
         chargingTime: '30 Seconds',
-        dichargeTime: '50 Seconds',
+        dischargeTime: '50 Seconds',
         level: 60,
         chargingState: 'Discharging'
       });

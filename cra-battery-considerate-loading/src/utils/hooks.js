@@ -35,7 +35,7 @@ const useBatteryStatus = () => {
   const updateBatteryStatus = battery => {
     setBatteryStatus({
       chargingTime: `${battery.chargingTime} Seconds`,
-      dichargeTime: `${battery.dischargingTime} Seconds`,
+      dischargeTime: `${battery.dischargingTime} Seconds`,
       level: battery.level,
       chargingState: battery.charging === true ? 'Charging' : 'Discharging'
     });

@@ -22,7 +22,7 @@ class BatteryUI extends Component {
   state = {
     chargingTime: null,
     chargingState: null,
-    dichargeTime: null,
+    dischargeTime: null,
     level: null,
     unsupportMessage: null
   };
@@ -49,14 +49,14 @@ class BatteryUI extends Component {
   updateBatteryUI = battery => {
     this.setState({
       chargingTime: `${battery.chargingTime} Seconds`,
-      dichargeTime: `${battery.dischargingTime} Seconds`,
+      dischargeTime: `${battery.dischargingTime} Seconds`,
       level: `${battery.level * 100}%`,
       chargingState: battery.charging === true ? 'Charging' : 'Discharging'
     });
   };
 
   render () {
-    const { chargingTime, chargingState, dichargeTime, level, unsupportMessage } = this.state;
+    const { chargingTime, chargingState, dischargeTime, level, unsupportMessage } = this.state;
     return (
       <div className='list'>
         { unsupportMessage ? (
@@ -73,7 +73,7 @@ class BatteryUI extends Component {
             </div>
             <div className='list-item'>
               <div>Time to discharge:</div>
-              <div>{dichargeTime}</div>
+              <div>{dischargeTime}</div>
             </div>
             <div className='list-item'>
               <div>Battery Level:</div>
