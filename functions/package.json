@@ -2,10 +2,10 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
-    "serve": "firebase serve --project env-aware",
+    "serve": "firebase serve",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --project env-aware",
+    "deploy": "firebase deploy",
     "logs": "firebase functions:log"
   },
   "engines": {

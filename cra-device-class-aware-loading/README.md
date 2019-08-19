@@ -1,6 +1,8 @@
 
 # Demo: Device class aware resource loading in React
 
+[Live Demo](https://env-aware.firebaseapp.com/cra-device-class-aware-loading)
+
 A demo showing how to use device class aware resource loading in React.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

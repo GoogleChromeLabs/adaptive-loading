@@ -2,6 +2,25 @@
 
 An exploration into loading and rendering the most suitable version of a component based on signals exposed to the web (network, CPU, memory etc).
 
+## Deployment
+Create Firebase Project by logging in to [console.firebase.google.com](https://console.firebase.google.com) and replace the default value in `/.firebaserc` and `/functions/.firebaserc` with the created Project ID.
+Or simply copy the default value from `/.firebaserc` or `/functions/.firebaserc` and paste as the Project ID when creating the Firebase Project.
+
+### Function deployment
+```
+firebase init functions
+```
+Skip `Overwrite` options by entering `No`
+```
+firebase deploy
+```
+
+### Host deployment
+```
+npm run build
+npm run deploy
+```
+
 ## Demos
 
 ### Simpler
