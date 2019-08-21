@@ -51,38 +51,41 @@ const CACHE_VERSION = 1;
 
 // Shorthand identifier mapped to specific versioned cache.
 const CURRENT_CACHES = {
-  DYNAMIC_NAME: 'ect-dynamic-v' + CACHE_VERSION
+  DYNAMIC_NAME: 'responsive-images-v' + CACHE_VERSION
 };
 
-const matchFunction = ({url, event}) => {
-  return new RegExp('max-res|medium-res|min-res|4g-video');
-};
+const expirationPlugin = new workbox.expiration.Plugin({
+  maxEntries: 50,
+  maxAgeSeconds: 24 * 60 * 60,
+});
 
-const expirationManager = new workbox.expiration.CacheExpiration(
-  CURRENT_CACHES.DYNAMIC_NAME,
-  {
-    maxAgeSeconds: 24 * 60 * 60, // 1 Day
-    maxEntries: 50
-  }
-);
+// See https://developers.google.com/web/tools/workbox/guides/handle-third-party-requests#force_caching_of_opaque_responses
+const cacheOpaqueResponsesPlugin = new workbox.cacheableResponse.Plugin({
+  statuses: [0, 200]
+});
 
-const handler = async ({url, event}) => {
-  console.log('[sw handler] requesting event.request.url => ', event.request.url);
-  const cache = await caches.open(CURRENT_CACHES.DYNAMIC_NAME);
-  const response = await cache.match(event.request);
-  if (response) {
-    console.log('[sw handler] returning match-cached response');
-    return response;
-  } else {
-    console.log('[sw handler] returning fetched response');
-    const networkResponse = await fetch(event.request);
-    cache.put(event.request, networkResponse.clone());
-    await expirationManager.updateTimestamp(event.request.url);
-    return networkResponse;
+// See https://developers.google.com/web/tools/workbox/guides/using-plugins#custom_plugins
+const normalizeCacheKeyPlugin = {
+  cacheKeyWillBeUsed: async ({request, mode}) => {
+    // Normalize the cache key.
+    // So 'https://example.com/image-max-res.jpg' and 'https://example.com/image-min-res.jpg'
+    // would both end up using the same normlized cache key, 'ect-responsive-images'
+    // 'https://example.com/4g-video.mp4', 'ect-responsive-video'
+    // Because we ignore `mode`, this will be done for both reads and writes.
+    const normalizedCacheKey = request.url.search(/max-res|medium-res|min-res/) > -1 ? 'ect-responsive-images' : 'ect-responsive-video';
+    return normalizedCacheKey;
   }
 };
+
+const responsiveImagesStrategy = new workbox.strategies.CacheFirst({
+  cacheName: CURRENT_CACHES.DYNAMIC_NAME,
+  plugins: [expirationPlugin, cacheOpaqueResponsesPlugin, normalizeCacheKeyPlugin]
+});
 
 workbox.routing.registerRoute(
-  matchFunction,
-  handler
+  // See https://developers.google.com/web/tools/workbox/guides/route-requests#matching_a_route_with_a_regular_expression
+  // You could use a different matching strategy if you'd prefer, but for this example, assume that we want to match
+  // anything served by the Glitch CDN.
+  new RegExp('^https://cdn\\.glitch\\.com/'),
+  responsiveImagesStrategy
 );
