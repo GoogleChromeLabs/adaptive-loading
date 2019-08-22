@@ -26,19 +26,19 @@ const ConnectionAwareMedia = () => {
   let media;
   switch (effectiveConnectionType) {
     case 'slow-2g':
-      media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912' alt='low resolution' />;
+      media = <img className='responsive' src='/assets/responsive-media/image-min-res.jpg' alt='low resolution' />;
       break;
     case '2g':
-      media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmedium-res.jpg?v=1562842587169' alt='medium resolution' />;
+      media = <img className='responsive' src='/assets/responsive-media/image-medium-res.jpg' alt='medium resolution' />;
       break;
     case '3g':
-      media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982' alt='high resolution' />;
+      media = <img className='responsive' src='/assets/responsive-media/image-max-res.jpg' alt='high resolution' />;
       break;
     case '4g':
-      media = <video className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2F4g-video.mp4?v=1562842601068' controls />;
+      media = <video className='responsive' src='/assets/responsive-media/video-hd-res.mp4' controls />;
       break;
     default:
-      media = <video className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2F4g-video.mp4?v=1562842601068' controls />;
+      media = <video className='responsive' src='/assets/responsive-media/video-hd-res.mp4' controls />;
       break;
   }
 

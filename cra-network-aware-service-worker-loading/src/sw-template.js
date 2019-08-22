@@ -29,25 +29,12 @@ if ('function' === typeof importScripts) {
     workbox.routing.registerNavigationRoute('/index.html', {
       blacklist: [/^\/_/, /\/[^\/]+\.[^\/]+$/],
     });
-
-    workbox.routing.registerRoute(
-      /\.(?:png|gif|jpg|jpeg)$/,
-      new workbox.strategies.CacheFirst({
-        cacheName: 'images',
-        plugins: [
-          new workbox.expiration.Plugin({
-            maxEntries: 60,
-            maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-          }),
-        ],
-      })
-    );
   } else {
     console.log('Workbox could not be loaded. No Offline support');
   }
 }
 
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 
 // Shorthand identifier mapped to specific versioned cache.
 const CURRENT_CACHES = {
@@ -67,25 +54,21 @@ const cacheOpaqueResponsesPlugin = new workbox.cacheableResponse.Plugin({
 // See https://developers.google.com/web/tools/workbox/guides/using-plugins#custom_plugins
 const normalizeCacheKeyPlugin = {
   cacheKeyWillBeUsed: async ({request, mode}) => {
-    // Normalize the cache key.
+    // Normalize by removing the 'max-res', 'medium-res', or 'min-res' portion of the URL.
     // So 'https://example.com/image-max-res.jpg' and 'https://example.com/image-min-res.jpg'
-    // would both end up using the same normlized cache key, 'ect-responsive-images'
-    // 'https://example.com/4g-video.mp4', 'ect-responsive-video'
+    // would both end up using the same normlized cache key, 'https://example.com/image-.jpg'
     // Because we ignore `mode`, this will be done for both reads and writes.
-    const normalizedCacheKey = request.url.search(/max-res|medium-res|min-res/) > -1 ? 'ect-responsive-images' : 'ect-responsive-video';
-    return normalizedCacheKey;
+    return request.url.replace(/max-res|medium-res|min-res|hd-res/, '');
   }
 };
 
-const responsiveImagesStrategy = new workbox.strategies.CacheFirst({
+const responsiveMediaStrategy = new workbox.strategies.CacheFirst({
   cacheName: CURRENT_CACHES.DYNAMIC_NAME,
   plugins: [expirationPlugin, cacheOpaqueResponsesPlugin, normalizeCacheKeyPlugin]
 });
 
 workbox.routing.registerRoute(
   // See https://developers.google.com/web/tools/workbox/guides/route-requests#matching_a_route_with_a_regular_expression
-  // You could use a different matching strategy if you'd prefer, but for this example, assume that we want to match
-  // anything served by the Glitch CDN.
-  new RegExp('^https://cdn\\.glitch\\.com/'),
-  responsiveImagesStrategy
+  new RegExp('\/assets\/responsive-media'),
+  responsiveMediaStrategy
 );
