@@ -19,80 +19,107 @@ import React, { useEffect, useState } from 'react';
 import { useEffectiveConnectionType } from '../../utils/hooks';
 import './connection-aware-media.css';
 
-const maxResURL = '/assets/images/max-res.jpg';
-const mediumResURL = '/assets/images/medium-res.jpg';
-const minResURL = '/assets/images/min-res.jpg';
+const MEDIA_TYPE = {
+  VIDEO: 'video',
+  IMAGE: 'image'
+};
+
+const ResponsiveMedia = ({mediaType, objectURL}) => {
+  let responsiveMedia = null;
+
+  if (mediaType === MEDIA_TYPE.VIDEO) {
+    responsiveMedia = <video className='responsive' src={objectURL} controls />;
+  } else if (mediaType === MEDIA_TYPE.IMAGE) {
+    responsiveMedia = <img className='responsive' src={objectURL} alt='resolution based on effective connection type' />;
+  }
+
+  return responsiveMedia;
+};
+
+const requestMedia = async ect => {
+  let baseURL;
+  switch (ect) {
+    case 'slow-2g':
+      baseURL = '/assets/responsive-media/image-min-res.jpg';
+      break;
+    case '2g':
+      baseURL = '/assets/responsive-media/image-medium-res.jpg';
+      break;
+    case '3g':
+        baseURL = '/assets/responsive-media/video-hd-res.mp4';
+      break;
+    case '4g':
+      baseURL = '/assets/responsive-media/video-hd-res.mp4';
+      break;
+    default:
+      baseURL = '/assets/responsive-media/video-hd-res.mp4';
+      break;
+  }
+
+  const imageQualities = ['max-res', 'medium-res', 'min-res'];
+  const videoQualities = ['hd-res'];
+
+  let qualities;
+  let mediaType;
+  if (baseURL.includes(MEDIA_TYPE.VIDEO)) {
+    mediaType = MEDIA_TYPE.VIDEO;
+    qualities = videoQualities;
+  } else if (baseURL.includes(MEDIA_TYPE.IMAGE)) {
+    mediaType = MEDIA_TYPE.IMAGE;
+    qualities = imageQualities;
+  }
+
+  if (!mediaType) return null;
+
+  for (const quality of qualities) {
+    const regexFromQualities = new RegExp(qualities.join("|"));
+    const url = baseURL.replace(regexFromQualities, quality);
+    try {
+      const response = await fetch(url, {
+        cache: 'only-if-cached',
+        // only-if-cached will only work for same-origin requests.
+        mode: 'same-origin'
+      });
+      if (response.ok) {
+        const blob = await response.blob();
+        const objectURL = URL.createObjectURL(blob);
+        console.log('only-if-cached feeding url => ', url);
+        return <ResponsiveMedia mediaType={mediaType} objectURL={objectURL} />;
+      }
+    } catch(error) {
+      console.log('[ConnectionAwareMedia requestImage only-if-cached] error => ', error);
+    }
+  }
+
+  // If we get this far, there's no match in the HTTP cache.
+  // Make a network request:
+  try {
+    const blob = await fetch(baseURL).then(response => response.blob());
+    const objectURL = URL.createObjectURL(blob);
+    console.log('network request feeding url => ', baseURL);
+    return <ResponsiveMedia mediaType={mediaType} objectURL={objectURL} />;
+  } catch(error) {
+    console.log('[ConnectionAwareMedia requestImage default] error => ', error);
+  }
+
+  return null;
+};
 
 const ConnectionAwareMedia = () => {
   const { effectiveConnectionType } = useEffectiveConnectionType();
+  const [responsiveMedia, setResponsiveMedia] = useState(null);
 
-  const [base64Image, setBase64Image] = useState(null);
+  console.log('[ConnectionAwareMedia] effectiveConnectionType => ', effectiveConnectionType);
+
   useEffect(() => {
-    let mediaURL;
-    switch (effectiveConnectionType) {
-      case 'slow-2g':
-      case '2g':
-        mediaURL = minResURL;
-        break;
-      case '3g':
-        mediaURL = mediumResURL;
-        break;
-      case '4g':
-        mediaURL = maxResURL;
-        break;
-      default:
-        mediaURL = maxResURL;
-        break;
-    }
-
-    console.log('[ConnectionAwareMedia] effectiveConnectionType => ', effectiveConnectionType);
-
-    const requestImage = async baseURL => {
-      const qualities = ['max-res', 'medium-res', 'min-res'];
-
-      const feedImage = blob => {
-        const reader = new FileReader();
-        reader.onload = function() {
-          setBase64Image(this.result); // `this.result` contains a base64 data URI
-        };
-        reader.readAsDataURL(blob);
-      };
-
-      let imageBlob;
-      for (const quality of qualities) {
-        const url = baseURL.replace(/max-res|medium-res|min-res/, quality);
-        try {
-          imageBlob = await fetch(url, {
-            cache: 'only-if-cached',
-            mode: 'same-origin'
-          }).then(response => {
-            return response.blob();
-          });
-          console.log('only-if-cached feeding url => ', url);
-          if (imageBlob) break;
-        } catch(error) {
-          console.log('[ConnectionAwareMedia requestImage only-if-cached] error => ', error);
-        }
-      }
-
-      if (!imageBlob) {
-        try {
-          imageBlob = await fetch(baseURL).then(response => response.blob());
-          console.log('network request feeding url => ', baseURL);
-        } catch(error) {
-          console.log('[ConnectionAwareMedia requestImage default] error => ', error);
-        }
-      }
-
-      feedImage(imageBlob);
-    };
-
-    requestImage(mediaURL);
+    requestMedia(effectiveConnectionType).then(media => {
+      setResponsiveMedia(media);
+    });
   }, [effectiveConnectionType]);
 
   return (
     <div className='root-frame'>
-      { base64Image && <img className='responsive' src={base64Image} alt='resolution based on effective connection type' /> }
+      {responsiveMedia}
     </div>
   );
 };
