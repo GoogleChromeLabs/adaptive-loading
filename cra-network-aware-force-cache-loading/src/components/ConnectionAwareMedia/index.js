@@ -19,10 +19,9 @@ import React, { useEffect, useState } from 'react';
 import { useEffectiveConnectionType } from '../../utils/hooks';
 import './connection-aware-media.css';
 
-const minResURL = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912';
-const mediumResURL = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmedium-res.jpg?v=1562842587169';
-const maxResURL = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
-// const videoURL = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2F4g-video.mp4?v=1562842601068';
+const maxResURL = '/assets/images/max-res.jpg';
+const mediumResURL = '/assets/images/medium-res.jpg';
+const minResURL = '/assets/images/min-res.jpg';
 
 const ConnectionAwareMedia = () => {
   const { effectiveConnectionType } = useEffectiveConnectionType();
@@ -48,15 +47,47 @@ const ConnectionAwareMedia = () => {
 
     console.log('[ConnectionAwareMedia] effectiveConnectionType => ', effectiveConnectionType);
 
-    fetch(mediaURL, {cache: 'force-cache'})
-      .then(response => response.blob())
-      .then(blob => {
-          const reader = new FileReader();
-          reader.onload = function() {
-            setBase64Image(this.result); // `this.result` contains a base64 data URI
-          };
-          reader.readAsDataURL(blob);
-      });
+    const requestImage = async baseURL => {
+      const qualities = ['max-res', 'medium-res', 'min-res'];
+
+      const feedImage = blob => {
+        const reader = new FileReader();
+        reader.onload = function() {
+          setBase64Image(this.result); // `this.result` contains a base64 data URI
+        };
+        reader.readAsDataURL(blob);
+      };
+
+      let imageBlob;
+      for (const quality of qualities) {
+        const url = baseURL.replace(/max-res|medium-res|min-res/, quality);
+        try {
+          imageBlob = await fetch(url, {
+            cache: 'only-if-cached',
+            mode: 'same-origin'
+          }).then(response => {
+            return response.blob();
+          });
+          console.log('only-if-cached feeding url => ', url);
+          if (imageBlob) break;
+        } catch(error) {
+          console.log('[ConnectionAwareMedia requestImage only-if-cached] error => ', error);
+        }
+      }
+
+      if (!imageBlob) {
+        try {
+          imageBlob = await fetch(baseURL).then(response => response.blob());
+          console.log('network request feeding url => ', baseURL);
+        } catch(error) {
+          console.log('[ConnectionAwareMedia requestImage default] error => ', error);
+        }
+      }
+
+      feedImage(imageBlob);
+    };
+
+    requestImage(mediaURL);
   }, [effectiveConnectionType]);
 
   return (
