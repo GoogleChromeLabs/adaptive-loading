@@ -46,7 +46,7 @@ const requestMedia = async ect => {
       baseURL = '/assets/responsive-media/image-medium-res.jpg';
       break;
     case '3g':
-        baseURL = '/assets/responsive-media/video-hd-res.mp4';
+      baseURL = '/assets/responsive-media/image-max-res.jpg';
       break;
     case '4g':
       baseURL = '/assets/responsive-media/video-hd-res.mp4';
