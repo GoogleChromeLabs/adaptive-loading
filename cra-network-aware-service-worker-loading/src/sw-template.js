@@ -34,6 +34,8 @@ if ('function' === typeof importScripts) {
   }
 }
 
+workbox.precaching.cleanupOutdatedCaches();
+
 const CACHE_VERSION = 2;
 
 // Shorthand identifier mapped to specific versioned cache.
