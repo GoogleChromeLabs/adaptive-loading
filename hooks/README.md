@@ -1,9 +1,11 @@
 # Usage
 
+The following are a suite of [React Hooks](https://reactjs.org/docs/hooks-overview.html) for providing reusable stateful behavior in the form of environment-signals between different components.
+
 ## Network
 React hook for getting network status (effective connection type)
 
-```
+```js
 import { useEffectiveConnectionType } from './network';
 
 const MyComponent = () => {
@@ -35,7 +37,7 @@ const MyComponent = () => {
 ## Memory
 React hook for getting memory status of the device
 
-```
+```js
 import { useMemoryStatus } from './memory';
 
 const MyComponent = () => {
@@ -51,7 +53,7 @@ const MyComponent = () => {
 ## Device-class
 React hook for getting device-class whether it's light or heavy
 
-```
+```js
 import { useDeviceClass } from './device-class';
 
 const MyComponent = () => {
@@ -67,7 +69,7 @@ const MyComponent = () => {
 ## Battery
 React hook for getting battery status
 
-```
+```js
 import { useBatteryStatus } from './battery';
 
 const MyComponent = () => {
