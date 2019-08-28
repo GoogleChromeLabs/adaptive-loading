@@ -8,6 +8,7 @@ craMemoryConsiderateLoading="cra-memory-considerate-loading"
 craMemoryConsiderateLoadingSketchfab="cra-memory-considerate-loading-sketchfab"
 craNetworkAwareCodeSplitting="cra-network-aware-code-splitting"
 craNetworkAwareComponent="cra-network-aware-loading"
+craNetworkAwareOnlyIfCachedComponent="cra-network-aware-only-if-cached-loading"
 craNetworkAwareDataFetching="cra-network-aware-data-fetching"
 craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareComponents="react-movie-network-aware-loading"
@@ -62,6 +63,14 @@ npm install
 npm run build
 mkdir -p "${multipleBuildsPath}${craNetworkAwareComponent}"
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${craNetworkAwareComponent}"
+cd ..
+
+cd $craNetworkAwareOnlyIfCachedComponent
+rm -rf node_modules build
+npm install
+npm run build
+mkdir -p "${multipleBuildsPath}${craNetworkAwareOnlyIfCachedComponent}"
+cp -r $individualBuildAllFiles "${multipleBuildsPath}${craNetworkAwareOnlyIfCachedComponent}"
 cd ..
 
 cd $craNetworkAwareDataFetching
