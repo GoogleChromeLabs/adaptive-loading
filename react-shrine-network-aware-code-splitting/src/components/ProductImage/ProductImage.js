@@ -28,7 +28,7 @@ const LazyAdaptiveProductImage = lazy(() => {
         case '4g':
           return import(/* webpackChunkName: 'product-zoom-image' */ './ProductZoomImage/ProductZoomImage');
         case '3g':
-          return import(/* webpackChunkName: 'product-zoom-image' */ './ProductZoomImage/ProductZoomImage');
+          return import(/* webpackChunkName: 'product-plain-image' */ './ProductPlainImage/ProductPlainImage');
         case '2g':
         case 'slow-2g':
           return import(/* webpackChunkName: 'product-plain-image' */ './ProductPlainImage/ProductPlainImage');
