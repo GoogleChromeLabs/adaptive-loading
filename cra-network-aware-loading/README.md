@@ -1,7 +1,7 @@
 
 # Demo: Network-aware resource loading in React
 
-[Live Demo](https://env-aware.firebaseapp.com/cra-network-aware-component)
+[Live Demo](https://adaptive-loading.web.app/cra-network-aware-component)
 
 A demo showing how to use network-aware resource loading in React.
 

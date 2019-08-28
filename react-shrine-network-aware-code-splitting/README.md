@@ -1,7 +1,7 @@
 
 # Demo: React-shrine network-aware code-splitting with React
 
-[Live Demo](https://env-aware.firebaseapp.com/react-shrine-network-aware-code-splitting)
+[Live Demo](https://adaptive-loading.web.app/react-shrine-network-aware-code-splitting)
 
 React Shrine is a demo retail app that uses Material Design components and Material Theming to express branding for a variety of fashion and lifestyle items.
 

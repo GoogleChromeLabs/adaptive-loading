@@ -1,7 +1,7 @@
 
 # Demo: Battery-considerate resource loading in React
 
-[Live Demo](https://env-aware.firebaseapp.com/cra-battery-considerate-loading)
+[Live Demo](https://adaptive-loading.web.app/cra-battery-considerate-loading)
 
 A demo showing how to use battery-considerate resource loading in React.
 
