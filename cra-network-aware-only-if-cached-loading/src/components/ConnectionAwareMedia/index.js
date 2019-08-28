@@ -24,7 +24,7 @@ const MEDIA_TYPE = {
   IMAGE: 'image'
 };
 
-const ResponsiveMedia = ({mediaType, objectURL}) => {
+const ResponsiveMedia = ({ mediaType, objectURL }) => {
   let responsiveMedia = null;
 
   if (mediaType === MEDIA_TYPE.VIDEO) {
@@ -40,19 +40,19 @@ const requestMedia = async ect => {
   let baseURL;
   switch (ect) {
     case 'slow-2g':
-      baseURL = '/assets/responsive-media/image-min-res.jpg';
+      baseURL = 'assets/responsive-media/image-min-res.jpg';
       break;
     case '2g':
-      baseURL = '/assets/responsive-media/image-medium-res.jpg';
+      baseURL = 'assets/responsive-media/image-medium-res.jpg';
       break;
     case '3g':
-      baseURL = '/assets/responsive-media/image-max-res.jpg';
+      baseURL = 'assets/responsive-media/image-max-res.jpg';
       break;
     case '4g':
-      baseURL = '/assets/responsive-media/video-hd-res.mp4';
+      baseURL = 'assets/responsive-media/video-hd-res.mp4';
       break;
     default:
-      baseURL = '/assets/responsive-media/video-hd-res.mp4';
+      baseURL = 'assets/responsive-media/video-hd-res.mp4';
       break;
   }
 
@@ -86,7 +86,7 @@ const requestMedia = async ect => {
         console.log('only-if-cached feeding url => ', url);
         return <ResponsiveMedia mediaType={mediaType} objectURL={objectURL} />;
       }
-    } catch(error) {
+    } catch (error) {
       console.log('[ConnectionAwareMedia requestImage only-if-cached] error => ', error);
     }
   }
@@ -98,7 +98,7 @@ const requestMedia = async ect => {
     const objectURL = URL.createObjectURL(blob);
     console.log('network request feeding url => ', baseURL);
     return <ResponsiveMedia mediaType={mediaType} objectURL={objectURL} />;
-  } catch(error) {
+  } catch (error) {
     console.log('[ConnectionAwareMedia requestImage default] error => ', error);
   }
 
