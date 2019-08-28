@@ -24,8 +24,9 @@ const LazyAdaptiveProductImage = lazy(() => {
   }).then(
     effectiveType => {
       console.log('[LazyAdaptiveProductImage] effectiveType => ', effectiveType);
-      switch(effectiveType) {
+      switch (effectiveType) {
         case '4g':
+          return import(/* webpackChunkName: 'product-zoom-image' */ './ProductZoomImage/ProductZoomImage');
         case '3g':
           return import(/* webpackChunkName: 'product-zoom-image' */ './ProductZoomImage/ProductZoomImage');
         case '2g':
@@ -41,7 +42,7 @@ const LazyAdaptiveProductImage = lazy(() => {
 const ProductImage = ({ ...rest }) => (
   <LazyLoadingErrorBoundary>
     <Suspense fallback={<Fragment>Loading...</Fragment>}>
-      <LazyAdaptiveProductImage { ...rest } />
+      <LazyAdaptiveProductImage {...rest} />
     </Suspense>
   </LazyLoadingErrorBoundary>
 );
