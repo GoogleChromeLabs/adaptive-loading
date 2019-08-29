@@ -7,10 +7,11 @@ craDeviceClassAwareLoading="cra-device-class-aware-loading"
 craMemoryConsiderateLoading="cra-memory-considerate-loading"
 craMemoryConsiderateLoadingSketchfab="cra-memory-considerate-loading-sketchfab"
 craNetworkAwareCodeSplitting="cra-network-aware-code-splitting"
-craNetworkAwareComponent="cra-network-aware-loading"
+craNetworkAwareLoading="cra-network-aware-loading"
+craNetworkAwareOnlyIfCachedLoading="cra-network-aware-only-if-cached-loading"
 craNetworkAwareDataFetching="cra-network-aware-data-fetching"
 craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
-reactMovieNetworkAwareComponents="react-movie-network-aware-loading"
+reactMovieNetworkAwareLoading="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 
 cd functions
@@ -37,7 +38,11 @@ cd $craNetworkAwareCodeSplitting
 rm -rf node_modules build
 cd ..
 
-cd $craNetworkAwareComponent
+cd $craNetworkAwareLoading
+rm -rf node_modules build
+cd ..
+
+cd $craNetworkAwareOnlyIfCachedLoading
 rm -rf node_modules build
 cd ..
 
@@ -49,7 +54,7 @@ cd $craUaAwareCodeSplitting
 rm -rf node_modules build
 cd ..
 
-cd $reactMovieNetworkAwareComponents
+cd $reactMovieNetworkAwareLoading
 rm -rf node_modules build
 cd ..
 

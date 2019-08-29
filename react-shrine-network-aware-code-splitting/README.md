@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 ```
-git clone https://github.com/GoogleChromeLabs/environment-aware-components
+git clone https://github.com/GoogleChromeLabs/adaptive-loading
 cd react-shrine-network-aware-code-splitting
 npm install
 npm start

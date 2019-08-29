@@ -12,7 +12,7 @@ If you give it a try in your browser console, you may notice that the numbers of
 
 ## Installation
 ```
-git clone https://github.com/GoogleChromeLabs/environment-aware-components
+git clone https://github.com/GoogleChromeLabs/adaptive-loading
 cd cra-memory-considerate-loading
 npm install
 npm start

@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Installation
 ```
-git clone https://github.com/GoogleChromeLabs/environment-aware-components
+git clone https://github.com/GoogleChromeLabs/adaptive-loading
 cd cra-memory-considerate-loading-sketchfab
 npm install
 npm start
