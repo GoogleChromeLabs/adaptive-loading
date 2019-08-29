@@ -34,6 +34,22 @@ const MyComponent = () => {
 };
 ```
 
+## CPU Cores / Hardware Concurrency
+React hook for getting CPU cores of the device
+
+```js
+import { useHardwareConcurrency } from './hardware-concurrency';
+
+const MyComponent = () => {
+  const { cores } = useHardwareConcurrency();
+  return (
+    <div>
+      { cores <= 4 ? <img src='...' /> : <video src='...' /> }
+    </div>
+  );
+};
+```
+
 ## Memory
 React hook for getting memory status of the device
 
@@ -41,26 +57,10 @@ React hook for getting memory status of the device
 import { useMemoryStatus } from './memory';
 
 const MyComponent = () => {
-  const { overLoad } = useMemoryStatus();
+  const { overLoaded } = useMemoryStatus();
   return (
     <div>
-      { overLoad ? <img src='...' /> : <video src='...' /> }
-    </div>
-  );
-};
-```
-
-## Device-class
-React hook for getting device-class whether it's light or heavy
-
-```js
-import { useDeviceClass } from './device-class';
-
-const MyComponent = () => {
-  const deviceClass = useDeviceClass();
-  return (
-    <div>
-      { deviceClass === ‘light’ ? <img src='...' /> : <video src='...' /> }
+      { overLoaded ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };
@@ -77,6 +77,22 @@ const MyComponent = () => {
   return (
     <div>
       { batteryStatus.level > 0.75 ? <video src='...' /> : <img src='...' /> }
+    </div>
+  );
+};
+```
+
+## Device-class
+React hook for getting device-class whether it's light or heavy
+
+```js
+import { useDeviceClass } from './device-class';
+
+const MyComponent = () => {
+  const deviceClass = useDeviceClass();
+  return (
+    <div>
+      { deviceClass === ‘light’ ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };

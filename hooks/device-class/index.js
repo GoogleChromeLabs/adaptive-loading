@@ -27,7 +27,7 @@ const useDeviceClass = () => {
     parser.setUA(uastring);
     const device = parser.getDevice();
     const model = device.model;
-    console.log('[useDeviceClass] device model => ', model);
+    // console.log('[useDeviceClass] device model => ', model);
 
     // Match against devices you consider low-end
     const lowEnd = [
@@ -41,7 +41,7 @@ const useDeviceClass = () => {
 
     // Optional: map to device-year-class, Geekbench.
     setDeviceClass(lowEnd.indexOf(model) > 0 ? 'light' : 'heavy');
-  },[]);
+  }, []);
 
   return deviceClass;
 };
