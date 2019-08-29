@@ -29,11 +29,14 @@ describe('useMemoryStatus', () => {
     const totalJSHeapSize = 60;
     const usedJSHeapSize = 40;
     const jsHeapSizeLimit = 50;
+    const deviceMemory = 4;
     global.window.performance.memory = {
       totalJSHeapSize,
       usedJSHeapSize,
       jsHeapSizeLimit
     };
+
+    global.navigator.deviceMemory = deviceMemory;
 
     const { result } = renderHook(() => useMemoryStatus());
 
@@ -47,6 +50,7 @@ describe('useMemoryStatus', () => {
       totalJSHeapSize,
       usedJSHeapSize,
       jsHeapSizeLimit,
+      deviceMemory,
       overLoad
     });
   });
