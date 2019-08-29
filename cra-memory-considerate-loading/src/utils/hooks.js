@@ -25,7 +25,7 @@ const MAX_PERCENT_THRESHOLD = 90;
 const useMemoryStatus = () => {
   const windowPerformance = window.performance;
   const isMemorySupported = () => {
-    return windowPerformance && windowPerformance.memory;
+    return windowPerformance && windowPerformance.memory && navigator.deviceMemory;
   };
 
   const [memoryStatus, setMemoryStatus] = useState(null);
@@ -33,6 +33,7 @@ const useMemoryStatus = () => {
   const getTotalJSHeapSize = () => windowPerformance.memory.totalJSHeapSize;
   const getUsedJSHeapSize = () => windowPerformance.memory.usedJSHeapSize;
   const getJSHeapSizeLimit = () => windowPerformance.memory.jsHeapSizeLimit;
+  const getDeviceMemory = () => navigator.deviceMemory;
 
   const getOverUsedMemorySize = () => {
     const usedJSHeapSize = getUsedJSHeapSize();
@@ -64,6 +65,7 @@ const useMemoryStatus = () => {
         totalJSHeapSize: getTotalJSHeapSize(),
         usedJSHeapSize: getUsedJSHeapSize(),
         jsHeapSizeLimit: getJSHeapSizeLimit(),
+        deviceMemory: getDeviceMemory(),
         overLoad
       });
     } else {
