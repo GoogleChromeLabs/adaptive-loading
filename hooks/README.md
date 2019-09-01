@@ -54,13 +54,15 @@ const MyComponent = () => {
 React hook for getting memory status of the device
 
 ```js
-import { useMemoryStatus } from './memory';
+import { useMemoryStatus, deviceMemory, totalJSHeapSize } from './memory';
 
 const MyComponent = () => {
   const { overLoaded } = useMemoryStatus();
   return (
     <div>
       { overLoaded ? <img src='...' /> : <video src='...' /> }
+      <div>{deviceMemory}</div>
+      <div>{totalJSHeapSize}</div>
     </div>
   );
 };
@@ -92,7 +94,7 @@ const MyComponent = () => {
   const deviceClass = useDeviceClass();
   return (
     <div>
-      { deviceClass === ‘light’ ? <img src='...' /> : <video src='...' /> }
+      { deviceClass === 'light' ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };
