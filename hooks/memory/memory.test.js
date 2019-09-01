@@ -18,13 +18,13 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useMemoryStatus } from './';
 
 describe('useMemoryStatus', () => {
-  const unsupportMessage = require('./').unsupportMessage; 
+  const unsupportMessage = require('./').unsupportMessage;
   test(`should return ${unsupportMessage}`, () => {
     const { result } = renderHook(() => useMemoryStatus());
-    
+
     expect(result.current.unsupportMessage).toBe(unsupportMessage);
   });
-  
+
   test('should return mockMemory status', () => {
     const totalJSHeapSize = 60;
     const usedJSHeapSize = 40;
@@ -44,14 +44,14 @@ describe('useMemoryStatus', () => {
     const MAX_PERCENT_THRESHOLD = require('./').MAX_PERCENT_THRESHOLD;
     const overUsedMemorySize = usedJSHeapSize - MAX_MEMORY_LIMIT;
     const usedMemoryPercent = usedJSHeapSize / jsHeapSizeLimit * 100;
-    const overLoad = overUsedMemorySize > 0 || usedMemoryPercent > MAX_PERCENT_THRESHOLD;
-  
+    const overLoaded = overUsedMemorySize > 0 || usedMemoryPercent > MAX_PERCENT_THRESHOLD;
+
     expect(result.current).toEqual({
       totalJSHeapSize,
       usedJSHeapSize,
       jsHeapSizeLimit,
       deviceMemory,
-      overLoad
+      overLoaded
     });
   });
 });

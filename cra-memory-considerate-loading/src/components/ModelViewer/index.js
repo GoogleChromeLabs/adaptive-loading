@@ -23,18 +23,18 @@ const LazyModel3DViewer = lazy(() => import(/* webpackChunkName: "heavy-3d-viewe
 const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image-viewer" */ './ModelImageViewer'));
 
 const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
-  const { overLoad } = memoryStatus;
+  const { overLoaded } = memoryStatus;
 
-  const viewer = overLoad ? (
+  const viewer = overLoaded ? (
     <LazyModelImageViewer src={fallbackSrc} />
   ) : (
-    <LazyModel3DViewer src={src} />
-  );
+      <LazyModel3DViewer src={src} />
+    );
 
   return (
     <LazyLoadingErrorBoundary>
       <Suspense fallback={<Loading />}>
-      {viewer}
+        {viewer}
       </Suspense>
     </LazyLoadingErrorBoundary>
   );

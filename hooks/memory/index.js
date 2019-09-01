@@ -52,26 +52,26 @@ const useMemoryStatus = () => {
     if (isMemorySupported()) {
       const overUsedMemorySize = getOverUsedMemorySize();
       const usedMemoryPercent = getUsedMemoryPercent();
-      let overLoad = false;
+      let overLoaded = false;
       // Check if we've exceeded absolute memory limit
       if (overUsedMemorySize > 0) {
-        overLoad = true;
+        overLoaded = true;
       }
       // Check if we've exceeded relative memory limit for client
       if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
-        overLoad = true;
+        overLoaded = true;
       }
       setMemoryStatus({
         totalJSHeapSize: getTotalJSHeapSize(),
         usedJSHeapSize: getUsedJSHeapSize(),
         jsHeapSizeLimit: getJSHeapSizeLimit(),
         deviceMemory: getDeviceMemory(),
-        overLoad
+        overLoaded
       });
     } else {
-      setMemoryStatus({unsupportMessage});
+      setMemoryStatus({ unsupportMessage });
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return memoryStatus;

@@ -23,13 +23,13 @@ const SketchFabEmbed = lazy(() => import(/* webpackChunkName: "heavy-sketch-fab-
 const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image-viewer" */ './ModelImageViewer'));
 
 const ModelViewer = ({ model, fallbackSrc, memoryStatus }) => {
-  const { overLoad } = memoryStatus;
+  const { overLoaded } = memoryStatus;
 
-  const viewer = overLoad ? (
+  const viewer = overLoaded ? (
     <LazyModelImageViewer src={fallbackSrc} />
   ) : (
-    <SketchFabEmbed model={model} />
-  );
+      <SketchFabEmbed model={model} />
+    );
 
   return (
     <LazyLoadingErrorBoundary>
