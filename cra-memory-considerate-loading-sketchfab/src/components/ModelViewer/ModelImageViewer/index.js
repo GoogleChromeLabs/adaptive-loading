@@ -16,10 +16,8 @@
 
 import React from 'react';
 
-import './model-image-viewer.css';
-
 const ModelImageViewer = ({ src }) => (
-  <img src={src} alt='An astronaut' />
+  <img src={src} width='100%' alt='car model' />
 );
 
 export default ModelImageViewer;
