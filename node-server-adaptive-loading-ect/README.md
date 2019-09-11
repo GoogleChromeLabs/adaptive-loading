@@ -1,16 +1,16 @@
 
 # Demo: Server Side Connection Aware Loading
-A Node/Express prototype using Client Hints to demonstrate how to apply adaptive-loading on the server.
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Deployed [Here](https://server-adaptive-loading-ect.herokuapp.com/)
 
-## Glitch Source
-* [Link to Glitch App](https://anton-karlovskiy-node-server-adaptive-loading-ect.glitch.me/)
-* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-node-server-adaptive-loading-ect/)
+[Live Demo](https://server-adaptive-loading-ect.herokuapp.com/)
+
+A demo showing how to apply adaptive-loading on the server using Client Hints(ECT).
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) for client side and Node.js/Express.js for server side.
 
 ## Installation
 ```
-git clone https://github.com/anton-karlovskiy/node-server-adaptive-loading-ect.git
+git clone https://github.com/GoogleChromeLabs/adaptive-loading.git
+cd node-server-adaptive-loading-ect
 npm install
 npm run build
 npm run start-node
