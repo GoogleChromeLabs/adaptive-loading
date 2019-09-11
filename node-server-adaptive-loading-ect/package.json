@@ -1,0 +1,44 @@
+{
+  "name": "node-server-adaptive-loading",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "request": "^2.88.0"
+  },
+  "scripts": {
+    "start-dev": "react-scripts start",
+    "start": "node server.js",
+    "start-node": "nodemon server.js",
+    "build": "react-scripts build && cd functions && rm -rf build && mkdir build && cd .. && cp -r build/* ./functions/build",
+    "deploy-functions": "firebase deploy",
+    "log-functions": "cd functions && firebase functions:log",
+    "deploy-app": "cd functions && firebase deploy",
+    "serve": "cd functions && firebase serve",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1"
+  }
+}
