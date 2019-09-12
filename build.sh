@@ -13,6 +13,7 @@ craNetworkAwareDataFetching="cra-network-aware-data-fetching"
 craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareLoading="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
+nodeDprAwareLoading="node-dpr-aware-loading"
 
 # cd cra-battery-considerate-loading
 cd $craBatteryConsiderateLoading
@@ -103,4 +104,12 @@ npm install
 npm run build
 mkdir -p "${multipleBuildsPath}${reactShrineNetworkAwareCodeSplitting}"
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${reactShrineNetworkAwareCodeSplitting}"
+cd ..
+
+cd $nodeDprAwareLoading
+rm -rf node_modules build
+npm install
+npm run build
+mkdir -p "${multipleBuildsPath}${nodeDprAwareLoading}"
+cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeDprAwareLoading}"
 cd ..

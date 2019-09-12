@@ -13,6 +13,7 @@ craNetworkAwareDataFetching="cra-network-aware-data-fetching"
 craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareLoading="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
+nodeDprAwareLoading="node-dpr-aware-loading"
 
 cd functions
 rm -rf node_modules builds
@@ -59,5 +60,9 @@ rm -rf node_modules build
 cd ..
 
 cd $reactShrineNetworkAwareCodeSplitting
+rm -rf node_modules build
+cd ..
+
+cd $nodeDprAwareLoading
 rm -rf node_modules build
 cd ..

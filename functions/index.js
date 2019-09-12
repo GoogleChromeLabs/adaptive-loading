@@ -26,6 +26,7 @@ const functions = require('firebase-functions');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const request = require('request');
 const cors = require('cors');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
@@ -93,6 +94,19 @@ app.get('/api/device', (req, res) => {
   }
   
   return res.status(200).send(allBenchmarks[bestMatchIndex]);
+});
+
+app.get('/dpr-aware-image', (req, res) => {
+  console.log('[server dpr-aware-image request] DPR => ', req.headers.dpr);
+  const dpr = req.headers.dpr || 1;
+  const url = `https://via.placeholder.com/${dpr * 400}/92c952`;
+  
+  try {
+    request.get(url).pipe(res);
+  } catch (error) {
+    console.log('[server dpr-aware-image request proxy] error => ', error);
+    res.json({error});
+  }
 });
 
 // need to declare a "catch all" route on your express server 
