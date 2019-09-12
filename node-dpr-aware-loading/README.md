@@ -1,7 +1,7 @@
 
 # Demo: Server Side DPR Aware Loading
 
-[Live Demo](https://server-adaptive-loading-dpr.herokuapp.com/)
+[Live Demo](https://adaptive-loading.firebaseapp.com/node-dpr-aware-loading/)
 
 A demo showing how to apply adaptive-loading on the server using Client Hints(DPR).
 
