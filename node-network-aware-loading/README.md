@@ -1,7 +1,7 @@
 
 # Demo: Server Side Connection Aware Loading
 
-[Live Demo](https://server-adaptive-loading-ect.herokuapp.com/)
+[Live Demo](https://adaptive-loading.web.app/node-network-aware-loading/)
 
 A demo showing how to apply adaptive-loading on the server using Client Hints(ECT).
 
@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation
 ```
 git clone https://github.com/GoogleChromeLabs/adaptive-loading.git
-cd node-server-adaptive-loading-ect
+cd node-network-aware-loading
 npm install
 npm run build
 npm run start-node
