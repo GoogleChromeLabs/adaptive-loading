@@ -15,6 +15,7 @@ reactMovieNetworkAwareLoading="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 nodeDprAwareLoading="node-dpr-aware-loading"
 nodeEctMemoryConsiderateLoading="node-ect-memory-considerate-loading"
+nodeMemoryConsiderateLoading="node-memory-considerate-loading"
 
 # cd cra-battery-considerate-loading
 cd $craBatteryConsiderateLoading
@@ -121,4 +122,12 @@ npm install
 npm run build
 mkdir -p "${multipleBuildsPath}${nodeEctMemoryConsiderateLoading}"
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeEctMemoryConsiderateLoading}"
+cd ..
+
+cd $nodeMemoryConsiderateLoading
+rm -rf node_modules build
+npm install
+npm run build
+mkdir -p "${multipleBuildsPath}${nodeMemoryConsiderateLoading}"
+cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeMemoryConsiderateLoading}"
 cd ..
