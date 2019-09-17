@@ -13,7 +13,7 @@ git clone https://github.com/GoogleChromeLabs/adaptive-loading.git
 cd node-network-aware-loading
 npm install
 npm run build
-npm run start-node
+npm run start
 ```
 
 ## Deployment(Firebase Functions)
@@ -22,7 +22,7 @@ npm run start-node
 npm run deploy-functions
 ```
 
-### deploy app
+### deploy host
 ```
-npm run deploy-app
+npm run deploy-host
 ```

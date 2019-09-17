@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.0.0",
     "firebase-functions": "^3.1.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "ejs": "^2.7.1"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.1.6"

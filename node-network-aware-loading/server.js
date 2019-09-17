@@ -15,7 +15,6 @@
  */
 
 const express = require('express');
-// const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const request = require('request');
@@ -24,9 +23,10 @@ const app = express();
 app.disable('x-powered-by');
 app.use(cors());
 
-// check requests
-// const morgan = require('morgan');
-// app.use(morgan('combined'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', __dirname + '/public');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.get('/ping', (req, res) => {
   res.send('pong');
@@ -59,11 +59,8 @@ app.get('/connection-aware-image', (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-// need to declare a 'catch all' route on your express server 
+// need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
-// the react-router do the route part
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
