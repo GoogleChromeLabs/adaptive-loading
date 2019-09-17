@@ -62,7 +62,7 @@ app.get('/connection-aware-image', (req, res) => {
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(
