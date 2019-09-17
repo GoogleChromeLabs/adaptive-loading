@@ -1,7 +1,7 @@
 
 # Demo: Server Side DPR Aware Loading
 
-[Live Demo](https://adaptive-loading.firebaseapp.com/node-dpr-aware-loading/)
+[Live Demo](https://adaptive-loading.web.app/node-dpr-aware-loading/)
 
 A demo showing how to apply adaptive-loading on the server using Client Hints(DPR).
 
@@ -13,7 +13,7 @@ git clone https://github.com/GoogleChromeLabs/adaptive-loading.git
 cd node-dpr-aware-loading
 npm install
 npm run build
-npm run start-node
+npm run start
 ```
 
 ## Deployment(Firebase Functions)
@@ -22,7 +22,7 @@ npm run start-node
 npm run deploy-functions
 ```
 
-### deploy app
+### deploy host
 ```
-npm run deploy-app
+npm run deploy-host
 ```

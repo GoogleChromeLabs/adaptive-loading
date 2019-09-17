@@ -36,6 +36,9 @@ const SIMILARITY_THRESHOLD = .88;
 app.disable('x-powered-by');
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'builds')));
+app.set('views', __dirname + '/builds');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 // DeviceAtlas server-side API
 const deviceApi = (() => {

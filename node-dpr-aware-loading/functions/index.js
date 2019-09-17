@@ -30,6 +30,10 @@ const request = require('request');
 
 const app = express();
 app.disable('x-powered-by');
+app.use(express.static(path.join(__dirname, 'build')));
+app.set('views', __dirname + '/build');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 // check requests
 // const morgan = require('morgan');
@@ -52,11 +56,8 @@ app.get('/dpr-aware-image', (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
-// the react-router do the route part
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
