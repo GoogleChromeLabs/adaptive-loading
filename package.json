@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "cd functions && npm run serve",
     "deploy": "cd functions && npm run deploy",
+    "log-functions": "cd functions && npm run logs",
     "clean": "chmod u+x clean.sh && bash clean.sh",
     "build": "chmod u+x build.sh && bash build.sh && cd functions && npm install"
   },
