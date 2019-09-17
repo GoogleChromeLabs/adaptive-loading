@@ -37,3 +37,15 @@
   width: 100%;
   height: auto;
 }
+
+.description {
+  padding: 20px 12px;
+}
+
+.description p {
+  margin-bottom: 12px;
+}
+
+.description a {
+  color: #fff;
+}

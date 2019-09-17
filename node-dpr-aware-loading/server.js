@@ -21,8 +21,8 @@ const request = require('request');
 
 const app = express();
 app.disable('x-powered-by');
-app.use(express.static(path.join(__dirname, 'build')));
-app.set('views', __dirname + '/build');
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', __dirname + '/public');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -50,7 +50,7 @@ app.get('/dpr-aware-image', (req, res) => {
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(
