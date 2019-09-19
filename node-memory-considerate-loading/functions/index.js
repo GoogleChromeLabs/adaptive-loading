@@ -17,7 +17,6 @@
 const functions = require('firebase-functions');
 
 const express = require('express');
-// const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const request = require('request');
@@ -37,7 +36,8 @@ app.get('/ping', (req, res) => {
 
 app.get('/memory-considerate-image', (req, res) => {
   // TODO: As this is a demo, I think it should be easy enough to change these numbers as needed in the future.
-  const MEMORY_LIMIT = 4;
+  const MEMORY_LIMIT = 4; // Threshold is 4GB RAM
+  // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const deviceMemory = req.headers['device-memory'];
   console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
   const url = deviceMemory < MEMORY_LIMIT ?
