@@ -15,7 +15,7 @@
     "dev": "nodemon server.js",
     "build": "rm -rf build && mkdir build && cp -r public/* ./build && cd functions && rm -rf build && mkdir build && cd .. && cp -r build/* ./functions/build",
     "deploy-functions": "firebase deploy",
-    "log-functions": "cd functions && firebase functions:log",
+    "log-functions": "cd functions && npm run logs",
     "deploy-host": "cd functions && firebase deploy",
     "serve": "cd functions && firebase serve"
   },
