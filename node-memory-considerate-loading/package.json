@@ -5,10 +5,9 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
-    "ejs": "^2.7.1",
-    "express": "^4.17.1",
     "cors": "^2.8.5",
-    "request": "^2.88.0"
+    "ejs": "^2.7.1",
+    "express": "^4.17.1"
   },
   "scripts": {
     "start": "node server.js",

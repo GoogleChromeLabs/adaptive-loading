@@ -17,7 +17,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const request = require('request');
+const fs = require('fs');
 
 const app = express();
 app.disable('x-powered-by');
@@ -38,16 +38,36 @@ app.get('/memory-considerate-image', (req, res) => {
   // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const deviceMemory = req.headers['device-memory'];
   console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
-  const url = deviceMemory < MEMORY_LIMIT ?
-    'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912' :
-    'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
 
-  try {
-    request.get(url).pipe(res);
-  } catch (error) {
-    console.log('[server memory-considerate-image request proxy] error => ', error);
-    res.json({error});
+  const mime = {
+    html: 'text/html',
+    txt: 'text/plain',
+    css: 'text/css',
+    gif: 'image/gif',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    js: 'application/javascript'
+  };
+
+  const file = deviceMemory < MEMORY_LIMIT ?
+    path.join(__dirname, 'public', 'assets', 'images', 'min-res.jpg') :
+    path.join(__dirname, 'public', 'assets', 'images', 'max-res.jpg');
+
+  const dir = path.join(__dirname, 'public');
+  if (file.indexOf(dir + path.sep) !== 0) {
+      return res.status(403).end('Forbidden');
   }
+  const type = mime[path.extname(file).slice(1)] || 'text/plain';
+  const readStream = fs.createReadStream(file);
+  readStream.on('open', function () {
+      res.set('Content-Type', type);
+      readStream.pipe(res);
+  });
+  readStream.on('error', function () {
+      res.set('Content-Type', 'text/plain');
+      res.status(404).end('Not found');
+  });
 });
 
 app.get('*', (req, res) => {
