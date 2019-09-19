@@ -16,15 +16,7 @@
 
 const functions = require('firebase-functions');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
 const express = require('express');
-// const bodyParser = require('body-parser');
 const path = require('path');
 const request = require('request');
 
@@ -34,10 +26,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.set('views', __dirname + '/build');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-
-// check requests
-// const morgan = require('morgan');
-// app.use(morgan('combined'));
 
 app.get('/ping', (req, res) => {
   res.send('pong');

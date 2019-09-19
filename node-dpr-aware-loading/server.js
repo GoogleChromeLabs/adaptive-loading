@@ -15,7 +15,6 @@
  */
 
 const express = require('express');
-// const bodyParser = require('body-parser');
 const path = require('path');
 const request = require('request');
 
@@ -25,10 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', __dirname + '/public');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-
-// check requests
-// const morgan = require('morgan');
-// app.use(morgan('combined'));
 
 app.get('/ping', (req, res) => {
   res.send('pong');
