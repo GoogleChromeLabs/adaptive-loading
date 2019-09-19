@@ -16,16 +16,9 @@
 
 const functions = require('firebase-functions');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
+const request = require('request');
 const cors = require('cors');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
@@ -35,6 +28,9 @@ const SIMILARITY_THRESHOLD = .88;
 app.disable('x-powered-by');
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'builds')));
+app.set('views', __dirname + '/builds');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 // DeviceAtlas server-side API
 const deviceApi = (() => {
@@ -93,6 +89,19 @@ app.get('/api/device', (req, res) => {
   }
   
   return res.status(200).send(allBenchmarks[bestMatchIndex]);
+});
+
+app.get('/dpr-aware-image', (req, res) => {
+  console.log('[server dpr-aware-image request] DPR => ', req.headers.dpr);
+  const dpr = req.headers.dpr || 1;
+  const url = `https://via.placeholder.com/${dpr * 400}/92c952`;
+  
+  try {
+    request.get(url).pipe(res);
+  } catch (error) {
+    console.log('[server dpr-aware-image request proxy] error => ', error);
+    res.json({error});
+  }
 });
 
 // need to declare a "catch all" route on your express server 
