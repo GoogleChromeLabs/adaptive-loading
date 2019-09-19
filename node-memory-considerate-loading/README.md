@@ -5,7 +5,7 @@
 
 A demo showing how to apply adaptive-loading on the server using Client Hints(Device Memory).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) for client side and Node.js/Express.js for server side.
+This project was bootstrapped with Node.js/Express.js for server side.
 
 ## Installation
 ```
