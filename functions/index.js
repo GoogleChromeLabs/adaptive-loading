@@ -104,6 +104,19 @@ app.get('/dpr-aware-image', (req, res) => {
   }
 });
 
+app.get('/network-memory-considerate-model', (req, res) => {
+  const ect = req.headers.ect;
+  const deviceMemory = req.headers['device-memory'];
+  console.log('[server network-memory-considerate-model request] ECT, Device Memory => ', ect, deviceMemory);
+  
+  // TODO: As this is a demo, I think it should be easy enough to change these numbers as needed in the future. -> dotenv
+  const MEMORY_LIMIT = 4; // Threshold is 4GB RAM
+  const ECT_LIMIT = '4g';
+  // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
+  const experienceType = (ect === ECT_LIMIT && deviceMemory > MEMORY_LIMIT) ? 'heavy' : 'light';
+  res.json({experienceType});
+});
+
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 // the react-router do the route part

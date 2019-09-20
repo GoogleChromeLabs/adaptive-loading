@@ -1,0 +1,74 @@
+<!-- 
+  /*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using node">
+    <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width, ECT, Device-Memory">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <title>Node ECT Memory Considerate Loading</title>
+  </head>
+
+  <body data-gr-c-s-loaded="true">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <div class="App">
+        <header class="App-header">
+          <div class="description">
+            <p>Server side sends down 3D model/image to client side based on ECT and Device Memory Client Hints</p>
+            <p>On the device with network connection greater than 4g and memory greater than 4GB:
+              <a href="https://sketchfab.com/models/78f50fd5859746a6bdb611c867dd0229/embed?autostart=1">3D model</a>
+            </p>
+            <p>On the device with network connection lower than 4g or memory greater than 4GB: 
+              <a href="https://media.sketchfab.com/urls/78f50fd5859746a6bdb611c867dd0229/dist/thumbnails/27a441be16a14368bea782ae2b1679f5/756e16cc8b1640cb8058f8252edbf51b.jpeg">Image</a>
+            </p>
+          </div>
+          <div class="root-frame">
+            <div id="adaptive-content">Loading...</div>
+          </div>
+        </header>
+      </div>
+    </div>
+    <script>
+      function setElement(element) {
+        document.getElementById("adaptive-content").innerHTML = element;
+      }
+      fetch('/network-memory-considerate-model')
+        .then(response => response.json())
+        .then(result => {
+          let element;
+          const experienceType = result.experienceType;
+          if (experienceType === 'heavy') {
+            element = "<iframe title='sketchfab' width='100%' height='480' src='https://sketchfab.com/models/78f50fd5859746a6bdb611c867dd0229/embed?autostart=1' allow='autoplay; fullscreen; vr' frameBorder='0' mozallowfullscreen='true' webkitallowfullscreen='true'></iframe>";
+          }
+          else if (experienceType === 'light') {
+            element = "<img src='https://media.sketchfab.com/urls/78f50fd5859746a6bdb611c867dd0229/dist/thumbnails/27a441be16a14368bea782ae2b1679f5/756e16cc8b1640cb8058f8252edbf51b.jpeg' width='100%' alt='red car model' />";
+          }
+          setElement(element);
+        })
+        .catch(error => {
+          console.log('[fetch] error => ', error);
+          element = "<p>Whoops, Somethong went wrong!</p>";
+          setElement(element);
+        });
+    </script>
+  </body>
+</html>
