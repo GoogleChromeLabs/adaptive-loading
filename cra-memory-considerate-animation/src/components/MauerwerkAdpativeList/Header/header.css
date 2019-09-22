@@ -1,0 +1,32 @@
+
+.header {
+  padding: 12px 20px;
+  height: auto;
+}
+
+.control {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  padding: 8px 0;
+}
+
+.status > p {
+  margin: 0
+}
+
+.animation-setting {
+  display: flex;
+  align-items: center;
+}
+
+.animaton-setting-option {
+  padding: 8px 12px;
+  margin: 8px 12px;
+  margin-left: 0;
+  border: 1px solid #1890ff;
+  border-radius: 20px;
+}

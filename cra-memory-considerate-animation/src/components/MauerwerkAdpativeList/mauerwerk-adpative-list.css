@@ -1,0 +1,42 @@
+
+.shuffle {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  padding: 0px 20px 0px 20px;
+  width: auto;
+  height: auto;
+  background: white;
+  border: solid 2px #ffaad4;
+  border-radius: 7px;
+  color: #ffaad4;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 45px;
+}
+
+.shuffle:hover {
+  background: #f9f9f9;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  flex: 1;
+}
+
+.ant-btn-primary {
+  background-color: #ca6a9a !important;
+  border-color: #ca6a9a !important;
+}
