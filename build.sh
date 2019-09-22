@@ -16,6 +16,7 @@ reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 nodeDprAwareLoading="node-dpr-aware-loading"
 nodeEctMemoryConsiderateLoading="node-ect-memory-considerate-loading"
 nodeMemoryConsiderateLoading="node-memory-considerate-loading"
+nodeNetworkAwareLoading="node-network-aware-loading"
 
 # cd cra-battery-considerate-loading
 cd $craBatteryConsiderateLoading
@@ -130,4 +131,12 @@ npm install
 npm run build
 mkdir -p "${multipleBuildsPath}${nodeMemoryConsiderateLoading}"
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeMemoryConsiderateLoading}"
+cd ..
+
+cd $nodeNetworkAwareLoading
+rm -rf node_modules build
+npm install
+npm run build
+mkdir -p "${multipleBuildsPath}${nodeNetworkAwareLoading}"
+cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeNetworkAwareLoading}"
 cd ..

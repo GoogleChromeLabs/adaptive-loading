@@ -1,0 +1,37 @@
+{
+  "name": "node-network-aware-loading",
+  "version": "0.1.0",
+  "homepage": ".",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "request": "^2.88.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "rm -rf build && mkdir build && cp -r public/* ./build && cd functions && rm -rf build && mkdir build && cd .. && cp -r build/* ./functions/build",
+    "deploy-functions": "firebase deploy",
+    "log-functions": "cd functions && npm run logs",
+    "deploy-host": "cd functions && firebase deploy",
+    "serve": "cd functions && firebase serve"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1"
+  }
+}

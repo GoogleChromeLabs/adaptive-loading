@@ -21,6 +21,7 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 
+const request = require('request');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
@@ -137,6 +138,33 @@ app.get('/memory-considerate-image', (req, res) => {
       res.set('Content-Type', 'text/plain');
       res.status(404).end('Not found');
   });
+});
+
+app.get('/connection-aware-image', (req, res) => {
+  let url;
+  console.log('[server connection-aware-image request] Effective Connection Type => ', req.headers.ect);
+  switch(req.headers.ect) {
+    case 'slow-2g':
+    case '2g':
+      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912';
+      break;
+    case '3g':
+      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmedium-res.jpg?v=1562842587169';
+      break;
+    case '4g':
+      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
+      break;
+    default:
+      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
+      break;
+  }
+
+  try {
+    request.get(url).pipe(res);
+  } catch (error) {
+    console.log('[server connection-aware-image request proxy] error => ', error);
+    res.json({error});
+  }
 });
 
 app.get('/network-memory-considerate-model', (req, res) => {
