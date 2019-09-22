@@ -18,8 +18,9 @@ const functions = require('firebase-functions');
 
 const express = require('express');
 const path = require('path');
-const request = require('request');
+const fs = require('fs');
 const cors = require('cors');
+
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
@@ -102,6 +103,40 @@ app.get('/dpr-aware-image', (req, res) => {
     console.log('[server dpr-aware-image request proxy] error => ', error);
     res.json({error});
   }
+});
+
+app.get('/memory-considerate-image', (req, res) => {
+  // TODO: As this is a demo, I think it should be easy enough to change these numbers as needed in the future.
+  const MEMORY_LIMIT = 4; // Threshold is 4GB RAM
+  // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
+  const deviceMemory = req.headers['device-memory'];
+  console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
+
+  const mime = {
+    html: 'text/html',
+    txt: 'text/plain',
+    css: 'text/css',
+    gif: 'image/gif',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    js: 'application/javascript'
+  };
+
+  const file = deviceMemory < MEMORY_LIMIT ?
+    path.join(__dirname, 'assets', 'images', 'min-res.jpg') :
+    path.join(__dirname, 'assets', 'images', 'max-res.jpg');
+
+  const type = mime[path.extname(file).slice(1)] || 'text/plain';
+  const readStream = fs.createReadStream(file);
+  readStream.on('open', function () {
+      res.set('Content-Type', type);
+      readStream.pipe(res);
+  });
+  readStream.on('error', function () {
+      res.set('Content-Type', 'text/plain');
+      res.status(404).end('Not found');
+  });
 });
 
 app.get('/network-memory-considerate-model', (req, res) => {
