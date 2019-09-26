@@ -27,7 +27,6 @@ const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
 
 const SIMILARITY_THRESHOLD = .88;
-const SERVER_ERROR_MESSAGE = 'Something went wrong!';
 const BUILD_PATH ='builds';
 const IMAGES_PATH = 'assets/images';
 
@@ -60,7 +59,9 @@ app.get('/api/device', (req, res) => {
   console.log('[server] user-agent => ', req.headers['user-agent']);
 
   if (deviceApi.error) {
-    return res.status(500).end(deviceApi.error);
+    return res.status(500).json({
+      message: deviceApi.error
+    });
   }
   
   const properties = deviceApi.getPropertiesFromRequest(req);
@@ -104,7 +105,9 @@ app.get('/dpr-aware-image', (req, res) => {
     request.get(url).pipe(res);
   } catch (error) {
     console.log('[server dpr-aware-image request proxy] error => ', error);
-    res.status(500).end(SERVER_ERROR_MESSAGE);
+    res.status(500).json({
+      message: error
+    });
   }
 });
 
