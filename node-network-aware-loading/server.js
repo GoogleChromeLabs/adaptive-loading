@@ -55,7 +55,7 @@ app.get('/connection-aware-image', (req, res) => {
     request.get(url).pipe(res);
   } catch (error) {
     console.log('[server connection-aware-image request proxy] error => ', error);
-    res.json({error});
+    res.status(500).end(SERVER_ERROR_MESSAGE);
   }
 });
 
