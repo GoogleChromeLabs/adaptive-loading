@@ -1,5 +1,5 @@
 
-# Demo: Server Side Connection Aware Loading
+# Demo: Network Aware Loading by Server Side
 
 [Live Demo](https://adaptive-loading.web.app/node-network-aware-loading/)
 

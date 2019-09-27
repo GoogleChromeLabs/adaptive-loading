@@ -1,5 +1,5 @@
 
-# Demo: Server Side DPR Aware Loading
+# Demo: DPR Aware Loading by Server Side
 
 [Live Demo](https://adaptive-loading.web.app/node-dpr-aware-loading/)
 

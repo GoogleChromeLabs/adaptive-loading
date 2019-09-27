@@ -1,5 +1,5 @@
 
-# Demo: Server Side Memory Considerate Loading
+# Demo: Memory Considerate Loading by Server Side
 
 [Live Demo](https://adaptive-loading.web.app/node-memory-considerate-loading/)
 

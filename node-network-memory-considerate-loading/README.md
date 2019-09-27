@@ -1,5 +1,5 @@
 
-# Demo: Server Side ECT & Memory Considerate Loading
+# Demo: Network & Memory Considerate Loading by Server Side
 
 [Live Demo](https://adaptive-loading.web.app/node-network-memory-considerate-loading/)
 
