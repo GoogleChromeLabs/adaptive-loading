@@ -25,12 +25,15 @@ const request = require('request');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
+
 const SIMILARITY_THRESHOLD = .88;
+const BUILD_PATH ='builds';
+const IMAGES_PATH = 'assets/images';
 
 app.disable('x-powered-by');
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'builds')));
-app.set('views', __dirname + '/builds');
+app.use(express.static(path.join(__dirname, BUILD_PATH)));
+app.set('views', `${__dirname}/${BUILD_PATH}`);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -102,7 +105,9 @@ app.get('/dpr-aware-image', (req, res) => {
     request.get(url).pipe(res);
   } catch (error) {
     console.log('[server dpr-aware-image request proxy] error => ', error);
-    res.json({error});
+    res.status(500).json({
+      message: error
+    });
   }
 });
 
@@ -125,8 +130,8 @@ app.get('/memory-considerate-image', (req, res) => {
   };
 
   const file = deviceMemory < MEMORY_LIMIT ?
-    path.join(__dirname, 'assets', 'images', 'min-res.jpg') :
-    path.join(__dirname, 'assets', 'images', 'max-res.jpg');
+    path.join(__dirname, IMAGES_PATH, 'min-res.jpg') :
+    path.join(__dirname, IMAGES_PATH, 'max-res.jpg');
 
   const type = mime[path.extname(file).slice(1)] || 'text/plain';
   const readStream = fs.createReadStream(file);
@@ -143,28 +148,45 @@ app.get('/memory-considerate-image', (req, res) => {
 app.get('/connection-aware-image', (req, res) => {
   let url;
   console.log('[server connection-aware-image request] Effective Connection Type => ', req.headers.ect);
+  let fileName;
   switch(req.headers.ect) {
     case 'slow-2g':
     case '2g':
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912';
+      fileName = 'min-res.jpg';
       break;
     case '3g':
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmedium-res.jpg?v=1562842587169';
+      fileName = 'medium-res.jpg';
       break;
     case '4g':
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
+      fileName = 'max-res.jpg';
       break;
     default:
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
+      fileName = 'max-res.jpg';
       break;
   }
 
-  try {
-    request.get(url).pipe(res);
-  } catch (error) {
-    console.log('[server connection-aware-image request proxy] error => ', error);
-    res.json({error});
-  }
+  const mime = {
+    html: 'text/html',
+    txt: 'text/plain',
+    css: 'text/css',
+    gif: 'image/gif',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    js: 'application/javascript'
+  };
+
+  const file = path.join(__dirname, IMAGES_PATH, fileName);
+  const type = mime[path.extname(file).slice(1)] || 'text/plain';
+  const readStream = fs.createReadStream(file);
+  readStream.on('open', function () {
+      res.set('Content-Type', type);
+      readStream.pipe(res);
+  });
+  readStream.on('error', function () {
+      res.set('Content-Type', 'text/plain');
+      res.status(404).end('Not found');
+  });
 });
 
 app.get('/network-memory-considerate-model', (req, res) => {
@@ -184,7 +206,7 @@ app.get('/network-memory-considerate-model', (req, res) => {
 // that captures all page requests and directs them to the client
 // the react-router do the route part
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'builds'));
+  res.sendFile(path.join(__dirname, BUILD_PATH));
 });
 app.listen(
   process.env.PORT || 5000,

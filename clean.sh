@@ -14,7 +14,7 @@ craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareLoading="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 nodeDprAwareLoading="node-dpr-aware-loading"
-nodeEctMemoryConsiderateLoading="node-ect-memory-considerate-loading"
+nodeNetworkMemoryConsiderateLoading="node-network-memory-considerate-loading"
 nodeMemoryConsiderateLoading="node-memory-considerate-loading"
 nodeNetworkAwareLoading="node-network-aware-loading"
 
@@ -70,7 +70,7 @@ cd $nodeDprAwareLoading
 rm -rf node_modules build
 cd ..
 
-cd $nodeEctMemoryConsiderateLoading
+cd $nodeNetworkMemoryConsiderateLoading
 rm -rf node_modules build
 cd ..
 

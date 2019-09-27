@@ -14,7 +14,7 @@ craUaAwareCodeSplitting="cra-ua-aware-code-splitting"
 reactMovieNetworkAwareLoading="react-movie-network-aware-loading"
 reactShrineNetworkAwareCodeSplitting="react-shrine-network-aware-code-splitting"
 nodeDprAwareLoading="node-dpr-aware-loading"
-nodeEctMemoryConsiderateLoading="node-ect-memory-considerate-loading"
+nodeNetworkMemoryConsiderateLoading="node-network-memory-considerate-loading"
 nodeMemoryConsiderateLoading="node-memory-considerate-loading"
 nodeNetworkAwareLoading="node-network-aware-loading"
 
@@ -117,12 +117,12 @@ mkdir -p "${multipleBuildsPath}${nodeDprAwareLoading}"
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeDprAwareLoading}"
 cd ..
 
-cd $nodeEctMemoryConsiderateLoading
+cd $nodeNetworkMemoryConsiderateLoading
 rm -rf node_modules build
 npm install
 npm run build
-mkdir -p "${multipleBuildsPath}${nodeEctMemoryConsiderateLoading}"
-cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeEctMemoryConsiderateLoading}"
+mkdir -p "${multipleBuildsPath}${nodeNetworkMemoryConsiderateLoading}"
+cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeNetworkMemoryConsiderateLoading}"
 cd ..
 
 cd $nodeMemoryConsiderateLoading

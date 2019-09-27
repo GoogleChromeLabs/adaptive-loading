@@ -1,5 +1,5 @@
 {
-  "name": "node-ect-memory-considerate-loading",
+  "name": "node-network-memory-considerate-loading",
   "version": "0.1.0",
   "homepage": ".",
   "private": true,
@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "rm -rf build && mkdir build && cp -r public/* ./build && cd functions && rm -rf build && mkdir build && cd .. && cp -r build/* ./functions/build",
+    "build": "rm -rf build && mkdir build && cp -r public/* ./build",
     "deploy-functions": "firebase deploy",
     "log-functions": "cd functions && npm run logs",
     "deploy-host": "cd functions && firebase deploy",
