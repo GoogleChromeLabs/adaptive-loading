@@ -15,14 +15,3 @@ npm install
 npm run build
 npm run start
 ```
-
-## Deployment(Firebase Functions)
-### deploy functions
-```
-npm run deploy-functions
-```
-
-### deploy host
-```
-npm run deploy-host
-```
