@@ -17,12 +17,10 @@
 import React from 'react';
 
 const SketchFabEmbed = ({ model }) => {
-    const srcURL = `https://sketchfab.com/models/${model}/embed?autostart=1`;
-    return (
-        <div className="sketchfab-embed-wrapper">
-            <iframe title="sketchfab" width="90%" height="480" src={srcURL} allow="autoplay; fullscreen; vr" frameBorder="0" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-        </div>
-    );
+  const srcURL = `https://sketchfab.com/models/${model}/embed?autostart=1`;
+  return (
+    <iframe title='sketchfab' width='90%' height='480' src={srcURL} allow='autoplay; fullscreen; vr' frameBorder='0' mozallowfullscreen='true' webkitallowfullscreen='true'></iframe>
+  );
 };
 
 export default SketchFabEmbed;
