@@ -1,5 +1,5 @@
 
-# Demo: Server Side ECT & Memory Considerate Loading
+# Demo: Network & Memory Considerate Loading by Server Side
 
 [Live Demo](https://adaptive-loading.web.app/node-network-memory-considerate-loading/)
 
@@ -14,15 +14,4 @@ cd node-network-memory-considerate-loading
 npm install
 npm run build
 npm run start
-```
-
-## Deployment(Firebase Functions)
-### deploy functions
-```
-npm run deploy-functions
-```
-
-### deploy host
-```
-npm run deploy-host
 ```

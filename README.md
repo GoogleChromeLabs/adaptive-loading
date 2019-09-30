@@ -17,6 +17,10 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [Memory considerate loading (SketchFab version)](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-memory-considerate-loading-sketchfab) with create-react-app ([demo](https://adaptive-loading.web.app/cra-memory-considerate-loading-sketchfab/))
 * [Device-class aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-device-class-aware-loading) ([demo](https://adaptive-loading.web.app/cra-device-class-aware-loading/), [Moto G4](https://www.webpagetest.org/result/190828_2S_431d84f1cc15aace86d5046b348284b6/), [Galaxy S7](https://www.webpagetest.org/result/190828_SB_5b8fbb3a07e31f68f51681d6d67b7069/))
 * [UA-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-ua-aware-code-splitting) with create-react-app ([demo](https://adaptive-loading.web.app/cra-ua-aware-code-splitting/))
+* [DPR(Client Hint)-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-dpr-aware-loading) with node-app ([demo](https://adaptive-loading.web.app/node-dpr-aware-loading/))
+* [Memory(Client Hint) considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-memory-considerate-loading) with node-app ([demo](https://adaptive-loading.web.app/node-memory-considerate-loading/))
+* [Network(Client Hint)-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-aware-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-aware-loading/))
+* [Network & Memory(Client Hints) considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-memory-considerate-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-memory-considerate-loading/))
 
 ### Full applications
 
