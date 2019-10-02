@@ -64,7 +64,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx);
   }
-  return { pageProps };
+  return {pageProps};
 };
 
 export default MyApp;

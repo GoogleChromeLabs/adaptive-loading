@@ -24,8 +24,9 @@ const MAX_PERCENT_THRESHOLD = 90;
 
 const useMemoryStatus = () => {
   const [memoryStatus, setMemoryStatus] = useState(null);
-  // TODO: point out -> we must call use client side(browser) features like window and navigator after componets are mounted
+  // TODO: point out -> we must use client side (browser) features like window and navigator after components are mounted
   // that's why we put the logic inside useEffect hook.
+  // inspired by https://github.com/zeit/next.js/wiki/FAQ#i-use-a-library-which-throws-window-is-undefined
   useEffect(() => {
     const windowPerformance = window.performance;
     const isMemorySupported = () => {
