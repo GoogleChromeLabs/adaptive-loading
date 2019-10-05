@@ -99,7 +99,7 @@ const AnimationPost = ({ post }) => {
 };
 
 AnimationPost.getInitialProps = ({ query }) => {
-  const post = posts.find(post => post.id === query.index);
+  const post = posts.find(post => post.id === parseInt(query.index));
   return {post};
 };
 
