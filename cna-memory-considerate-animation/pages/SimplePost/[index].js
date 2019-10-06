@@ -21,7 +21,7 @@ import posts from '../../data/posts';
 import Layout from '../../components/layout';
 import PostInfo from '../../components/PostInfo';
 
-const SimplePost = props => {
+const SimplePost = ({ post }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -30,10 +30,10 @@ const SimplePost = props => {
     <Layout>
       <div className="container post">
         <div>
-          <img src={`/static/images/${props.post.id}.jpg`} />
+          <img src={`/static/images/${post.id}.jpg`} />
           <div>
-            <PostInfo post={props.post} />
-            <p>{props.post.text}</p>
+            <PostInfo post={post} />
+            <p>{post.text}</p>
           </div>
           <div>
             <Link href="/">
@@ -55,7 +55,7 @@ const SimplePost = props => {
 };
 
 SimplePost.getInitialProps = ({ query }) => {
-  let post = posts.find(post => post.id === query.index);
+  let post = posts.find(post => post.id === parseInt(query.index));
   return {post};
 };
 
