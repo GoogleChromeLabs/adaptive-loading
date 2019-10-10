@@ -1,0 +1,21 @@
+
+/* MEMO: tweak */
+.adaptive-photo .load-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: .75em;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.adaptive-photo .load-image:hover {
+  background-color: black;
+}
