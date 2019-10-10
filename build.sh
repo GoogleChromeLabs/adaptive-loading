@@ -17,6 +17,7 @@ nodeDprAwareLoading="node-dpr-aware-loading"
 nodeNetworkMemoryConsiderateLoading="node-network-memory-considerate-loading"
 nodeMemoryConsiderateLoading="node-memory-considerate-loading"
 nodeNetworkAwareLoading="node-network-aware-loading"
+reactTwitterSaveDataLoading="react-twitter-save-data-loading"
 
 # cd cra-battery-considerate-loading
 cd $craBatteryConsiderateLoading
@@ -139,4 +140,12 @@ npm install
 npm run build
 mkdir -p "${multipleBuildsPath}${nodeNetworkAwareLoading}"
 cp -r $individualBuildAllFiles "${multipleBuildsPath}${nodeNetworkAwareLoading}"
+cd ..
+
+cd $reactTwitterSaveDataLoading
+rm -rf node_modules build
+npm install
+npm run build
+mkdir -p "${multipleBuildsPath}${reactTwitterSaveDataLoading}"
+cp -r $individualBuildAllFiles "${multipleBuildsPath}${reactTwitterSaveDataLoading}"
 cd ..

@@ -17,6 +17,7 @@ nodeDprAwareLoading="node-dpr-aware-loading"
 nodeNetworkMemoryConsiderateLoading="node-network-memory-considerate-loading"
 nodeMemoryConsiderateLoading="node-memory-considerate-loading"
 nodeNetworkAwareLoading="node-network-aware-loading"
+reactTwitterSaveDataLoading="react-twitter-save-data-loading"
 
 cd functions
 rm -rf node_modules builds
@@ -79,5 +80,9 @@ rm -rf node_modules build
 cd ..
 
 cd $nodeNetworkAwareLoading
+rm -rf node_modules build
+cd ..
+
+cd $reactTwitterSaveDataLoading
 rm -rf node_modules build
 cd ..
