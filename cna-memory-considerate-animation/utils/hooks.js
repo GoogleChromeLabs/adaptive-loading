@@ -72,7 +72,7 @@ const useMemoryStatus = () => {
     // server side rendering
     if (isWindowUndefined) {
       // MEMO: we must use client side (browser) features like window and navigator after components are mounted
-      // so we could put the logic inside useEffect hook.
+      // so we could put the logic with client features into useEffect hook.
       // inspired by https://github.com/zeit/next.js/wiki/FAQ#i-use-a-library-which-throws-window-is-undefined
       unsupportMessage = SERVER_SIDE_UNSUPPORT_MESSAGE;
     // client side rendering
