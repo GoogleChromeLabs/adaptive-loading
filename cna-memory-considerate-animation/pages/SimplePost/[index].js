@@ -18,7 +18,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 import posts from '../../data/posts';
-import Layout from '../../components/layout';
 import PostInfo from '../../components/PostInfo';
 
 const SimplePost = ({ post }) => {
@@ -27,35 +26,33 @@ const SimplePost = ({ post }) => {
   }, []);
 
   return (
-    <Layout>
-      <div className="container post">
+    <div className='container post'>
+      <div>
+        <img src={`/static/images/${post.id}.jpg`} />
         <div>
-          <img src={`/static/images/${post.id}.jpg`} />
-          <div>
-            <PostInfo post={post} />
-            <p>{post.text}</p>
-          </div>
-          <div>
-            <Link href="/">
-              <a>Back to list</a>
-            </Link>
-          </div>
+          <PostInfo post={post} />
+          <p>{post.text}</p>
         </div>
-        <style jsx>{`
-          .post {
-            margin: 20px;
-          }
-          .post p {
-            margin: 40px 0;
-          }
-        `}</style>
+        <div>
+          <Link href='/'>
+            <a>Back to list</a>
+          </Link>
+        </div>
       </div>
-    </Layout>
+      <style jsx>{`
+        .post {
+          margin: 20px;
+        }
+        .post p {
+          margin: 40px 0;
+        }
+      `}</style>
+    </div>
   );
 };
 
 SimplePost.getInitialProps = ({ query }) => {
-  let post = posts.find(post => post.id === parseInt(query.index));
+  const post = posts.find(post => post.id === parseInt(query.index));
   return {post};
 };
 

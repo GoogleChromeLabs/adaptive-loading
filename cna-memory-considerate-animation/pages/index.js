@@ -14,15 +14,12 @@
  * limitations under the License.
  */
 
-import Layout from '../components/layout';
-import AdaptivePostList from '../pages/AdaptivePostList';
+import AdaptivePostList from '../components/AdaptivePostList';
 
-const Home = () => (
-  <Layout>
-    <div className='container'>
-      <AdaptivePostList />
-    </div>
-  </Layout>
+const Index = () => (
+  <div className='container'>
+    <AdaptivePostList />
+  </div>
 );
 
-export default Home;
+export default Index;

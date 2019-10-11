@@ -19,7 +19,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 import posts from '../../data/posts';
-import Layout from '../../components/layout';
 import PostInfo from '../../components/PostInfo';
 
 const easing = [0.175, 0.85, 0.42, 0.96];
@@ -71,30 +70,28 @@ const AnimationPost = ({ post }) => {
   }, []);
 
   return (
-    <Layout>
-      <div className="container post">
-        <motion.div initial="exit" animate="enter" exit="exit">
-          <motion.img variants={imageVariants} src={`/static/images/${post.id}.jpg`} />
-          <motion.div variants={textVariants}>
-            <PostInfo post={post} />
-            <p>{post.text}</p>
-          </motion.div>
-          <motion.div variants={backVariants}>
-            <Link href="/">
-              <a>Back to list</a>
-            </Link>
-          </motion.div>
+    <div className='container post'>
+      <motion.div initial='exit' animate='enter' exit='exit'>
+        <motion.img variants={imageVariants} src={`/static/images/${post.id}.jpg`} />
+        <motion.div variants={textVariants}>
+          <PostInfo post={post} />
+          <p>{post.text}</p>
         </motion.div>
-        <style jsx>{`
-          .post {
-            margin: 20px;
-          }
-          .post p {
-            margin: 40px 0;
-          }
-        `}</style>
-      </div>
-    </Layout>
+        <motion.div variants={backVariants}>
+          <Link href='/'>
+            <a>Back to list</a>
+          </Link>
+        </motion.div>
+      </motion.div>
+      <style jsx>{`
+        .post {
+          margin: 20px;
+        }
+        .post p {
+          margin: 40px 0;
+        }
+      `}</style>
+    </div>
   );
 };
 
