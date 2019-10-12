@@ -22,6 +22,9 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [Network(Client Hint)-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-aware-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-aware-loading/))
 * [Network & Memory(Client Hints) considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-memory-considerate-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-memory-considerate-loading/))
 
+### Data Saver-style patterns
+* [React Twitter - save-data loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading) ([demo](https://adaptive-loading.web.app/react-twitter-save-data-loading/))
+
 ### Full applications
 
 * [React Movie - network-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-movie-network-aware-loading) ([demo](https://adaptive-loading.web.app/react-movie-network-aware-loading/))
