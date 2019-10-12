@@ -69,7 +69,7 @@ class App extends Component {
     }
     
     const ListTweet = ({ index, style }) => {
-      const imagePath = `/assets/images/${saveData === SAVE_DATA_MODE.OFF ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
+      const imagePath = `./assets/images/${saveData === SAVE_DATA_MODE.OFF ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
       return (
         <div className='tweet-stream' style={style}>
           <Tweet
