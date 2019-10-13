@@ -7,7 +7,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "next": "npm run build-firebase && npm install && npm run dev",
+    "preserve": "npm run build-all",
+    "serve": "firebase serve",
+    "predeploy": "npm run build-all",
+    "deploy": "firebase deploy",
+    "build-all": "npm run build-next && npm run build-firebase",
+    "build-next": "npm install && npm run build",
+    "build-firebase": "cd \"functions\" && npm install"
   },
   "dependencies": {
     "framer-motion": "^1.6.7",
