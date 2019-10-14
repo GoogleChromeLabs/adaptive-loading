@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export const unsupportMessage = 'The Memory Status API is not supported on this platform.';
+export const CLIENT_SIDE_UNSUPPORT_MESSAGE = 'The Memory Status API is not supported on this platform.';
+const SERVER_SIDE_UNSUPPORT_MESSAGE = 'This Memory React Hook uses Window interface so it\'s not possible to use this on Server Side Rendering';
 
 // Tune these for your application
 export const MAX_MEMORY_LIMIT = 50 * 1048576; // 50MB
 export const MAX_PERCENT_THRESHOLD = 90;
 
+const isWindowUndefined = typeof window === 'undefined';
+
 const useMemoryStatus = () => {
-  const windowPerformance = window.performance;
   const isMemorySupported = () => {
-    return windowPerformance && windowPerformance.memory && navigator.deviceMemory;
+    return !isWindowUndefined && window.performance && window.performance.memory && navigator.deviceMemory;
   };
 
-  const [memoryStatus, setMemoryStatus] = useState(null);
-
-  const getTotalJSHeapSize = () => windowPerformance.memory.totalJSHeapSize;
-  const getUsedJSHeapSize = () => windowPerformance.memory.usedJSHeapSize;
-  const getJSHeapSizeLimit = () => windowPerformance.memory.jsHeapSizeLimit;
+  const getTotalJSHeapSize = () => window.performance.memory.totalJSHeapSize;
+  const getUsedJSHeapSize = () => window.performance.memory.usedJSHeapSize;
+  const getJSHeapSizeLimit = () => window.performance.memory.jsHeapSizeLimit;
   const getDeviceMemory = () => navigator.deviceMemory;
 
   const getOverUsedMemorySize = () => {
@@ -48,33 +48,45 @@ const useMemoryStatus = () => {
     return usedMemoryPercent;
   };
 
-  useEffect(() => {
-    if (isMemorySupported()) {
-      const overUsedMemorySize = getOverUsedMemorySize();
-      const usedMemoryPercent = getUsedMemoryPercent();
-      let overLoaded = false;
-      // Check if we've exceeded absolute memory limit
-      if (overUsedMemorySize > 0) {
-        overLoaded = true;
-      }
-      // Check if we've exceeded relative memory limit for client
-      if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
-        overLoaded = true;
-      }
-      setMemoryStatus({
-        totalJSHeapSize: getTotalJSHeapSize(),
-        usedJSHeapSize: getUsedJSHeapSize(),
-        jsHeapSizeLimit: getJSHeapSizeLimit(),
-        deviceMemory: getDeviceMemory(),
-        overLoaded
-      });
-    } else {
-      setMemoryStatus({ unsupportMessage });
+  let initialMemoryStatus;
+  if (isMemorySupported()) {
+    const overUsedMemorySize = getOverUsedMemorySize();
+    const usedMemoryPercent = getUsedMemoryPercent();
+    let overLoaded = false;
+    // Check if we've exceeded absolute memory limit
+    if (overUsedMemorySize > 0) {
+      overLoaded = true;
     }
-    // eslint-disable-next-line
-  }, []);
+    // Check if we've exceeded relative memory limit for client
+    if (usedMemoryPercent > MAX_PERCENT_THRESHOLD) {
+      overLoaded = true;
+    }
 
-  return memoryStatus;
+    initialMemoryStatus = {
+      totalJSHeapSize: getTotalJSHeapSize(),
+      usedJSHeapSize: getUsedJSHeapSize(),
+      jsHeapSizeLimit: getJSHeapSizeLimit(),
+      deviceMemory: getDeviceMemory(),
+      overLoaded
+    };
+  } else {
+    let unsupportMessage;
+    // server side rendering
+    if (isWindowUndefined) {
+      // MEMO: we must use client side (browser) features like window and navigator after components are mounted
+      // so we could put the logic with client features into useEffect hook.
+      // inspired by https://github.com/zeit/next.js/wiki/FAQ#i-use-a-library-which-throws-window-is-undefined
+      unsupportMessage = SERVER_SIDE_UNSUPPORT_MESSAGE;
+    // client side rendering
+    } else {
+      unsupportMessage = CLIENT_SIDE_UNSUPPORT_MESSAGE;
+    }
+    initialMemoryStatus = {unsupportMessage};
+  }
+
+  const [memoryStatus, setMemoryStatus] = useState(initialMemoryStatus);
+
+  return {memoryStatus, setMemoryStatus};
 };
 
 export { useMemoryStatus };
