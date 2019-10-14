@@ -25,8 +25,9 @@ import { CLIENT_HINT_MEMORY_LIMIT } from '../config';
 const MyApp = ({ Component, pageProps, router }) => {
   const [manualEnabled, setManualEnabled] = useState(false);
   const [isAnimationOn, setIsAnimationOn] = useState(true);
-
-  const { clientHintDeviceMemory, memoryStatus } = pageProps;
+  const { memoryStatus } = useMemoryStatus();
+  
+  const { clientHintDeviceMemory } = pageProps;
   let overLoaded;
   if (clientHintDeviceMemory) {
     overLoaded = clientHintDeviceMemory < CLIENT_HINT_MEMORY_LIMIT;
@@ -79,8 +80,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
     pageProps = await Component.getInitialProps(ctx);
   }
   const clientHintDeviceMemory = ctx.req ? ctx.req.headers['device-memory'] : null;
-  const memoryStatus = useMemoryStatus();
-  pageProps = {...pageProps, memoryStatus, clientHintDeviceMemory};
+  pageProps = {...pageProps, clientHintDeviceMemory};
   return {pageProps};
 };
 

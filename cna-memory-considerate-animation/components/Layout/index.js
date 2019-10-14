@@ -31,8 +31,11 @@ const Layout = ({ children, clientHintDeviceMemory, memoryStatus }) => {
       <Head>
         <title>Adaptive Animation</title>
       </Head>
-      <MemoryStatusByClientHint clientHintDeviceMemory={clientHintDeviceMemory} />
-      <MemoryStatusByReactHook memoryStatus={memoryStatus} />
+      { clientHintDeviceMemory ? (
+        <MemoryStatusByClientHint clientHintDeviceMemory={clientHintDeviceMemory} />
+      ) : (
+        <MemoryStatusByReactHook memoryStatus={memoryStatus} />
+      ) }
       <div className="page-wrapper">
         <div className="content-wrapper">
           {children}

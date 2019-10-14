@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { useState } from 'react';
+
 const CLIENT_SIDE_UNSUPPORT_MESSAGE = 'The Memory Status API is not supported on this platform.';
 const SERVER_SIDE_UNSUPPORT_MESSAGE = 'This Memory React Hook uses Window interface so it\'s not possible to use this on Server Side Rendering';
 
@@ -46,7 +48,7 @@ const useMemoryStatus = () => {
     return usedMemoryPercent;
   };
 
-  let memoryStatus;
+  let initialMemoryStatus;
   if (isMemorySupported()) {
     const overUsedMemorySize = getOverUsedMemorySize();
     const usedMemoryPercent = getUsedMemoryPercent();
@@ -60,7 +62,7 @@ const useMemoryStatus = () => {
       overLoaded = true;
     }
 
-    memoryStatus = {
+    initialMemoryStatus = {
       totalJSHeapSize: getTotalJSHeapSize(),
       usedJSHeapSize: getUsedJSHeapSize(),
       jsHeapSizeLimit: getJSHeapSizeLimit(),
@@ -79,10 +81,12 @@ const useMemoryStatus = () => {
     } else {
       unsupportMessage = CLIENT_SIDE_UNSUPPORT_MESSAGE;
     }
-    memoryStatus = {unsupportMessage};
+    initialMemoryStatus = {unsupportMessage};
   }
 
-  return memoryStatus;
+  const [memoryStatus, setMemoryStatus] = useState(initialMemoryStatus);
+
+  return {memoryStatus, setMemoryStatus};
 };
 
 export { useMemoryStatus };
