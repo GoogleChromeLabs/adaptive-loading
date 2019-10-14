@@ -29,6 +29,7 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [React Shrine - network-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-shrine-network-aware-code-splitting) ([demo](https://adaptive-loading.web.app/react-shrine-network-aware-code-splitting/))
 
 ## Deployment
+
 Create Firebase Project by logging in to [console.firebase.google.com](https://console.firebase.google.com) and replace the default value in `/.firebaserc` and `/functions/.firebaserc` with the created Project ID.
 Or simply copy the default value from `/.firebaserc` or `/functions/.firebaserc` and paste as the Project ID when creating the Firebase Project.
 
