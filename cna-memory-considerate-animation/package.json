@@ -1,0 +1,27 @@
+{
+  "name": "cna-memory-considerate-animation",
+  "version": "0.1.0",
+  "description": "Next.js + Adaptive Framer Motion",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "next": "npm run build-firebase && npm install && npm run dev",
+    "preserve": "npm run build-all",
+    "serve": "firebase serve",
+    "predeploy": "npm run build-all",
+    "deploy": "firebase deploy",
+    "build-all": "npm run build-next && npm run build-firebase",
+    "build-next": "npm install && npm run build",
+    "build-firebase": "cd \"functions\" && npm install"
+  },
+  "dependencies": {
+    "framer-motion": "^1.6.7",
+    "next": "9.0.6",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-toggle": "^4.0.2"
+  }
+}

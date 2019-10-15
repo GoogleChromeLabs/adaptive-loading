@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { useMemoryStatus } from './';
 
 describe('useMemoryStatus', () => {
-  const unsupportMessage = require('./').unsupportMessage;
+  const unsupportMessage = require('./').CLIENT_SIDE_UNSUPPORT_MESSAGE;
   test(`should return ${unsupportMessage}`, () => {
     const { result } = renderHook(() => useMemoryStatus());
 
-    expect(result.current.unsupportMessage).toBe(unsupportMessage);
+    expect(result.current.memoryStatus.unsupportMessage).toBe(unsupportMessage);
   });
 
   test('should return mockMemory status', () => {
@@ -46,12 +46,30 @@ describe('useMemoryStatus', () => {
     const usedMemoryPercent = usedJSHeapSize / jsHeapSizeLimit * 100;
     const overLoaded = overUsedMemorySize > 0 || usedMemoryPercent > MAX_PERCENT_THRESHOLD;
 
-    expect(result.current).toEqual({
+    expect(result.current.memoryStatus).toEqual({
       totalJSHeapSize,
       usedJSHeapSize,
       jsHeapSizeLimit,
       deviceMemory,
       overLoaded
     });
+  });
+  
+  test('should set memory status', () => {
+    const { result } = renderHook(() => useMemoryStatus());
+
+    const mockMemoryStatus = {
+      totalJSHeapSize: 10,
+      usedJSHeapSize: 10,
+      jsHeapSizeLimit: 10,
+      deviceMemory: 10,
+      overLoaded: false
+    };
+
+    act(() => {
+      result.current.setMemoryStatus(mockMemoryStatus);
+    });
+
+    expect(result.current.memoryStatus).toEqual(mockMemoryStatus)
   });
 });

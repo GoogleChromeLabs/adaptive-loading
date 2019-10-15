@@ -21,6 +21,7 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [Memory(Client Hint) considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-memory-considerate-loading) with node-app ([demo](https://adaptive-loading.web.app/node-memory-considerate-loading/))
 * [Network(Client Hint)-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-aware-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-aware-loading/))
 * [Network & Memory(Client Hints) considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-memory-considerate-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-memory-considerate-loading/))
+* [Memory-considerate animation-toggling](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cna-memory-considerate-animation) with create-next-app ([demo](https://cna-memory-animation.firebaseapp.com/))
 
 ### Full applications
 
@@ -28,6 +29,7 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [React Shrine - network-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-shrine-network-aware-code-splitting) ([demo](https://adaptive-loading.web.app/react-shrine-network-aware-code-splitting/))
 
 ## Deployment
+
 Create Firebase Project by logging in to [console.firebase.google.com](https://console.firebase.google.com) and replace the default value in `/.firebaserc` and `/functions/.firebaserc` with the created Project ID.
 Or simply copy the default value from `/.firebaserc` or `/functions/.firebaserc` and paste as the Project ID when creating the Firebase Project.
 
