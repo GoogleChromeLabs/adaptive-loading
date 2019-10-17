@@ -54,6 +54,6 @@ describe('useHardwareConcurrency', () => {
       result.current.setHardwareConcurrency(mockHardwareConcurrency);
     });
 
-    expect(result.current.hardwareConcurrency.numberOfLogicalProcessors).toEqual(mockHardwareConcurrency.numberOfLogicalProcessors)
+    expect(result.current.hardwareConcurrency.numberOfLogicalProcessors).toEqual(mockHardwareConcurrency.numberOfLogicalProcessors);
   });
 });

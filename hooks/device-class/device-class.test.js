@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { useDeviceClass } from './';
 
 describe('useDeviceClass', () => {
@@ -25,7 +25,7 @@ describe('useDeviceClass', () => {
 
     const { result } = renderHook(() => useDeviceClass());
     
-    expect(result.current).toEqual('light');
+    expect(result.current.deviceClass).toEqual('light');
   });
 
   test('should return heavy for Galaxy 10', () => {
@@ -35,6 +35,18 @@ describe('useDeviceClass', () => {
 
     const { result } = renderHook(() => useDeviceClass());
     
-    expect(result.current).toEqual('heavy');
+    expect(result.current.deviceClass).toEqual('heavy');
+  });
+
+  test('should set hardware concurrency', () => {
+    const { result } = renderHook(() => useDeviceClass());
+
+    const mockDeviceClass = 'light';
+
+    act(() => {
+      result.current.setDeviceClass(mockDeviceClass);
+    });
+
+    expect(result.current.deviceClass).toEqual(mockDeviceClass);
   });
 });
