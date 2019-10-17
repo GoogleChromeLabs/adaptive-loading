@@ -24,11 +24,8 @@ const LazyLight = lazy(() => import(/* webpackChunkName: 'light' */ './Light'));
 const Loading = <Fragment>Loading...</Fragment>;
 
 const Product = ({ ...rest }) => {
-  const deviceClass = useDeviceClass();
-
-  // without this at first Light rendered regardless of deviceClass because the initial deviceClass is null
-  if (!deviceClass) return Loading;
-
+  const { deviceClass } = useDeviceClass();
+  
   return (
     <LazyLoadingErrorBoundary>
       <Suspense fallback={Loading}>
