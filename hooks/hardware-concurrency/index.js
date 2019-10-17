@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-export const unsupportMessage = 'The Hardware Concurrency API is not supported on this platform.';
+export const UNSUPPORT_MESSAGE = 'The Hardware Concurrency API is not supported on this platform.';
 
 const useHardwareConcurrency = () => {
-    const [hardwareConcurrency, setHardwareConcurrency] = useState(null);
+  let initialHardwareConcurrency;
+  if ('hardwareConcurrency' in navigator) {
+    initialHardwareConcurrency = {numberOfLogicalProcessors: navigator.hardwareConcurrency};
+  } else {
+    initialHardwareConcurrency = {unsupportMessage: UNSUPPORT_MESSAGE};
+  }
 
-    useEffect(() => {
-        if ('hardwareConcurrency' in navigator) {
-            setHardwareConcurrency(navigator.hardwareConcurrency);
-        } else {
-            setHardwareConcurrency({ unsupportMessage });
-        }
-    }, []);
+  const [hardwareConcurrency, setHardwareConcurrency] = useState(initialHardwareConcurrency);
 
-    return { hardwareConcurrency };
+  return {hardwareConcurrency, setHardwareConcurrency};
 };
 
 export { useHardwareConcurrency };
