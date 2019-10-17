@@ -16,17 +16,15 @@
 
 import React from 'react';
 
-import Loading from '../../components/Loading';
 import MemoryStatusUI from '../../components/MemoryStatusUI';
 import ModelViewer from '../../components/ModelViewer';
 import { useMemoryStatus } from '../../utils/hooks';
 import './memory-considerate-media.css';
 
 const MemoryConsiderateMedia = () => {
-  const memoryStatus = useMemoryStatus();
-
+  const { memoryStatus } = useMemoryStatus();
+  
   console.log('[MemoryConsiderateMedia] memoryStatus => ', memoryStatus);
-  if (!memoryStatus) return <Loading />;
 
   return (
     <div className='root-frame'>
