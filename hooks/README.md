@@ -14,19 +14,19 @@ const MyComponent = () => {
   let media;
   switch(effectiveConnectionType) {
     case 'slow-2g':
-      media = <img className="responsive" src="…" alt="low resolution" />;
+      media = <img className='responsive' src='…' alt='low resolution' />;
       break;
     case '2g':
-      media = <img className="responsive" src="…" alt="medium resolution" />;
+      media = <img className='responsive' src='…' alt='medium resolution' />;
       break;
     case '3g':
-      media = <img className="responsive" src="…" alt="high resolution" />;
+      media = <img className='responsive' src='…' alt='high resolution' />;
       break;
     case '4g':
-      media = <video className="responsive" src="…" controls />;
+      media = <video className='responsive' src='…' controls />;
       break;
     default:
-      media = <video className="responsive" src="…" controls />;
+      media = <video className='responsive' src='…' controls />;
       break;
   }
   
@@ -35,16 +35,16 @@ const MyComponent = () => {
 ```
 
 ## CPU Cores / Hardware Concurrency
-React hook for getting CPU cores of the device
+React hook for getting the number of logical CPU processor cores of the user's device
 
 ```js
 import { useHardwareConcurrency } from './hardware-concurrency';
 
 const MyComponent = () => {
-  const { cores } = useHardwareConcurrency();
+  const { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
   return (
     <div>
-      { cores <= 4 ? <img src='...' /> : <video src='...' /> }
+      { numberOfLogicalProcessors <= 4 ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };
@@ -54,15 +54,13 @@ const MyComponent = () => {
 React hook for getting memory status of the device
 
 ```js
-import { useMemoryStatus, deviceMemory, totalJSHeapSize } from './memory';
+import { useMemoryStatus } from './memory';
 
 const MyComponent = () => {
-  const { overLoaded } = useMemoryStatus();
+  const { memoryStatus: { overLoaded } } = useMemoryStatus();
   return (
     <div>
       { overLoaded ? <img src='...' /> : <video src='...' /> }
-      <div>{deviceMemory}</div>
-      <div>{totalJSHeapSize}</div>
     </div>
   );
 };
@@ -75,7 +73,7 @@ React hook for getting battery status
 import { useBatteryStatus } from './battery';
 
 const MyComponent = () => {
-  const batteryStatus = useBatteryStatus();
+  const { batteryStatus } = useBatteryStatus();
   return (
     <div>
       { batteryStatus.level > 0.75 ? <video src='...' /> : <img src='...' /> }
@@ -91,7 +89,7 @@ React hook for getting device-class whether it's light or heavy
 import { useDeviceClass } from './device-class';
 
 const MyComponent = () => {
-  const deviceClass = useDeviceClass();
+  const { deviceClass } = useDeviceClass();
   return (
     <div>
       { deviceClass === 'light' ? <img src='...' /> : <video src='...' /> }
