@@ -130,6 +130,18 @@ const MyComponent = () => {
 * [Device-class aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-device-class-aware-loading) ([Live](https://adaptive-loading.web.app/cra-device-class-aware-loading/), [Moto G4](https://www.webpagetest.org/result/190828_2S_431d84f1cc15aace86d5046b348284b6/), [Galaxy S7](https://www.webpagetest.org/result/190828_SB_5b8fbb3a07e31f68f51681d6d67b7069/))
 * [UA-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-ua-aware-code-splitting) with create-react-app ([Live](https://adaptive-loading.web.app/cra-ua-aware-code-splitting/))
 
+## Browser Support
+
+* [Network Information effectiveType API](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) is available in [Chrome 61+, Opera 48+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=effectiveType)
+
+* [Navigator hardwareConcurrency API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency) is available in [Chrome 37+, Safari 10.1+, Firefox 48+, Opera 24+, Edge 15+, Chrome for Android 76+, Safari on iOS 10.3+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=navigator.hardwareConcurrency)
+
+* [Performance Memory API](https://developer.mozilla.org/en-US/docs/Web/API/Performance) is a non-standard and only available in [Chrome 7+, Opera, Chrome for Android 18+, Opera for Android](https://developer.mozilla.org/en-US/docs/Web/API/Performance/memory) and [Navigator deviceMemory API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deviceMemory) is available in [Chrome 63+, Opera 50+, Chrome for Android 76+, Opera for Android 46+](https://caniuse.com/#search=deviceMemory)
+
+* [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API) is available in [Chrome 38+, Opera 25+, Edge 76+, Chrome for Android 76+, Firefox for Android +68+ Opera for Android 46+](https://caniuse.com/#search=battery)
+
+* [NavigatorID userAgent API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) is available in [Chrome 77+, Safari 13+, Firefox 69+, Opera 62+, Edge 18+, Chrome for Android 76+, Safari on iOS 13.1+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=userAgent)
+
 ## License
 
 Licensed under the Apache-2.0 license.
