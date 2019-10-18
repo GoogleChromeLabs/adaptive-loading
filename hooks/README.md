@@ -24,6 +24,8 @@ The following are a suite of [React Hooks](https://reactjs.org/docs/hooks-overvi
 React hook for getting network status (effective connection type)
 
 ```js
+import React from 'react';
+
 import { useEffectiveConnectionType } from './network';
 
 const MyComponent = () => {
@@ -57,6 +59,8 @@ const MyComponent = () => {
 React hook for getting the number of logical CPU processor cores of the user's device
 
 ```js
+import React from 'react';
+
 import { useHardwareConcurrency } from './hardware-concurrency';
 
 const MyComponent = () => {
@@ -74,6 +78,8 @@ const MyComponent = () => {
 React hook for getting memory status of the device
 
 ```js
+import React from 'react';
+
 import { useMemoryStatus } from './memory';
 
 const MyComponent = () => {
@@ -91,6 +97,8 @@ const MyComponent = () => {
 React hook for getting battery status
 
 ```js
+import React from 'react';
+
 import { useBatteryStatus } from './battery';
 
 const MyComponent = () => {
@@ -108,6 +116,8 @@ const MyComponent = () => {
 React hook for getting device-class whether it's light or heavy
 
 ```js
+import React from 'react';
+
 import { useDeviceClass } from './device-class';
 
 const MyComponent = () => {
@@ -146,17 +156,17 @@ const component = await import(`path/to/component.${componentVersion}.js`);
 component.init();
 ```
 
-<!-- ray test touch < -->
 ### CPU Cores / Hardware Concurrency
 
+The [navigator.hardwareConcurrency](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency) read-only property returns the number of logical processors available to run threads on the user's computer.
 
+We can conditionally load resources like image or video according to the number of logical processors.
 
 ```js
 const componentVersion = navigator.hardwareConcurrency < 4 ? 'lite' : 'heavy';
 const component = await import(`path/to/component.${componentVersion}.js`);
 component.init();
 ```
-<!-- ray test touch > -->
 
 ### Memory
 
@@ -189,21 +199,89 @@ One approach we can use is to UA match and try to determine the characteristics 
 In device-class hook, we detect the device model by parsing its user agent with the help of [ua-parser-js](https://github.com/faisalman/ua-parser-js) package (it uses [navigator.userAgent](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) inside of it). We have an array of devices considered 'low-end'/slow.
 If the detected device is matched with one of those ‘low-end’ devices, then we determine that we should show light resources, otherwise heavy resources.
 
-<!-- ray test touch < -->
 ## Recipes
 
-### Network
 * Resource loading
-* Code-splitting (component loading)
+
+  We can write components that render different elements for different connection speeds.   
+  
+  For example, if we observe a slow connection, we can render a placeholder or a lower resolution version of our image, but video on a fast connection in order to improve our page loading time.
+  
+  A <Media /> component in a news article might output:
+
+  -	2g / reduced data mode: a low-resolution image, ~30kb
+  -	3g: a high resolution retina image, ~200kb
+  -	4g: a HD video ~2MB 
+
+  ```js
+  import React from 'react';
+
+  import { useEffectiveConnectionType } from '../../utils/hooks';
+
+  const MyComponent = () => {
+    const ect = useEffectiveConnectionType();
+    return (
+      <div>
+        { ect === '4g' ? <video className='responsive' src='…' controls /> : <img className='responsive' src='…' /> }
+      </div>
+    );  
+  };
+  ```
+
+* Code-splitting
+
+  Users will be loaded a version of a component based on the speed of their network connection (component loading by dynamic import).  
+  
+  For example, if it is fast (4G), it will get the best experience, which could be highly interactive but requires a larger bundle. 3G will get an experience with medium interactivity, but a smaller bundle than fast. If it is sufficiently slow (<= 2G quality), the client will get the lightest experience loaded.
+
+  ```js
+  import React, { Suspense, lazy } from 'react';
+
+  import { useEffectiveConnectionType } from './network';
+
+  const Heavy = lazy(() => import(/* webpackChunkName: "heavy" */ './Heavy.js'));
+  const Light = lazy(() => import(/* webpackChunkName: "light" */ './Light.js'));
+
+  const MyComponent = () => {
+    const ect = useEffectiveConnectionType();
+    return (
+      <div>
+        <Suspense fallback={<div>Loading...</div>}>
+          { ect === '4g' ? <Heavy /> : <Light /> }
+        </Suspense>
+      </div>
+    );
+  };
+  ```
+
 * Data-fetching
 
-### CPU Cores / Hardware Concurrency
+  As the network quality degrades, scale down the number and size of requests. As the connection quality improves, you can scale up your requests to optimal levels.
+
+  For example, on higher quality, unmetered networks, consider prefetching to make it available ahead of time. From a user experience standpoint, this might mean that news reader apps fetch three articles at a time on 2G but fetch twenty articles at a time on Wi-Fi.
+
+* Animation Toggling
+
+  The idea is that if you're on a low memory device, you turn off animations completely but the rest of the experience works, and the animations would only function if the device has enough memory.
+
+### Network
+
+* [Resource loading Live Demo](https://adaptive-loading.web.app/cra-network-aware-loading/)
+* [Code-splitting (component loading) Live Demo](https://adaptive-loading.web.app/cra-network-aware-code-splitting/)
+* [Data-fetching Live Demo](https://adaptive-loading.web.app/cra-network-aware-data-fetching/)
+
 ### Memory
-* Resource loading
-* Code-splitting (component loading)
+
+* [Resource loading Live Demo](https://adaptive-loading.web.app/cra-memory-considerate-loading/)
+* [Animation toggling Live Demo](https://cna-memory-animation.firebaseapp.com/)
+
 ### Battery
+
+* [Resource loading Live Demo](https://adaptive-loading.web.app/cra-battery-considerate-loading/)
+
 ### Device-class
-<!-- ray test touch > -->
+
+* [Code-splitting Live Demo](https://adaptive-loading.web.app/cra-ua-aware-code-splitting/)
 
 ## Browser Support
 
