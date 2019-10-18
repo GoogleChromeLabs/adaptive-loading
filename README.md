@@ -23,6 +23,10 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [Network & Memory(Client Hints) considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/node-network-memory-considerate-loading) with node-app ([demo](https://adaptive-loading.web.app/node-network-memory-considerate-loading/))
 * [Memory-considerate animation-toggling](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cna-memory-considerate-animation) with create-next-app ([demo](https://cna-memory-animation.firebaseapp.com/))
 
+### Data Saver-style patterns
+
+* [React Twitter - save-data loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading) ([demo](https://adaptive-loading.web.app/react-twitter-save-data-loading/))
+
 ### Full applications
 
 * [React Movie - network-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-movie-network-aware-loading) ([demo](https://adaptive-loading.web.app/react-movie-network-aware-loading/))

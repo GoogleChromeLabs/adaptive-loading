@@ -146,7 +146,6 @@ app.get('/memory-considerate-image', (req, res) => {
 });
 
 app.get('/connection-aware-image', (req, res) => {
-  let url;
   console.log('[server connection-aware-image request] Effective Connection Type => ', req.headers.ect);
   let fileName;
   switch(req.headers.ect) {
@@ -200,6 +199,26 @@ app.get('/network-memory-considerate-model', (req, res) => {
   // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const experienceType = (ect === ECT_LIMIT && deviceMemory > MEMORY_LIMIT) ? 'heavy' : 'light';
   res.json({experienceType});
+});
+
+app.get('/save-data', (req, res) => {
+  const SAVE_DATA_MODE = {
+    ON: 'on',
+    OFF: 'off'
+  };
+
+  const requestSaveData = req.headers['save-data'];
+  let saveData;
+  if(requestSaveData === SAVE_DATA_MODE.ON) {
+    saveData = SAVE_DATA_MODE.ON;
+  } else {
+    saveData = SAVE_DATA_MODE.OFF;
+  }
+
+  console.log('[server save-data route] requestSaveData => ', requestSaveData);
+  console.log('[server save-data route] saveData => ', saveData);
+
+  res.status(200).json({saveData});
 });
 
 // need to declare a "catch all" route on your express server 
