@@ -207,11 +207,11 @@ If the detected device is matched with one of those ‘low-end’ devices, then 
   
   For example, if we observe a slow connection, we can render a placeholder or a lower resolution version of our image, but video on a fast connection in order to improve our page loading time.
   
-  A <Media /> component in a news article might output:
+  A `<Media />` component in a news article might output:
 
   -	2g / reduced data mode: a low-resolution image, ~30kb
   -	3g: a high resolution retina image, ~200kb
-  -	4g: a HD video ~2MB 
+  -	4g: a HD video ~2MB  
 
   ```js
   import React from 'react';
@@ -222,7 +222,11 @@ If the detected device is matched with one of those ‘low-end’ devices, then 
     const ect = useEffectiveConnectionType();
     return (
       <div>
-        { ect === '4g' ? <video className='responsive' src='…' controls /> : <img className='responsive' src='…' /> }
+        { ect === '4g' ? (
+          <video className='responsive' src='…' controls />
+        ) : (
+          <img className='responsive' src='…' />
+        ) }
       </div>
     );  
   };
@@ -292,7 +296,7 @@ If the detected device is matched with one of those ‘low-end’ devices, then 
 * [Performance memory API](https://developer.mozilla.org/en-US/docs/Web/API/Performance) is a non-standard and only available in [Chrome 7+, Opera, Chrome for Android 18+, Opera for Android](https://developer.mozilla.org/en-US/docs/Web/API/Performance/memory)
 * [Navigator deviceMemory API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deviceMemory) is available in [Chrome 63+, Opera 50+, Chrome for Android 76+, Opera for Android 46+](https://caniuse.com/#search=deviceMemory)
 
-* [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API) is available in [Chrome 38+, Opera 25+, Edge 76+, Chrome for Android 76+, Firefox for Android +68+ Opera for Android 46+](https://caniuse.com/#search=battery)
+* [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API) is available in [Chrome 38+, Opera 25+, Edge 76+, Chrome for Android 76+, Firefox for Android +68, Opera for Android 46+](https://caniuse.com/#search=battery)
 
 * [NavigatorID userAgent API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) is available in [Chrome 77+, Safari 13+, Firefox 69+, Opera 62+, Edge 18+, Chrome for Android 76+, Safari on iOS 13.1+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=userAgent)
 
