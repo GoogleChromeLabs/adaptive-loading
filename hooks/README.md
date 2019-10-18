@@ -1,5 +1,5 @@
 
-# Objective
+## Objective
 
 Enable web developers to differentially deliver lightweight, fast experiences for users on low-end Android phones and on slower network connection in emerging markets and richer, more heavily-interactive experience for users who can afford high-end phones. We propose to achieve this differentiation at a component-level, making components environment-aware and adaptive.
 
