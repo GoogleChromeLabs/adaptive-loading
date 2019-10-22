@@ -16,7 +16,7 @@
 
 import { useState } from 'react';
 
-export const UNSUPPORT_MESSAGE = 'The Hardware Concurrency API is not supported on this platform.';
+const UNSUPPORT_MESSAGE = 'The Hardware Concurrency API is not supported on this platform.';
 
 const useHardwareConcurrency = () => {
   let initialHardwareConcurrency;
