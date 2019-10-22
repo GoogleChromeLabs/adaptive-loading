@@ -16,12 +16,12 @@
 
 import { useState } from 'react';
 
-export const CLIENT_SIDE_UNSUPPORT_MESSAGE = 'The Memory Status API is not supported on this platform.';
+const CLIENT_SIDE_UNSUPPORT_MESSAGE = 'The Memory Status API is not supported on this platform.';
 const SERVER_SIDE_UNSUPPORT_MESSAGE = 'This Memory React Hook uses Window interface so it\'s not possible to use this on Server Side Rendering';
 
 // Tune these for your application
-export const MAX_MEMORY_LIMIT = 50 * 1048576; // 50MB
-export const MAX_PERCENT_THRESHOLD = 90;
+const MAX_MEMORY_LIMIT = 50 * 1048576; // 50MB
+const MAX_PERCENT_THRESHOLD = 90;
 
 const isWindowUndefined = typeof window === 'undefined';
 
@@ -89,4 +89,10 @@ const useMemoryStatus = () => {
   return {memoryStatus, setMemoryStatus};
 };
 
-export { useMemoryStatus };
+export {
+  useMemoryStatus,
+  // exported for Unit Tests
+  CLIENT_SIDE_UNSUPPORT_MESSAGE,
+  MAX_MEMORY_LIMIT,
+  MAX_PERCENT_THRESHOLD
+};
