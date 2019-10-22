@@ -289,9 +289,9 @@ If the detected device is matched with one of those ‘low-end’ devices, then 
 
 ## Browser Support
 
-* [Network Information effectiveType API](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) is available in [Chrome 61+, Opera 48+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=effectiveType)
+* [Network Information API - effectiveType](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) is available in [Chrome 61+, Opera 48+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=effectiveType)
 
-* [Navigator hardwareConcurrency API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency) is available in [Chrome 37+, Safari 10.1+, Firefox 48+, Opera 24+, Edge 15+, Chrome for Android 76+, Safari on iOS 10.3+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=navigator.hardwareConcurrency)
+* [Hardware Concurrency API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency) is available in [Chrome 37+, Safari 10.1+, Firefox 48+, Opera 24+, Edge 15+, Chrome for Android 76+, Safari on iOS 10.3+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=navigator.hardwareConcurrency)
 
 * [Performance memory API](https://developer.mozilla.org/en-US/docs/Web/API/Performance) is a non-standard and only available in [Chrome 7+, Opera, Chrome for Android 18+, Opera for Android](https://developer.mozilla.org/en-US/docs/Web/API/Performance/memory)
 
@@ -299,7 +299,7 @@ If the detected device is matched with one of those ‘low-end’ devices, then 
 
 * [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API) is available in [Chrome 38+, Opera 25+, Edge 76+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=battery)
 
-* [NavigatorID userAgent API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) is available in [Chrome 77+, Safari 13+, Firefox 69+, Opera 62+, Edge 18+, Chrome for Android 76+, Safari on iOS 13.1+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=userAgent)
+* [User Agent string](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) is available in [Chrome 77+, Safari 13+, Firefox 69+, Opera 62+, Edge 18+, Chrome for Android 76+, Safari on iOS 13.1+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=userAgent)
 
 ## Demo
 
