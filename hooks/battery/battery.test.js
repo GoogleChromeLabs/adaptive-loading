@@ -19,7 +19,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { useBatteryStatus } from './';
 
 describe('useBatteryStatus', () => {
-  const unsupportMessage = require('./').unsupportMessage; 
+  const unsupportMessage = require('./').UNSUPPORT_MESSAGE;
   test(`should return ${unsupportMessage}`, () => {
     const { result } = renderHook(() => useBatteryStatus());
   

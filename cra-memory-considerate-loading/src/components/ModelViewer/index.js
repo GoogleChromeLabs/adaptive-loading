@@ -28,8 +28,8 @@ const ModelViewer = ({ src, fallbackSrc, memoryStatus }) => {
   const viewer = overLoaded ? (
     <LazyModelImageViewer src={fallbackSrc} />
   ) : (
-      <LazyModel3DViewer src={src} />
-    );
+    <LazyModel3DViewer src={src} />
+  );
 
   return (
     <LazyLoadingErrorBoundary>
