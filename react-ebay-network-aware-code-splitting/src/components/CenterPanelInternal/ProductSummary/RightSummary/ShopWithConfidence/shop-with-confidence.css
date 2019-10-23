@@ -1,0 +1,44 @@
+
+.shop-with-confidence {
+  padding: 14px 16px 20px 16px;
+}
+
+p {
+  margin-top: 0;
+}
+
+.dollar-mark {
+  margin-right: 14px;
+}
+
+.dollar-mark > span {
+  width: 21px;
+  height: 25px;
+  background-size: 44px;
+  display: inline-block;
+  background-image: url(https://ir.ebaystatic.com/rs/v/vswfg1if4iy2zhp0e3dxhytivik.png);
+  background-position: -12px -52px;
+}
+
+.shop-with-confidence .title {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.summary-description {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.16px;
+  margin-bottom: 4px;
+}
+
+.detailed-description {
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: -0.15px;
+}

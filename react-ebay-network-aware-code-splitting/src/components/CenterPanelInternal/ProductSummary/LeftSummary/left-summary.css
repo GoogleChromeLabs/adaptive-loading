@@ -1,0 +1,27 @@
+
+.product-name {
+  padding-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: normal;
+  border-bottom: 1px solid #CCC;
+}
+
+@media only screen and (min-width: 600px) {
+  .left-summary {
+    margin-right: 12px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .left-summary {
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .lower-property-fields {
+    display: block;
+  }
+}

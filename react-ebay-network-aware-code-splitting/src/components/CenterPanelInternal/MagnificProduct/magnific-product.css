@@ -1,0 +1,14 @@
+
+.magnific {
+  display: none;
+}
+
+@media only screen and (min-width: 992px) {
+  .magnific {
+    display: block;
+  }
+
+  .simple {
+    display: none;
+  }
+}
