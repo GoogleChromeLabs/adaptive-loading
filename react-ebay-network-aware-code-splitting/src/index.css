@@ -1,7 +1,7 @@
 
 body {
   margin: 0;
-  background-color: #f8f8f8;
+  background-color: #fff;
   font-family: "Helvetica Neue", Helvetica, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,4 +10,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    background-color: #f8f8f8;
+  }
 }
