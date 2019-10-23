@@ -18,7 +18,8 @@ for PROJECT in  functions \
                 node-network-memory-considerate-loading \
                 node-memory-considerate-loading \
                 node-network-aware-loading \
-                react-twitter-save-data-loading
+                react-twitter-save-data-loading \
+                react-ebay-network-aware-code-splitting
 do
     echo "Start cleanup of ${PROJECT}..."
     cd $PROJECT
