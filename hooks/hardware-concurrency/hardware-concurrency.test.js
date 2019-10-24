@@ -15,6 +15,7 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
+
 import { useHardwareConcurrency } from './';
 
 describe('useHardwareConcurrency', () => {

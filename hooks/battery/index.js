@@ -16,7 +16,7 @@
 
 import { useState, useEffect } from 'react';
 
-const UNSUPPORT_MESSAGE = 'The Battery Status API is not supported on this platform.';
+import { BATTERY } from '../constants';
 
 const useBatteryStatus = () => {
   const [batteryStatus, setBatteryStatus] = useState(null);
@@ -45,7 +45,7 @@ const useBatteryStatus = () => {
     if ('getBattery' in navigator) {
       navigator.getBattery().then(monitorBattery);
     } else {
-      setBatteryStatus({unsupportMessage: UNSUPPORT_MESSAGE});
+      setBatteryStatus({unsupportMessage: BATTERY.UNSUPPORT_MESSAGE});
     }
   // eslint-disable-next-line
   }, []);
@@ -53,8 +53,4 @@ const useBatteryStatus = () => {
   return { batteryStatus, updateBatteryStatus, monitorBattery };
 };
 
-export {
-  useBatteryStatus,
-  // export for Unit Tests
-  UNSUPPORT_MESSAGE
-};
+export { useBatteryStatus };

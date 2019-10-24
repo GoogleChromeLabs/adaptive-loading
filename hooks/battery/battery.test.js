@@ -16,13 +16,15 @@
 
 import 'babel-polyfill';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useBatteryStatus, UNSUPPORT_MESSAGE } from './';
+
+import { useBatteryStatus } from './';
+import { BATTERY } from '../constants';
 
 describe('useBatteryStatus', () => {
-  test(`should return ${UNSUPPORT_MESSAGE}`, () => {
+  test(`should return ${BATTERY.UNSUPPORT_MESSAGE}`, () => {
     const { result } = renderHook(() => useBatteryStatus());
   
-    expect(result.current.batteryStatus.unsupportMessage).toBe(UNSUPPORT_MESSAGE);
+    expect(result.current.batteryStatus.unsupportMessage).toBe(BATTERY.UNSUPPORT_MESSAGE);
   });
   
   test('should update the batteryStatus state', () => {

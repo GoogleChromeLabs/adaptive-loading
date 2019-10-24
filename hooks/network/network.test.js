@@ -15,6 +15,7 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
+
 import { useEffectiveConnectionType } from './';
 
 describe('useEffectiveConnectionType', () => {
