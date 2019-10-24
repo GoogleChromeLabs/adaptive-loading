@@ -1,7 +1,7 @@
 {
-  "name": "react-twitter-save-data-loading",
+  "name": "react-twitter-save-data-loading(client-hint)",
   "version": "0.1.0",
-  "homepage": "/react-twitter-save-data-loading",
+  "homepage": "/react-twitter-save-data-loading(client-hint)",
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
