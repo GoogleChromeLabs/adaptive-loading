@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
@@ -22,52 +22,35 @@ import Tweet from './components/Tweet/Tweet';
 import Navbar from './components/Navbar/Navbar';
 import tweets from './data/tweets';
 import { IMAGE_TYPE, SAVE_DATA_MODE } from './config';
-// ray test touch <
 import { useSaveData } from './utils/hooks';
 import { checkMobile } from './utils/helpers';
-// ray test touch >
 import './App.css';
 
 const linkProps = {target: '_blank'};
 
 const App = () => {
-  const [saveData, setSaveData] = useState(null);
-  const [clientSaveDataEnabled, setClientSaveDataEnabled] = useState(false);
-
-  useEffect(() => {
-    if (!clientSaveDataEnabled) {
-      getDataHandler();
-    } else {
-      setSaveData(SAVE_DATA_MODE.OFF);
-    }
-  }, []);
+  const { saveData } = useSaveData();
+  const [testSaveData, setTestSaveData] = useState(SAVE_DATA_MODE.OFF);
+  const [testSaveDataEnabled, setTestSaveDataEnabled] = useState(false);
 
   const toggleClientSaveDataHandler = event => {
-    setSaveData(event.target.checked ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF);
+    setTestSaveData(event.target.checked ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF);
   };
 
   const enableClientSaveDataHandler = event => {
-    setClientSaveDataEnabled(event.target.checked);
+    setTestSaveDataEnabled(event.target.checked);
   };
 
-  const getDataHandler = () => {
-    fetch('/save-data')
-      .then(response => response.json())
-      .then(result => {
-        setSaveData(result.saveData);
-      })
-      .catch(error => {
-        console.log('[App getDataHandler] error => ', error);
-        setSaveData(SAVE_DATA_MODE.OFF);
-      });
-  };
-
-  if (!saveData) {
-    return <Fragment>Loading...</Fragment>;
+  let overriddenSaveData;
+  console.log('[App] testSaveDataEnabled, testSaveData, saveData => ', testSaveDataEnabled, testSaveData, saveData);
+  if (testSaveDataEnabled) {
+    overriddenSaveData = testSaveData;
+  } else {
+    overriddenSaveData = saveData;
   }
   
   const ListTweet = ({ index, style }) => {
-    const imagePath = `./assets/images/${saveData === SAVE_DATA_MODE.OFF ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
+    const imagePath = `./assets/images/${overriddenSaveData === SAVE_DATA_MODE.OFF ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
     return (
       <div className='tweet-stream' style={style}>
         <Tweet
@@ -81,12 +64,11 @@ const App = () => {
   };
 
   const itemSize = checkMobile() ? 420 : 540;
-
   return (
     <div className='tweet-page'>
       <Navbar
-        saveData={saveData}
-        clientSaveDataEnabled={clientSaveDataEnabled}
+        saveData={overriddenSaveData}
+        testSaveDataEnabled={testSaveDataEnabled}
         toggleClientSaveData={toggleClientSaveDataHandler}
         enableClientSaveData={enableClientSaveDataHandler} />
       <AutoSizer>

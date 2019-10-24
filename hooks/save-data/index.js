@@ -25,7 +25,7 @@ const SAVE_DATA_MODE = {
 const useSaveData = () => {
   let initialSaveData;
   if ('connection' in navigator) {
-    initialSaveData = {mode: navigator.connection.saveData ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF};
+    initialSaveData = navigator.connection.saveData ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF;
   } else {
     initialSaveData = {unsupportMessage: UNSUPPORT_MESSAGE};
   }

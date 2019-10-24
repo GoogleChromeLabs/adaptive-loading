@@ -24,7 +24,7 @@ import './Navbar.css';
 const Navbar = ({
   saveData,
   toggleClientSaveData,
-  clientSaveDataEnabled,
+  testSaveDataEnabled,
   enableClientSaveData
 }) => (
   <div className='navbar'>
@@ -33,12 +33,12 @@ const Navbar = ({
     </a>
     <div className='client-save-data'>
       <Checkbox
-        label='Testing Save-Data on Client'
-        checked={clientSaveDataEnabled}
+        label='Testing Save-Data'
+        checked={testSaveDataEnabled}
         onChange={enableClientSaveData} />
       <ToggleSwitch
         label='Save Data'
-        disabled={!clientSaveDataEnabled}
+        disabled={!testSaveDataEnabled}
         checked={saveData === SAVE_DATA_MODE.ON ? true : false}
         onChange={toggleClientSaveData} />
     </div>

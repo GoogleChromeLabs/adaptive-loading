@@ -30,7 +30,7 @@ describe('useSaveData', () => {
     };
     const { result } = renderHook(() => useSaveData());
 
-    expect(result.current.saveData.mode).toEqual(SAVE_DATA_MODE.ON);
+    expect(result.current.saveData).toEqual(SAVE_DATA_MODE.ON);
   });
 
   test(`should return "${SAVE_DATA_MODE.OFF}" for disabled save data`, () => {
@@ -39,18 +39,18 @@ describe('useSaveData', () => {
     };
     const { result } = renderHook(() => useSaveData());
 
-    expect(result.current.saveData.mode).toEqual(SAVE_DATA_MODE.OFF);
+    expect(result.current.saveData).toEqual(SAVE_DATA_MODE.OFF);
   });
 
   test('should set save data', () => {
     const { result } = renderHook(() => useSaveData());
 
-    const mockSaveData = {mode: SAVE_DATA_MODE.ON};
+    const mockSaveData = SAVE_DATA_MODE.ON;
 
     act(() => {
       result.current.setSaveData(mockSaveData);
     });
 
-    expect(result.current.saveData.mode).toEqual(mockSaveData.mode);
+    expect(result.current.saveData).toEqual(mockSaveData);
   });
 });
