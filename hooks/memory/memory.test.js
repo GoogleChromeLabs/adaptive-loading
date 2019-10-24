@@ -15,14 +15,13 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useMemoryStatus } from './';
+import { useMemoryStatus, CLIENT_SIDE_UNSUPPORT_MESSAGE, MAX_MEMORY_LIMIT, MAX_PERCENT_THRESHOLD } from './';
 
 describe('useMemoryStatus', () => {
-  const unsupportMessage = require('./').CLIENT_SIDE_UNSUPPORT_MESSAGE;
-  test(`should return ${unsupportMessage}`, () => {
+  test(`should return ${CLIENT_SIDE_UNSUPPORT_MESSAGE}`, () => {
     const { result } = renderHook(() => useMemoryStatus());
 
-    expect(result.current.memoryStatus.unsupportMessage).toBe(unsupportMessage);
+    expect(result.current.memoryStatus.unsupportMessage).toBe(CLIENT_SIDE_UNSUPPORT_MESSAGE);
   });
 
   test('should return mockMemory status', () => {
@@ -40,8 +39,6 @@ describe('useMemoryStatus', () => {
 
     const { result } = renderHook(() => useMemoryStatus());
 
-    const MAX_MEMORY_LIMIT = require('./').MAX_MEMORY_LIMIT;
-    const MAX_PERCENT_THRESHOLD = require('./').MAX_PERCENT_THRESHOLD;
     const overUsedMemorySize = usedJSHeapSize - MAX_MEMORY_LIMIT;
     const usedMemoryPercent = usedJSHeapSize / jsHeapSizeLimit * 100;
     const overLoaded = overUsedMemorySize > 0 || usedMemoryPercent > MAX_PERCENT_THRESHOLD;

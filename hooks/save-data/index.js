@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-// ray test touch <
 import { useState } from 'react';
 
 const UNSUPPORT_MESSAGE = 'The Save Data API is not supported on this platform.';
+const SAVE_DATA_MODE = {
+  ON: 'on',
+  OFF: 'off'
+};
 
 const useSaveData = () => {
   let initialSaveData;
   if ('connection' in navigator) {
-    initialSaveData = navigator.connection.saveData;
+    initialSaveData = {mode: navigator.connection.saveData ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF};
   } else {
-    initialSaveData = navigator.connection.saveData;
+    initialSaveData = {unsupportMessage: UNSUPPORT_MESSAGE};
   }
 
   const [saveData, setSaveData] = useState(initialSaveData);
@@ -35,6 +38,6 @@ const useSaveData = () => {
 export {
   useSaveData,
   // exported for Unit Tests
-  UNSUPPORT_MESSAGE
+  UNSUPPORT_MESSAGE,
+  SAVE_DATA_MODE
 };
-// ray test touch >
