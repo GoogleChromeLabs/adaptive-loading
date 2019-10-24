@@ -13,6 +13,7 @@ import { useHardwareConcurrency } from './hardware-concurrency';
 import { useMemoryStatus } from './memory';
 import { useBatteryStatus } from './battery';
 import { useDeviceClass } from './device-class';
+import { useSaveData } from './save-data';
 ```
 
 ## Usage
@@ -111,7 +112,7 @@ const MyComponent = () => {
 };
 ```
 
-### Device-class
+### Device Class
 
 React hook for getting device-class whether it's light or heavy
 
@@ -130,6 +131,25 @@ const MyComponent = () => {
 };
 ```
 
+### Save Data
+
+React hook for getting Save Data whether it's Lite mode enabled or not
+
+```js
+import React from 'react';
+
+import { useSaveData } from './save-data';
+
+const MyComponent = () => {
+  const { saveData } = useSaveData();
+  return (
+    <div>
+      { saveData === 'on' ? <img src='...' /> : <video src='...' /> }
+    </div>
+  );
+};
+```
+
 ## Browser Support
 
 * [Network Information API - effectiveType](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) is available in [Chrome 61+, Opera 48+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=effectiveType)
@@ -143,6 +163,8 @@ const MyComponent = () => {
 * [Battery Status API](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API) is available in [Chrome 38+, Opera 25+, Edge 76+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=battery)
 
 * [User Agent string](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent) is available in [Chrome 77+, Safari 13+, Firefox 69+, Opera 62+, Edge 18+, Chrome for Android 76+, Safari on iOS 13.1+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=userAgent)
+
+* [Save Data API](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/saveData) is available in [Chrome 65+, Opera 62+, Chrome for Android 76+, Opera for Android 46+](https://caniuse.com/#search=saveData)
 
 ## Demo
 
@@ -170,10 +192,15 @@ const MyComponent = () => {
 
 * [Battery considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-battery-considerate-loading) with create-react-app ([Live](https://adaptive-loading.web.app/cra-battery-considerate-loading/))
 
-### Device-class
+### Device Class
 
 * [Device-class aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-device-class-aware-loading) ([Live](https://adaptive-loading.web.app/cra-device-class-aware-loading/), [Moto G4](https://www.webpagetest.org/result/190828_2S_431d84f1cc15aace86d5046b348284b6/), [Galaxy S7](https://www.webpagetest.org/result/190828_SB_5b8fbb3a07e31f68f51681d6d67b7069/))
 * [UA-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-ua-aware-code-splitting) with create-react-app ([Live](https://adaptive-loading.web.app/cra-ua-aware-code-splitting/))
+
+### Save Data
+
+* [React Twitter - save-data loading based on Client Hint](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(client-hint)) ([Live](https://adaptive-loading.web.app/react-twitter-save-data-loading(client-hint)/))
+* [React Twitter - save-data loading based on Hook](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(hook)) ([Live](https://adaptive-loading.web.app/react-twitter-save-data-loading(hook)/))
 
 ## References
 
