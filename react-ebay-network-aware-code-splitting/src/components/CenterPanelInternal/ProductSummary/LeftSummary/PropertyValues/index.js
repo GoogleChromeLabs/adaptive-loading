@@ -1,16 +1,11 @@
 
 import React from 'react';
 
+import './property-values.css';
+import paymentMethodsBg from '../../../../../assets/images/payment-methods-bg.webp';
+
 const QuestionTooltipMark = () => (
-  <div
-    style={{
-      backgroundImage: 'url(https://ir.ebaystatic.com/pictures/aw/pics/cmp/ds3/sprds3_18.png)',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: '-215px -406px',
-      cursor: 'pointer',
-      width: '16px',
-      height: '16px'
-    }} />
+  <div className='question-tooltip-mark' />
 );
 
 const LineWrapper = ({ className, children }) => (
@@ -135,17 +130,11 @@ const PaymentsPropertyValue = () => {
       { payments.map(payment => (
         <img
           key={payment.title}
-          src='https://ir.ebaystatic.com/cr/v/c1/s_1x2.png'
+          src={paymentMethodsBg}
           title={payment.title}
           alt={payment.alt}
-          style={{
-            marginRight: '4px',
-            backgroundPosition: payment.backgroundPosition,
-            backgroundImage: 'url(https://ir.ebaystatic.com/rs/v/wys5smfghu0lpeesxpvue34coyx.png)',
-            backgroundRepeat: 'no-repeat',
-            width: '41px',
-            height: '26px'
-          }} />
+          className='payment-method'
+          style={{backgroundPosition: payment.backgroundPosition}} />
       )) }
     </>
   );

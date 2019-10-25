@@ -3,8 +3,8 @@ import React, { useState, lazy, Suspense } from 'react';
 
 import ProductSummary from './ProductSummary';
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
-import AaQAAOSwawpXqRI0_400 from '../../assets/product-images/AaQAAOSwawpXqRI0/s-l400.jpg';
-import AaQAAOSwawpXqRI0_1600 from '../../assets/product-images/AaQAAOSwawpXqRI0/s-l1600.jpg';
+import AaQAAOSwawpXqRI0_400 from '../../assets/images/products/AaQAAOSwawpXqRI0/s-l400.jpg';
+import AaQAAOSwawpXqRI0_1600 from '../../assets/images/products/AaQAAOSwawpXqRI0/s-l1600.jpg';
 import './center-panel-internal.css';
 
 const Product = lazy(() => {

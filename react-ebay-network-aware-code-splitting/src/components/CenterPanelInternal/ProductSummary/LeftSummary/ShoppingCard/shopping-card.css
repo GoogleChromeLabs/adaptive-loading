@@ -56,7 +56,7 @@
 }
 
 .add-to-watchlist > .eye {
-  background-image: url(https://p.ebaystatic.com/aw/row/ete/common/common_sprite_01.png);
+  background-image: url(../../../../../assets/images/sprites4.webp);
   background-repeat: no-repeat;
   background-position: -0.125rem -0.9375rem;
   margin-right: .375rem;
