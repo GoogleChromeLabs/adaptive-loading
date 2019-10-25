@@ -46,7 +46,12 @@ const App = () => {
   if (testSaveDataEnabled) {
     overriddenSaveData = testSaveData;
   } else {
-    overriddenSaveData = saveData;
+    if (saveData.unsupportMessage) {
+      console.log(`[App] ${saveData.unsupportMessage}`);
+      overriddenSaveData = false;
+    } else {
+      overriddenSaveData = saveData;
+    }
   }
   
   const ListTweet = ({ index, style }) => {
