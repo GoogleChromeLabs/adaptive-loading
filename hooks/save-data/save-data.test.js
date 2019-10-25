@@ -16,7 +16,7 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useSaveData, UNSUPPORT_MESSAGE, SAVE_DATA_MODE } from './';
+import { useSaveData, UNSUPPORT_MESSAGE } from './';
 
 describe('useSaveData', () => {
   test(`should return ${UNSUPPORT_MESSAGE}`, () => {
@@ -24,28 +24,28 @@ describe('useSaveData', () => {
     expect(result.current.saveData.unsupportMessage).toBe(UNSUPPORT_MESSAGE);
   });
 
-  test(`should return "${SAVE_DATA_MODE.ON}" for enabled save data`, () => {
+  test(`should return "true" for enabled save data`, () => {
     global.navigator.connection = {
       saveData: true
     };
     const { result } = renderHook(() => useSaveData());
 
-    expect(result.current.saveData).toEqual(SAVE_DATA_MODE.ON);
+    expect(result.current.saveData).toEqual(navigator.connection.saveData);
   });
 
-  test(`should return "${SAVE_DATA_MODE.OFF}" for disabled save data`, () => {
+  test(`should return "false" for disabled save data`, () => {
     global.navigator.connection = {
       saveData: false
     };
     const { result } = renderHook(() => useSaveData());
 
-    expect(result.current.saveData).toEqual(SAVE_DATA_MODE.OFF);
+    expect(result.current.saveData).toEqual(navigator.connection.saveData);
   });
 
   test('should set save data', () => {
     const { result } = renderHook(() => useSaveData());
 
-    const mockSaveData = SAVE_DATA_MODE.ON;
+    const mockSaveData = true;
 
     act(() => {
       result.current.setSaveData(mockSaveData);
