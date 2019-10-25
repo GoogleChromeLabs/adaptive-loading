@@ -144,7 +144,7 @@ const MyComponent = () => {
   const { saveData } = useSaveData();
   return (
     <div>
-      { saveData === 'on' ? <img src='...' /> : <video src='...' /> }
+      { saveData ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };
