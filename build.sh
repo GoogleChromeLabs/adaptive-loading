@@ -18,7 +18,8 @@ for PROJECT in  cra-battery-considerate-loading \
                 node-memory-considerate-loading \
                 node-network-aware-loading \
                 react-twitter-save-data-loading \
-                react-ebay-network-aware-code-splitting
+                react-ebay-network-aware-code-splitting \
+                cra-hardware-concurrency-considerate-code-splitting
 do
     echo "Start building ${PROJECT}..."
     cd $PROJECT
