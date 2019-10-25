@@ -6,7 +6,7 @@ import Modal from 'react-responsive-modal';
 import SimpleProduct from '../SimpleProduct';
 import './magnific-product.css';
 
-const MagnificProduct = ({ smallImageSrc, largeImageSrc, altMessage, externalRender, setIsHoverOnProduct }) => {
+const MagnifyProduct = ({ smallImageSrc, largeImageSrc, altMessage, externalRender, setIsHoverOnProduct }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const onCloseHandler = () => {
     setIsModalOpen(false);
@@ -53,4 +53,4 @@ const MagnificProduct = ({ smallImageSrc, largeImageSrc, altMessage, externalRen
   );
 };
 
-export default MagnificProduct;
+export default MagnifyProduct;
