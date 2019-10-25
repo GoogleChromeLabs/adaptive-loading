@@ -18,7 +18,7 @@ const MagnifyProduct = ({ smallImageSrc, largeImageSrc, altMessage, externalRend
   return (
     <>
       <div onClick={onOpenHandler}>
-        <div className='magnific' onMouseEnter={() => setIsHoverOnProduct(true)} onMouseLeave={() => setIsHoverOnProduct(false)}>
+        <div className='magnify' onMouseEnter={() => setIsHoverOnProduct(true)} onMouseLeave={() => setIsHoverOnProduct(false)}>
           <ReactImageMagnify {...{
             smallImage: {
                 alt: altMessage,

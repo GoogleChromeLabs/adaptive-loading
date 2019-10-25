@@ -15,13 +15,13 @@ const Product = lazy(() => {
       console.log('effectiveType => ', effectiveType);
       switch (effectiveType) {
         case '4g':
-          return import(/* webpackChunkName: "magnific-product" */ './MagnifyProduct');
+          return import(/* webpackChunkName: "magnify-product" */ './MagnifyProduct');
         case '3g':
         case '2g':
         case 'slow-2g':
           return import(/* webpackChunkName: "simple-product" */ './SimpleProduct');
         default:
-          return import(/* webpackChunkName: "magnific-product" */ './MagnifyProduct');
+          return import(/* webpackChunkName: "magnify-product" */ './MagnifyProduct');
       }
     }
   );
