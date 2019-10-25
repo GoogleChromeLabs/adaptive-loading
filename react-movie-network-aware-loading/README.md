@@ -7,7 +7,7 @@ This version of React movie uses network-aware loading to determine whether to l
 
 [Live Demo](https://adaptive-loading.web.app/react-movie-network-aware-loading)
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Installation
 ```

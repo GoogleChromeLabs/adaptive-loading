@@ -5,7 +5,7 @@
 
 A demo showing how to use network-aware resource loading in React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Installation
 ```
