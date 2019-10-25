@@ -11,7 +11,7 @@ An earlier version of React Shrine used route-based code-splitting for a number 
 * If you're on a slow-connection, we load the lightest version of a product image component possible. This just lets you view the product image.
 * If you're on a fast-connection, we conditionally load a heavier version of the product image component with  the ability to magnify the image. This additional functionality is a nice enhancement for connections that can handle loading up react-magnifier.
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
 ## Installation
