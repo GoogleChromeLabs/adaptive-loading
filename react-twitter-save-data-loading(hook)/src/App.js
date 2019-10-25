@@ -21,7 +21,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import Tweet from './components/Tweet/Tweet';
 import Navbar from './components/Navbar/Navbar';
 import tweets from './data/tweets';
-import { IMAGE_TYPE, SAVE_DATA_MODE } from './config';
+import { IMAGE_TYPE } from './config';
 import { useSaveData } from './utils/hooks';
 import { checkMobile } from './utils/helpers';
 import './App.css';
@@ -30,11 +30,11 @@ const linkProps = {target: '_blank'};
 
 const App = () => {
   const { saveData } = useSaveData();
-  const [testSaveData, setTestSaveData] = useState(SAVE_DATA_MODE.OFF);
+  const [testSaveData, setTestSaveData] = useState(false);
   const [testSaveDataEnabled, setTestSaveDataEnabled] = useState(false);
 
   const toggleClientSaveDataHandler = event => {
-    setTestSaveData(event.target.checked ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF);
+    setTestSaveData(event.target.checked);
   };
 
   const enableClientSaveDataHandler = event => {
@@ -50,7 +50,7 @@ const App = () => {
   }
   
   const ListTweet = ({ index, style }) => {
-    const imagePath = `./assets/images/${overriddenSaveData === SAVE_DATA_MODE.OFF ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
+    const imagePath = `./assets/images/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
     return (
       <div className='tweet-stream' style={style}>
         <Tweet
