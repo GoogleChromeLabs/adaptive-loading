@@ -1,0 +1,38 @@
+
+.main {
+  margin: 8px;
+}
+
+.generic-font-color {
+  color: #636363;
+}
+
+.bold-font-color {
+  color: #333;
+}
+
+a {
+  color: #0654ba;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.minor-font-size {
+  font-size: .75em;
+  display: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  .minor-font-size {
+    display: block;
+  }
+}

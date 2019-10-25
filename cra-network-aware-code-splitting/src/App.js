@@ -24,7 +24,7 @@ const Product = lazy(() => {
     navigator.connection ? resolve(navigator.connection.effectiveType) : resolve(null);
   }).then(
     effectiveType => {
-      console.log('[ProductView] effectiveType => ', effectiveType);
+      console.log('effectiveType => ', effectiveType);
       switch (effectiveType) {
         case '4g':
           return import(/* webpackChunkName: "heavy" */ './components/Heavy');

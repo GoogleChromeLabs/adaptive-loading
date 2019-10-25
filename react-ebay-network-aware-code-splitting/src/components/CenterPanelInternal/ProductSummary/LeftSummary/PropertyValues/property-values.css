@@ -1,0 +1,17 @@
+
+.question-tooltip-mark {
+  background-image: url(../../../../../assets/images/sprites1.webp);
+  background-repeat: no-repeat;
+  background-position: -215px -406px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+.payment-method {
+  margin-right: 4px;
+  background-image: url(../../../../../assets/images/payment-methods.webp);
+  background-repeat: no-repeat;
+  width: 41px;
+  height: 26px;
+}

@@ -1,0 +1,104 @@
+
+.shopping-card {
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 4px 4px 1px #eee;
+  margin: 10px 0 16px 0;
+}
+
+.upper-part {
+  padding: 10px;
+  background-color: #e2e2e2;
+}
+
+.lower-part {
+  font-size: 14px;
+  background-color: #f6f6f6;
+}
+
+.uniform-flexbox.lower-part > div {
+  padding: 14px;
+}
+
+.shopping-button {
+  cursor: pointer;
+  min-width: 128px;
+  padding: 5px 0;
+  color: white;
+  font-weight: 700;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.04);
+}
+
+.shopping-button__dark-blue-bg {
+  background: -webkit-gradient(linear,left top,left bottom,from(#0079bc),to(#00509d));
+}
+
+.shopping-button__dark-blue-bg:hover {
+  background: #00509d;
+}
+
+.shopping-button__light-blue-bg {
+  background: -webkit-gradient(linear,left top,left bottom,from(#45aad6),to(#2386c0));
+}
+
+.shopping-button__light-blue-bg:hover {
+  background: #2386c0;
+}
+
+.add-to-watchlist {
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.add-to-watchlist > .eye {
+  background-image: url(../../../../../assets/images/sprites4.webp);
+  background-repeat: no-repeat;
+  background-position: -0.125rem -0.9375rem;
+  margin-right: .375rem;
+  width: .9375rem;
+  height: .75rem;
+  display: inline-block;
+}
+
+.add-to-watchlist > .text {
+  text-decoration: none;
+}
+
+.add-to-watchlist > .text:hover {
+  text-decoration: underline;
+}
+
+.uniform-flexbox {
+  display: flex;
+  align-items: center;
+}
+
+.uniform-flexbox > div {
+  flex: 1;
+  padding: 0 16px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.mb-12 {
+  margin-bottom: 12px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}

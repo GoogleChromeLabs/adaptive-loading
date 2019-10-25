@@ -1,0 +1,54 @@
+
+.seller-information {
+  padding: 9px 12px;
+  font-size: 13px;
+  box-shadow: 4px 4px 1px #eee;
+}
+
+.seller-information > hr {
+  border-top: 2px dotted #999;
+  margin: 10px 0;
+}
+
+.seller-information > div {
+  margin-bottom: 8px;
+}
+
+.seller-information .title {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: normal;
+}
+
+.seller-information .no-veritcal-spacing {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a.no-decoration:hover {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.star-mark {
+  width: 18px;
+  height: 28px;
+  background-image: url(../../../../../assets/images/sprites2.webp);
+  background-position: -286px -433px;
+}
+
+.heart-mark {
+  background-image: linear-gradient(transparent,transparent), url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjwhLS1JY29ucyBmcm9tIGRpcmVjdG9yeSAiIi0tPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMyIiB2aWV3Qm94PSIwIDAgMTYgMzIiPjxzdmcgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIGlkPSJ3ZWJfSGVhcnRBc3NldC0wMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTYgMTYiIHhtbDpzcGFjZT0icHJlc2VydmUiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgd2lkdGg9IjE2IiB2ZXJzaW9uPSIxLjEiIHk9IjAiIHg9IjBweCI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4JLnN0MHtmaWxsOiMwNjU0QkE7fTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0ibTExLjggMC45Yy0xLjYgMC0zIDEuMS0zLjggMS45LTAuOC0wLjctMi4yLTEuOS0zLjgtMS45LTIuMi0wLjEtNC4yIDEuNy00LjIgNC4xIDAgMyAzIDUuNyA3LjEgOS41bDAuNiAwLjVzMC4yIDAuMSAwLjMgMC4xIDAuMy0wLjEgMC40LTAuMWwwLjYtMC41YzQtMy44IDctNi41IDctOS41IDAtMi40LTItNC4yLTQuMi00LjF6Ii8+PC9zdmc+PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgaWQ9IndlYl9IZWFydEFzc2V0LTAyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiB3aWR0aD0iMTYiIHZlcnNpb249IjEuMSIgeT0iMTYiIHg9IjBweCI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4JLnN0MHtmaWxsOiMwNjU0QkE7fTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0ibTExLjggMC45Yy0xLjYgMC0zIDEuMS0zLjggMS45LTAuOC0wLjctMi4yLTEuOS0zLjgtMS45LTIuMi0wLjEtNC4yIDEuNy00LjIgNC4xIDAgMyAzIDUuNyA3LjEgOS41bDAuNiAwLjVzMC4yIDAuMSAwLjMgMC4xIDAuMy0wLjEgMC40LTAuMWwwLjYtMC41YzQtMy44IDctNi41IDctOS41IDAtMi40LTItNC4yLTQuMi00LjF6bS0zLjYgMTIuN2wtMC4yIDAuMS0wLjItMC4xYy0zLjktMy41LTYuNy02LjEtNi43LTguNiAwLTEuNyAxLjQtMyAzLTIuOSAxLjQgMCAyLjkgMS4zIDMuNCAyIDAuMiAwLjEgMC4zIDAuMiAwLjUgMC4yczAuMy0wLjEgMC41LTAuMmMwLjUtMC42IDItMiAzLjQtMiAxLjYtMC4xIDMgMS4yIDMgMi45IDAgMi41LTIuOCA1LjEtNi43IDguNnoiLz48L3N2Zz48L3N2Zz4K);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -16px;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
