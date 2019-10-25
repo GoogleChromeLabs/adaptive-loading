@@ -10,7 +10,7 @@ import {
   DeliveryPropertyValue,
   PaymentsPropertyValue,
   ReturnsPropertyValue
-} from './assemblies';
+} from './PropertyValues';
 import ShoppingCard from './ShoppingCard';
 import './left-summary.css';
 

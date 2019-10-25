@@ -2,7 +2,7 @@
 import React from 'react';
 
 import Logo from '../Logo';
-import { SearchIconButton, ProfileIconButton, CartIconButton } from './assemblies';
+import { SearchIconButton, ProfileIconButton, CartIconButton } from './ActionButtons';
 import './header.css';
 
 const Header = () => (

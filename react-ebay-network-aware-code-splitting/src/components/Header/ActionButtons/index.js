@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import './assemblies.css';
+import './action-buttons.css';
 
 const IconButton = ({ className }) => (
   <button className={`icon-button ${className}`} />

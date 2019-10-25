@@ -4,7 +4,7 @@ import ReactImageMagnify from 'react-image-magnify';
 import Modal from 'react-responsive-modal';
 
 import SimpleProduct from '../SimpleProduct';
-import './magnific-product.css';
+import './magnify-product.css';
 
 const MagnifyProduct = ({ smallImageSrc, largeImageSrc, altMessage, externalRender, setIsHoverOnProduct }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
