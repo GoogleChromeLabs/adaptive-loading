@@ -21,7 +21,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import Tweet from './components/Tweet/Tweet';
 import Navbar from './components/Navbar/Navbar';
 import tweets from './data/tweets';
-import { IMAGE_TYPE, SAVE_DATA_MODE } from './config';
+import { IMAGE_TYPE } from './config';
 import { checkMobile } from './utils/helpers';
 import './App.css';
 
@@ -38,12 +38,12 @@ class App extends Component {
     if (!testSaveDataEnabled) {
       this.getDataHandler();
     } else {
-      this.setState({saveData: SAVE_DATA_MODE.OFF});
+      this.setState({saveData: false});
     }
   }
 
   toggleClientSaveDataHandler = event => {
-    this.setState({saveData: event.target.checked ? SAVE_DATA_MODE.ON : SAVE_DATA_MODE.OFF});
+    this.setState({saveData: event.target.checked});
   };
 
   enableClientSaveDataHandler = event => {
@@ -58,7 +58,7 @@ class App extends Component {
       })
       .catch(error => {
         console.log('[App getDataHandler] error => ', error);
-        this.setState({saveData: SAVE_DATA_MODE.OFF});
+        this.setState({saveData: false});
       });
   };
 
@@ -70,7 +70,7 @@ class App extends Component {
     }
     
     const ListTweet = ({ index, style }) => {
-      const imagePath = `./assets/images/${saveData === SAVE_DATA_MODE.OFF ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
+      const imagePath = `./assets/images/${!saveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
       return (
         <div className='tweet-stream' style={style}>
           <Tweet

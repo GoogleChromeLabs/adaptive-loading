@@ -18,7 +18,6 @@ import React from 'react';
 
 import Checkbox from '../Checkbox/Checkbox';
 import ToggleSwitch from '../Toggle/Toggle';
-import { SAVE_DATA_MODE } from '../../config';
 import './Navbar.css';
 
 const Navbar = ({
@@ -39,7 +38,7 @@ const Navbar = ({
       <ToggleSwitch
         label='Save Data'
         disabled={!testSaveDataEnabled}
-        checked={saveData === SAVE_DATA_MODE.ON ? true : false}
+        checked={saveData}
         onChange={toggleClientSaveData} />
     </div>
   </div>
