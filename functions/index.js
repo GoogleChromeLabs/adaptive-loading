@@ -208,12 +208,7 @@ app.get('/save-data', (req, res) => {
   };
 
   const requestSaveData = req.headers['save-data'];
-  let saveData;
-  if(requestSaveData === SAVE_DATA_MODE.ON) {
-    saveData = SAVE_DATA_MODE.ON;
-  } else {
-    saveData = SAVE_DATA_MODE.OFF;
-  }
+  const saveData = requestSaveData === SAVE_DATA_MODE.ON;
 
   console.log('[server save-data route] requestSaveData => ', requestSaveData);
   console.log('[server save-data route] saveData => ', saveData);

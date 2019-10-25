@@ -65,7 +65,7 @@ class App extends Component {
   render() {
     const { testSaveDataEnabled, saveData } = this.state;
 
-    if (!saveData) {
+    if (saveData === null) {
       return <Fragment>Loading...</Fragment>;
     }
     
