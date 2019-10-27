@@ -34,10 +34,16 @@ const useBatteryStatus = () => {
 
   const updateBatteryStatus = battery => {
     setBatteryStatus({
-      chargingTime: `${battery.chargingTime} Seconds`,
-      dischargeTime: `${battery.dischargingTime} Seconds`,
+      // ray test touch <
+      // chargingTime: `${battery.chargingTime} Seconds`,
+      // dischargingTime: `${battery.dischargingTime} Seconds`,
+      // level: battery.level,
+      // chargingState: battery.charging === true ? 'Charging' : 'Discharging'
+      chargingTime: battery.chargingTime,
+      dischargingTime: battery.dischargingTime,
       level: battery.level,
-      chargingState: battery.charging === true ? 'Charging' : 'Discharging'
+      charging: battery.charging
+      // ray test touch >
     });
   };
 
@@ -50,7 +56,9 @@ const useBatteryStatus = () => {
   // eslint-disable-next-line
   }, []);
 
-  return { batteryStatus, updateBatteryStatus, monitorBattery };
+  // ray test touch <
+  return { ...batteryStatus, updateBatteryStatus, monitorBattery };
+  // ray test touch >
 };
 
 export { useBatteryStatus };
