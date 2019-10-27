@@ -1,9 +1,5 @@
 
 // ray test touch <
-const BATTERY = {
-  UNSUPPORT_MESSAGE: 'The Battery Status API is not supported on this platform.'
-};
-
 const DEVICE_CLASS = {
   // TODO: unsupport message required
 };
@@ -21,7 +17,6 @@ const NETWORK = {
 };
 
 export {
-  BATTERY,
   HARDWARE_CONCURRENCY
 };
 // ray test touch >
