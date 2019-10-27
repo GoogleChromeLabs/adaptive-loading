@@ -16,23 +16,18 @@
 
 import { useState } from 'react';
 
-const UNSUPPORT_MESSAGE = 'The Save Data API is not supported on this platform.';
-
 const useSaveData = () => {
-  let initialSaveData;
-  if ('connection' in navigator) {
-    initialSaveData = navigator.connection.saveData;
+  let unsupported;
+  if ('connection' in navigator && 'saveData' in navigator.connection) {
+    unsupported = false;
   } else {
-    initialSaveData = {unsupportMessage: UNSUPPORT_MESSAGE};
+    unsupported = true;
   }
 
+  const initialSaveData = unsupported ? null : navigator.connection.saveData === true;
   const [saveData, setSaveData] = useState(initialSaveData);
 
-  return {saveData, setSaveData};
+  return { unsupported, saveData, setSaveData };
 };
 
-export {
-  useSaveData,
-  // exported for Unit Tests
-  UNSUPPORT_MESSAGE
-};
+export { useSaveData };

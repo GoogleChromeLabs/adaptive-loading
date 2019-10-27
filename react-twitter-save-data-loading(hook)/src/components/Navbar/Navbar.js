@@ -22,26 +22,30 @@ import './Navbar.css';
 
 const Navbar = ({
   saveData,
+  saveDataUnsupported,
   toggleClientSaveData,
   testSaveDataEnabled,
   enableClientSaveData
 }) => (
-  <div className='navbar'>
-    <a href='/'>
-      <strong>HOME</strong>
-    </a>
-    <div className='client-save-data'>
-      <Checkbox
-        label='Testing Save-Data'
-        checked={testSaveDataEnabled}
-        onChange={enableClientSaveData} />
-      <ToggleSwitch
-        label='Save Data'
-        disabled={!testSaveDataEnabled}
-        checked={saveData}
-        onChange={toggleClientSaveData} />
+  <>
+    <div className='navbar'>
+      <a href='/'>
+        <strong>HOME</strong>
+      </a>
+      <div className='client-save-data'>
+        <Checkbox
+          label='Testing Save-Data'
+          checked={testSaveDataEnabled}
+          onChange={enableClientSaveData} />
+        <ToggleSwitch
+          label='Save Data'
+          disabled={!testSaveDataEnabled}
+          checked={saveData}
+          onChange={toggleClientSaveData} />
+      </div>
     </div>
-  </div>
+    { saveDataUnsupported && <p>The Save Data API is not supported on this platform.</p> }
+  </>
 );
 
 export default Navbar;
