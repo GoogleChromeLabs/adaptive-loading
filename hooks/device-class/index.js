@@ -18,29 +18,41 @@ import { useState } from 'react';
 import UAParser from 'ua-parser-js';
 
 const useDeviceClass = () => {
-  // Detect device model from UA
-  const parser = new UAParser();
-  const uastring = navigator.userAgent;
-  parser.setUA(uastring);
-  const device = parser.getDevice();
-  const model = device.model;
+  let unsupported;
+  if ('userAgent' in navigator) {
+    unsupported = false;
+  } else {
+    unsupported = true;
+  }
 
-  // Match against devices you consider low-end
-  const lowEnd = [
-    'Nexus 4',
-    'Nexus 5',
-    'Nexus 5X',
-    'Nexus 6',
-    'Redmi Note 6 Pro',
-    'ONE' // Alcatel 1X
-  ];
+  let initialDeviceClass;
+  if (unsupported) {
+    initialDeviceClass = null;
+  } else {
+    // Detect device model from UA
+    const parser = new UAParser();
+    const uastring = navigator.userAgent;
+    parser.setUA(uastring);
+    const device = parser.getDevice();
+    const model = device.model;
 
-  // Optional: map to device-year-class, Geekbench.
-  const initialDeviceClass = lowEnd.indexOf(model) > 0 ? 'light' : 'heavy';
+    // Match against devices you consider low-end
+    const lowEnd = [
+      'Nexus 4',
+      'Nexus 5',
+      'Nexus 5X',
+      'Nexus 6',
+      'Redmi Note 6 Pro',
+      'ONE' // Alcatel 1X
+    ];
+
+    // Optional: map to device-year-class, Geekbench.
+    initialDeviceClass = lowEnd.indexOf(model) > 0 ? 'light' : 'heavy';
+  }
 
   const [deviceClass, setDeviceClass] = useState(initialDeviceClass);
 
-  return {deviceClass, setDeviceClass};
+  return { unsupported, deviceClass, setDeviceClass };
 };
 
 export { useDeviceClass };
