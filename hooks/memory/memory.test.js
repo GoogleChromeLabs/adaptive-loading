@@ -15,58 +15,58 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useMemoryStatus, CLIENT_SIDE_UNSUPPORT_MESSAGE, MAX_MEMORY_LIMIT, MAX_PERCENT_THRESHOLD } from './';
+
+import { useMemoryStatus } from './';
+
+const getMemoryStatus = currentResult => ({
+  deviceMemory: currentResult.deviceMemory,
+  totalJSHeapSize: currentResult.totalJSHeapSize,
+  usedJSHeapSize: currentResult.usedJSHeapSize,
+  jsHeapSizeLimit: currentResult.jsHeapSizeLimit
+});
 
 describe('useMemoryStatus', () => {
-  test(`should return ${CLIENT_SIDE_UNSUPPORT_MESSAGE}`, () => {
+  test(`should return "true" for unsupported case`, () => {
     const { result } = renderHook(() => useMemoryStatus());
 
-    expect(result.current.memoryStatus.unsupportMessage).toBe(CLIENT_SIDE_UNSUPPORT_MESSAGE);
+    expect(result.current.unsupported).toBe(true);
   });
 
   test('should return mockMemory status', () => {
-    const totalJSHeapSize = 60;
-    const usedJSHeapSize = 40;
-    const jsHeapSizeLimit = 50;
-    const deviceMemory = 4;
-    global.window.performance.memory = {
-      totalJSHeapSize,
-      usedJSHeapSize,
-      jsHeapSizeLimit
+    const mockMemoryStatus = {
+      deviceMemory: 4,
+      totalJSHeapSize: 60,
+      usedJSHeapSize: 40,
+      jsHeapSizeLimit: 50
     };
 
-    global.navigator.deviceMemory = deviceMemory;
+    global.navigator.deviceMemory = mockMemoryStatus.deviceMemory;
+
+    global.window.performance.memory = {
+      totalJSHeapSize: mockMemoryStatus.totalJSHeapSize,
+      usedJSHeapSize: mockMemoryStatus.usedJSHeapSize,
+      jsHeapSizeLimit: mockMemoryStatus.jsHeapSizeLimit
+    };
 
     const { result } = renderHook(() => useMemoryStatus());
 
-    const overUsedMemorySize = usedJSHeapSize - MAX_MEMORY_LIMIT;
-    const usedMemoryPercent = usedJSHeapSize / jsHeapSizeLimit * 100;
-    const overLoaded = overUsedMemorySize > 0 || usedMemoryPercent > MAX_PERCENT_THRESHOLD;
-
-    expect(result.current.memoryStatus).toEqual({
-      totalJSHeapSize,
-      usedJSHeapSize,
-      jsHeapSizeLimit,
-      deviceMemory,
-      overLoaded
-    });
+    expect(getMemoryStatus(result.current)).toEqual(mockMemoryStatus);
   });
   
   test('should set memory status', () => {
     const { result } = renderHook(() => useMemoryStatus());
 
     const mockMemoryStatus = {
+      deviceMemory: 10,
       totalJSHeapSize: 10,
       usedJSHeapSize: 10,
-      jsHeapSizeLimit: 10,
-      deviceMemory: 10,
-      overLoaded: false
+      jsHeapSizeLimit: 10
     };
 
     act(() => {
       result.current.setMemoryStatus(mockMemoryStatus);
     });
 
-    expect(result.current.memoryStatus).toEqual(mockMemoryStatus)
+    expect(getMemoryStatus(result.current)).toEqual(mockMemoryStatus);
   });
 });

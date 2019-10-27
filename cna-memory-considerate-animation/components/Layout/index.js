@@ -17,7 +17,7 @@
 import Head from 'next/head';
 
 import MemoryStatusByClientHint from '../MemoryStatusByClientHint';
-import MemoryStatusByReactHook from '../MemoryStatusByReactHook';
+import MemoryStatusByHook from '../MemoryStatusByHook';
 
 const layoutStyle = {
   margin: 10,
@@ -25,7 +25,7 @@ const layoutStyle = {
   border: '1px solid #DDD'
 };
 
-const Layout = ({ children, clientHintDeviceMemory, memoryStatus }) => {
+const Layout = ({ children, clientHintDeviceMemory, hookMemoryStatus }) => {
   return (
     <div style={layoutStyle}>
       <Head>
@@ -34,46 +34,46 @@ const Layout = ({ children, clientHintDeviceMemory, memoryStatus }) => {
       { clientHintDeviceMemory ? (
         <MemoryStatusByClientHint clientHintDeviceMemory={clientHintDeviceMemory} />
       ) : (
-        <MemoryStatusByReactHook memoryStatus={memoryStatus} />
+        <MemoryStatusByHook memoryStatus={hookMemoryStatus} />
       ) }
       <div className="page-wrapper">
         <div className="content-wrapper">
           {children}
         </div>
         <style jsx global>{`
-        *,
-        *::before,
-        *::after {
-          box-sizing: border-box;
-        }
-        body {
-          margin: 0;
-          font-size: 20px;
-          line-height: 1.7;
-          font-weight: 400;
-          background: #fff;
-          color: #454545;
-          text-rendering: optimizeLegibility;
-        }
-        a {
-          color: #1b789e;
-          text-decoration: none;
-        }
-        a:hover {
-          color: #166281;
-        }
-        img {
-          max-width: 100%;
-        }
-        .content-wrapper {
-          max-width: 900px;
-          text-align: center;
-          margin: 0 auto;
-        }
-        .container {
-          overflow: hidden;
-        }
-      `}</style>
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+          body {
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.7;
+            font-weight: 400;
+            background: #fff;
+            color: #454545;
+            text-rendering: optimizeLegibility;
+          }
+          a {
+            color: #1b789e;
+            text-decoration: none;
+          }
+          a:hover {
+            color: #166281;
+          }
+          img {
+            max-width: 100%;
+          }
+          .content-wrapper {
+            max-width: 900px;
+            text-align: center;
+            margin: 0 auto;
+          }
+          .container {
+            overflow: hidden;
+          }
+        `}</style>
       </div>
     </div>
   );

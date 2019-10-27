@@ -20,11 +20,24 @@ import MemoryStatusUI from '../../components/MemoryStatusUI';
 import ModelViewer from '../../components/ModelViewer';
 import { useMemoryStatus } from '../../utils/hooks';
 import './memory-considerate-media.css';
+import { DEVICE_MEMORY_LIMIT } from '../../config';
 
 const MemoryConsiderateMedia = () => {
-  const { memoryStatus } = useMemoryStatus();
-  
-  console.log('[MemoryConsiderateMedia] memoryStatus => ', memoryStatus);
+  const {
+    deviceMemory,
+    unsupported,
+    ...performanceMemoryStatus
+  } = useMemoryStatus();
+
+  const overLoaded = deviceMemory < DEVICE_MEMORY_LIMIT;
+  const memoryStatus = {
+    overLoaded,
+    deviceMemory,
+    unsupported,
+    ...performanceMemoryStatus
+  };
+
+  console.log('[MemoryConsiderateMedia] deviceMemory, unsupported => ', deviceMemory, unsupported);
 
   return (
     <div className='root-frame'>

@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-const MemoryStatusByReactHook = ({ memoryStatus }) => {
+const MemoryStatusByHook = ({ memoryStatus }) => {
   const {
     totalJSHeapSize,
     usedJSHeapSize,
     jsHeapSizeLimit,
     deviceMemory,
     overLoaded,
-    unsupportMessage
+    unsupported
   } = memoryStatus;
 
   const memoryStatusList = [
@@ -49,8 +49,8 @@ const MemoryStatusByReactHook = ({ memoryStatus }) => {
 
   return (
     <div>
-      { unsupportMessage ? (
-        <p>{unsupportMessage}</p>
+      { unsupported ? (
+        <p>The Memory Status API is not supported on this platform or not available on server side rendering.</p>
       ) : (
         <div>
           <div className="tags">
@@ -93,4 +93,4 @@ const MemoryStatusByReactHook = ({ memoryStatus }) => {
   );
 };
 
-export default MemoryStatusByReactHook;
+export default MemoryStatusByHook;

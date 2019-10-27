@@ -22,11 +22,24 @@ import { useMemoryStatus } from '../../utils/hooks';
 import astronautModel from '../../assets/models/astronaut/astronaut.glb';
 import astronautImage from '../../assets/models/astronaut/astronaut.png';
 import './memory-considerate-media.css';
+import { DEVICE_MEMORY_LIMIT } from '../../config';
 
 const MemoryConsiderateMedia = () => {
-  const { memoryStatus } = useMemoryStatus();
+  const {
+    deviceMemory,
+    unsupported,
+    ...performanceMemoryStatus
+  } = useMemoryStatus();
+
+  const overLoaded = deviceMemory < DEVICE_MEMORY_LIMIT;
+  const memoryStatus = {
+    overLoaded,
+    deviceMemory,
+    unsupported,
+    ...performanceMemoryStatus
+  };
   
-  console.log('[MemoryConsiderateMedia] memoryStatus => ', memoryStatus);
+  console.log('[MemoryConsiderateMedia] deviceMemory, unsupported => ', deviceMemory, unsupported);
 
   return (
     <div className='root-frame'>
