@@ -26,8 +26,9 @@ const q1080 = 'https://firebasestorage.googleapis.com/v0/b/devices-1b6e0.appspot
 const CPUConsiderateMedia = (props, ref) => {
   let { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
   const initialCPUSlow = numberOfLogicalProcessors <= 4 ? true : false;
+
   const videoRef = useRef();
-  let [slowMode, setSlowMode] = useState(initialCPUSlow); // (false)
+  let [slowMode, setSlowMode] = useState(initialCPUSlow);
 
   console.log('processors => ', numberOfLogicalProcessors);
 
@@ -54,10 +55,10 @@ const CPUConsiderateMedia = (props, ref) => {
           checked={slowMode}
           onChange={toggleSlowMode}
         />
-        <div>{slowMode ? '240p AV1 - 1.9MB' : '1080p AV1 - 32MB'}</div>
-        <video controls width="500" height="400" muted ref={videoRef}>
+        <video controls width="804" height="452" autoPlay muted ref={videoRef}>
           <source src={slowMode ? q240 : q1080} type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" />
         </video>
+        <div>{slowMode ? '240p AV1 - 1.9MB' : '1080p AV1 - 32MB'}</div>
       </div>
     </div>
   );
