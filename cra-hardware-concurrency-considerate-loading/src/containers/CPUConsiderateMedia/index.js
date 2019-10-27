@@ -32,9 +32,6 @@ const CPUConsiderateMedia = (props, ref) => {
 
   console.log('processors => ', numberOfLogicalProcessors);
 
-  const getSlowMode = () => {
-    return numberOfLogicalProcessors <= 4 ? true : false;
-  }
   const toggleSlowMode = () => {
     setSlowMode(!slowMode);
     resetVideo();
@@ -65,3 +62,9 @@ const CPUConsiderateMedia = (props, ref) => {
 };
 
 export default CPUConsiderateMedia;
+
+/*
+<video controls width="804" height="452" autoplay muted>
+  <source src="q1080.mp4" type="video/mp4; codecs=avc1.4D401E,mp4a.40.2" />
+</video>
+*/
