@@ -20,12 +20,12 @@ import './ifixit-search.css';
 import SearchBar from '../../components/SearchBar';
 import List from '../../components/List';
 import Spinner from '../../components/Spinner';
-import { useEffectiveConnectionType } from '../../utils/hooks';
+import { useNetworkStatus } from '../../utils/hooks';
 
 const IFixitSearch = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const { effectiveConnectionType } = useEffectiveConnectionType();
+  const { effectiveConnectionType, unsupported } = useNetworkStatus();
   let searchLimit;
   switch (effectiveConnectionType) {
     // case 'offline':
@@ -66,15 +66,21 @@ const IFixitSearch = () => {
   return (
     <div className='ifixit-search'>
       <div className='ifixit-search-status-panel'>
-        <p><strong>Current effective network connection:</strong>{` ${effectiveConnectionType}`}</p>
-        <p><strong>Results:</strong> 4G: 50, 3G: 15, 2G: 5, slow-2g: 5</p>
+        { unsupported ? (
+          <p>The Network Information API is not supported on this platform.</p>
+        ) : (
+          <>
+            <p><strong>Current effective network connection:</strong>{` ${effectiveConnectionType}`}</p>
+            <p><strong>Results:</strong> 4G: 50, 3G: 15, 2G: 5, slow-2g: 5</p>
+          </>
+        ) }
       </div>
       <SearchBar search={searchHandler} />
-      {loading ? (
+      { loading ? (
         <Spinner />
       ) : (
-          <List items={searchResults} />
-        )}
+        <List items={searchResults} />
+      ) }
     </div>
   )
 };

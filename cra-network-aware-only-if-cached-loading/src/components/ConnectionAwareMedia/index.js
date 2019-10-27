@@ -16,7 +16,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { useEffectiveConnectionType } from '../../utils/hooks';
+import { useNetworkStatus } from '../../utils/hooks';
 import './connection-aware-media.css';
 
 const MEDIA_TYPE = {
@@ -106,7 +106,7 @@ const requestMedia = async ect => {
 };
 
 const ConnectionAwareMedia = () => {
-  const { effectiveConnectionType } = useEffectiveConnectionType();
+  const { effectiveConnectionType, unsupported } = useNetworkStatus();
   const [responsiveMedia, setResponsiveMedia] = useState(null);
 
   console.log('[ConnectionAwareMedia] effectiveConnectionType => ', effectiveConnectionType);
@@ -119,6 +119,7 @@ const ConnectionAwareMedia = () => {
 
   return (
     <div className='root-frame'>
+      { unsupported && <p>The Network Information API is not supported on this platform.</p> }
       {responsiveMedia}
     </div>
   );

@@ -16,9 +16,9 @@
 
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import { useEffectiveConnectionType } from './';
+import { useNetworkStatus } from './';
 
-describe('useEffectiveConnectionType', () => {
+describe('useNetworkStatus', () => {
   test('should return 4g of effectiveConnectionType', () => {
     global.navigator.connection = {
       effectiveType: '4g',
@@ -26,21 +26,15 @@ describe('useEffectiveConnectionType', () => {
       removeEventListener: jest.fn()
     };
 
-    const { result } = renderHook(() => useEffectiveConnectionType());
+    const { result } = renderHook(() => useNetworkStatus());
     
     expect(result.current.effectiveConnectionType).toEqual('4g');
   });
 
   test('should update the effectiveConnectionType state', () => {
-    global.navigator.connection = {
-      effectiveType: '2g',
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn()
-    };
+    const { result } = renderHook(() => useNetworkStatus());
 
-    const { result } = renderHook(() => useEffectiveConnectionType());
-  
-    act(() => result.current.updateECTStatus());
+    act(() => result.current.setNetworkStatus({effectiveConnectionType: '2g'}));
   
     expect(result.current.effectiveConnectionType).toEqual('2g');
   });
@@ -55,7 +49,7 @@ describe('useEffectiveConnectionType', () => {
       removeEventListener: jest.fn()
     };
 
-    const { result } = renderHook(() => useEffectiveConnectionType());
+    const { result } = renderHook(() => useNetworkStatus());
     global.navigator.connection.effectiveType = '4g';
     act(() => map.change());
 
