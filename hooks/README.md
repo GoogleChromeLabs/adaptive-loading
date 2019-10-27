@@ -65,7 +65,7 @@ import React from 'react';
 import { useHardwareConcurrency } from './hardware-concurrency';
 
 const MyComponent = () => {
-  const { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
+  const { numberOfLogicalProcessors } = useHardwareConcurrency();
   return (
     <div>
       { numberOfLogicalProcessors <= 4 ? <img src='...' /> : <video src='...' /> }
@@ -84,10 +84,10 @@ import React from 'react';
 import { useMemoryStatus } from './memory';
 
 const MyComponent = () => {
-  const { memoryStatus: { overLoaded } } = useMemoryStatus();
+  const { deviceMemory } = useMemoryStatus();
   return (
     <div>
-      { overLoaded ? <img src='...' /> : <video src='...' /> }
+      { deviceMemory < 4 ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };
@@ -103,7 +103,7 @@ import React from 'react';
 import { useBatteryStatus } from './battery';
 
 const MyComponent = () => {
-  const { batteryStatus: { level } } = useBatteryStatus();
+  const { level } = useBatteryStatus();
   return (
     <div>
       { level > 0.75 ? <video src='...' /> : <img src='...' /> }
