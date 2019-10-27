@@ -20,11 +20,12 @@ import { useHardwareConcurrency } from '../../utils/hooks';
 import { HARDWARE_CONCURRENCY_LIMIT } from '../../config';
 
 const HardwareConcurrencyStatus = () => {
-  const { hardwareConcurrency: { numberOfLogicalProcessors, unsupportMessage } } = useHardwareConcurrency();
+  const { numberOfLogicalProcessors, unsupported } = useHardwareConcurrency();
   return (
     <>
-      <p>{unsupportMessage && unsupportMessage}</p>
-      { numberOfLogicalProcessors && (
+      { unsupported ? (
+        <p>The Hardware Concurrency API is not supported on this platform.</p>
+      ) : (
         <p>{`The number of logical processors on this device: ${numberOfLogicalProcessors}. If it is greater than a certain threshold (e.g. ${HARDWARE_CONCURRENCY_LIMIT} for this demo), we load heavy experience otherwise lite experience.`}</p>
       ) }
     </>

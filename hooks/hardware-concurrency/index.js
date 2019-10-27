@@ -16,19 +16,17 @@
 
 import { useState } from 'react';
 
-import { HARDWARE_CONCURRENCY } from '../constants';
-
 const useHardwareConcurrency = () => {
   let initialHardwareConcurrency;
   if ('hardwareConcurrency' in navigator) {
     initialHardwareConcurrency = {numberOfLogicalProcessors: navigator.hardwareConcurrency};
   } else {
-    initialHardwareConcurrency = {unsupportMessage: HARDWARE_CONCURRENCY.UNSUPPORT_MESSAGE};
+    initialHardwareConcurrency = {unsupported: true};
   }
 
   const [hardwareConcurrency, setHardwareConcurrency] = useState(initialHardwareConcurrency);
 
-  return {hardwareConcurrency, setHardwareConcurrency};
+  return { ...hardwareConcurrency, setHardwareConcurrency };
 };
 
 export { useHardwareConcurrency };
