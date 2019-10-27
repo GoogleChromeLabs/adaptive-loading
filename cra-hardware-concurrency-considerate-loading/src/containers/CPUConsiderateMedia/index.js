@@ -25,10 +25,10 @@ const q1080 = 'https://firebasestorage.googleapis.com/v0/b/devices-1b6e0.appspot
 
 const CPUConsiderateMedia = (props, ref) => {
   let { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
-  const initialCPUSlow = numberOfLogicalProcessors <= 4 ? true : false;
+  const isCPUSlow = numberOfLogicalProcessors <= 4 ? true : false;
 
   const videoRef = useRef();
-  let [slowMode, setSlowMode] = useState(initialCPUSlow);
+  let [slowMode, setSlowMode] = useState(isCPUSlow);
 
   console.log('processors => ', numberOfLogicalProcessors);
 
