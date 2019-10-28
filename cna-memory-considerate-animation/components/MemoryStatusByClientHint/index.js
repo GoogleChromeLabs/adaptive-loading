@@ -25,7 +25,7 @@ const MemoryStatusByClientHint = ({ clientHintDeviceMemory }) => (
         <h4 className='annotation'>{`[Device Memory Overloaded: ${clientHintDeviceMemory < DEVICE_MEMORY_LIMIT ? 'Yes, so we have no animation.' : 'No, so we have animation.'}]`}</h4>
       </>
     ) : (
-      <h4 className='annotation'>{`[Client Hint Device Memory from Server Side is not detected so we are using Memory React Hook.]`}</h4>
+      <h4 className='annotation'>{`[Client Hint Device Memory from Server Side is not detected so we are using Memory Hook.]`}</h4>
     ) }
     <style jsx>{`
       .annotation {
