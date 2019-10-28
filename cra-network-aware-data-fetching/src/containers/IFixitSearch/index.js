@@ -38,10 +38,10 @@ const IFixitSearch = () => {
       searchLimit = 15;
       break;
     case '4g':
-      searchLimit = 50;
+      searchLimit = 40;
       break;
     default:
-      searchLimit = 50;
+      searchLimit = 40;
       break;
   }
 
@@ -49,7 +49,9 @@ const IFixitSearch = () => {
     if (!searchKey) return;
 
     setLoading(true);
+    // ray test touch <
     const endpoint = `https://www.ifixit.com/api/2.0/search/${searchKey}?limit=${searchLimit}`;
+    // ray test touch >
 
     fetch(endpoint)
       .then(response => response.json())
@@ -71,7 +73,7 @@ const IFixitSearch = () => {
         ) : (
           <>
             <p><strong>Current effective network connection:</strong>{` ${effectiveConnectionType}`}</p>
-            <p><strong>Results:</strong> 4G: 50, 3G: 15, 2G: 5, slow-2g: 5</p>
+            <p><strong>Results:</strong> 4G: 40, 3G: 15, 2G: 5, slow-2g: 5</p>
           </>
         ) }
       </div>
