@@ -1,0 +1,33 @@
+
+@font-face {
+  font-family: 'FuturaPTBold';
+  src: local('FuturaPTBold'), url(./assets/fonts/FuturaPTBold.otf) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: .15em;
+  line-height: 1.4em;
+  background-image: url('./assets/images/background.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(78,59,44,.65);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

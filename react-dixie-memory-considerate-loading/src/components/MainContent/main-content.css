@@ -1,0 +1,6 @@
+
+.main-content {
+  position: relative;
+  padding: 80px 0;
+  background: linear-gradient(0deg, rgba(43,43,43,0) 0%, rgba(43,43,43,1) 10%, rgba(43,43,43,1) 90%, rgba(43,43,43,0) 100%);
+}

@@ -1,0 +1,6 @@
+
+.two-box {
+  display: flex;
+  align-items: center;
+  height: 800px;
+}
