@@ -49,9 +49,7 @@ const IFixitSearch = () => {
     if (!searchKey) return;
 
     setLoading(true);
-    // ray test touch <
     const endpoint = `https://www.ifixit.com/api/2.0/search/${searchKey}?limit=${searchLimit}`;
-    // ray test touch >
 
     fetch(endpoint)
       .then(response => response.json())

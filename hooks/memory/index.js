@@ -16,11 +16,9 @@
 
 import { useState } from 'react';
 
-const isClientSideRendering = typeof window === 'undefined';
-
 const useMemoryStatus = () => {
   let unsupported;
-  if (!isClientSideRendering && 'deviceMemory' in navigator) {
+  if ('deviceMemory' in navigator) {
     unsupported = false;
   } else {
     unsupported = true;
