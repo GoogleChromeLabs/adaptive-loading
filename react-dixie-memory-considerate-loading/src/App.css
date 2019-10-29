@@ -20,3 +20,9 @@
   margin: 0 auto;
   min-height: 100vh;
 }
+
+.original-link {
+  padding: 16px;
+  color: #fff;
+  text-decoration: underline;
+}

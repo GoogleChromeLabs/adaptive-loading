@@ -34,7 +34,7 @@ const Header = () => {
         </nav>
       </div>
       <div className='bottom-center'>
-        <a href='/' className='header-branding'>
+        <a href='https://dixiemech.com/gmkdracula/' className='header-branding'>
           <img src={logo} alt='Dixie Mech' className='header-branding-logo' />
         </a>
       </div>
