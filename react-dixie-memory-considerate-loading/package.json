@@ -1,6 +1,7 @@
 {
   "name": "react-dixie-memory-considerate-loading",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@google/model-viewer": "^0.7.2",
