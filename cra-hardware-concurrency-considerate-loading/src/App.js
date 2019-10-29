@@ -17,13 +17,12 @@
 import React from 'react';
 
 import CPUConsiderateMedia from './containers/CPUConsiderateMedia';
-
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <CPUConsiderateMedia />
       </header>
     </div>
