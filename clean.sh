@@ -22,7 +22,8 @@ for PROJECT in  functions \
                 cra-hardware-concurrency-considerate-code-splitting \
                 cra-hardware-concurrency-considerate-loading \
                 react-twitter-save-data-loading(client-hint) \
-                react-twitter-save-data-loading(hook)
+                react-twitter-save-data-loading(hook) \
+                react-dixie-memory-considerate-loading
 do
     echo "Start cleanup of ${PROJECT}..."
     cd $PROJECT
