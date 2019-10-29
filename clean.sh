@@ -21,8 +21,8 @@ for PROJECT in  functions \
                 react-ebay-network-aware-code-splitting \
                 cra-hardware-concurrency-considerate-code-splitting \
                 cra-hardware-concurrency-considerate-loading \
-                react-twitter-save-data-loading(client-hint) \
-                react-twitter-save-data-loading(hook)
+                "react-twitter-save-data-loading(client-hint)" \
+                "react-twitter-save-data-loading(hook)"
 do
     echo "Start cleanup of ${PROJECT}..."
     cd $PROJECT
