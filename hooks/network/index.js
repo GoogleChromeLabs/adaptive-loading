@@ -17,27 +17,37 @@
 // inspired by https://github.com/rehooks/network-status
 import { useState, useEffect } from 'react';
 
-const useEffectiveConnectionType = () => {
-  const navigatorConnection = navigator.connection;
-  
-  const getEffectiveConnectionType = () => {
-    return navigatorConnection ? navigatorConnection.effectiveType : null;
+const useNetworkStatus = () => {
+  let unsupported;
+  if ('connection' in navigator && 'effectiveType' in navigator.connection) {
+    unsupported = false;
+  } else {
+    unsupported = true;
+  }
+
+  const initialNetworkStatus = !unsupported ? {
+    effectiveConnectionType: navigator.connection.effectiveType
+  } : {
+    unsupported
   };
 
-  const [effectiveConnectionType, setEffectiveConnectionType] = useState(getEffectiveConnectionType());
+  const [networkStatus, setNetworkStatus] = useState(initialNetworkStatus);
 
-  const updateECTStatus = () => {
-    setEffectiveConnectionType(getEffectiveConnectionType());
-  };
-  
   useEffect(() => {
-    navigatorConnection && navigatorConnection.addEventListener('change', updateECTStatus);
-    return () => {
-      navigatorConnection && navigatorConnection.removeEventListener('change', updateECTStatus);
-    };
+    if (!unsupported) {
+      const navigatorConnection = navigator.connection;
+      const updateECTStatus = () => {
+        setNetworkStatus({effectiveConnectionType: navigatorConnection.effectiveType});
+      };
+      navigatorConnection.addEventListener('change', updateECTStatus);
+      return () => {
+        navigatorConnection.removeEventListener('change', updateECTStatus);
+      };
+    }
+  // eslint-disable-next-line
   }, []);
 
-  return { effectiveConnectionType, updateECTStatus };
+  return { ...networkStatus, setNetworkStatus };
 };
 
-export { useEffectiveConnectionType };
+export { useNetworkStatus };

@@ -25,10 +25,10 @@ const LazyModelImageViewer = lazy(() => import(/* webpackChunkName: "light-image
 const ModelViewer = ({ model, fallbackSrc, memoryStatus }) => {
   const { overLoaded } = memoryStatus;
 
-  const viewer = overLoaded ? (
-    <LazyModelImageViewer src={fallbackSrc} />
-  ) : (
+  const viewer = !overLoaded ? (
     <LazySketchFabEmbed model={model} />
+  ) : (
+    <LazyModelImageViewer src={fallbackSrc} />
   );
 
   return (

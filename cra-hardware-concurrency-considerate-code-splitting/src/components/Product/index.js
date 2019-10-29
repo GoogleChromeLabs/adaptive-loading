@@ -25,16 +25,17 @@ const LazyLight = lazy(() => import(/* webpackChunkName: 'light' */ './Light'));
 const Loading = <Fragment>Loading...</Fragment>;
 
 const Product = ({ ...rest }) => {
-  const { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
+  const { numberOfLogicalProcessors, unsupported } = useHardwareConcurrency();
+  
+  console.log('[components Product] numberOfLogicalProcessors, unsupported => ', numberOfLogicalProcessors, unsupported);
 
-  console.log('[components Product] numberOfLogicalProcessors => ', numberOfLogicalProcessors);
   return (
     <LazyLoadingErrorBoundary>
       <Suspense fallback={Loading}>
-        { numberOfLogicalProcessors && numberOfLogicalProcessors < HARDWARE_CONCURRENCY_LIMIT ? (
-          <LazyLight {...rest} />
-        ) : (
+        { (unsupported || numberOfLogicalProcessors > HARDWARE_CONCURRENCY_LIMIT) ? (
           <LazyHeavy {...rest} />
+        ) : (
+          <LazyLight {...rest} />
         ) }
       </Suspense>
     </LazyLoadingErrorBoundary>

@@ -8,7 +8,7 @@ Enable web developers to differentially deliver lightweight, fast experiences fo
 Now that the adaptive React hooks are [custom hooks](https://reactjs.org/docs/hooks-custom.html) we can just use them like normal React hooks after importing them.
 
 ```js
-import { useEffectiveConnectionType } from './network';
+import { useNetworkStatus } from './network';
 import { useHardwareConcurrency } from './hardware-concurrency';
 import { useMemoryStatus } from './memory';
 import { useBatteryStatus } from './battery';
@@ -27,10 +27,10 @@ React hook for getting network status (effective connection type)
 ```js
 import React from 'react';
 
-import { useEffectiveConnectionType } from './network';
+import { useNetworkStatus } from './network';
 
 const MyComponent = () => {
-  const effectiveConnectionType = useEffectiveConnectionType();
+  const { effectiveConnectionType } = useNetworkStatus();
 
   let media;
   switch(effectiveConnectionType) {
@@ -65,7 +65,7 @@ import React from 'react';
 import { useHardwareConcurrency } from './hardware-concurrency';
 
 const MyComponent = () => {
-  const { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
+  const { numberOfLogicalProcessors } = useHardwareConcurrency();
   return (
     <div>
       { numberOfLogicalProcessors <= 4 ? <img src='...' /> : <video src='...' /> }
@@ -84,10 +84,10 @@ import React from 'react';
 import { useMemoryStatus } from './memory';
 
 const MyComponent = () => {
-  const { memoryStatus: { overLoaded } } = useMemoryStatus();
+  const { deviceMemory } = useMemoryStatus();
   return (
     <div>
-      { overLoaded ? <img src='...' /> : <video src='...' /> }
+      { deviceMemory < 4 ? <img src='...' /> : <video src='...' /> }
     </div>
   );
 };
@@ -103,7 +103,7 @@ import React from 'react';
 import { useBatteryStatus } from './battery';
 
 const MyComponent = () => {
-  const { batteryStatus: { level } } = useBatteryStatus();
+  const { level } = useBatteryStatus();
   return (
     <div>
       { level > 0.75 ? <video src='...' /> : <img src='...' /> }
@@ -152,7 +152,7 @@ const MyComponent = () => {
 
 ## Browser Support
 
-* [Network Information API - effectiveType](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) is available in [Chrome 61+, Opera 48+, Chrome for Android 76+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=effectiveType)
+* [Network Information API - effectiveType](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/effectiveType) is available in [Chrome 61+, Opera 48+, Edge 76+, Chrome for Android 76+, Firefox for Android 68+](https://caniuse.com/#search=effectiveType)
 
 * [Hardware Concurrency API](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorConcurrentHardware/hardwareConcurrency) is available in [Chrome 37+, Safari 10.1+, Firefox 48+, Opera 24+, Edge 15+, Chrome for Android 76+, Safari on iOS 10.3+, Firefox for Android 68+, Opera for Android 46+](https://caniuse.com/#search=navigator.hardwareConcurrency)
 

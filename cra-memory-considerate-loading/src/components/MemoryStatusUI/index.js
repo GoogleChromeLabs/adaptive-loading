@@ -18,7 +18,7 @@ import React, { Fragment } from 'react';
 
 import './memory-status-ui.css';
 
-const MemoryStatusUI = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, deviceMemory, overLoaded, unsupportMessage }) => (
+const MemoryStatusUI = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, deviceMemory, overLoaded, unsupported }) => (
   <div className='list'>
     <a
       className='notice'
@@ -27,33 +27,33 @@ const MemoryStatusUI = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, devi
       href='https://www.chromium.org/developers/how-tos/run-chromium-with-flags'>
       To enable more accurate memory monitoring, start Chrome with the --enable-precise-memory-info flag
     </a>
-    {unsupportMessage ? (
-      <div>{unsupportMessage}</div>
+    { unsupported ? (
+      <div>The Memory Status API is not supported on this platform.</div>
     ) : (
-        <Fragment>
-          <div className='list-item'>
-            <div>totalJSHeapSize(Byte):</div>
-            <div>{totalJSHeapSize}</div>
-          </div>
-          <div className='list-item'>
-            <div>usedJSHeapSize(Byte):</div>
-            <div>{usedJSHeapSize}</div>
-          </div>
-          <div className='list-item'>
-            <div>jsHeapSizeLimit(Byte):</div>
-            <div>{jsHeapSizeLimit}</div>
-          </div>
-          <div className='list-item'>
-            <div>deviceMemory(GigaByte):</div>
-            <div>{deviceMemory}</div>
-          </div>
+      <Fragment>
+        <div className='list-item'>
+          <div>totalJSHeapSize(Byte):</div>
+          <div>{totalJSHeapSize}</div>
+        </div>
+        <div className='list-item'>
+          <div>usedJSHeapSize(Byte):</div>
+          <div>{usedJSHeapSize}</div>
+        </div>
+        <div className='list-item'>
+          <div>jsHeapSizeLimit(Byte):</div>
+          <div>{jsHeapSizeLimit}</div>
+        </div>
+        <div className='list-item'>
+          <div>deviceMemory(GigaByte):</div>
+          <div>{deviceMemory}</div>
+        </div>
 
-          <div className='list-item'>
-            <div>Is Memory overLoaded?:</div>
-            <div>{overLoaded.toString()}</div>
-          </div>
-        </Fragment>
-      )}
+        <div className='list-item'>
+          <div>Is Memory overLoaded?:</div>
+          <div>{overLoaded.toString()}</div>
+        </div>
+      </Fragment>
+    ) }
   </div>
 );
 

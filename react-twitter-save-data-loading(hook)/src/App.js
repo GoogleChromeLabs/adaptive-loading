@@ -29,7 +29,7 @@ import './App.css';
 const linkProps = {target: '_blank'};
 
 const App = () => {
-  const { saveData } = useSaveData();
+  const { saveData, unsupported } = useSaveData();
   const [testSaveData, setTestSaveData] = useState(false);
   const [testSaveDataEnabled, setTestSaveDataEnabled] = useState(false);
 
@@ -46,12 +46,8 @@ const App = () => {
   if (testSaveDataEnabled) {
     overriddenSaveData = testSaveData;
   } else {
-    if (saveData.unsupportMessage) {
-      console.log(`[App] ${saveData.unsupportMessage}`);
-      overriddenSaveData = false;
-    } else {
-      overriddenSaveData = saveData;
-    }
+    console.log(`[App] navigator.connection.saveData is ${unsupported ? 'unsupported' : 'supported'}`);
+    overriddenSaveData = saveData;
   }
   
   const ListTweet = ({ index, style }) => {
@@ -73,6 +69,7 @@ const App = () => {
     <div className='tweet-page'>
       <Navbar
         saveData={overriddenSaveData}
+        saveDataUnsupported={unsupported}
         testSaveDataEnabled={testSaveDataEnabled}
         toggleClientSaveData={toggleClientSaveDataHandler}
         enableClientSaveData={enableClientSaveDataHandler} />

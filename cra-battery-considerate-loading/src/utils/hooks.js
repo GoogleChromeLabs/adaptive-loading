@@ -16,10 +16,33 @@
 
 import { useState, useEffect } from 'react';
 
-const UNSUPPORT_MESSAGE = 'The Battery Status API is not supported on this platform.';
-
 const useBatteryStatus = () => {
-  const [batteryStatus, setBatteryStatus] = useState(null);
+  let unsupported;
+  if ('getBattery' in navigator) {
+    unsupported = false;
+  } else {
+    unsupported = true;
+  }
+
+  const initialBatteryStatus = !unsupported ? {
+    chargingTime: null,
+    dischargingTime: null,
+    level: null,
+    charging: null
+  } : {
+    unsupported
+  };
+  
+  const [batteryStatus, setBatteryStatus] = useState(initialBatteryStatus);
+
+  const updateBatteryStatus = battery => {
+    setBatteryStatus({
+      chargingTime: battery.chargingTime,
+      dischargingTime: battery.dischargingTime,
+      level: battery.level,
+      charging: battery.charging
+    });
+  };
 
   const monitorBattery = battery => {
     // Update the initial UI
@@ -32,25 +55,14 @@ const useBatteryStatus = () => {
     battery.addEventListener('chargingtimechange', updateBatteryStatus.bind(null, battery));
   };
 
-  const updateBatteryStatus = battery => {
-    setBatteryStatus({
-      chargingTime: `${battery.chargingTime} Seconds`,
-      dischargeTime: `${battery.dischargingTime} Seconds`,
-      level: battery.level,
-      chargingState: battery.charging === true ? 'Charging' : 'Discharging'
-    });
-  };
-
   useEffect(() => {
-    if ('getBattery' in navigator) {
+    if (!unsupported) {
       navigator.getBattery().then(monitorBattery);
-    } else {
-      setBatteryStatus({unsupportMessage: UNSUPPORT_MESSAGE});
     }
   // eslint-disable-next-line
   }, []);
 
-  return { batteryStatus, updateBatteryStatus, monitorBattery };
+  return { ...batteryStatus, updateBatteryStatus, monitorBattery };
 };
 
 export { useBatteryStatus };

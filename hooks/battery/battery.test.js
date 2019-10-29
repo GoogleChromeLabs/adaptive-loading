@@ -16,56 +16,61 @@
 
 import 'babel-polyfill';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useBatteryStatus, UNSUPPORT_MESSAGE } from './';
+
+import { useBatteryStatus } from './';
+
+const getBatteryStatus = currentResult => ({
+  chargingTime: currentResult.chargingTime,
+  dischargingTime: currentResult.dischargingTime,
+  level: currentResult.level,
+  charging: currentResult.charging
+});
 
 describe('useBatteryStatus', () => {
-  test(`should return ${UNSUPPORT_MESSAGE}`, () => {
+  test(`should return "true" for unsupported case`, () => {
     const { result } = renderHook(() => useBatteryStatus());
   
-    expect(result.current.batteryStatus.unsupportMessage).toBe(UNSUPPORT_MESSAGE);
+    expect(result.current.unsupported).toBe(true);
   });
   
   test('should update the batteryStatus state', () => {
     const { result } = renderHook(() => useBatteryStatus());
-  
-    act(() => result.current.updateBatteryStatus({
+
+    const mockBatteryStatus = {
       chargingTime: 20,
       dischargingTime: 40,
-      charging: true,
-      level: 50
-    }));
-  
-    expect(result.current.batteryStatus).toEqual({
-      chargingTime: '20 Seconds',
-      dischargeTime: '40 Seconds',
       level: 50,
-      chargingState: 'Charging'
-    });
+      charging: true
+    };
+  
+    act(() => result.current.updateBatteryStatus(mockBatteryStatus));
+  
+    expect(getBatteryStatus(result.current)).toEqual(mockBatteryStatus);
   });
   
   test('should return mockGetBattery status', async () => {
     const originalError = console.error;
     console.error = jest.fn();
-  
-    const mockGetBattery = jest.fn().mockImplementation(() => Promise.resolve({
+
+    const mockBatteryStatus = {
       chargingTime: 20,
       dischargingTime: 40,
       level: 50,
-      charging: true,
+      charging: true
+    };
+  
+    const mockGetBattery = jest.fn().mockImplementation(() => Promise.resolve({
+      ...mockBatteryStatus,
       addEventListener: jest.fn()
     }));
+
     global.navigator.getBattery = mockGetBattery;
   
     try {
       const { result, waitForNextUpdate } = renderHook(() => useBatteryStatus());
       await waitForNextUpdate();
       
-      expect(result.current.batteryStatus).toEqual({
-        chargingTime: '20 Seconds',
-        dischargeTime: '40 Seconds',
-        level: 50,
-        chargingState: 'Charging'
-      });
+      expect(getBatteryStatus(result.current)).toEqual(mockBatteryStatus);
     } finally {
       console.error = originalError;
     }
@@ -75,53 +80,51 @@ describe('useBatteryStatus', () => {
     const originalError = console.error;
     console.error = jest.fn();
 
-    const battery = {
+    const mockBatteryStatus = {
       chargingTime: 20,
       dischargingTime: 40,
       level: 50,
-      charging: true,
-      addEventListener: jest.fn()
+      charging: true
     };
 
-    const mockGetBattery = jest.fn().mockImplementation(() => Promise.resolve(battery));
+    const mockBattery = {
+      ...mockBatteryStatus,
+      addEventListener: jest.fn()
+    };
+    
+    const mockGetBattery = jest.fn().mockImplementation(() => Promise.resolve(mockBattery));
+
     global.navigator.getBattery = mockGetBattery;
 
     try {
       const { result, waitForNextUpdate } = renderHook(() => useBatteryStatus());
       await waitForNextUpdate();
 
+      // batteryStatus is updated because updateBatteryStatus should be called internally
+      expect(getBatteryStatus(result.current)).toEqual(mockBatteryStatus);
+
       const map = {};
-      const updatedBattery = {
+      const mockUpdatedBatteryStatus = {
         chargingTime: 30,
         dischargingTime: 50,
         level: 60,
-        charging: false,
+        charging: false
+      };
+      const mockUpdatedBattery = {
+        ...mockUpdatedBatteryStatus,
         addEventListener: jest.fn().mockImplementation((event, callback) => {
           map[event] = callback;
         })
       };
 
-      // batteryStatus is supposed to be updated because updateBatteryStatus should be called internally
-      expect(result.current.batteryStatus).toEqual({
-        chargingTime: '20 Seconds',
-        dischargeTime: '40 Seconds',
-        level: 50,
-        chargingState: 'Charging'
-      });
-
       act(() => {
         // the argument `battery` seems persisted with the initial argument value even when battery level change event triggered with new argument value due to Javascript scope or something
-        result.current.monitorBattery(updatedBattery); // for the purpose of updated battery argument value
+        result.current.monitorBattery(mockUpdatedBattery); // for the purpose of updated battery argument value
         // TODO: should make sure the argument is used to update the state
-        map.levelchange(updatedBattery); // if we comment out this line, test is passed successfully
+        map.levelchange(mockUpdatedBattery); // even if we comment out this line, test is passed successfully
       });
 
-      expect(result.current.batteryStatus).toEqual({
-        chargingTime: '30 Seconds',
-        dischargeTime: '50 Seconds',
-        level: 60,
-        chargingState: 'Discharging'
-      });
+      expect(getBatteryStatus(result.current)).toEqual(mockUpdatedBatteryStatus);
     } finally {
       console.error = originalError;
     }

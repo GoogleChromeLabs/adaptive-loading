@@ -16,12 +16,12 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useSaveData, UNSUPPORT_MESSAGE } from './';
+import { useSaveData } from './';
 
 describe('useSaveData', () => {
-  test(`should return ${UNSUPPORT_MESSAGE}`, () => {
+  test(`should return "true" for unsupported case`, () => {
     const { result } = renderHook(() => useSaveData());
-    expect(result.current.saveData.unsupportMessage).toBe(UNSUPPORT_MESSAGE);
+    expect(result.current.unsupported).toBe(true);
   });
 
   test(`should return "true" for enabled save data`, () => {

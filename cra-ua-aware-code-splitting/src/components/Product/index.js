@@ -24,18 +24,23 @@ const LazyLight = lazy(() => import(/* webpackChunkName: 'light' */ './Light'));
 const Loading = <Fragment>Loading...</Fragment>;
 
 const Product = ({ ...rest }) => {
-  const { deviceClass } = useDeviceClass();
+  const { deviceClass, unsupported } = useDeviceClass();
+
+  console.log('[Product] deviceClass, unsupported => ', deviceClass, unsupported);
   
   return (
-    <LazyLoadingErrorBoundary>
-      <Suspense fallback={Loading}>
-        { deviceClass === 'heavy' ? (
-          <LazyHeavy {...rest} />
-        ) : (
-          <LazyLight {...rest} />
-        ) }
-      </Suspense>
-    </LazyLoadingErrorBoundary>
+    <>
+      { unsupported && <p>The Save Data API is not supported on this platform.</p> }
+      <LazyLoadingErrorBoundary>
+        <Suspense fallback={Loading}>
+          { (unsupported || deviceClass === 'heavy') ? (
+            <LazyHeavy {...rest} />
+          ) : (
+            <LazyLight {...rest} />
+          ) }
+        </Suspense>
+      </LazyLoadingErrorBoundary>
+    </>
   );
 };
 

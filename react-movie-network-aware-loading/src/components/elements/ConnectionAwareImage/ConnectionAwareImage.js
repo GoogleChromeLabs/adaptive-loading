@@ -16,11 +16,11 @@
 
 import React from 'react';
 
-import { useEffectiveConnectionType } from '../../../utils/hooks';
+import { useNetworkStatus } from '../../../utils/hooks';
 import { IMAGE_BASE_URL, POSTER_SIZES } from '../../../config';
 
 const ConnectionAwareImage = ({ path, alt, ...rest }) => {
-  const { effectiveConnectionType } = useEffectiveConnectionType();
+  const { effectiveConnectionType } = useNetworkStatus();
 
   let posterSize;
 

@@ -20,21 +20,32 @@ import { AnimatePresence } from 'framer-motion';
 import Layout from '../components/Layout';
 import AnimationEmulationContext from '../components/AnimationEmulationContext';
 import { useMemoryStatus } from '../utils/hooks';
-import { CLIENT_HINT_MEMORY_LIMIT } from '../config';
+import { DEVICE_MEMORY_LIMIT } from '../config';
 
 const MyApp = ({ Component, pageProps, router }) => {
   const [manualEnabled, setManualEnabled] = useState(false);
   const [isAnimationOn, setIsAnimationOn] = useState(true);
-  const { memoryStatus } = useMemoryStatus();
+  const {
+    deviceMemory: hookDeviceMemory,
+    unsupported,
+    ...performanceMemoryStatus
+  } = useMemoryStatus();
+  let hookMemoryStatus = {
+    deviceMemory: hookDeviceMemory,
+    unsupported,
+    ...performanceMemoryStatus
+  };
   
   const { clientHintDeviceMemory } = pageProps;
+  console.log('[MyApp] hookDeviceMemory, clientHintDeviceMemory, unsupported => ', hookDeviceMemory, clientHintDeviceMemory, unsupported);
   let overLoaded;
   if (clientHintDeviceMemory) {
-    overLoaded = clientHintDeviceMemory < CLIENT_HINT_MEMORY_LIMIT;
+    overLoaded = clientHintDeviceMemory < DEVICE_MEMORY_LIMIT;
     console.log('[_app MyApp] Client Hint Device Memory based Memory Overloaded => ', overLoaded);
   } else {
-    overLoaded = memoryStatus.overLoaded;
-    console.log('[_app MyApp] Memory React Hook based Memory Overloaded => ', overLoaded);
+    overLoaded = hookDeviceMemory < DEVICE_MEMORY_LIMIT;
+    hookMemoryStatus = { ...hookMemoryStatus, overLoaded }
+    console.log('[_app MyApp] Memory Hook Device Memory based Memory Overloaded => ', overLoaded);
   }
   
   let animationAllowed;
@@ -61,7 +72,7 @@ const MyApp = ({ Component, pageProps, router }) => {
         enableManualAnimationHandler: enableManualAnimationHandler,
         toggleAnimationHandler: toggleAnimationHandler
       }}>
-      <Layout clientHintDeviceMemory={clientHintDeviceMemory} memoryStatus={memoryStatus}>
+      <Layout clientHintDeviceMemory={clientHintDeviceMemory} hookMemoryStatus={hookMemoryStatus}>
         { animationAllowed ? (
           <AnimatePresence exitBeforeEnter>
             <Component {...pageProps} key={router.route} />

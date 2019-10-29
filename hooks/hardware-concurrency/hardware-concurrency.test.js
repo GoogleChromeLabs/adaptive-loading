@@ -15,12 +15,13 @@
  */
 
 import { renderHook, act } from '@testing-library/react-hooks';
+
 import { useHardwareConcurrency } from './';
 
 describe('useHardwareConcurrency', () => {
   test(`should return window.navigator.hardwareConcurrency`, () => {
     const { result } = renderHook(() => useHardwareConcurrency());
-    expect(result.current.hardwareConcurrency.numberOfLogicalProcessors).toBe(window.navigator.hardwareConcurrency);
+    expect(result.current.numberOfLogicalProcessors).toBe(window.navigator.hardwareConcurrency);
   });
 
   test('should return 4 for device of hardwareConcurrency = 4', () => {
@@ -31,7 +32,7 @@ describe('useHardwareConcurrency', () => {
     });
     const { result } = renderHook(() => useHardwareConcurrency());
 
-    expect(result.current.hardwareConcurrency.numberOfLogicalProcessors).toEqual(4);
+    expect(result.current.numberOfLogicalProcessors).toEqual(4);
   });
 
   test('should return 2 for device of hardwareConcurrency = 2', () => {
@@ -42,7 +43,7 @@ describe('useHardwareConcurrency', () => {
     });
     const { result } = renderHook(() => useHardwareConcurrency());
 
-    expect(result.current.hardwareConcurrency.numberOfLogicalProcessors).toEqual(2);
+    expect(result.current.numberOfLogicalProcessors).toEqual(2);
   });
 
   test('should set hardware concurrency', () => {
@@ -54,6 +55,6 @@ describe('useHardwareConcurrency', () => {
       result.current.setHardwareConcurrency(mockHardwareConcurrency);
     });
 
-    expect(result.current.hardwareConcurrency.numberOfLogicalProcessors).toEqual(mockHardwareConcurrency.numberOfLogicalProcessors);
+    expect(result.current.numberOfLogicalProcessors).toEqual(mockHardwareConcurrency.numberOfLogicalProcessors);
   });
 });
