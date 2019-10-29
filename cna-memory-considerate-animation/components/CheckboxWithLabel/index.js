@@ -15,15 +15,15 @@
  * limitations under the License.
  */
 
-const CheckboxWithLabel = ({ label, toggle, ...rest }) => {
-  const toggleHandler = event => {
-    toggle(event.target.checked);
+const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
+  const onChangeHandler = event => {
+    onChange(event.target.checked);
   };
 
   return (
     <div className='checkbox'>
       <label>
-        <input type='checkbox' onChange={toggleHandler} {...rest} />
+        <input type='checkbox' onChange={onChangeHandler} {...rest} />
         {label}
       </label>
       <style jsx global>{`

@@ -1,0 +1,28 @@
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.tag {
+  width: 20%;
+  min-width: 160px;
+  padding: 10px;
+}
+
+.tag > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag-label {
+  margin-bottom: 4px;
+  color: #e2e2e2;
+  font-size: 14px;
+}
+
+.tag-value {
+  color: #fff;
+  font-size: 16px;
+}

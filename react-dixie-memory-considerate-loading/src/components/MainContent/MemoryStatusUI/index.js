@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-const MemoryStatusByHook = ({ memoryStatus }) => {
+import React from 'react';
+
+import './memory-status-ui.css';
+
+const MemoryStatusUI = ({ memoryStatus }) => {
   const {
     totalJSHeapSize,
     usedJSHeapSize,
@@ -50,7 +54,7 @@ const MemoryStatusByHook = ({ memoryStatus }) => {
   return (
     <>
       { unsupported ? (
-        <p>The Memory Status API is not supported on this platform or not available on server side rendering.</p>
+        <p>The Memory Status API is not supported on this platform.</p>
       ) : (
         <div className='tags'>
           { memoryStatusList.map(memoryStatusListItem => (
@@ -59,31 +63,10 @@ const MemoryStatusByHook = ({ memoryStatus }) => {
               <div className='tag-label'>{memoryStatusListItem.label}</div>
             </div>
           )) }
-          <style jsx>{`
-            .tags {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: space-between;
-            }
-            .tag {
-              width: 20%;
-              min-width: 120px;
-              padding: 10px;
-            }
-            .tag-label {
-              margin-bottom: 4px;
-              color: rgba(0,0,0,0.45);
-              font-size: 14px;
-            }
-            .tag-value {
-              color: rgba(0,0,0,0.85);
-              font-size: 16px;
-            }
-          `}</style>
         </div>
       ) }
     </>
   );
 };
 
-export default MemoryStatusByHook;
+export default MemoryStatusUI;
