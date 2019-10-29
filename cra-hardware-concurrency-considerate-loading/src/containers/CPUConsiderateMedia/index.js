@@ -24,7 +24,7 @@ const q240 = 'https://firebasestorage.googleapis.com/v0/b/devices-1b6e0.appspot.
 const q1080 = 'https://firebasestorage.googleapis.com/v0/b/devices-1b6e0.appspot.com/o/q1080.mp4?alt=media&token=1e66b0bf-bf05-45fb-9169-8de8a26cfbcd';
 
 const CPUConsiderateMedia = (props, ref) => {
-  let { hardwareConcurrency: { numberOfLogicalProcessors } } = useHardwareConcurrency();
+  let { numberOfLogicalProcessors } = useHardwareConcurrency();
   const isCPUSlow = numberOfLogicalProcessors <= 4 ? true : false;
 
   const videoRef = useRef();
