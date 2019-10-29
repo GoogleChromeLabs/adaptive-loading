@@ -15,7 +15,8 @@
  */
 
 .root-frame {
-  width: 60%;
+  width: 90%;
+  font-size: 1.25rem;
 }
 
 .responsive {

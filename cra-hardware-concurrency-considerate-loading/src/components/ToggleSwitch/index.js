@@ -14,8 +14,16 @@
  * limitations under the License.
  */
 
-.checkbox {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-}
+import React from 'react';
+import Toggle from 'react-toggle';
+
+import './toggle-switch.css';
+
+const ToggleSwitch = ({ label, ...rest }) => (
+  <div className='toggle-switch'>
+    <Toggle {...rest} />
+    <label>{label}</label>
+  </div>
+);
+
+export default ToggleSwitch;
