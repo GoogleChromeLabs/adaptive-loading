@@ -20,6 +20,7 @@ for PROJECT in  functions \
                 node-network-aware-loading \
                 react-ebay-network-aware-code-splitting \
                 cra-hardware-concurrency-considerate-code-splitting \
+                cra-hardware-concurrency-considerate-loading \
                 react-twitter-save-data-loading(client-hint) \
                 react-twitter-save-data-loading(hook)
 do
