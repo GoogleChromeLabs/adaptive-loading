@@ -26,6 +26,7 @@ body {
   font-size: 16px;
   letter-spacing: .15em;
   line-height: 1.4em;
+  background-color: #2b2b2b;
   background-image: url('./assets/images/background.webp');
   background-repeat: no-repeat;
   background-size: cover;
