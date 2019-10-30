@@ -31,7 +31,7 @@ const ThreeBox = () => (
     ar
     shadow-intensity='1'
     camera-controls
-    camera-orbit='0deg 0deg auto'
+    camera-orbit='0deg 75deg 105%'
     interaction-prompt='auto'
     auto-rotate
     magic-leap>
