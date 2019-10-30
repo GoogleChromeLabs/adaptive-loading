@@ -14,47 +14,67 @@
  * limitations under the License.
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import './memory-status.css';
 
-const MemoryStatus = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, deviceMemory, overLoaded, unsupported }) => (
-  <div className='list'>
-    <a
-      className='notice'
-      target='_blank'
-      rel='noopener noreferrer'
-      href='https://www.chromium.org/developers/how-tos/run-chromium-with-flags'>
-      To enable more accurate memory monitoring, start Chrome with the --enable-precise-memory-info flag
-    </a>
-    { unsupported ? (
-      <div>The Memory Status API is not supported on this platform.</div>
-    ) : (
-      <Fragment>
-        <div className='list-item'>
-          <div>totalJSHeapSize (Byte):</div>
-          <div>{totalJSHeapSize}</div>
-        </div>
-        <div className='list-item'>
-          <div>usedJSHeapSize (Byte):</div>
-          <div>{usedJSHeapSize}</div>
-        </div>
-        <div className='list-item'>
-          <div>jsHeapSizeLimit (Byte):</div>
-          <div>{jsHeapSizeLimit}</div>
-        </div>
-        <div className='list-item'>
-          <div>deviceMemory (GB):</div>
-          <div>{deviceMemory}</div>
-        </div>
+const MemoryStatus = ({ memoryStatus }) => {
+  const {
+    totalJSHeapSize,
+    usedJSHeapSize,
+    jsHeapSizeLimit,
+    deviceMemory,
+    overLoaded,
+    unsupported
+  } = memoryStatus;
 
-        <div className='list-item'>
-          <div>Is Memory overLoaded?:</div>
-          <div>{overLoaded.toString()}</div>
+  const memoryStatusList = [
+    {
+      label: 'Total JSHeapSize',
+      value: `${totalJSHeapSize} (Byte)`
+    },
+    {
+      label: 'Used JSHeapSize',
+      value: `${usedJSHeapSize} (Byte)`
+    },
+    {
+      label: 'JSHeapSizeLimit',
+      value: `${jsHeapSizeLimit} (Byte)`
+    },
+    {
+      label: 'Device Memory',
+      value: `${deviceMemory} (GB)`
+    },
+    {
+      label: 'Memory Overloaded?',
+      value: overLoaded ? 'Yes, so we have no animation.' : 'No, so we have animation.'
+    }
+  ];
+
+  return (
+    <>
+      <a
+        className='notice'
+        target='_blank'
+        rel='noopener noreferrer'
+        href='https://www.chromium.org/developers/how-tos/run-chromium-with-flags'>
+        To enable more accurate memory monitoring, start Chrome with the --enable-precise-memory-info flag
+      </a>
+      { unsupported ? (
+        <p>The Memory Status API is not supported on this platform.</p>
+      ) : (
+        <div className='tags'>
+          
+          { memoryStatusList.map(memoryStatusListItem => (
+            <div key={memoryStatusListItem.label} className='tag'>
+              <div className='tag-value'>{memoryStatusListItem.value}</div>
+              <div className='tag-label'>{memoryStatusListItem.label}</div>
+            </div>
+          )) }
         </div>
-      </Fragment>
-    ) }
-  </div>
-);
+      ) }
+    </>
+  );
+};
 
 export default MemoryStatus;
