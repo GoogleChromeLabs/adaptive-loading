@@ -39,7 +39,7 @@ const MemoryStatusByHook = ({ memoryStatus }) => {
     },
     {
       label: 'Device Memory',
-      value: `${deviceMemory} (GByte)`
+      value: `${deviceMemory} (GB)`
     },
     {
       label: 'Memory Overloaded?',

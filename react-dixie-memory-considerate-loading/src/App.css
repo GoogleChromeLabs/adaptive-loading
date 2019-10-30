@@ -23,6 +23,9 @@
 
 .original-link {
   padding: 16px;
-  color: #fff;
   text-decoration: underline;
+}
+
+.original-link > a {
+  color: #fff;
 }

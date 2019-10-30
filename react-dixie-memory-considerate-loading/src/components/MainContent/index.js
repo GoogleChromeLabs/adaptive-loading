@@ -33,7 +33,6 @@ const MainContent = () => {
   
   const overLoaded = deviceMemory < DEVICE_MEMORY_LIMIT;
   const memoryStatus = {
-    overLoaded,
     unsupported,
     deviceMemory,
     ...performanceMemoryStatus
@@ -58,6 +57,7 @@ const MainContent = () => {
 
   return (
     <div className='main-content'>
+      <div style={{padding: '10px'}} />
       <ManualConsole
         manualEnabled={manualEnabled}
         isThreeBoxOn={isThreeBoxOn}

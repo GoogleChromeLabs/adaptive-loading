@@ -24,7 +24,6 @@ const MemoryStatus = ({ memoryStatus }) => {
     usedJSHeapSize,
     jsHeapSizeLimit,
     deviceMemory,
-    overLoaded,
     unsupported
   } = memoryStatus;
 
@@ -43,11 +42,7 @@ const MemoryStatus = ({ memoryStatus }) => {
     },
     {
       label: 'Device Memory',
-      value: `${deviceMemory} (GByte)`
-    },
-    {
-      label: 'Memory Overloaded?',
-      value: overLoaded ? 'Yes, so we have no animation.' : 'No, so we have animation.'
+      value: `${deviceMemory} (GB)`
     }
   ];
 

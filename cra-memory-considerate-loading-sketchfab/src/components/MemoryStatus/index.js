@@ -32,19 +32,19 @@ const MemoryStatus = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, device
     ) : (
       <Fragment>
         <div className='list-item'>
-          <div>totalJSHeapSize(Byte):</div>
+          <div>totalJSHeapSize (Byte):</div>
           <div>{totalJSHeapSize}</div>
         </div>
         <div className='list-item'>
-          <div>usedJSHeapSize(Byte):</div>
+          <div>usedJSHeapSize (Byte):</div>
           <div>{usedJSHeapSize}</div>
         </div>
         <div className='list-item'>
-          <div>jsHeapSizeLimit(Byte):</div>
+          <div>jsHeapSizeLimit (Byte):</div>
           <div>{jsHeapSizeLimit}</div>
         </div>
         <div className='list-item'>
-          <div>deviceMemory(GigaByte):</div>
+          <div>deviceMemory (GB):</div>
           <div>{deviceMemory}</div>
         </div>
 

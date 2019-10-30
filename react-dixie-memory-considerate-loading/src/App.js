@@ -25,7 +25,9 @@ function App() {
     <div className='App'>
       <Header />
       <MainContent />
-      <a href='https://dixiemech.com/gmkdracula/' className='original-link'>Original Dixie Mesh Website</a>
+      <div className='original-link'>
+        <a href='https://dixiemech.com/gmkdracula/'>Original Dixie Mesh Website</a>
+      </div>
     </div>
   );
 }
