@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,27 +14,28 @@
  * limitations under the License.
  */
 
-const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
-  const onChangeHandler = event => {
-    onChange(event.target.checked);
-  };
+import React from 'react';
+import '@google/model-viewer';
 
-  return (
-    <div className='checkbox'>
-      <label>
-        <input type='checkbox' onChange={onChangeHandler} {...rest} />
-        {label}
-      </label>
-      <style jsx global>{`
-        div.checkbox {
-          margin-left: 20px;
-          padding: 8px;
-          border: 1px solid #1890ff;
-          border-radius: 20px;
-        }
-      `}</style>
-    </div>
-  )
-};
+import './three-box.css';
+import posterKeyboard from '../../../assets/images/poster-keyboard.webp';
 
-export default CheckboxWithLabel;
+const ThreeBox = () => (
+  <model-viewer
+    preload
+    poster={posterKeyboard}
+    src='https://ephektz.com/assets/dboard.glb'
+    alt='A 3D model of a keyboard'
+    background-color='#2b2b2b'
+    exposure='0.3'
+    ar
+    shadow-intensity='1'
+    camera-controls
+    camera-orbit='0deg 75deg 105%'
+    interaction-prompt='auto'
+    auto-rotate
+    magic-leap>
+  </model-viewer>
+);
+
+export default ThreeBox;

@@ -1,0 +1,49 @@
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@font-face {
+  font-family: 'FuturaPTBold';
+  src: local('FuturaPTBold'), url(./assets/fonts/FuturaPTBold.otf) format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: .15em;
+  line-height: 1.4em;
+  background-color: #2b2b2b;
+  background-image: url('./assets/images/background.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgba(78,59,44,.65);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

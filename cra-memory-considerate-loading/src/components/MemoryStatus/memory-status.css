@@ -14,12 +14,32 @@
  * limitations under the License.
  */
 
-.root-frame {
-  width: 90%;
-  margin-top: 24px;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.responsive {
-  width: 100%;
-  height: auto;
+.notice {
+  color: white;
+  text-align: left;
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.tag {
+  width: 20%;
+  min-width: 120px;
+  padding: 10px;
+}
+
+.tag-label {
+  margin-bottom: 4px;
+  color: #e2e2e2;
+  font-size: 14px;
+}
+
+.tag-value {
+  color: #fff;
+  font-size: 16px;
 }

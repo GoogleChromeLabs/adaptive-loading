@@ -15,7 +15,8 @@
  */
 
 .root-frame {
-  width: 60%;
+  width: 90%;
+  margin-top: 24px;
 }
 
 .responsive {

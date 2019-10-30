@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,27 +14,18 @@
  * limitations under the License.
  */
 
-const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
-  const onChangeHandler = event => {
-    onChange(event.target.checked);
-  };
+import React from 'react';
+import Toggle from 'react-toggle'; // TODO: update -> deprecated lifecyle usage detected
 
-  return (
-    <div className='checkbox'>
-      <label>
-        <input type='checkbox' onChange={onChangeHandler} {...rest} />
-        {label}
-      </label>
-      <style jsx global>{`
-        div.checkbox {
-          margin-left: 20px;
-          padding: 8px;
-          border: 1px solid #1890ff;
-          border-radius: 20px;
-        }
-      `}</style>
-    </div>
-  )
-};
+import './switch-with-label.css';
 
-export default CheckboxWithLabel;
+const SwitchWithLabel = ({ label, ...rest }) => (
+  <div className='switch-with-label'>
+    <Toggle {...rest}/>
+    <label>
+      {label}
+    </label>
+  </div>
+);
+
+export default SwitchWithLabel;

@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,6 +14,10 @@
  * limitations under the License.
  */
 
+import React from 'react';
+
+import './checkbox-with-label.css';
+
 const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
   const onChangeHandler = event => {
     onChange(event.target.checked);
@@ -26,14 +29,6 @@ const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
         <input type='checkbox' onChange={onChangeHandler} {...rest} />
         {label}
       </label>
-      <style jsx global>{`
-        div.checkbox {
-          margin-left: 20px;
-          padding: 8px;
-          border: 1px solid #1890ff;
-          border-radius: 20px;
-        }
-      `}</style>
     </div>
   )
 };

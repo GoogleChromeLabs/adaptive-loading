@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,27 +14,22 @@
  * limitations under the License.
  */
 
-const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
-  const onChangeHandler = event => {
-    onChange(event.target.checked);
-  };
+import React from 'react';
 
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import './App.css';
+
+function App() {
   return (
-    <div className='checkbox'>
-      <label>
-        <input type='checkbox' onChange={onChangeHandler} {...rest} />
-        {label}
-      </label>
-      <style jsx global>{`
-        div.checkbox {
-          margin-left: 20px;
-          padding: 8px;
-          border: 1px solid #1890ff;
-          border-radius: 20px;
-        }
-      `}</style>
+    <div className='App'>
+      <Header />
+      <MainContent />
+      <div className='original-link'>
+        <a href='https://dixiemech.com/gmkdracula/'>Original Dixie Mesh Website</a>
+      </div>
     </div>
-  )
-};
+  );
+}
 
-export default CheckboxWithLabel;
+export default App;

@@ -14,12 +14,8 @@
  * limitations under the License.
  */
 
-.root-frame {
-  width: 90%;
-  margin-top: 24px;
-}
+const DEVICE_MEMORY_LIMIT = 4; // Threshold is 4GB RAM
 
-.responsive {
-  width: 100%;
-  height: auto;
-}
+export {
+  DEVICE_MEMORY_LIMIT
+};

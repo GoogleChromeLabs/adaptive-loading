@@ -44,7 +44,7 @@ const Nav = () => {
           <CheckboxWithLabel
             label='Enable Manual Animation'
             checked={manualEnabled}
-            toggle={enableManualAnimationHandler} />
+            onChange={enableManualAnimationHandler} />
         </li>
         <li><a href={githubLink.href}>{githubLink.label}</a></li>
       </ul>

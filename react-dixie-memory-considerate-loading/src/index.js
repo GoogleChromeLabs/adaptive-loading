@@ -1,4 +1,3 @@
-
 /*
  * Copyright 2019 Google LLC
  *
@@ -15,27 +14,17 @@
  * limitations under the License.
  */
 
-const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
-  const onChangeHandler = event => {
-    onChange(event.target.checked);
-  };
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-  return (
-    <div className='checkbox'>
-      <label>
-        <input type='checkbox' onChange={onChangeHandler} {...rest} />
-        {label}
-      </label>
-      <style jsx global>{`
-        div.checkbox {
-          margin-left: 20px;
-          padding: 8px;
-          border: 1px solid #1890ff;
-          border-radius: 20px;
-        }
-      `}</style>
-    </div>
-  )
-};
+import './assets/fonts/FuturaPTBold.otf';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-export default CheckboxWithLabel;
+ReactDOM.render(<App />, document.getElementById('root'));
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
