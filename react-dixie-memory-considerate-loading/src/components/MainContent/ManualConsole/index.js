@@ -24,7 +24,7 @@ import './manual-console.css';
 const ManualConsole = ({ manualEnabled, isThreeBoxOn, enableManualTesting, toggleThreeBox }) => (
   <div className='manual-console'>
     <SwitchWithLabel 
-      label='ThreeBox On/Off'
+      label='<model-viewer> On/Off'
       disabled={!manualEnabled}
       checked={isThreeBoxOn}
       onChange={toggleThreeBox} />

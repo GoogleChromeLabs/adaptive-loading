@@ -16,9 +16,9 @@
 
 import React from 'react';
 
-import './memory-status-ui.css';
+import './memory-status.css';
 
-const MemoryStatusUI = ({ memoryStatus }) => {
+const MemoryStatus = ({ memoryStatus }) => {
   const {
     totalJSHeapSize,
     usedJSHeapSize,
@@ -69,4 +69,4 @@ const MemoryStatusUI = ({ memoryStatus }) => {
   );
 };
 
-export default MemoryStatusUI;
+export default MemoryStatus;

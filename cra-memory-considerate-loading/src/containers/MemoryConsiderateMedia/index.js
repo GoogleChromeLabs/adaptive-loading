@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import MemoryStatusUI from '../../components/MemoryStatusUI';
+import MemoryStatus from '../../components/MemoryStatus';
 import ModelViewer from '../../components/ModelViewer';
 import { useMemoryStatus } from '../../utils/hooks';
 import astronautModel from '../../assets/models/astronaut/astronaut.glb';
@@ -43,7 +43,7 @@ const MemoryConsiderateMedia = () => {
 
   return (
     <div className='root-frame'>
-      <MemoryStatusUI {...memoryStatus} />
+      <MemoryStatus {...memoryStatus} />
       <ModelViewer src={astronautModel} fallbackSrc={astronautImage} memoryStatus={memoryStatus} />
     </div>
   );

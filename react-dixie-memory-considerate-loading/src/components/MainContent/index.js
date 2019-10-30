@@ -18,7 +18,7 @@ import React, { Suspense, lazy, useState } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import ManualConsole from './ManualConsole';
-import MemoryStatusUI from './MemoryStatusUI';
+import MemoryStatus from './MemoryStatus';
 import { useMemoryStatus } from '../../utils/hooks';
 import { DEVICE_MEMORY_LIMIT } from '../../config';
 import './main-content.css';
@@ -72,7 +72,7 @@ const MainContent = () => {
           ) }
         </Suspense>
       </LazyLoadingErrorBoundary>
-      <MemoryStatusUI memoryStatus={memoryStatus} />
+      <MemoryStatus memoryStatus={memoryStatus} />
     </div>
   );
 };

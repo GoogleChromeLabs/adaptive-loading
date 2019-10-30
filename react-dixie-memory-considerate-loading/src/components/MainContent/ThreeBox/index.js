@@ -18,9 +18,12 @@ import React from 'react';
 import '@google/model-viewer';
 
 import './three-box.css';
+import posterKeyboard from '../../../assets/images/poster-keyboard.webp';
 
 const ThreeBox = () => (
   <model-viewer
+    preload
+    poster={posterKeyboard}
     src='https://ephektz.com/assets/dboard.glb'
     alt='A 3D model of a keyboard'
     background-color='#2b2b2b'

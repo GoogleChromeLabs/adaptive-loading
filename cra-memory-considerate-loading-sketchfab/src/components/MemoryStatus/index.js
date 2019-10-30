@@ -16,9 +16,9 @@
 
 import React, { Fragment } from 'react';
 
-import './memory-status-ui.css';
+import './memory-status.css';
 
-const MemoryStatusUI = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, deviceMemory, overLoaded, unsupported }) => (
+const MemoryStatus = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, deviceMemory, overLoaded, unsupported }) => (
   <div className='list'>
     <a
       className='notice'
@@ -57,4 +57,4 @@ const MemoryStatusUI = ({ totalJSHeapSize, usedJSHeapSize, jsHeapSizeLimit, devi
   </div>
 );
 
-export default MemoryStatusUI;
+export default MemoryStatus;
