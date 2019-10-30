@@ -3,7 +3,7 @@
 
 [Live Demo](https://adaptive-loading.web.app/cra-ua-aware-code-splitting)
 
-A demo showing how to use UA-aware code-splitting with React. Utilities for UA parsing provided by [ua-parser-js](https://github.com/faisalman/ua-parser-js).
+A demo showing how to use UA-aware code-splitting in React. Utilities for UA parsing provided by [ua-parser-js](https://github.com/faisalman/ua-parser-js).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
