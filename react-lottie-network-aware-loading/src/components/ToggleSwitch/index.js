@@ -14,11 +14,16 @@
  * limitations under the License.
  */
 
-.root-frame {
-  width: 90%;
-}
+import React from 'react';
+import Toggle from 'react-toggle';
 
-.responsive {
-  width: 100%;
-  height: auto;
-}
+import './toggle-switch.css';
+
+const ToggleSwitch = ({ label, ...rest }) => (
+  <div className='toggle-switch'>
+    <Toggle {...rest} />
+    <label>{label}</label>
+  </div>
+);
+
+export default ToggleSwitch;

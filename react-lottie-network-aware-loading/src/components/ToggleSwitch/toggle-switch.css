@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-.toggle-switch {
+ .toggle-switch {
   display: flex;
   align-items: center;
   padding: 8px;
+  /* ray test touch < */
   font-size: 1.25rem;
+  /* ray test touch > */
 }
 
 .toggle-switch .react-toggle {

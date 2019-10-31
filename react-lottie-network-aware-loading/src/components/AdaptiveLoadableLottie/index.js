@@ -1,34 +1,40 @@
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
+import ToggleSwitch from '../ToggleSwitch';
+import { useNetworkStatus } from '../../utils/hooks';
 
-const AdaptiveLoadable = lazy(() => {
-  return new Promise(resolve => {
-    navigator.connection ? resolve(navigator.connection.effectiveType) : resolve(null);
-  }).then(
-    effectiveType => {
-      console.log('effectiveType => ', effectiveType);
-      switch (effectiveType) {
-        case '4g':
-          return import(/* webpackChunkName: "heavy-with-animation" */ './HeavyWithAnimation');
-        case '3g':
-        case '2g':
-        case 'slow-2g':
-          return import(/* webpackChunkName: "light-with-placeholder" */ './LightWithPlaceholder');
-        default:
-          return import(/* webpackChunkName: "heavy-with-animation" */ './HeavyWithAnimation');
-      }
-    }
+const HeavyWithAnimation = lazy(() => import(/* webpackChunkName: "heavy-with-animation" */ './HeavyWithAnimation'));
+const LightWithPlaceholder = lazy(() => import(/* webpackChunkName: "light-with-placeholder" */ './LightWithPlaceholder'));
+
+const AdaptiveLoadableLottie = () => {
+  const { effectiveConnectionType } = useNetworkStatus();
+  console.log('[AdaptiveLoadableLottie] effectiveConnectionType => ', effectiveConnectionType);
+  const isSlowNetwork = effectiveConnectionType !== '4g';
+  const [slowMode, setSlowMode] = useState(isSlowNetwork);
+
+  const toggleSlowModeHandler = () => {
+    setSlowMode(!slowMode);
+  };
+
+  return (
+    <>
+      <ToggleSwitch
+        label='Slow CPU On/Off'
+        checked={slowMode}
+        onChange={toggleSlowModeHandler} />
+      <LazyLoadingErrorBoundary>
+        <Suspense fallback={<>Loading...</>}>
+          { slowMode ? (
+            <LightWithPlaceholder />
+          ) : (
+            <HeavyWithAnimation />
+          ) }
+        </Suspense>
+      </LazyLoadingErrorBoundary>
+    </>
   );
-});
-
-const AdaptiveLoadableLottie = () => (
-  <LazyLoadingErrorBoundary>
-    <Suspense fallback={<>Loading...</>}>
-      <AdaptiveLoadable />
-    </Suspense>
-  </LazyLoadingErrorBoundary>
-);
+};
 
 export default AdaptiveLoadableLottie;
