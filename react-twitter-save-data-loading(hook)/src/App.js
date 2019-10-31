@@ -49,9 +49,26 @@ const App = () => {
     console.log(`[App] navigator.connection.saveData is ${unsupported ? 'unsupported' : 'supported'}`);
     overriddenSaveData = saveData;
   }
-  
+
   const ListTweet = ({ index, style }) => {
-    const imagePath = `./assets/images/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
+    const entitiesMediaFilename = tweets[index].retweeted_status.entities.media[0].media_url_filename;
+    const extendedEntitiesMediaFilename = tweets[index].retweeted_status.extended_entities.media[0].media_url_filename;
+    const avatarFilename = tweets[index].user.profile_image_url_filename;
+    const retweetedStatusAvatarFilename = tweets[index].retweeted_status.user.profile_image_url_filename;
+
+    const AdaptivePhotosDir = `./assets/photos/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/`;
+
+    const entitiesMediaURL = AdaptivePhotosDir + entitiesMediaFilename;
+    const extendedEntitiesMediaURL = AdaptivePhotosDir + extendedEntitiesMediaFilename;
+    const avatarURL = AdaptivePhotosDir + avatarFilename;
+    const retweetedStatusAvatarURL = AdaptivePhotosDir + retweetedStatusAvatarFilename;
+
+    tweets[index].retweeted_status.entities.media[0].media_url = entitiesMediaURL;
+    tweets[index].retweeted_status.extended_entities.media[0].media_url = extendedEntitiesMediaURL;
+    tweets[index].user.profile_image_url = avatarURL;
+    tweets[index].retweeted_status.user.profile_image_url = retweetedStatusAvatarURL;
+
+    const imagePath = `./assets/photos/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
     return (
       <div className='tweet-stream' style={style}>
         <Tweet
