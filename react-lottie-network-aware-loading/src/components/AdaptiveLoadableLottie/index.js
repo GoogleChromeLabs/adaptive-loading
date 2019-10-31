@@ -4,6 +4,7 @@ import React, { lazy, Suspense, useState } from 'react';
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import ToggleSwitch from '../ToggleSwitch';
 import { useNetworkStatus } from '../../utils/hooks';
+import './adaptive-loadable-lottie.css';
 
 const HeavyWithAnimation = lazy(() => import(/* webpackChunkName: "heavy-with-animation" */ './HeavyWithAnimation'));
 const LightWithPlaceholder = lazy(() => import(/* webpackChunkName: "light-with-placeholder" */ './LightWithPlaceholder'));
@@ -19,7 +20,7 @@ const AdaptiveLoadableLottie = () => {
   };
 
   return (
-    <>
+    <div className='adaptive-loadable-lottie'>
       <ToggleSwitch
         label='Slow CPU On/Off'
         checked={slowMode}
@@ -33,7 +34,7 @@ const AdaptiveLoadableLottie = () => {
           ) }
         </Suspense>
       </LazyLoadingErrorBoundary>
-    </>
+    </div>
   );
 };
 
