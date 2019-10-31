@@ -21,11 +21,3 @@
   min-height: 100vh;
 }
 
-.original-link {
-  padding: 16px;
-  text-decoration: underline;
-}
-
-.original-link > a {
-  color: #fff;
-}
