@@ -18,6 +18,7 @@ import React from 'react';
 
 import Header from './components/Header';
 import MainContent from './components/MainContent';
+import CreditLink from './components/CreditLink';
 import './App.css';
 
 function App() {
@@ -25,9 +26,7 @@ function App() {
     <div className='App'>
       <Header />
       <MainContent />
-      <div className='original-link'>
-        <a href='https://dixiemech.com/gmkdracula/'>Original Dixie Mesh Website</a>
-      </div>
+      <CreditLink href='https://dixiemech.com/gmkdracula/' title='Original Dixie Mesh Website' />
     </div>
   );
 }

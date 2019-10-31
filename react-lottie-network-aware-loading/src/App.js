@@ -17,11 +17,13 @@
 import React from 'react';
 
 import AdaptiveLoadableLottie from './components/AdaptiveLoadableLottie';
+import CreditLink from './components/CreditLink';
 import './App.css';
 
 const App = () => (
   <div className='App'>
     <AdaptiveLoadableLottie />
+    <CreditLink href='https://codepen.io/airnan/full/MPmQQB/' title="Markus Magnusson's Halloween Smashdown by kittons" />
   </div>
 );
 
