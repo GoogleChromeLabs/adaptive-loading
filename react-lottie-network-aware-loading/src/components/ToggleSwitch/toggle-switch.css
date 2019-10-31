@@ -16,6 +16,7 @@
 
  .toggle-switch {
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 8px;
   font-size: 1.25rem;
