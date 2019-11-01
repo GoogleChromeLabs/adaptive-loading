@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-// ray test touch <
 // MEMO: tweak
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -236,4 +235,3 @@ Photos.propTypes = {
 Photos.displayName = 'Photos';
 
 export default Photos;
-// ray test touch >

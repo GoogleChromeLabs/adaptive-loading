@@ -14,34 +14,6 @@
  * limitations under the License.
  */
 
-// MEMO: tweak
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import Photos from './Photos';
-import Video from './Video';
-
-const Media = props => {
-  switch (props.media[0].type) {
-    case 'photo':
-      return <Photos { ...props } />;
-    case 'video':
-      return <Video { ...props } />;
-    case 'animated_gif':
-      return <Video gif { ...props } />;
-    default:
-      return null;
-  };
-};
-
-Media.propTypes = {
-  media: PropTypes.array
-};
-
-Media.defaultProps = {
-  media: [{'type': ''}]
-};
-
-Media.displayName = 'Media';
-
-export default Media;
+.video {
+  max-height: 354.75px !important;
+}

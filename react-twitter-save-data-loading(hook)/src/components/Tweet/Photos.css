@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-/* ray test touch < */
 /* MEMO: tweak */
 .adaptive-photo .load-image {
   position: absolute;
@@ -35,4 +34,3 @@
 .adaptive-photo .load-image:hover {
   background-color: black;
 }
-/* ray test touch > */

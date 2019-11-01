@@ -953,8 +953,8 @@
         "profile_background_image_url": "",
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
-        "profile_image_url": "",
-        "profile_image_url_filename": "4.jpg",
+        "profile_image_url": "./assets/videos/1/poster.jpg",
+        "profile_image_url_filename": "poster.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -1007,12 +1007,12 @@
                         218,
                         241
                     ],
-                    "media_url": "",
-                    "media_url_filename": "4.jpg",
-                    "media_url_https": "",
-                    "url": "",
-                    "display_url": "",
-                    "expanded_url": "",
+                    "media_url": "./assets/videos/1/poster.jpg",
+                    "media_url_filename": "poster.jpg",
+                    "media_url_https": "./assets/videos/1/poster.jpg",
+                    "url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "display_url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "expanded_url": "https://twitter.com/mrdoob/status/1131817655134896128",
                     "type": "photo",
                     "sizes": {
                         "thumb": {
@@ -1048,13 +1048,13 @@
                         218,
                         241
                     ],
-                    "media_url": "",
-                    "media_url_filename": "4.jpg",
-                    "media_url_https": "",
-                    "url": "",
-                    "display_url": "",
-                    "expanded_url": "",
-                    "type": "photo",
+                    "media_url": "./assets/videos/1/poster.jpg",
+                    "media_url_filename": "poster.jpg",
+                    "media_url_https": "./assets/videos/1/poster.jpg",
+                    "url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "display_url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "expanded_url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "type": "video",
                     "sizes": {
                         "thumb": {
                             "w": 150,
@@ -1076,6 +1076,40 @@
                             "h": 451,
                             "resize": "fit"
                         }
+                    },
+                    "video_info": {
+                        "aspect_ratio": [
+                            9,
+                            16
+                        ],
+                        "duration_millis": 8963,
+                        "variants": [
+                            {
+                                "content_type": "application/x-mpegURL",
+                                "url": ""
+                            },
+                            {
+                                "bitrate": 2176000,
+                                "content_type": "video/mp4",
+                                "url": "./assets/videos/1/video.mp4"
+                            },
+                            {
+                                "bitrate": 320000,
+                                "content_type": "video/mp4",
+                                "url": "./assets/videos/1/video.mp4"
+                            },
+                            {
+                                "bitrate": 832000,
+                                "content_type": "video/mp4",
+                                "url": "./assets/videos/1/video.mp4"
+                            }
+                        ]
+                    },
+                    "additional_media_info": {
+                        "title": "",
+                        "description": "",
+                        "embeddable": true,
+                        "monetizable": false
                     }
                 }
             ]
@@ -1131,8 +1165,8 @@
             "profile_background_image_url": "",
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
-            "profile_image_url": "",
-            "profile_image_url_filename": "4.jpg",
+            "profile_image_url": "./assets/videos/1/poster.jpg",
+            "profile_image_url_filename": "poster.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",

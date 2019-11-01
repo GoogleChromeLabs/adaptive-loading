@@ -50,36 +50,42 @@ const App = () => {
     overriddenSaveData = saveData;
   }
 
+  // ray test touch <
   const ListTweet = ({ index, style }) => {
-    const entitiesMediaFilename = tweets[index].retweeted_status.entities.media[0].media_url_filename;
-    const extendedEntitiesMediaFilename = tweets[index].retweeted_status.extended_entities.media[0].media_url_filename;
-    const avatarFilename = tweets[index].user.profile_image_url_filename;
-    const retweetedStatusAvatarFilename = tweets[index].retweeted_status.user.profile_image_url_filename;
+    const mediaType = tweets[index].retweeted_status.extended_entities.media[0].type;
 
-    const AdaptivePhotosDir = `./assets/photos/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/`;
+    if (mediaType === 'photo') {
+      const entitiesMediaFilename = tweets[index].retweeted_status.entities.media[0].media_url_filename;
+      const extendedEntitiesMediaFilename = tweets[index].retweeted_status.extended_entities.media[0].media_url_filename;
+      const avatarFilename = tweets[index].user.profile_image_url_filename;
+      const retweetedStatusAvatarFilename = tweets[index].retweeted_status.user.profile_image_url_filename;
+  
+      const AdaptivePhotosDir = `./assets/photos/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/`;
+  
+      const entitiesMediaURL = AdaptivePhotosDir + entitiesMediaFilename;
+      const extendedEntitiesMediaURL = AdaptivePhotosDir + extendedEntitiesMediaFilename;
+      const avatarURL = AdaptivePhotosDir + avatarFilename;
+      const retweetedStatusAvatarURL = AdaptivePhotosDir + retweetedStatusAvatarFilename;
+  
+      tweets[index].retweeted_status.entities.media[0].media_url = entitiesMediaURL;
+      tweets[index].retweeted_status.extended_entities.media[0].media_url = extendedEntitiesMediaURL;
+      tweets[index].user.profile_image_url = avatarURL;
+      tweets[index].retweeted_status.user.profile_image_url = retweetedStatusAvatarURL;
+    } else if (mediaType === 'video') {
 
-    const entitiesMediaURL = AdaptivePhotosDir + entitiesMediaFilename;
-    const extendedEntitiesMediaURL = AdaptivePhotosDir + extendedEntitiesMediaFilename;
-    const avatarURL = AdaptivePhotosDir + avatarFilename;
-    const retweetedStatusAvatarURL = AdaptivePhotosDir + retweetedStatusAvatarFilename;
+    }
 
-    tweets[index].retweeted_status.entities.media[0].media_url = entitiesMediaURL;
-    tweets[index].retweeted_status.extended_entities.media[0].media_url = extendedEntitiesMediaURL;
-    tweets[index].user.profile_image_url = avatarURL;
-    tweets[index].retweeted_status.user.profile_image_url = retweetedStatusAvatarURL;
-
-    const imagePath = `./assets/photos/${!overriddenSaveData ? IMAGE_TYPE.HEAVY : IMAGE_TYPE.LIGHT}/${index + 1}.jpg`;
     return (
       <div className='tweet-stream' style={style}>
         <Tweet
-          key={imagePath}
+          key={tweets[index].user.profile_image_url}
           linkProps={linkProps}
           autoPlay={true} // TODO: autoplay specification implementation for videos
-          data={tweets[index]}
-          imagePath={imagePath} />
+          data={tweets[index]} />
       </div>
     );
   };
+  // ray test touch >
 
   const itemSize = checkMobile() ? 420 : 540;
   return (
