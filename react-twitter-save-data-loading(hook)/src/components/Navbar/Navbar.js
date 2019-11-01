@@ -38,7 +38,7 @@ const Navbar = ({
           checked={testSaveDataEnabled}
           onChange={enableClientSaveData} />
         <ToggleSwitch
-          label='Save Data'
+          label='Save Data on/off'
           disabled={!testSaveDataEnabled}
           checked={saveData}
           onChange={toggleClientSaveData} />

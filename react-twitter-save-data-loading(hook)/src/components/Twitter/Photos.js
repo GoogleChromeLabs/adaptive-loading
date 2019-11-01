@@ -38,7 +38,7 @@ class Photos extends Component {
   };
 
   render () {
-    const { media } = this.props;
+    const { media, playButton } = this.props;
     const { photoPath } = this.state;
 
     const mediaElements = [];
@@ -207,12 +207,13 @@ class Photos extends Component {
         <div className='AdaptiveMedia-photoContainer' style={containStyle} key={index}>
           { photoPath.includes(IMAGE_TYPE.LIGHT) ? (
             <div className='adaptive-photo'>
-              <img alt='tweet' src={photoPath} style={photoStyle} />
+              <img alt='photo' src={photoPath} style={photoStyle} />
               <button className='load-image'onClick={this.loadImageHandler}>Load Image</button>
             </div>
           ) : (
             <div className='adaptive-photo'>
-              <img alt='tweet' src={photoPath} style={photoStyle} />
+              <img alt='photo' src={photoPath} style={photoStyle} />
+              {playButton}
             </div>
           ) }
         </div>

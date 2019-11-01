@@ -18,7 +18,7 @@ import React, { useState } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
-import Tweet from './components/Tweet/Tweet';
+import Tweet from './components/Twitter/Tweet';
 import Navbar from './components/Navbar/Navbar';
 import tweets from './data/tweets';
 import { IMAGE_TYPE } from './config';
@@ -50,7 +50,6 @@ const App = () => {
     overriddenSaveData = saveData;
   }
 
-  // ray test touch <
   const ListTweet = ({ index, style }) => {
     const mediaType = tweets[index].retweeted_status.extended_entities.media[0].type;
 
@@ -72,7 +71,7 @@ const App = () => {
       tweets[index].user.profile_image_url = avatarURL;
       tweets[index].retweeted_status.user.profile_image_url = retweetedStatusAvatarURL;
     } else if (mediaType === 'video') {
-
+      tweets[index].retweeted_status.extended_entities.media[0].additional_media_info.saveData = overriddenSaveData;
     }
 
     return (
@@ -85,7 +84,6 @@ const App = () => {
       </div>
     );
   };
-  // ray test touch >
 
   const itemSize = checkMobile() ? 420 : 540;
   return (

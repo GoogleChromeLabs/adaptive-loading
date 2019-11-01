@@ -1010,9 +1010,9 @@
                     "media_url": "./assets/videos/1/poster.jpg",
                     "media_url_filename": "poster.jpg",
                     "media_url_https": "./assets/videos/1/poster.jpg",
-                    "url": "https://twitter.com/mrdoob/status/1131817655134896128",
-                    "display_url": "https://twitter.com/mrdoob/status/1131817655134896128",
-                    "expanded_url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "url": "",
+                    "display_url": "",
+                    "expanded_url": "",
                     "type": "photo",
                     "sizes": {
                         "thumb": {
@@ -1051,9 +1051,9 @@
                     "media_url": "./assets/videos/1/poster.jpg",
                     "media_url_filename": "poster.jpg",
                     "media_url_https": "./assets/videos/1/poster.jpg",
-                    "url": "https://twitter.com/mrdoob/status/1131817655134896128",
-                    "display_url": "https://twitter.com/mrdoob/status/1131817655134896128",
-                    "expanded_url": "https://twitter.com/mrdoob/status/1131817655134896128",
+                    "url": "",
+                    "display_url": "",
+                    "expanded_url": "",
                     "type": "video",
                     "sizes": {
                         "thumb": {
@@ -1106,6 +1106,7 @@
                         ]
                     },
                     "additional_media_info": {
+                        "saveData": false,
                         "title": "",
                         "description": "",
                         "embeddable": true,

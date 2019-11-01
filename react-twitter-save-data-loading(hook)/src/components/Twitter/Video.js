@@ -15,14 +15,19 @@
  */
 
 // MEMO: tweak
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import VideoJS from 'react-video-wrapper';
 
+import Photos from './Photos';
 import './Video.css';
 import styles from './styles';
+import play from '../../assets/images/play.webp';
 
 const Video = ({ media, gif, autoPlay }) => {
+  const externalSaveData = media[0].additional_media_info.saveData;
+  const [internalSaveData, setInternalSaveData] = useState(externalSaveData);
+
   let videoSrc = '';
   media[0].video_info.variants.forEach(variant => {
     if (variant.url.includes('.mp4')) {
@@ -44,15 +49,33 @@ const Video = ({ media, gif, autoPlay }) => {
     );
   }
 
+  const playHandler = () => {
+    internalSaveData && setInternalSaveData(false);
+  };
+
+  const playButton = (
+    <button className='play-button' onClick={playHandler}>
+      <img width='100%' src={play} alt='blue play icon' />
+    </button>
+  );
+
   return (
-    <div className='AdaptiveMedia' style={styles.AdaptiveMedia}>
-      {VideoPlayer}
-      { gif && (
-        <div className='AdaptiveMedia-badge' style={styles.AdaptiveMediaBadge}>
-          GIF
+    <>
+      { !internalSaveData ? (
+        <div className='AdaptiveMedia' style={styles.AdaptiveMedia}>
+          {VideoPlayer}
+          { gif && (
+            <div className='AdaptiveMedia-badge' style={styles.AdaptiveMediaBadge}>
+              GIF
+            </div>
+          ) }
         </div>
+      ) : (
+        <Photos
+          media={media}
+          playButton={playButton} />
       ) }
-    </div>
+    </>
   );
 };
 
