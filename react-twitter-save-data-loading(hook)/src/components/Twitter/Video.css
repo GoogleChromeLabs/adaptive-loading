@@ -15,7 +15,7 @@
  */
 
 .video {
-  max-height: 374.75px !important;
+  max-height: 246.75px !important;
 }
 
 .play-button {
@@ -28,4 +28,10 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
+}
+
+@media only screen and (min-width: 600px) {
+  .video {
+    max-height: 374.75px !important;
+  }
 }
