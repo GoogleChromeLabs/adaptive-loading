@@ -14,23 +14,34 @@
  * limitations under the License.
  */
 
-/* MEMO: tweak */
-.adaptive-photo .load-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #555;
-  color: white;
-  font-size: .75em;
-  padding: 8px 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-}
+// MEMO: tweak
+import React from 'react';
+import PropTypes from 'prop-types';
 
-.adaptive-photo .load-image:hover {
-  background-color: black;
-}
+import Photos from './Photos';
+import Video from './Video';
+
+const Media = props => {
+  switch (props.media[0].type) {
+    case 'photo':
+      return <Photos { ...props } />;
+    case 'video':
+      return <Video { ...props } />;
+    case 'animated_gif':
+      return <Video gif { ...props } />;
+    default:
+      return null;
+  };
+};
+
+Media.propTypes = {
+  media: PropTypes.array
+};
+
+Media.defaultProps = {
+  media: [{'type': ''}]
+};
+
+Media.displayName = 'Media';
+
+export default Media;
