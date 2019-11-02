@@ -27,7 +27,7 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 
 ### Data Saver-style patterns
 
-* [React Twitter - save-data loading based on Client Hint](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(client-hint)) ([demo](https://adaptive-loading.web.app/react-twitter-save-data-loading(client-hint)/))
+* [React Twitter - save-data loading based on Client Hint](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(client-hint)) ([demo](https://adaptive-loading.web.app/react-twitter-save-data-loading(client-hint)/), [WPT](https://www.webpagetest.org/video/compare.php?tests=191102_3G_8572f4d652ca8a61fe2750ba7023055d,191102_P6_4062cbe8770d5dc462b327c3c814fc11))
 * [React Twitter - save-data loading based on Hook](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(hook)) ([demo](https://adaptive-loading.web.app/react-twitter-save-data-loading(hook)/))
 
 ### Full applications
