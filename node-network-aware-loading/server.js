@@ -18,7 +18,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const IMAGES_PATH = 'assets/images';
+const IMAGES_PATH = 'public/assets/images';
 
 const app = express();
 app.disable('x-powered-by');
