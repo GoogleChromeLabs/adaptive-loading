@@ -41,9 +41,9 @@ const MemoryConsiderateMedia = () => {
 
   return (
     <div className='root-frame'>
-      <MemoryStatus memoryStatus={memoryStatus} />
       <ModelViewer model='78f50fd5859746a6bdb611c867dd0229' fallbackSrc='https://media.sketchfab.com/urls/78f50fd5859746a6bdb611c867dd0229/dist/thumbnails/27a441be16a14368bea782ae2b1679f5/756e16cc8b1640cb8058f8252edbf51b.jpeg' memoryStatus={memoryStatus} />
       <ModelViewer model='9d66f3c564d54f1b9457520927cfb93a' fallbackSrc='https://media.sketchfab.com/urls/9d66f3c564d54f1b9457520927cfb93a/dist/thumbnails/9b681d8d7ce64d2e93da3f8c2772423a/f862c178058b431ca2b1fa57e5ca59b2.jpeg' memoryStatus={memoryStatus} />
+      <MemoryStatus memoryStatus={memoryStatus} />
     </div>
   );
 };
