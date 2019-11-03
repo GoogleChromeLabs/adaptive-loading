@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 const DEVICE_API_URL = '/api/device/';
 
 const Multicore_Score_Threshold = 4000;

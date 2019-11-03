@@ -19,10 +19,8 @@ import axios from 'axios';
 
 import { DEVICE_API_URL } from '../config';
 
-const unsupportMessage = 'The device is not detected.';
-
 const useDeviceParams = () => {
-  const [deviceParams, setdeviceParams] = useState(null);
+  const [deviceParams, setDeviceParams] = useState(null);
 
   useEffect(() => {
     const getDevice = async () => {
@@ -36,9 +34,9 @@ const useDeviceParams = () => {
       }
   
       if (device) {
-        setdeviceParams({...device});
+        setDeviceParams({...device});
       } else {
-        setdeviceParams({unsupportMessage});
+        setDeviceParams({unsupported: true});
       }
     };
     
