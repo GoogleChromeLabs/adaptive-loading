@@ -1,7 +1,7 @@
 
 # Demo: Device class aware resource loading in React
 
-[Live Demo](https://adaptive-loading.web.app/cra-device-class-aware-loading)
+[Live Demo](https://adaptive-loading.web.app/cra-device-class-aware-code-splitting)
 
 A demo showing how to use device class aware resource loading in React.
 
@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation
 ```
 git clone https://github.com/GoogleChromeLabs/adaptive-loading
-cd cra-device-class-aware-loading
+cd cra-device-class-aware-code-splitting
 ```
 ### local development
 ```
