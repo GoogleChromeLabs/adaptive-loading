@@ -17,7 +17,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const request = require('request');
+
+const IMAGES_PATH = 'assets/images';
 
 const app = express();
 app.disable('x-powered-by');
@@ -33,32 +34,47 @@ app.get('/ping', (req, res) => {
 });
 
 app.get('/connection-aware-image', (req, res) => {
-  let url;
   console.log('[server connection-aware-image request] Effective Connection Type => ', req.headers.ect);
+  let fileName;
   switch(req.headers.ect) {
     case 'slow-2g':
     case '2g':
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912';
+      fileName = 'min-res.jpg';
       break;
     case '3g':
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmedium-res.jpg?v=1562842587169';
+      fileName = 'medium-res.jpg';
       break;
     case '4g':
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
+      fileName = 'max-res.jpg';
       break;
     default:
-      url = 'https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982';
+      fileName = 'max-res.jpg';
       break;
   }
 
-  try {
-    request.get(url).pipe(res);
-  } catch (error) {
-    console.log('[server connection-aware-image request proxy] error => ', error);
-    res.status(500).json({
-      message: error
-    });
-  }
+  const mime = {
+    html: 'text/html',
+    txt: 'text/plain',
+    css: 'text/css',
+    gif: 'image/gif',
+    jpg: 'image/jpeg',
+    png: 'image/png',
+    svg: 'image/svg+xml',
+    js: 'application/javascript'
+  };
+
+  const file = path.join(__dirname, IMAGES_PATH, fileName);
+  const type = mime[path.extname(file).slice(1)] || 'text/plain';
+  const readStream = fs.createReadStream(file);
+  readStream.on('open', function () {
+    res.set('Content-Type', type);
+    readStream.pipe(res);
+  });
+  readStream.on('error', function () {
+    console.log('[server connection-aware-image request] error => ', error);
+    res.set('Content-Type', 'text/plain');
+    res.status(404).end('Not found');
+  });
 });
 
 // need to declare a "catch all" route on your express server 
