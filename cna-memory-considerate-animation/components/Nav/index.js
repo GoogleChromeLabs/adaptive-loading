@@ -22,7 +22,7 @@ import AnimationEmulationContext from '../AnimationEmulationContext';
 
 const githubLink = {
   label: 'GitHub',
-  href: 'https://github.com/anton-karlovskiy/cna-memory-considerate-animation'
+  href: 'https://github.com/kheruc/rt-next-motion'
 };
 
 const Nav = () => {
