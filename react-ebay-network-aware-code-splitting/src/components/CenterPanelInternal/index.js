@@ -37,7 +37,7 @@ const CenterPanelInternal = () => {
     <div className='center-panel-internal'>
       <div className='picture-panel'>
         <LazyLoadingErrorBoundary>
-          <Suspense fallback={<>Loading...</>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Product
               setIsHoverOnProduct={setIsHoverOnProductHandler}
               altMessage="Nike Flex Run 2016 Men's Runinng Shoe Crimson/Black 830369-601 sz 11"

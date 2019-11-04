@@ -64,7 +64,7 @@ const MainContent = () => {
         enableManualTesting={enableManualTestingHandler}
         toggleThreeBox={toggleThreeBoxHandler} />
       <LazyLoadingErrorBoundary>
-        <Suspense fallback={<>Loading</>}>
+        <Suspense fallback={<div>Loading</div>}>
           { !threeBoxAllowed ? (
             <LazyTwoBox />
           ) : (

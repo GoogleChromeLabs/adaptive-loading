@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { lazy, Fragment, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 
@@ -41,7 +41,7 @@ const LazyAdaptiveProductImage = lazy(() => {
 
 const ProductImage = ({ ...rest }) => (
   <LazyLoadingErrorBoundary>
-    <Suspense fallback={<Fragment>Loading...</Fragment>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <LazyAdaptiveProductImage {...rest} />
     </Suspense>
   </LazyLoadingErrorBoundary>

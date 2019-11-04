@@ -41,8 +41,8 @@ const AdaptiveLoadableLottie = () => {
         checked={slowMode}
         onChange={toggleSlowModeHandler} />
       <LazyLoadingErrorBoundary>
-        <Suspense fallback={<>Loading...</>}>
-          {slowMode ? (
+        <Suspense fallback={<div>Loading...</div>}>
+          { slowMode ? (
             <LightWithPlaceholder />
           ) : (
               <HeavyWithAnimation />

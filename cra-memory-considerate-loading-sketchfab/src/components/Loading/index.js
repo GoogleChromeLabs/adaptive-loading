@@ -17,7 +17,7 @@
 import React, { Fragment } from 'react';
 
 const Loading = () => (
-  <Fragment>Loading...</Fragment>
+  <div>Loading...</div>
 );
 
 export default Loading;

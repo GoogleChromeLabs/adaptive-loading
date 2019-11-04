@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-import React, { lazy, Suspense, Fragment } from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useDeviceClass } from '../../utils/hooks';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: 'heavy' */ './Heavy'));
 const LazyLight = lazy(() => import(/* webpackChunkName: 'light' */ './Light'));
-const Loading = <Fragment>Loading...</Fragment>;
+const Loading = <div>Loading...</div>;
 
 const Product = ({ ...rest }) => {
   const { deviceClass, unsupported } = useDeviceClass();

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import ProductSummary from './ProductSummary/ProductSummary';
@@ -38,7 +38,7 @@ const SaleProducts = ({ match }) => {
   }, [match.params.categoryName, match.params.productId]);
 
   if (!selectedProduct || !selectedCategory) {
-    return <Fragment>Loading...</Fragment>;
+    return <div>Loading...</div>;
   }
 
   const productDisplay = !isProductImageOpen ?

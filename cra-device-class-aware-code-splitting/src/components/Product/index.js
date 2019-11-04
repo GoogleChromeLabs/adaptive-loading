@@ -23,7 +23,7 @@ import './product.css';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: "heavy" */ './Heavy'));
 const LazyLight = lazy(() => import(/* webpackChunkName: "light" */ './Light'));
-const Loading = <>Loading...</>;
+const Loading = <div>Loading...</div>;
 
 const DeviceNotice = ({ unsupported, modelName, multicoreScore }) => (
   <>
