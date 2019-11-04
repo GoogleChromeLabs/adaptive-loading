@@ -14,42 +14,10 @@
  * limitations under the License.
  */
 
-body {
-  background-color: #282c34;
-}
+import React from 'react';
 
-.App {
-  text-align: center;
-}
+const Light = ({ imageUrl, ...rest }) => (
+  <img src={imageUrl} alt="product" {...rest} />
+);
 
-.App-header {
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.root-frame {
-  width: 90%;
-  margin-top: 24px;
-}
-
-.responsive {
-  width: 100%;
-  height: auto;
-}
-
-.description {
-  padding: 20px 12px;
-}
-
-.description p {
-  margin-bottom: 12px;
-}
-
-.description a {
-  color: #fff;
-}
+export default Light;

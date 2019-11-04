@@ -3,7 +3,7 @@ multipleBuildsPath="../functions/builds/"
 individualBuildAllFiles="build/*"
 
 for PROJECT in  cra-battery-considerate-loading \
-                cra-device-class-aware-loading \
+                cra-device-class-aware-code-splitting \
                 cra-memory-considerate-loading \
                 cra-memory-considerate-loading-sketchfab  \
                 cra-network-aware-code-splitting \

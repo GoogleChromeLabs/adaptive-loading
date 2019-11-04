@@ -19,6 +19,8 @@ const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 
+const IMAGES_PATH = 'public/assets/images';
+
 const app = express();
 app.disable('x-powered-by');
 app.use(cors());
@@ -51,8 +53,8 @@ app.get('/memory-considerate-image', (req, res) => {
   };
 
   const file = deviceMemory < MEMORY_LIMIT ?
-    path.join(__dirname, 'public', 'assets', 'images', 'min-res.jpg') :
-    path.join(__dirname, 'public', 'assets', 'images', 'max-res.jpg');
+    path.join(__dirname, IMAGES_PATH, 'min-res.jpg') :
+    path.join(__dirname, IMAGES_PATH, 'max-res.jpg');
 
   const dir = path.join(__dirname, 'public');
   if (file.indexOf(dir + path.sep) !== 0) {

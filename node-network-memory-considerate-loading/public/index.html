@@ -24,7 +24,7 @@
     <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width, ECT, Device-Memory">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="app.css">
-    <title>Node ECT Memory Considerate Loading</title>
+    <title>Node Network & Memory Considerate Loading</title>
   </head>
 
   <body data-gr-c-s-loaded="true">
@@ -32,6 +32,9 @@
     <div id="root">
       <div class="App">
         <header class="App-header">
+          <div class="root-frame">
+            <div id="adaptive-content">Loading...</div>
+          </div>
           <div class="description">
             <p>Server side sends down 3D model/image to client side based on ECT and Device Memory Client Hints</p>
             <p>On the device with network connection greater than 4g and memory greater than 4GB:
@@ -40,9 +43,6 @@
             <p>On the device with network connection lower than 4g or memory greater than 4GB: 
               <a href="https://media.sketchfab.com/urls/78f50fd5859746a6bdb611c867dd0229/dist/thumbnails/27a441be16a14368bea782ae2b1679f5/756e16cc8b1640cb8058f8252edbf51b.jpeg">Image</a>
             </p>
-          </div>
-          <div class="root-frame">
-            <div id="adaptive-content">Loading...</div>
           </div>
         </header>
       </div>

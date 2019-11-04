@@ -15,11 +15,10 @@
  */
 
 import React from 'react';
+import Magnifier from 'react-magnifier';
 
-const Light = ({ imageUrl, ...rest }) => {
-  return (
-    <img src={imageUrl} alt="product" {...rest} />
-  );
-};
+const Heavy = ({ imageUrl, ...rest }) => (
+  <Magnifier src={imageUrl} {...rest} />
+);
 
-export default Light;
+export default Heavy;

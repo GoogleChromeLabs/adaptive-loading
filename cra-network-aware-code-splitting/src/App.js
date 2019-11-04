@@ -18,6 +18,7 @@ import React, { lazy, Suspense } from 'react';
 
 import LazyLoadingErrorBoundary from './components/LazyLoadingErrorBoundary';
 import './App.css';
+import kitchen from './assets/images/kitchen.jpg';
 
 const Product = lazy(() => {
   return new Promise(resolve => {
@@ -40,11 +41,11 @@ const Product = lazy(() => {
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <LazyLoadingErrorBoundary>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Product imageUrl="https://cdn.glitch.com/6d4798ba-e1f4-4d61-8df9-177feb77fae9%2Fbecca-tapert-sY5RjMB1KkE-unsplash.jpg?v=1562850498655" width={500} />
+          <Suspense fallback={<>Loading...</>}>
+            <Product imageUrl={kitchen} className='product' />
           </Suspense>
         </LazyLoadingErrorBoundary>
       </header>

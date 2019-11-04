@@ -43,8 +43,8 @@ const MemoryConsiderateMedia = () => {
 
   return (
     <div className='root-frame'>
-      <MemoryStatus memoryStatus={memoryStatus} />
       <ModelViewer src={astronautModel} fallbackSrc={astronautImage} memoryStatus={memoryStatus} />
+      <MemoryStatus memoryStatus={memoryStatus} />
     </div>
   );
 };

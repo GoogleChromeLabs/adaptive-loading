@@ -14,28 +14,29 @@
  * limitations under the License.
  */
 
-import React, { lazy, Suspense, Fragment } from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useDeviceParams } from '../../utils/hooks';
 import { Multicore_Score_Threshold } from '../../config';
+import './product.css';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: "heavy" */ './Heavy'));
 const LazyLight = lazy(() => import(/* webpackChunkName: "light" */ './Light'));
-const Loading = <Fragment>Loading...</Fragment>;
+const Loading = <>Loading...</>;
 
-const DeviceNotice = ({ unsupportMessage, modelName, multicoreScore }) => (
-  <Fragment>
+const DeviceNotice = ({ unsupported, modelName, multicoreScore }) => (
+  <>
     <p>Currently this demo focuses on Android/iOS devices, does not detect Windows phones and desktop machines(Windows & Mac)</p>
-    { unsupportMessage ? (
-      <p>{unsupportMessage}</p>
+    { unsupported ? (
+      <p>The device is not detected.</p>
     ) : (
-      <Fragment>
+      <>
         <p>{`Model: ${modelName}`}</p>
         <p>{`Multicore Score: ${multicoreScore}`}</p>
-      </Fragment>
+      </>
     ) }
-  </Fragment>
+  </>
 );
 
 const Product = ({ imageUrl, ...rest }) => {
@@ -43,23 +44,23 @@ const Product = ({ imageUrl, ...rest }) => {
   
   if (!deviceParams) return Loading;
   
-  const { name, multicore_score, unsupportMessage } = deviceParams;
+  const { name, multicore_score, unsupported } = deviceParams;
   return (
-    <Fragment>
-      <DeviceNotice
-        unsupportMessage={unsupportMessage}
-        modelName={name}
-        multicoreScore={multicore_score} />
+    <div className='product'>
       <LazyLoadingErrorBoundary>
         <Suspense fallback={Loading}>
-          { multicore_score > Multicore_Score_Threshold || unsupportMessage ? (
+          { multicore_score > Multicore_Score_Threshold || unsupported ? (
             <LazyHeavy imageUrl={imageUrl} {...rest} />
           ) : (
             <LazyLight imageUrl={imageUrl} {...rest} />
           ) }
         </Suspense>
       </LazyLoadingErrorBoundary>
-    </Fragment>
+      <DeviceNotice
+        unsupported={unsupported}
+        modelName={name}
+        multicoreScore={multicore_score} />
+    </div>
   );
 };
 

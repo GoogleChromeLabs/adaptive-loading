@@ -1,5 +1,5 @@
 {
-  "name": "cra-device-class-aware-loading",
+  "name": "cra-device-class-aware-code-splitting",
   "version": "0.1.0",
   "homepage": ".",
   "private": true,

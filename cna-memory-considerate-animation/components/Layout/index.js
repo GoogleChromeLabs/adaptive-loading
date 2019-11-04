@@ -31,13 +31,8 @@ const Layout = ({ children, clientHintDeviceMemory, hookMemoryStatus }) => {
       <Head>
         <title>Adaptive Animation</title>
       </Head>
-      { clientHintDeviceMemory ? (
-        <MemoryStatusByClientHint clientHintDeviceMemory={clientHintDeviceMemory} />
-      ) : (
-        <MemoryStatusByHook memoryStatus={hookMemoryStatus} />
-      ) }
-      <div className="page-wrapper">
-        <div className="content-wrapper">
+      <div className='page-wrapper'>
+        <div className='content-wrapper'>
           {children}
         </div>
         <style jsx global>{`
@@ -75,6 +70,11 @@ const Layout = ({ children, clientHintDeviceMemory, hookMemoryStatus }) => {
           }
         `}</style>
       </div>
+      { clientHintDeviceMemory ? (
+        <MemoryStatusByClientHint clientHintDeviceMemory={clientHintDeviceMemory} />
+      ) : (
+        <MemoryStatusByHook memoryStatus={hookMemoryStatus} />
+      ) }
     </div>
   );
 };
