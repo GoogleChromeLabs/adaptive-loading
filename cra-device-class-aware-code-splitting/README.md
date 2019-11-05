@@ -22,12 +22,7 @@ npm run dev
 ```
 npm install  
 npm run build
-```
-
-### production run(e.g. on Glitch)
-```
-npm install  
-npm start
+npm run server
 ```
 
 ## Approach
