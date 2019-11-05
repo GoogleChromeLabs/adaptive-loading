@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subscriptions renders 1`] = `
+<Fragment>
+  <SideBarHeader
+    title="Subscriptions"
+  />
+  <Subscription
+    broadcasting={true}
+    label="PewDiePie"
+  />
+  <Subscription
+    amountNewVideos={10}
+    label="Joe Robinet"
+  />
+  <Subscription
+    amountNewVideos={23}
+    label="Man City"
+  />
+  <Subscription
+    amountNewVideos={4}
+    label="Venture4WD"
+  />
+  <Subscription
+    amountNewVideos={114}
+    label="Achievement Hunter"
+  />
+  <Divider />
+</Fragment>
+`;

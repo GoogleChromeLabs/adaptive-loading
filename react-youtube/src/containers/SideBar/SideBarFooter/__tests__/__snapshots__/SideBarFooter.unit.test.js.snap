@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideBarFooter renders 1`] = `
+<Fragment>
+  <div
+    className="footer-block"
+  >
+    <div>
+      About Press Copyright
+    </div>
+    <div>
+      Creators Advertise
+    </div>
+    <div>
+      Developers +MyTube
+    </div>
+    <div>
+      Legal
+    </div>
+  </div>
+  <div
+    className="footer-block"
+  >
+    <div>
+      Terms Privacy
+    </div>
+    <div>
+      Policy & Safety
+    </div>
+    <div>
+      Test New Features
+    </div>
+  </div>
+  <div
+    className="footer-block"
+  >
+    <div>
+      <a
+        href="https://github.com/marvtron/youtube-react"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        GitHub Repo
+      </a>
+    </div>
+  </div>
+  <div
+    className="footer-block"
+  >
+    <div>
+      © marvtrondev - A Youtube clone for educational purposes under fair use.
+    </div>
+  </div>
+</Fragment>
+`;
