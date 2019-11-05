@@ -1,6 +1,7 @@
 {
-  "name": "youtube-react",
+  "name": "react-youtube-adaptive-loading",
   "version": "0.1.0",
+  "homepage": "/react-youtube-adaptive-loading",
   "private": false,
   "dependencies": {
     "enzyme": "^3.9.0",
