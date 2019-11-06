@@ -15,5 +15,6 @@
  */
 
 const DEV_MODE = true;
+const LOCAL_DEV = true;
 
-export { DEV_MODE };
+export { DEV_MODE, LOCAL_DEV };

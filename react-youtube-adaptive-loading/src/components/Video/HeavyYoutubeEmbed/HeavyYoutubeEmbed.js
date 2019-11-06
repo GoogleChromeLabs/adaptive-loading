@@ -4,6 +4,7 @@ import React from 'react';
 const BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 
 const HeavyYoutubeEmbed = ({ id, className }) => {
+  console.log('[components Video HeavyYoutubeEmbed]');
   const embedUrl = `${BASE_EMBED_URL}${id}`;
   return (
     <iframe

@@ -12,6 +12,12 @@
  *   https://github.com/vb/lazyframe
  */
 class LiteYTEmbed extends HTMLElement {
+  // ray test touch <
+  static get observedAttributes() {
+    return ['data-videoid'];
+  }
+  // ray test touch >
+
   constructor() {
     super();
 
@@ -38,7 +44,7 @@ class LiteYTEmbed extends HTMLElement {
     this.posterUrl = `https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg`;
     // Warm the connection for the poster image
     LiteYTEmbed.addPrefetch('preload', this.posterUrl, 'image');
-    // TODO: support dynamically setting the attribute via attributeChangedCallback
+    // TODO: Support dynamically setting the attribute via attributeChangedCallback
   }
 
   connectedCallback() {
@@ -57,9 +63,12 @@ class LiteYTEmbed extends HTMLElement {
     this.addEventListener('click', e => this.addIframe());
   }
 
-  // // TODO: Support the the user changing the [videoid] attribute
-  // attributeChangedCallback() {
-  // }
+  // ray test touch <
+  // TODO: Support the the user changing the [videoid] attribute
+  attributeChangedCallback() {
+    console.log('[LiteYTEmbed attributeChangedCallback]');
+  }
+  // ray test touch >
 
   /**
    * Add a <link rel={preload | preconnect} ...> to the head
