@@ -7,7 +7,7 @@ import {fetchEntity} from './index';
 export function* fetchCommentThread(videoId, nextPageToken) {
   const request = api.buildCommentThreadRequest.bind(null, videoId, nextPageToken);
   yield fetchEntity(request, commentActions.thread, videoId);
-}
+};
 
 /******************************************************************************/
 /******************************* WATCHERS *************************************/
@@ -17,4 +17,4 @@ export function* watchCommentThread() {
     const {videoId, nextPageToken} = yield take(commentActions.COMMENT_THREAD[REQUEST]);
     yield fork(fetchCommentThread, videoId, nextPageToken);
   }
-}
+};

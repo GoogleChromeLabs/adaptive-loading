@@ -1,68 +1,108 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
-import * as watchActions from '../../store/actions/watch';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {getYoutubeLibraryLoaded} from '../../store/reducers/api';
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import WatchContent from './WatchContent/WatchContent';
-import {getSearchParam} from '../../services/url';
-import {getChannelId} from '../../store/reducers/videos';
-import {getCommentNextPageToken} from '../../store/reducers/comments';
+import * as watchActions from '../../store/actions/watch';
+import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
+import { getChannelId } from '../../store/reducers/videos';
+import { getCommentNextPageToken } from '../../store/reducers/comments';
 import * as commentActions from '../../store/actions/comment';
+import { getSearchParam } from '../../services/url';
+import { useNetworkStatus, useMemoryStatus, useHardwareConcurrency } from '../../utils/hooks';
+import { ADAPTIVE_FACTORS } from '../../config';
 
-
-export class Watch extends React.Component {
-  render() {
-    const videoId = this.getVideoId();
-    return (
-      <WatchContent videoId={videoId} channelId={this.props.channelId} bottomReachedCallback={this.fetchMoreComments}
-                    nextPageToken={this.props.nextPageToken}/>
-    );
-  }
-
-  componentDidMount() {
-    if (this.props.youtubeLibraryLoaded) {
-      this.fetchWatchContent();
+const Watch = ({
+  youtubeLibraryLoaded,
+  location,
+  history,
+  fetchWatchDetails,
+  channelId,
+  nextPageToken,
+  fetchCommentThread
+}) => {
+  useEffect(() => {
+    if (youtubeLibraryLoaded) {
+      fetchWatchContent();
     }
-  }
+  // eslint-disable-next-line
+  }, []);
 
-  componentDidUpdate(prevProps) {
-    if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded) {
-      this.fetchWatchContent();
-    }
-  }
+  useEffect(() => {
+    fetchWatchContent();
+  // eslint-disable-next-line
+  }, [youtubeLibraryLoaded]);
 
-  getVideoId() {
-    return getSearchParam(this.props.location, 'v');
-  }
+  const { effectiveConnectionType } = useNetworkStatus();
+  const { deviceMemory } = useMemoryStatus();
+  const { numberOfLogicalProcessors } = useHardwareConcurrency();
 
-  fetchWatchContent() {
-    const videoId = this.getVideoId();
+  const isHeavyExperience =
+    effectiveConnectionType === ADAPTIVE_FACTORS.ECT_LIMIT &&
+    deviceMemory > ADAPTIVE_FACTORS.DEVICE_MEMORY_LIMIT &&
+    numberOfLogicalProcessors > ADAPTIVE_FACTORS.HARDWARE_CONCURRENCY_LIMIT;
+
+  console.log('[containers Watch] isHeavyExperience => ', isHeavyExperience);
+
+  const getVideoId = () => {
+    return getSearchParam(location, 'v');
+  };
+
+  const fetchWatchContent = () => {
+    const videoId = getVideoId();
     if (!videoId) {
-      this.props.history.push('/');
+      history.push('/');
     }
-    this.props.fetchWatchDetails(videoId, this.props.channelId);
-  }
+    fetchWatchDetails(videoId, channelId, isHeavyExperience);
+  };
 
-  fetchMoreComments = () => {
-    if (this.props.nextPageToken) {
-      this.props.fetchCommentThread(this.getVideoId(), this.props.nextPageToken);
+  const fetchMoreComments = () => {
+    if (nextPageToken && isHeavyExperience) {
+      fetchCommentThread(getVideoId(), nextPageToken);
     }
   };
-}
 
-function mapStateToProps(state, props) {
+  const videoId = getVideoId();
+
+  return (
+    <WatchContent
+      isHeavyExperience={isHeavyExperience}
+      videoId={videoId}
+      channelId={channelId}
+      bottomReachedCallback={fetchMoreComments}
+      nextPageToken={nextPageToken} />
+  );
+};
+
+const mapStateToProps = (state, props) => {
   return {
     youtubeLibraryLoaded: getYoutubeLibraryLoaded(state),
     channelId: getChannelId(state, props.location, 'v'),
     nextPageToken: getCommentNextPageToken(state, props.location),
   };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   const fetchWatchDetails = watchActions.details.request;
   const fetchCommentThread = commentActions.thread.request;
   return bindActionCreators({fetchWatchDetails, fetchCommentThread}, dispatch);
-}
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Watch));

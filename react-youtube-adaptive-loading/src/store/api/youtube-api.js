@@ -1,143 +1,166 @@
-export function buildVideoCategoriesRequest() {
-    return buildApiRequest('GET',
-      '/youtube/v3/videoCategories',
-      {
-        'part': 'snippet',
-        'regionCode': 'US'
-      }, null);
+/*
+ * Copyright 2019 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+export const buildVideoCategoriesRequest = () => {
+  return buildApiRequest('GET',
+    '/youtube/v3/videoCategories', {
+      'part': 'snippet',
+      'regionCode': 'US'
+    },
+    null
+  );
+};
+
+export const buildMostPopularVideosRequest = (amount = 12, loadDescription = false, nextPageToken, videoCategoryId = null) => {
+  let fields = 'nextPageToken,prevPageToken,items(contentDetails/duration,id,snippet(channelId,channelTitle,publishedAt,thumbnails/medium,title),statistics/viewCount),pageInfo(totalResults)';
+  if (loadDescription) {
+    fields += ',items/snippet/description';
   }
-  
-  export function buildMostPopularVideosRequest(amount = 12, loadDescription = false, nextPageToken, videoCategoryId = null) {
-    let fields = 'nextPageToken,prevPageToken,items(contentDetails/duration,id,snippet(channelId,channelTitle,publishedAt,thumbnails/medium,title),statistics/viewCount),pageInfo(totalResults)';
-    if (loadDescription) {
-      fields += ',items/snippet/description';
+  return buildApiRequest('GET',
+    '/youtube/v3/videos', {
+      part: 'snippet,statistics,contentDetails',
+      chart: 'mostPopular',
+      maxResults: amount,
+      regionCode: 'US',
+      pageToken: nextPageToken,
+      fields,
+      videoCategoryId,
+    },
+    null
+  );
+};
+
+export const buildVideoDetailRequest = videoId => {
+  return buildApiRequest('GET',
+    '/youtube/v3/videos', {
+      part: 'snippet,statistics,contentDetails',
+      id: videoId,
+      fields: 'kind,items(contentDetails/duration,id,snippet(channelId,channelTitle,description,publishedAt,thumbnails/medium,title),statistics)'
+    },
+    null
+  );
+};
+
+export const buildChannelRequest = channelId => {
+  return buildApiRequest('GET',
+    '/youtube/v3/channels', {
+      part: 'snippet,statistics',
+      id: channelId,
+      fields: 'kind,items(id,snippet(description,thumbnails/medium,title),statistics/subscriberCount)'
+    },
+    null
+  );
+};
+
+export const buildCommentThreadRequest = (videoId, nextPageToken) => {
+  return buildApiRequest('GET',
+    '/youtube/v3/commentThreads', {
+      part: 'id,snippet',
+      pageToken: nextPageToken,
+      videoId
+    },
+    null
+  );
+};
+
+export const buildSearchRequest = (query, nextPageToken, amount = 12) => {
+  return buildApiRequest('GET',
+    '/youtube/v3/search', {
+      part: 'id,snippet',
+      q: query,
+      type: 'video',
+      pageToken: nextPageToken,
+      maxResults: amount
+    },
+    null
+  );
+};
+
+export const buildRelatedVideosRequest = (videoId, amountRelatedVideos = 12) => {
+  return buildApiRequest('GET',
+    '/youtube/v3/search', {
+      part: 'snippet',
+      type: 'video',
+      maxResults: amountRelatedVideos,
+      relatedToVideoId: videoId
+    },
+    null
+  );
+};
+
+/*
+  Util - Youtube API boilerplate code
+  */
+export const buildApiRequest = (requestMethod, path, params, properties) => {
+  params = removeEmptyParams(params);
+  let request;
+  if (properties) {
+    let resource = createResource(properties);
+    request = window.gapi.client.request({
+      'body': resource,
+      'method': requestMethod,
+      'path': path,
+      'params': params
+    });
+  } else {
+    request = window.gapi.client.request({
+      'method': requestMethod,
+      'path': path,
+      'params': params
+    });
+  }
+  return request;
+};
+
+const removeEmptyParams = params => {
+  for (const param in params) {
+    if (!params[param] || params[param] === 'undefined') {
+      delete params[param];
     }
-    return buildApiRequest('GET',
-      '/youtube/v3/videos',
-      {
-        part: 'snippet,statistics,contentDetails',
-        chart: 'mostPopular',
-        maxResults: amount,
-        regionCode: 'US',
-        pageToken: nextPageToken,
-        fields,
-        videoCategoryId,
-      }, null);
   }
-  
-  export function buildVideoDetailRequest(videoId) {
-    return buildApiRequest('GET',
-      '/youtube/v3/videos',
-      {
-        part: 'snippet,statistics,contentDetails',
-        id: videoId,
-        fields: 'kind,items(contentDetails/duration,id,snippet(channelId,channelTitle,description,publishedAt,thumbnails/medium,title),statistics)'
-      }, null);
-  }
-  
-  export function buildChannelRequest(channelId) {
-    return buildApiRequest('GET',
-      '/youtube/v3/channels',
-      {
-        part: 'snippet,statistics',
-        id: channelId,
-        fields: 'kind,items(id,snippet(description,thumbnails/medium,title),statistics/subscriberCount)'
-      }, null);
-  }
-  
-  export function buildCommentThreadRequest(videoId, nextPageToken) {
-    return buildApiRequest('GET',
-      '/youtube/v3/commentThreads',
-      {
-        part: 'id,snippet',
-        pageToken: nextPageToken,
-        videoId,
-      }, null);
-  }
-  
-  export function buildSearchRequest(query, nextPageToken, amount = 12) {
-    return buildApiRequest('GET',
-      '/youtube/v3/search',
-      {
-        part: 'id,snippet',
-        q: query,
-        type: 'video',
-        pageToken: nextPageToken,
-        maxResults: amount,
-      }, null);
-  }
-  
-  export function buildRelatedVideosRequest(videoId, amountRelatedVideos = 12) {
-    return buildApiRequest('GET',
-      '/youtube/v3/search',
-      {
-        part: 'snippet',
-        type: 'video',
-        maxResults: amountRelatedVideos,
-        relatedToVideoId: videoId,
-      }, null);
-  }
-  
-  /*
-    Util - Youtube API boilerplate code
-   */
-  export function buildApiRequest(requestMethod, path, params, properties) {
-    params = removeEmptyParams(params);
-    let request;
-    if (properties) {
-      let resource = createResource(properties);
-      request = window.gapi.client.request({
-        'body': resource,
-        'method': requestMethod,
-        'path': path,
-        'params': params
-      });
-    } else {
-      request = window.gapi.client.request({
-        'method': requestMethod,
-        'path': path,
-        'params': params
-      });
-    }
-    return request;
-  }
-  
-  function removeEmptyParams(params) {
-    for (var p in params) {
-      if (!params[p] || params[p] === 'undefined') {
-        delete params[p];
+  return params;
+};
+
+const createResource = properties => {
+  let resource = {};
+  let normalizedProps = properties;
+  for (const property in properties) {
+    const value = properties[property];
+    if (property && property.substr(-2, 2) === '[]') {
+      const adjustedName = property.replace('[]', '');
+      if (value) {
+        normalizedProps[adjustedName] = value.split(',');
       }
+      delete normalizedProps[property];
     }
-    return params;
   }
-  
-  function createResource(properties) {
-    var resource = {};
-    var normalizedProps = properties;
-    for (var p in properties) {
-      var value = properties[p];
-      if (p && p.substr(-2, 2) === '[]') {
-        var adjustedName = p.replace('[]', '');
-        if (value) {
-          normalizedProps[adjustedName] = value.split(',');
+  for (const prop in normalizedProps) {
+    // Leave properties that don't have values out of inserted resource.
+    if (normalizedProps.hasOwnProperty(prop) && normalizedProps[prop]) {
+      let propArray = prop.split('.');
+      let ref = resource;
+      for (let pa = 0; pa < propArray.length; pa++) {
+        const key = propArray[pa];
+        if (pa === propArray.length - 1) {
+          ref[key] = normalizedProps[prop];
+        } else {
+          ref = ref[key] = ref[key] || {};
         }
-        delete normalizedProps[p];
       }
     }
-    for (var prop in normalizedProps) {
-      // Leave properties that don't have values out of inserted resource.
-      if (normalizedProps.hasOwnProperty(prop) && normalizedProps[prop]) {
-        var propArray = prop.split('.');
-        var ref = resource;
-        for (var pa = 0; pa < propArray.length; pa++) {
-          var key = propArray[pa];
-          if (pa === propArray.length - 1) {
-            ref[key] = normalizedProps[prop];
-          } else {
-            ref = ref[key] = ref[key] || {};
-          }
-        }
-      }
-    }
-    return resource;
   }
+  return resource;
+};

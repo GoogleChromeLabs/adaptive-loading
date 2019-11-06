@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import Video from '../../../components/Video/Video';
@@ -29,41 +29,47 @@ import { getCommentsForVideo } from '../../../store/reducers/comments';
 import './WatchContent.scss';
 import { DEV_MODE } from '../../../config';
 
-class WatchContent extends Component {
-  shouldShowLoader = () => {
-    const { nextPageToken } = this.props;
+const WatchContent = ({
+  nextPageToken,
+  videoId,
+  video,
+  channel,
+  relatedVideos,
+  comments,
+  amountComments,
+  bottomReachedCallback,
+  isHeavyExperience
+}) => {
+  const shouldShowLoader = () => {
     return !!nextPageToken;
   };
 
-  render() {
-    let { videoId, video, channel, relatedVideos, comments, amountComments, bottomReachedCallback } = this.props;
-
-    if (DEV_MODE) {
-      videoId = '3C0btIJjrW8';
-      video = require('../../../dummy-data/watch/video.json');
-      channel = require('../../../dummy-data/watch/channel.json');
-      relatedVideos = require('../../../dummy-data/watch/related-videos.json');
-      comments = require('../../../dummy-data/watch/comments.json');
-      amountComments = 9473;
-    }
-
-    if (!videoId) {
-      return <div />
-    }
-
-    return (
-      <InfiniteScroll bottomReachedCallback={bottomReachedCallback} showLoader={this.shouldShowLoader()}>
-        <div className='watch-grid'>
-          <Video className='video' id={videoId}/>
-          <VideoMetadata className='metadata' video={video}/>
-          <VideoInfoBox className='video-info-box' video={video} channel={channel}/>
-          <RelatedVideos className='related-videos' videos={relatedVideos}/>
-          <Comments className='comments' comments={comments} amountComments={amountComments}/>
-        </div>
-      </InfiniteScroll>
-    );
+  if (DEV_MODE) {
+    videoId = '3C0btIJjrW8';
+    video = require('../../../dummy-data/watch/video.json');
+    channel = require('../../../dummy-data/watch/channel.json');
+    const dummyRelatedVideos = require('../../../dummy-data/watch/related-videos.json');
+    relatedVideos = isHeavyExperience ? dummyRelatedVideos : dummyRelatedVideos.slice(0, dummyRelatedVideos.length / 2);
+    comments = isHeavyExperience ? require('../../../dummy-data/watch/comments.json') : [];
+    amountComments = 9473;
   }
-}
+
+  if (!videoId) {
+    return <div />
+  }
+
+  return (
+    <InfiniteScroll bottomReachedCallback={bottomReachedCallback} showLoader={shouldShowLoader()}>
+      <div className='watch-grid'>
+        <Video className='video' id={videoId} />
+        <VideoMetadata className='metadata' video={video} />
+        <VideoInfoBox className='video-info-box' video={video} channel={channel} />
+        <RelatedVideos className='related-videos' videos={relatedVideos} />
+        <Comments className='comments' comments={comments} amountComments={amountComments} />
+      </div>
+    </InfiniteScroll>
+  );
+};
 
 const mapStateToProps = (state, props) => {
   return {
@@ -72,7 +78,7 @@ const mapStateToProps = (state, props) => {
     channel: getChannel(state, props.channelId),
     comments: getCommentsForVideo(state, props.videoId),
     amountComments: getAmountComments(state, props.videoId)
-  }
+  };
 };
 
 export default connect(mapStateToProps, null)(WatchContent);

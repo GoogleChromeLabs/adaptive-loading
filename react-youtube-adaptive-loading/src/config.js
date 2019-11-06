@@ -17,4 +17,14 @@
 const DEV_MODE = true;
 const LOCAL_DEV = true;
 
-export { DEV_MODE, LOCAL_DEV };
+const ADAPTIVE_FACTORS = {
+  ECT_LIMIT: '4g',
+  DEVICE_MEMORY_LIMIT: 4,
+  HARDWARE_CONCURRENCY_LIMIT: 4
+};
+
+export {
+  DEV_MODE,
+  LOCAL_DEV,
+  ADAPTIVE_FACTORS
+};

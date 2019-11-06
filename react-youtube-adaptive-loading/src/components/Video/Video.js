@@ -3,14 +3,11 @@ import React, { lazy, Suspense } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useNetworkStatus, useMemoryStatus, useHardwareConcurrency } from '../../utils/hooks';
+import { ADAPTIVE_FACTORS } from '../../config';
 import './Video.scss';
 
 const LazyHeavyYoutubeEmbed = lazy(() => import(/* webpackChunkName: "heavy-youtube-embed" */ './HeavyYoutubeEmbed/HeavyYoutubeEmbed'));
 const LazyLiteYoutubeEmbed = lazy(() => import(/* webpackChunkName: "lite-youtube-embed" */ './LiteYoutubeEmbed/LiteYoutubeEmbed'));
-
-const ECT_LIMIT = '4g';
-const DEVICE_MEMORY_LIMIT = 4;
-const HARDWARE_CONCURRENCY_LIMIT = 4;
 
 const Video = ({ id }) => {
   const { effectiveConnectionType } = useNetworkStatus();
@@ -22,9 +19,10 @@ const Video = ({ id }) => {
     return null;
   }
 
-  const isHeavyExperience = effectiveConnectionType === ECT_LIMIT &&
-    deviceMemory > DEVICE_MEMORY_LIMIT &&
-    numberOfLogicalProcessors > HARDWARE_CONCURRENCY_LIMIT;
+  const isHeavyExperience =
+    effectiveConnectionType === ADAPTIVE_FACTORS.ECT_LIMIT &&
+    deviceMemory > ADAPTIVE_FACTORS.DEVICE_MEMORY_LIMIT &&
+    numberOfLogicalProcessors > ADAPTIVE_FACTORS.HARDWARE_CONCURRENCY_LIMIT;
 
   return (
     <div className='video-container'>

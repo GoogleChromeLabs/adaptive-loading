@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -29,12 +29,13 @@ import { DEV_MODE } from './config';
 
 const API_KEY = DEV_MODE ? '' : 'AIzaSyBFTmwce1IplDO3zFslqpJaM5a5KLsIL70';
 
-class App extends Component {
-  componentDidMount() {
-    this.loadYoutubeApi();
-  }
+const App = ({ youtubeLibraryLoaded, location }) => {
+  useEffect(() => {
+    loadYoutubeApi();
+  // eslint-disable-next-line
+  }, []);
 
-  loadYoutubeApi = () => {
+  const loadYoutubeApi = () => {
     const script = document.createElement('script');
     script.src = 'https://apis.google.com/js/client.js';
 
@@ -42,7 +43,7 @@ class App extends Component {
       window.gapi.load('client', () => {
         window.gapi.client.setApiKey(API_KEY);
         window.gapi.client.load('youtube', 'v3', () => {
-          this.props.youtubeLibraryLoaded();
+          youtubeLibraryLoaded();
         });
       });
     };
@@ -50,19 +51,17 @@ class App extends Component {
     document.body.appendChild(script);
   };
 
-  render() {
-    return (
-      <AppLayout>
-        <Switch>
-          <Route path='/feed/trending' component={Trending}/>
-          <Route path='/results' render={() => <Search key={this.props.location.key}/>}/>
-          <Route path='/watch' render={() => <Watch key={this.props.location.key}/>}/>
-          <Route path='/' component={Home}/>
-        </Switch>
-      </AppLayout>
-    );
-  }
-}
+  return (
+    <AppLayout>
+      <Switch>
+        <Route path='/feed/trending' component={Trending}/>
+        <Route path='/results' render={() => <Search key={location.key}/>}/>
+        <Route path='/watch' render={() => <Watch key={location.key}/>}/>
+        <Route path='/' component={Home}/>
+      </Switch>
+    </AppLayout>
+  );
+};
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({youtubeLibraryLoaded}, dispatch);
