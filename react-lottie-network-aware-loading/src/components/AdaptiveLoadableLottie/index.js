@@ -37,16 +37,16 @@ const AdaptiveLoadableLottie = () => {
   return (
     <div className='adaptive-loadable-lottie'>
       <ToggleSwitch
-        label='Slow CPU On/Off'
+        label='Slow network On/Off'
         checked={slowMode}
         onChange={toggleSlowModeHandler} />
       <LazyLoadingErrorBoundary>
         <Suspense fallback={<>Loading...</>}>
-          { slowMode ? (
+          {slowMode ? (
             <LightWithPlaceholder />
           ) : (
-            <HeavyWithAnimation />
-          ) }
+              <HeavyWithAnimation />
+            )}
         </Suspense>
       </LazyLoadingErrorBoundary>
     </div>
