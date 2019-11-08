@@ -206,6 +206,10 @@ const MyComponent = () => {
 * [React Twitter - save-data loading based on Client Hint](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(client-hint)) ([Live](https://adaptive-loading.web.app/react-twitter-save-data-loading(client-hint)/))
 * [React Twitter - save-data loading based on Hook](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-twitter-save-data-loading(hook)) ([Live](https://adaptive-loading.web.app/react-twitter-save-data-loading(hook)/))
 
+### Hybrid
+
+* [React Youtube - adaptive loading with mix of network, memory and hardware concurrency](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-youtube-adaptive-loading) ([Live](https://adaptive-loading.web.app/react-youtube-adaptive-loading/))
+
 ## References
 
 * [Adaptive serving based on network quality](https://web.dev/adaptive-serving-based-on-network-quality/)

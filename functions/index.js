@@ -30,6 +30,11 @@ const SIMILARITY_THRESHOLD = .88;
 const BUILD_PATH ='builds';
 const IMAGES_PATH = 'assets/images';
 
+// projects with client side routing
+const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
+const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
+const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
+
 app.disable('x-powered-by');
 app.use(cors());
 app.use(express.static(path.join(__dirname, BUILD_PATH)));
@@ -219,9 +224,23 @@ app.get('/save-data', (req, res) => {
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 // the react-router do the route part
+
+app.get(`/${REACT_MOVIE_NETWORK_AWARE_LOADING}/*`, (req, res) => {
+  res.sendFile(path.join(__dirname, BUILD_PATH, REACT_MOVIE_NETWORK_AWARE_LOADING, 'index.html'));
+});
+
+app.get(`/${REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING}/*`, (req, res) => {
+  res.sendFile(path.join(__dirname, BUILD_PATH, REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING, 'index.html'));
+});
+
+app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
+  res.sendFile(path.join(__dirname, BUILD_PATH, REACT_YOUTUBE_ADAPTIVE_LOADING, 'index.html'));
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, BUILD_PATH));
 });
+
 app.listen(
   process.env.PORT || 5000,
   () => {

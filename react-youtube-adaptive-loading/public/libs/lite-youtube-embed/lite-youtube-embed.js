@@ -1,4 +1,3 @@
-
 /**
  * A lightweight youtube embed. Still should feel the same to the user, just MUCH faster to initialize and paint.
  *
@@ -11,12 +10,12 @@
  *   https://github.com/Daugilas/lazyYT
  *   https://github.com/vb/lazyframe
  */
+
 class LiteYTEmbed extends HTMLElement {
-  // ray test touch <
+  // TODO: Support the the user changing the [videoid] attribute
   static get observedAttributes() {
     return ['data-videoid'];
   }
-  // ray test touch >
 
   constructor() {
     super();
@@ -63,12 +62,10 @@ class LiteYTEmbed extends HTMLElement {
     this.addEventListener('click', e => this.addIframe());
   }
 
-  // ray test touch <
   // TODO: Support the the user changing the [videoid] attribute
   attributeChangedCallback() {
     console.log('[LiteYTEmbed attributeChangedCallback]');
   }
-  // ray test touch >
 
   /**
    * Add a <link rel={preload | preconnect} ...> to the head
