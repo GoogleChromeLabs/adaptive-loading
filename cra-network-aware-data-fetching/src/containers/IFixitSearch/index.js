@@ -28,8 +28,6 @@ const IFixitSearch = () => {
   const { effectiveConnectionType, unsupported } = useNetworkStatus();
   let searchLimit;
   switch (effectiveConnectionType) {
-    // case 'offline':
-    //   break;
     case 'slow-2g':
     case '2g':
       searchLimit = 5;
@@ -44,6 +42,8 @@ const IFixitSearch = () => {
       searchLimit = 40;
       break;
   }
+
+  console.log('[containers IFixitSearch] effectiveConnectionType, searchLimit => ', effectiveConnectionType, searchLimit);
 
   const searchHandler = searchKey => {
     if (!searchKey) return;

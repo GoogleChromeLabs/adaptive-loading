@@ -45,8 +45,8 @@ const ConnectionAwareMedia = () => {
 
   return (
     <div className='root-frame'>
-      { unsupported && <p>The Network Information API is not supported on this platform.</p> }
       {media}
+      { unsupported && <p>The Network Information API is not supported on this platform.</p> }
     </div>
   );
 };

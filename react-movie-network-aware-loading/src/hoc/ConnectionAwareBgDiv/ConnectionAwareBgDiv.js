@@ -24,8 +24,6 @@ const ConnectionAwareBgDiv = ({ children, backdropPath, ...rest }) => {
 
   let backdropSize;
   switch(effectiveConnectionType) {
-    // case 'offline':
-    //   break;
     case 'slow-2g':
       backdropSize = 'w300';
       break;
@@ -42,6 +40,8 @@ const ConnectionAwareBgDiv = ({ children, backdropPath, ...rest }) => {
       backdropSize = 'w1280';
       break;
   }
+
+  console.log('[hoc ConnectionAwareBgDiv] effectiveConnectionType, backdropSize => ', effectiveConnectionType, backdropSize);
 
   if (!BACKDROP_SIZES.has(backdropSize)) {
     throw new Error('the backdrop size is not supported');
