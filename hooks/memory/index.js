@@ -16,8 +16,9 @@
 
 import { useState } from 'react';
 
+let unsupported;
+
 const useMemoryStatus = () => {
-  let unsupported;
   if ('deviceMemory' in navigator) {
     unsupported = false;
   } else {
@@ -37,9 +38,9 @@ const useMemoryStatus = () => {
     initialMemoryStatus = {unsupported};
   }
 
-  const [memoryStatus, setMemoryStatus] = useState(initialMemoryStatus);
+  const [memoryStatus] = useState(initialMemoryStatus);
 
-  return { ...memoryStatus, setMemoryStatus };
+  return { ...memoryStatus };
 };
 
 export { useMemoryStatus };

@@ -16,8 +16,9 @@
 
 import { useState, useEffect } from 'react';
 
+let unsupported;
+
 const useBatteryStatus = () => {
-  let unsupported;
   if ('getBattery' in navigator) {
     unsupported = false;
   } else {
@@ -44,25 +45,24 @@ const useBatteryStatus = () => {
     });
   };
 
-  const monitorBattery = battery => {
-    // Update the initial UI
-    updateBatteryStatus(battery);
-  
-    // Monitor for futher updates
-    battery.addEventListener('levelchange', updateBatteryStatus.bind(null, battery));
-    battery.addEventListener('chargingchange', updateBatteryStatus.bind(null, battery));
-    battery.addEventListener('dischargingtimechange', updateBatteryStatus.bind(null, battery));
-    battery.addEventListener('chargingtimechange', updateBatteryStatus.bind(null, battery));
-  };
-
   useEffect(() => {
     if (!unsupported) {
+      const monitorBattery = battery => {
+        // Update the initial UI
+        updateBatteryStatus(battery);
+      
+        // Monitor for futher updates
+        battery.addEventListener('levelchange', updateBatteryStatus.bind(null, battery));
+        battery.addEventListener('chargingchange', updateBatteryStatus.bind(null, battery));
+        battery.addEventListener('dischargingtimechange', updateBatteryStatus.bind(null, battery));
+        battery.addEventListener('chargingtimechange', updateBatteryStatus.bind(null, battery));
+      };
+
       navigator.getBattery().then(monitorBattery);
     }
-  // eslint-disable-next-line
   }, []);
 
-  return { ...batteryStatus, updateBatteryStatus, monitorBattery };
+  return { ...batteryStatus, updateBatteryStatus };
 };
 
 export { useBatteryStatus };

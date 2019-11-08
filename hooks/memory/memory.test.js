@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 
 import { useMemoryStatus } from './';
 
@@ -49,23 +49,6 @@ describe('useMemoryStatus', () => {
     };
 
     const { result } = renderHook(() => useMemoryStatus());
-
-    expect(getMemoryStatus(result.current)).toEqual(mockMemoryStatus);
-  });
-  
-  test('should set memory status', () => {
-    const { result } = renderHook(() => useMemoryStatus());
-
-    const mockMemoryStatus = {
-      deviceMemory: 10,
-      totalJSHeapSize: 10,
-      usedJSHeapSize: 10,
-      jsHeapSizeLimit: 10
-    };
-
-    act(() => {
-      result.current.setMemoryStatus(mockMemoryStatus);
-    });
 
     expect(getMemoryStatus(result.current)).toEqual(mockMemoryStatus);
   });

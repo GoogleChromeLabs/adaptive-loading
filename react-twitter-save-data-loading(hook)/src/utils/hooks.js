@@ -16,8 +16,9 @@
 
 import { useState } from 'react';
 
+let unsupported;
+
 const useSaveData = () => {
-  let unsupported;
   if ('connection' in navigator && 'saveData' in navigator.connection) {
     unsupported = false;
   } else {
@@ -25,9 +26,9 @@ const useSaveData = () => {
   }
 
   const initialSaveData = unsupported ? null : navigator.connection.saveData === true;
-  const [saveData, setSaveData] = useState(initialSaveData);
+  const [saveData] = useState(initialSaveData);
 
-  return { unsupported, saveData, setSaveData };
+  return { unsupported, saveData };
 };
 
 export { useSaveData };

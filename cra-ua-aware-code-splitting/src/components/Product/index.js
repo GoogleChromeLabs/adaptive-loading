@@ -18,6 +18,7 @@ import React, { lazy, Suspense, Fragment } from 'react';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useDeviceClass } from '../../utils/hooks';
+import './product.css';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: 'heavy' */ './Heavy'));
 const LazyLight = lazy(() => import(/* webpackChunkName: 'light' */ './Light'));
@@ -29,7 +30,7 @@ const Product = ({ ...rest }) => {
   console.log('[Product] deviceClass, unsupported => ', deviceClass, unsupported);
   
   return (
-    <>
+    <div className='product'>
       { unsupported && <p>The Save Data API is not supported on this platform.</p> }
       <LazyLoadingErrorBoundary>
         <Suspense fallback={Loading}>
@@ -40,7 +41,7 @@ const Product = ({ ...rest }) => {
           ) }
         </Suspense>
       </LazyLoadingErrorBoundary>
-    </>
+    </div>
   );
 };
 

@@ -102,29 +102,6 @@ describe('useBatteryStatus', () => {
 
       // batteryStatus is updated because updateBatteryStatus should be called internally
       expect(getBatteryStatus(result.current)).toEqual(mockBatteryStatus);
-
-      const map = {};
-      const mockUpdatedBatteryStatus = {
-        chargingTime: 30,
-        dischargingTime: 50,
-        level: 60,
-        charging: false
-      };
-      const mockUpdatedBattery = {
-        ...mockUpdatedBatteryStatus,
-        addEventListener: jest.fn().mockImplementation((event, callback) => {
-          map[event] = callback;
-        })
-      };
-
-      act(() => {
-        // the argument `battery` seems persisted with the initial argument value even when battery level change event triggered with new argument value due to Javascript scope or something
-        result.current.monitorBattery(mockUpdatedBattery); // for the purpose of updated battery argument value
-        // TODO: should make sure the argument is used to update the state
-        map.levelchange(mockUpdatedBattery); // even if we comment out this line, test is passed successfully
-      });
-
-      expect(getBatteryStatus(result.current)).toEqual(mockUpdatedBatteryStatus);
     } finally {
       console.error = originalError;
     }

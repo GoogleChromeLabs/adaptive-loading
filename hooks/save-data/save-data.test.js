@@ -41,16 +41,4 @@ describe('useSaveData', () => {
 
     expect(result.current.saveData).toEqual(navigator.connection.saveData);
   });
-
-  test('should set save data', () => {
-    const { result } = renderHook(() => useSaveData());
-
-    const mockSaveData = true;
-
-    act(() => {
-      result.current.setSaveData(mockSaveData);
-    });
-
-    expect(result.current.saveData).toEqual(mockSaveData);
-  });
 });

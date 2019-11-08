@@ -24,9 +24,9 @@ const useHardwareConcurrency = () => {
     initialHardwareConcurrency = {unsupported: true};
   }
 
-  const [hardwareConcurrency, setHardwareConcurrency] = useState(initialHardwareConcurrency);
+  const [hardwareConcurrency] = useState(initialHardwareConcurrency);
 
-  return { ...hardwareConcurrency, setHardwareConcurrency };
+  return { ...hardwareConcurrency };
 };
 
 export { useHardwareConcurrency };

@@ -17,8 +17,9 @@
 // inspired by https://github.com/rehooks/network-status
 import { useState, useEffect } from 'react';
 
+let unsupported;
+
 const useNetworkStatus = () => {
-  let unsupported;
   if ('connection' in navigator && 'effectiveType' in navigator.connection) {
     unsupported = false;
   } else {
@@ -44,7 +45,6 @@ const useNetworkStatus = () => {
         navigatorConnection.removeEventListener('change', updateECTStatus);
       };
     }
-  // eslint-disable-next-line
   }, []);
 
   return { ...networkStatus, setNetworkStatus };

@@ -17,15 +17,15 @@
 import React from 'react';
 
 import BatteryConsiderateMedia from './components/BatteryConsiderateMedia';
-import BatteryUI from './components/BatteryUI';
+import BatteryStatus from './components/BatteryStatus';
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <BatteryUI />
+    <div className='App'>
+      <header className='App-header'>
         <BatteryConsiderateMedia />
+        <BatteryStatus />
       </header>
     </div>
   );
