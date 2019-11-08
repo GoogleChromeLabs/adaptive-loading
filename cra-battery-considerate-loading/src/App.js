@@ -22,10 +22,10 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <BatteryStatus />
+    <div className='App'>
+      <header className='App-header'>
         <BatteryConsiderateMedia />
+        <BatteryStatus />
       </header>
     </div>
   );

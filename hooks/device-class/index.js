@@ -17,8 +17,9 @@
 import { useState } from 'react';
 import UAParser from 'ua-parser-js';
 
+let unsupported;
+
 const useDeviceClass = () => {
-  let unsupported;
   if ('userAgent' in navigator) {
     unsupported = false;
   } else {
