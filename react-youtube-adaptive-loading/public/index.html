@@ -34,5 +34,12 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      window.debug = () => {
+        document.querySelector('.video-container').style.border = '15px solid green';
+        document.querySelector('.related-videos').style.border = '15px solid red';
+        document.querySelector("#root > div > div.watch-grid > div:nth-child(5)").style.border = '15px solid red';
+      };
+    </script>
   </body>
 </html>
