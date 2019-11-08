@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 
 import { useHardwareConcurrency } from './';
 
@@ -44,17 +44,5 @@ describe('useHardwareConcurrency', () => {
     const { result } = renderHook(() => useHardwareConcurrency());
 
     expect(result.current.numberOfLogicalProcessors).toEqual(2);
-  });
-
-  test('should set hardware concurrency', () => {
-    const { result } = renderHook(() => useHardwareConcurrency());
-
-    const mockHardwareConcurrency = {numberOfLogicalProcessors: 12};
-
-    act(() => {
-      result.current.setHardwareConcurrency(mockHardwareConcurrency);
-    });
-
-    expect(result.current.numberOfLogicalProcessors).toEqual(mockHardwareConcurrency.numberOfLogicalProcessors);
   });
 });

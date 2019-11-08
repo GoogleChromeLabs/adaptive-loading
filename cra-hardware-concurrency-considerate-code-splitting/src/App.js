@@ -19,15 +19,16 @@ import React from 'react';
 import Product from './components/Product';
 import HardwareConcurrencyStatus from './components/HardwareConcurrencyStatus';
 import './App.css';
+import phone from './assets/images/phone.jpg';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <HardwareConcurrencyStatus />
+    <div className='App'>
+      <header className='App-header'>
         <Product
-          imageUrl="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
-          width={500} />
+          imageUrl={phone}
+          width='100%' />
+        <HardwareConcurrencyStatus />
       </header>
     </div>
   );

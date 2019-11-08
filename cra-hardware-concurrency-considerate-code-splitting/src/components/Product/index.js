@@ -19,6 +19,7 @@ import React, { lazy, Suspense, Fragment } from 'react';
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import { useHardwareConcurrency } from '../../utils/hooks';
 import { HARDWARE_CONCURRENCY_LIMIT } from '../../config';
+import './product.css';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: 'heavy' */ './Heavy'));
 const LazyLight = lazy(() => import(/* webpackChunkName: 'light' */ './Light'));
@@ -30,15 +31,17 @@ const Product = ({ ...rest }) => {
   console.log('[components Product] numberOfLogicalProcessors, unsupported => ', numberOfLogicalProcessors, unsupported);
 
   return (
-    <LazyLoadingErrorBoundary>
-      <Suspense fallback={Loading}>
-        { (unsupported || numberOfLogicalProcessors > HARDWARE_CONCURRENCY_LIMIT) ? (
-          <LazyHeavy {...rest} />
-        ) : (
-          <LazyLight {...rest} />
-        ) }
-      </Suspense>
-    </LazyLoadingErrorBoundary>
+    <div className='product'>
+      <LazyLoadingErrorBoundary>
+        <Suspense fallback={Loading}>
+          { (unsupported || numberOfLogicalProcessors > HARDWARE_CONCURRENCY_LIMIT) ? (
+            <LazyHeavy {...rest} />
+          ) : (
+            <LazyLight {...rest} />
+          ) }
+        </Suspense>
+      </LazyLoadingErrorBoundary>
+    </div>
   );
 };
 
