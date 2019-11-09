@@ -27,7 +27,9 @@ import { getAmountComments, getRelatedVideos, getVideoById } from '../../../stor
 import { getChannel } from '../../../store/reducers/channels';
 import { getCommentsForVideo } from '../../../store/reducers/comments';
 import './WatchContent.scss';
-import { DEV_MODE } from '../../../config';
+// ray test touch <
+import { YOUTUBE_API_DEV_MODE, YOUTUBE_API_REQUEST_AMOUNT } from '../../../config';
+// ray test touch >
 
 const WatchContent = ({
   nextPageToken,
@@ -44,12 +46,12 @@ const WatchContent = ({
     return !!nextPageToken;
   };
 
-  if (DEV_MODE) {
+  if (YOUTUBE_API_DEV_MODE) {
     videoId = '3C0btIJjrW8';
     video = require('../../../dummy-data/watch/video.json');
     channel = require('../../../dummy-data/watch/channel.json');
     const dummyRelatedVideos = require('../../../dummy-data/watch/related-videos.json');
-    relatedVideos = isHeavyExperience ? dummyRelatedVideos : dummyRelatedVideos.slice(0, dummyRelatedVideos.length / 2);
+    relatedVideos = isHeavyExperience ? dummyRelatedVideos : dummyRelatedVideos.slice(0, YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS / 2);
     comments = isHeavyExperience ? require('../../../dummy-data/watch/comments.json') : [];
     amountComments = 9473;
   }

@@ -26,7 +26,7 @@ import {
   getMostPopularVideosNextPageToken
 } from '../../store/reducers/videos';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
-import { DEV_MODE } from '../../config';
+import { YOUTUBE_API_DEV_MODE } from '../../config';
 
 class Trending extends Component {
   componentDidMount() {
@@ -62,7 +62,7 @@ class Trending extends Component {
 
   render() {
     const loaderActive = this.shouldShowLoader();
-    const videos = DEV_MODE ? require('../../dummy-data/trending/trending.json') : this.props.videos;
+    const videos = YOUTUBE_API_DEV_MODE ? require('../../dummy-data/trending/trending.json') : this.props.videos;
 
     return (
       <VideoList

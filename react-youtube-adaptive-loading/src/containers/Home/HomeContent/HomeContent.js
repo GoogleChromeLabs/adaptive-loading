@@ -20,7 +20,7 @@ import { connect } from 'react-redux';
 import { VideoGrid } from '../../../components/VideoGrid/VideoGrid';
 import { InfiniteScroll } from '../../../components/InfiniteScroll/InfiniteScroll';
 import { getMostPopularVideos, getVideosByCategory } from '../../../store/reducers/videos';
-import { DEV_MODE } from '../../../config';
+import { YOUTUBE_API_DEV_MODE } from '../../../config';
 import './HomeContent.scss';
 
 const AMOUNT_TRENDING_VIDEOS = 12;
@@ -44,7 +44,7 @@ export class HomeContent extends Component {
 
   render() {
     const { showLoader, bottomReachedCallback } = this.props;
-    const trendingVideos = DEV_MODE ? require('../../../dummy-data/home/trending-videos.json') : this.getTrendingVideos();
+    const trendingVideos = YOUTUBE_API_DEV_MODE ? require('../../../dummy-data/home/trending-videos.json') : this.getTrendingVideos();
     const categoryGrids = this.getVideoGridsForCategories();
 
     return (

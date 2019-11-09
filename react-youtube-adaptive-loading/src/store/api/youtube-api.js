@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-export const buildVideoCategoriesRequest = () => {
+// ray test touch <
+import { YOUTUBE_API_REQUEST_AMOUNT } from '../../config';
+// ray test touch >
+
+const buildVideoCategoriesRequest = () => {
   return buildApiRequest('GET',
     '/youtube/v3/videoCategories', {
       'part': 'snippet',
@@ -24,7 +28,9 @@ export const buildVideoCategoriesRequest = () => {
   );
 };
 
-export const buildMostPopularVideosRequest = (amount = 12, loadDescription = false, nextPageToken, videoCategoryId = null) => {
+// ray test touch <
+const buildMostPopularVideosRequest = (amount = YOUTUBE_API_REQUEST_AMOUNT.MOST_POPULAR_VIDEOS, loadDescription = false, nextPageToken, videoCategoryId = null) => {
+// ray test touch >
   let fields = 'nextPageToken,prevPageToken,items(contentDetails/duration,id,snippet(channelId,channelTitle,publishedAt,thumbnails/medium,title),statistics/viewCount),pageInfo(totalResults)';
   if (loadDescription) {
     fields += ',items/snippet/description';
@@ -43,7 +49,7 @@ export const buildMostPopularVideosRequest = (amount = 12, loadDescription = fal
   );
 };
 
-export const buildVideoDetailRequest = videoId => {
+const buildVideoDetailRequest = videoId => {
   return buildApiRequest('GET',
     '/youtube/v3/videos', {
       part: 'snippet,statistics,contentDetails',
@@ -54,7 +60,7 @@ export const buildVideoDetailRequest = videoId => {
   );
 };
 
-export const buildChannelRequest = channelId => {
+const buildChannelRequest = channelId => {
   return buildApiRequest('GET',
     '/youtube/v3/channels', {
       part: 'snippet,statistics',
@@ -65,7 +71,7 @@ export const buildChannelRequest = channelId => {
   );
 };
 
-export const buildCommentThreadRequest = (videoId, nextPageToken) => {
+const buildCommentThreadRequest = (videoId, nextPageToken) => {
   return buildApiRequest('GET',
     '/youtube/v3/commentThreads', {
       part: 'id,snippet',
@@ -76,7 +82,9 @@ export const buildCommentThreadRequest = (videoId, nextPageToken) => {
   );
 };
 
-export const buildSearchRequest = (query, nextPageToken, amount = 12) => {
+// ray test touch <
+const buildSearchRequest = (query, nextPageToken, amount = YOUTUBE_API_REQUEST_AMOUNT.SEARCH) => {
+// ray test touch >
   return buildApiRequest('GET',
     '/youtube/v3/search', {
       part: 'id,snippet',
@@ -89,12 +97,14 @@ export const buildSearchRequest = (query, nextPageToken, amount = 12) => {
   );
 };
 
-export const buildRelatedVideosRequest = (videoId, amountRelatedVideos = 12) => {
+// ray test touch <
+const buildRelatedVideosRequest = (videoId, amount = YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS) => {
+// ray test touch >
   return buildApiRequest('GET',
     '/youtube/v3/search', {
       part: 'snippet',
       type: 'video',
-      maxResults: amountRelatedVideos,
+      maxResults: amount,
       relatedToVideoId: videoId
     },
     null
@@ -104,7 +114,7 @@ export const buildRelatedVideosRequest = (videoId, amountRelatedVideos = 12) => 
 /*
   Util - Youtube API boilerplate code
   */
-export const buildApiRequest = (requestMethod, path, params, properties) => {
+const buildApiRequest = (requestMethod, path, params, properties) => {
   params = removeEmptyParams(params);
   let request;
   if (properties) {
@@ -164,3 +174,16 @@ const createResource = properties => {
   }
   return resource;
 };
+
+// ray test touch <
+export {
+  buildVideoCategoriesRequest,
+  buildMostPopularVideosRequest,
+  buildVideoDetailRequest,
+  buildChannelRequest,
+  buildCommentThreadRequest,
+  buildSearchRequest,
+  buildRelatedVideosRequest,
+  buildApiRequest
+};
+// ray test touch >

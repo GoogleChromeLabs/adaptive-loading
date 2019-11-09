@@ -23,14 +23,14 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { configureStore } from './store/configureStore';
-import { LOCAL_DEV } from './config';
+import { LOCAL_DEV_MODE } from './config';
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     {/* set basename prop for Building for Relative Paths from https://facebook.github.io/create-react-app/docs/deployment */}
-    <BrowserRouter basename={LOCAL_DEV ? null : '/react-youtube-adaptive-loading'}>
+    <BrowserRouter basename={LOCAL_DEV_MODE ? null : '/react-youtube-adaptive-loading'}>
       <App/>
     </BrowserRouter>
   </Provider>, document.getElementById('root'));
