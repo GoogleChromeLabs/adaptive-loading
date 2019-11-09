@@ -25,7 +25,7 @@ const App = () => (
     <header className='App-header'>
       <Product
         imageUrl={phone}
-        width={500} />
+        width='100%' />
     </header>
   </div>
 );

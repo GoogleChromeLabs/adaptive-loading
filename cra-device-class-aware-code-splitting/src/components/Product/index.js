@@ -23,7 +23,7 @@ import './product.css';
 
 const LazyHeavy = lazy(() => import(/* webpackChunkName: "heavy" */ './Heavy'));
 const LazyLight = lazy(() => import(/* webpackChunkName: "light" */ './Light'));
-const Loading = <>Loading...</>;
+const Loading = <div>Loading...</div>;
 
 const DeviceNotice = ({ unsupported, modelName, multicoreScore }) => (
   <>
@@ -46,21 +46,23 @@ const Product = ({ imageUrl, ...rest }) => {
   
   const { name, multicore_score, unsupported } = deviceParams;
   return (
-    <div className='product'>
-      <LazyLoadingErrorBoundary>
-        <Suspense fallback={Loading}>
-          { multicore_score > Multicore_Score_Threshold || unsupported ? (
-            <LazyHeavy imageUrl={imageUrl} {...rest} />
-          ) : (
-            <LazyLight imageUrl={imageUrl} {...rest} />
-          ) }
-        </Suspense>
-      </LazyLoadingErrorBoundary>
+    <>
+      <div className='product'>
+        <LazyLoadingErrorBoundary>
+          <Suspense fallback={Loading}>
+            { multicore_score > Multicore_Score_Threshold || unsupported ? (
+              <LazyHeavy imageUrl={imageUrl} {...rest} />
+            ) : (
+              <LazyLight imageUrl={imageUrl} {...rest} />
+            ) }
+          </Suspense>
+        </LazyLoadingErrorBoundary>
+      </div>
       <DeviceNotice
         unsupported={unsupported}
         modelName={name}
         multicoreScore={multicore_score} />
-    </div>
+    </>
   );
 };
 

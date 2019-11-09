@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const Loading = () => (
-  <Fragment>Loading...</Fragment>
+  <div>Loading...</div>
 );
 
 export default Loading;

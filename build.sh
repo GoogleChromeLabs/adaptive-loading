@@ -22,6 +22,7 @@ for PROJECT in  cra-battery-considerate-loading \
                 cra-hardware-concurrency-considerate-loading \
                 react-dixie-memory-considerate-loading \
                 react-lottie-network-aware-loading \
+                react-youtube-adaptive-loading \
                 "react-twitter-save-data-loading(client-hint)" \
                 "react-twitter-save-data-loading(hook)"
 do

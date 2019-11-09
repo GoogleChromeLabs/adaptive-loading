@@ -17,7 +17,7 @@
 import React from 'react';
 
 const Light = ({ imageUrl, ...rest }) => (
-  <img src={imageUrl} alt="product" {...rest} />
+  <img src={imageUrl} alt='product' {...rest} />
 );
 
 export default Light;

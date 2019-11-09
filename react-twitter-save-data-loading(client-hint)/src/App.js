@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
@@ -66,7 +66,7 @@ class App extends Component {
     const { testSaveDataEnabled, saveData } = this.state;
 
     if (saveData === null) {
-      return <Fragment>Loading...</Fragment>;
+      return <div>Loading...</div>;
     }
     
     const ListTweet = ({ index, style }) => {

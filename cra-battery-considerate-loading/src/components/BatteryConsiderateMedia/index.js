@@ -42,7 +42,7 @@ const BatteryConsiderateMedia = () => {
         media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912' alt='low resolution' />;
         break;
       default:
-        media= <>Loading...</>;
+        media= <div>Loading...</div>;
     }
   }
 

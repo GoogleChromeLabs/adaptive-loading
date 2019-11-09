@@ -17,10 +17,12 @@
     "string-similarity": "^3.0.0"
   },
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "server": "node server.js",
+    "dev-server": "nodemon server.js",
     "dev": "concurrently \"nodemon server.js\" \"react-scripts start\""
   },
   "eslintConfig": {

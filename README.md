@@ -37,6 +37,7 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [React eBay - network-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-ebay-network-aware-code-splitting) ([demo](https://adaptive-loading.web.app/react-ebay-network-aware-code-splitting/))
 * [React Dixie Mesh - memory considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-dixie-memory-considerate-loading) ([demo](https://adaptive-loading.web.app/react-dixie-memory-considerate-loading/))
 * [React Lottie - network-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-lottie-network-aware-loading) ([demo](https://adaptive-loading.web.app/react-lottie-network-aware-loading/))
+* [React Youtube - adaptive loading with mix of network, memory and hardware concurrency](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-youtube-adaptive-loading) ([demo](https://adaptive-loading.web.app/react-youtube-adaptive-loading/))
 
 ## Deployment
 

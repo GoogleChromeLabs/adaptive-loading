@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { lazy, Suspense, Fragment } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 
 import LazyLoadingErrorBoundary from './components/LazyLoadingErrorBoundary';
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div className='app-wrapper'>
       <LazyLoadingErrorBoundary>
-        <Suspense fallback={<Fragment>Loading...</Fragment>}>
+        <Suspense fallback={<div>Loading...</div>}>
           <Route exact path='/category/:categoryName/:productId' component={LazySaleProducts} />
           <Route exact path='/category/:categoryName' component={LazyLanding} />
           <Route exact path='/' component={LazyLanding} />

@@ -44,7 +44,7 @@ const App = () => {
     <div className='App'>
       <header className='App-header'>
         <LazyLoadingErrorBoundary>
-          <Suspense fallback={<>Loading...</>}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Product imageUrl={kitchen} className='product' />
           </Suspense>
         </LazyLoadingErrorBoundary>
