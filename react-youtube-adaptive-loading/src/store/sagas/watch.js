@@ -25,9 +25,7 @@ import {
 } from '../api/youtube-api';
 import { REQUEST } from '../actions';
 import { SEARCH_LIST_RESPONSE, VIDEO_LIST_RESPONSE } from '../api/youtube-api-response-types';
-// ray test touch <
 import { YOUTUBE_API_REQUEST_AMOUNT } from '../../config';
-// ray test touch >
 
 export function* fetchWatchDetails(videoId, channelId, isHeavyExperience) {
   const requests = isHeavyExperience ? [
@@ -36,9 +34,7 @@ export function* fetchWatchDetails(videoId, channelId, isHeavyExperience) {
     buildCommentThreadRequest.bind(null, videoId)
   ] : [
     buildVideoDetailRequest.bind(null, videoId),
-    // ray test touch <
     buildRelatedVideosRequest.bind(null, videoId, YOUTUBE_API_REQUEST_AMOUNT / 2)
-    // ray test touch >
   ];
 
   if (channelId) {

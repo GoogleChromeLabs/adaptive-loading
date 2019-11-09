@@ -27,9 +27,7 @@ import { getAmountComments, getRelatedVideos, getVideoById } from '../../../stor
 import { getChannel } from '../../../store/reducers/channels';
 import { getCommentsForVideo } from '../../../store/reducers/comments';
 import './WatchContent.scss';
-// ray test touch <
 import { YOUTUBE_API_DEV_MODE, YOUTUBE_API_REQUEST_AMOUNT } from '../../../config';
-// ray test touch >
 
 const WatchContent = ({
   nextPageToken,

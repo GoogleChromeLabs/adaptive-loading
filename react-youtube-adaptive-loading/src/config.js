@@ -23,19 +23,15 @@ const ADAPTIVE_FACTORS = {
   HARDWARE_CONCURRENCY_LIMIT: 4
 };
 
-// ray test touch <
 const YOUTUBE_API_REQUEST_AMOUNT = {
   MOST_POPULAR_VIDEOS: 12,
   SEARCH: 12,
   RELATED_VIDEOS: 12
 };
-// ray test touch >
 
 export {
   YOUTUBE_API_DEV_MODE,
   LOCAL_DEV_MODE,
   ADAPTIVE_FACTORS,
-  // ray test touch <
   YOUTUBE_API_REQUEST_AMOUNT
-  // ray test touch >
 };

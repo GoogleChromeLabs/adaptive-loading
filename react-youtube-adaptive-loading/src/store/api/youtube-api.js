@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-// ray test touch <
 import { YOUTUBE_API_REQUEST_AMOUNT } from '../../config';
-// ray test touch >
 
 const buildVideoCategoriesRequest = () => {
   return buildApiRequest('GET',
@@ -28,9 +26,7 @@ const buildVideoCategoriesRequest = () => {
   );
 };
 
-// ray test touch <
 const buildMostPopularVideosRequest = (amount = YOUTUBE_API_REQUEST_AMOUNT.MOST_POPULAR_VIDEOS, loadDescription = false, nextPageToken, videoCategoryId = null) => {
-// ray test touch >
   let fields = 'nextPageToken,prevPageToken,items(contentDetails/duration,id,snippet(channelId,channelTitle,publishedAt,thumbnails/medium,title),statistics/viewCount),pageInfo(totalResults)';
   if (loadDescription) {
     fields += ',items/snippet/description';
@@ -82,9 +78,7 @@ const buildCommentThreadRequest = (videoId, nextPageToken) => {
   );
 };
 
-// ray test touch <
 const buildSearchRequest = (query, nextPageToken, amount = YOUTUBE_API_REQUEST_AMOUNT.SEARCH) => {
-// ray test touch >
   return buildApiRequest('GET',
     '/youtube/v3/search', {
       part: 'id,snippet',
@@ -97,9 +91,7 @@ const buildSearchRequest = (query, nextPageToken, amount = YOUTUBE_API_REQUEST_A
   );
 };
 
-// ray test touch <
 const buildRelatedVideosRequest = (videoId, amount = YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS) => {
-// ray test touch >
   return buildApiRequest('GET',
     '/youtube/v3/search', {
       part: 'snippet',
@@ -175,7 +167,6 @@ const createResource = properties => {
   return resource;
 };
 
-// ray test touch <
 export {
   buildVideoCategoriesRequest,
   buildMostPopularVideosRequest,
@@ -186,4 +177,3 @@ export {
   buildRelatedVideosRequest,
   buildApiRequest
 };
-// ray test touch >
