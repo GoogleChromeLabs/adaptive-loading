@@ -876,10 +876,10 @@
     "lang": "en"
   },
   {
-    "created_at": "Wed Jan 17 07:03:04 +0000 2018",
+    "created_at": "Fri May 24 10:02:55 +0000 2019",
     "id": 953523046790434816,
     "id_str": "953523046790434816",
-    "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "full_text": "Alright people. Here it is.",
     "truncated": false,
     "display_text_range": [
         0,
@@ -975,10 +975,10 @@
     "place": null,
     "contributors": null,
     "retweeted_status": {
-        "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
-        "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "created_at": "Fri May 24 10:02:55 +0000 2019",
+        "id": 1131817655134896128,
+        "id_str": "1131817655134896128",
+        "full_text": "Alright people. Here it is.\r\n",
         "truncated": false,
         "display_text_range": [
             0,
@@ -990,9 +990,9 @@
             "user_mentions": [],
             "urls": [
                 {
-                    "url": "",
-                    "expanded_url": "",
-                    "display_url": "bit.ly/2zcNBCXs",
+                    "url": "https://t.co/5AbrrE92It?amp=1",
+                    "expanded_url": "https://t.co/5AbrrE92It?amp=1",
+                    "display_url": "webvr-makeitrain.glitch.me",
                     "indices": [
                         194,
                         217
@@ -1124,8 +1124,8 @@
         "user": {
             "id": 46003622,
             "id_str": "46003622",
-            "name": "React Tweet",
-            "screen_name": "React Tweet",
+            "name": "Mr.doob",
+            "screen_name": "mrdoob",
             "location": "New York, NY",
             "description": "@SA Department of Peacekeeping Operations - Investing in peace around the world. Follow the Under-Secretary-General: @Lacroix_UN",
             "url": "",
@@ -1151,7 +1151,7 @@
             "followers_count": 331559,
             "friends_count": 871,
             "listed_count": 3459,
-            "created_at": "Wed Jun 10 01:34:55 +0000 2009",
+            "created_at": "Fri May 24 10:02:55 +0000 2019",
             "favourites_count": 1527,
             "utc_offset": -18000,
             "time_zone": "Eastern Time (US & Canada)",
