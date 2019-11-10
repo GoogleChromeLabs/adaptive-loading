@@ -60,8 +60,7 @@ class Header extends React.Component {
   };
 
   render () {
-    // MEMO: tweak
-    const {data, linkProps, imagePath} = this.props;
+    const {data, linkProps} = this.props;
     const timestamp = this.createTimestamp(data.created_at);
     
     let verified = null;
@@ -72,8 +71,7 @@ class Header extends React.Component {
     return (
       <div className="header">
         <a className="account-group" style={styles.accountGroup} href={`https://twitter.com/${data.user.screen_name}`} {...linkProps}>
-          {/* MEMO: tweak */}
-          <img alt="" className="avatar" src={imagePath} style={styles.avatar} />
+          <img alt="avatar" className="avatar" src={data.user.profile_image_url} style={styles.avatar} />
           <strong className="fullname" style={styles.fullname}>{data.user.name}</strong>
           {verified}
           <span>&nbsp;</span>

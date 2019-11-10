@@ -1,47 +1,34 @@
-/*
- * Copyright 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the 'License');
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an 'AS IS' BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from './Header';
 import Text from './Text';
+// import Media from './Media';
 import Footer from './Footer';
 import styles from './styles';
 import {cloneDeep} from './utils';
 
 class Modal extends React.Component {
-  close () {
+  close = () => {
     this.context.closeModal()
   };
 
   render () {
     if (typeof window === "undefined") return null;
 
-    // MEMO: tweak
-    let {data, modalIndex, imagePath} = this.props;
+    let {data, modalIndex} = this.props/*, isRT = false*/;
+    // let MediaComponent = null;
+
     // use retweet as data if its a RT
     if (data.retweeted_status) {
       data = data.retweeted_status;
-    };
+      // isRT = true;
+    }
 
     let media = data.entities.media[modalIndex];
     if (data.extended_entities && data.extended_entities.media) {
       media = data.extended_entities.media[modalIndex];
-    };
+    }
 
     const tweetStyle = {
       'backgroundColor': '#ffffff',
@@ -98,18 +85,15 @@ class Modal extends React.Component {
       if (h > 650) {
         imgStyle.width = `${(media.sizes.large.w / media.sizes.large.h) * 650}px`;
         modalWrap.width = `${(media.sizes.large.w / media.sizes.large.h) * 650}px`;
-      } 
-      else {
+      } else {
         modalWrap.width = `${(media.sizes.large.w / media.sizes.large.h) * 650}px`;
         imgStyle.height = `${(media.sizes.large.h / media.sizes.large.w) * 1000}px`;
       }
-    }
-    else {
+    } else {
       if (h > 650) {
         modalWrap.width = `${(media.sizes.large.w / media.sizes.large.h) * 650}px`;
         imgStyle.width = `${(media.sizes.large.w / media.sizes.large.h) * 650}px`;
-      }
-      else {
+      } else {
         modalWrap.width = `${w}px`;
       }
     }
@@ -127,8 +111,7 @@ class Modal extends React.Component {
           </div>
           <div className="tweet" style={tweetStyle}>
             <div className="media-wrap" style={imgWrapStyle}>
-              {/* MEMO: tweak */}
-              <img alt="" src={imagePath} style={imgStyle} />
+              <img alt="modal" src={media.media_url} style={imgStyle} />
             </div>
             <div className="content" style={contentStyle}>
               <Header data={data} />

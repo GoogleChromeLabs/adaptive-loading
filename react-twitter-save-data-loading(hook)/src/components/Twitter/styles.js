@@ -240,4 +240,4 @@ export default {
     'textDecoration': 'none',
     'color': '#657786'
   }
-}
+};

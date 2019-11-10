@@ -1,8 +1,8 @@
 [
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -16,8 +16,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -33,8 +33,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -78,6 +78,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "1.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -99,8 +100,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -124,13 +125,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "1.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -164,13 +166,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "1.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -208,8 +211,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -253,6 +256,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "1.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -289,8 +293,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -304,8 +308,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -321,8 +325,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -366,6 +370,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "2.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -387,8 +392,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -412,13 +417,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "2.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -452,13 +458,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "2.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -496,8 +503,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -541,6 +548,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "2.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -577,8 +585,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -592,8 +600,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -609,8 +617,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -654,6 +662,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "3.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -675,8 +684,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -700,13 +709,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "3.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -740,13 +750,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "3.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -784,8 +795,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -829,6 +840,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "3.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -864,10 +876,10 @@
     "lang": "en"
   },
   {
-    "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
-    "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "created_at": "Fri May 24 10:02:55 +0000 2019",
+    "id": 0,
+    "id_str": "0",
+    "full_text": "Alright people. Here it is.",
     "truncated": false,
     "display_text_range": [
         0,
@@ -880,8 +892,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -897,8 +909,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -941,7 +953,8 @@
         "profile_background_image_url": "",
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
-        "profile_image_url": "",
+        "profile_image_url": "./assets/videos/1/avatar.jpg",
+        "profile_image_url_filename": "avatar.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -962,10 +975,10 @@
     "place": null,
     "contributors": null,
     "retweeted_status": {
-        "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
-        "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "created_at": "Fri May 24 10:02:55 +0000 2019",
+        "id": 1131817655134896128,
+        "id_str": "1131817655134896128",
+        "full_text": "Alright people. Here it is.\r\n",
         "truncated": false,
         "display_text_range": [
             0,
@@ -977,9 +990,9 @@
             "user_mentions": [],
             "urls": [
                 {
-                    "url": "",
-                    "expanded_url": "",
-                    "display_url": "bit.ly/2zcNBCXs",
+                    "url": "https://t.co/5AbrrE92It?amp=1",
+                    "expanded_url": "https://t.co/5AbrrE92It?amp=1",
+                    "display_url": "webvr-makeitrain.glitch.me",
                     "indices": [
                         194,
                         217
@@ -988,14 +1001,15 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
-                    "media_url": "",
-                    "media_url_https": "",
+                    "media_url": "./assets/videos/1/poster.jpg",
+                    "media_url_filename": "poster.jpg",
+                    "media_url_https": "./assets/videos/1/poster.jpg",
                     "url": "",
                     "display_url": "",
                     "expanded_url": "",
@@ -1028,18 +1042,19 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
-                    "media_url": "",
-                    "media_url_https": "",
+                    "media_url": "./assets/videos/1/poster.jpg",
+                    "media_url_filename": "poster.jpg",
+                    "media_url_https": "./assets/videos/1/poster.jpg",
                     "url": "",
                     "display_url": "",
                     "expanded_url": "",
-                    "type": "photo",
+                    "type": "video",
                     "sizes": {
                         "thumb": {
                             "w": 150,
@@ -1061,6 +1076,41 @@
                             "h": 451,
                             "resize": "fit"
                         }
+                    },
+                    "video_info": {
+                        "aspect_ratio": [
+                            9,
+                            16
+                        ],
+                        "duration_millis": 8963,
+                        "variants": [
+                            {
+                                "content_type": "application/x-mpegURL",
+                                "url": ""
+                            },
+                            {
+                                "bitrate": 2176000,
+                                "content_type": "video/mp4",
+                                "url": "./assets/videos/1/video.mp4"
+                            },
+                            {
+                                "bitrate": 320000,
+                                "content_type": "video/mp4",
+                                "url": "./assets/videos/1/video.mp4"
+                            },
+                            {
+                                "bitrate": 832000,
+                                "content_type": "video/mp4",
+                                "url": "./assets/videos/1/video.mp4"
+                            }
+                        ]
+                    },
+                    "additional_media_info": {
+                        "saveData": false,
+                        "title": "",
+                        "description": "",
+                        "embeddable": true,
+                        "monetizable": false
                     }
                 }
             ]
@@ -1072,10 +1122,10 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
-            "name": "React Tweet",
-            "screen_name": "React Tweet",
+            "id": 0,
+            "id_str": "0",
+            "name": "Mr.doob",
+            "screen_name": "mrdoob",
             "location": "New York, NY",
             "description": "@SA Department of Peacekeeping Operations - Investing in peace around the world. Follow the Under-Secretary-General: @Lacroix_UN",
             "url": "",
@@ -1101,7 +1151,7 @@
             "followers_count": 331559,
             "friends_count": 871,
             "listed_count": 3459,
-            "created_at": "Wed Jun 10 01:34:55 +0000 2009",
+            "created_at": "Fri May 24 10:02:55 +0000 2019",
             "favourites_count": 1527,
             "utc_offset": -18000,
             "time_zone": "Eastern Time (US & Canada)",
@@ -1116,7 +1166,8 @@
             "profile_background_image_url": "",
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
-            "profile_image_url": "",
+            "profile_image_url": "./assets/videos/1/avatar.jpg",
+            "profile_image_url_filename": "avatar.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -1153,8 +1204,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -1168,8 +1219,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -1185,8 +1236,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -1230,6 +1281,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "5.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -1251,8 +1303,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -1276,13 +1328,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "5.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -1316,13 +1369,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "5.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -1360,8 +1414,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -1405,6 +1459,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "5.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -1441,8 +1496,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -1456,8 +1511,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -1473,8 +1528,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -1518,6 +1573,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "6.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -1539,8 +1595,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -1564,13 +1620,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "6.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -1604,13 +1661,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "6.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -1648,8 +1706,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -1693,6 +1751,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "6.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -1729,8 +1788,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -1744,8 +1803,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -1761,8 +1820,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -1806,6 +1865,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "7.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -1827,8 +1887,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -1852,13 +1912,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "7.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -1892,13 +1953,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "7.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -1936,8 +1998,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -1981,6 +2043,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "7.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -2017,8 +2080,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -2032,8 +2095,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -2049,8 +2112,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -2094,6 +2157,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "8.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -2115,8 +2179,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -2140,13 +2204,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "8.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -2180,13 +2245,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "8.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -2224,8 +2290,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -2269,6 +2335,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "8.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -2305,8 +2372,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -2320,8 +2387,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -2337,8 +2404,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -2382,6 +2449,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "9.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -2403,8 +2471,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -2428,13 +2496,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "9.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -2468,13 +2537,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "9.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -2512,8 +2582,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -2557,6 +2627,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "9.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -2593,8 +2664,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -2608,8 +2679,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -2625,8 +2696,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -2670,6 +2741,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "10.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -2691,8 +2763,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -2716,13 +2788,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "10.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -2756,13 +2829,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "10.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -2800,8 +2874,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -2845,6 +2919,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "10.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -2881,8 +2956,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -2896,8 +2971,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -2913,8 +2988,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -2958,6 +3033,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "11.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -2979,8 +3055,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -3004,13 +3080,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "11.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -3044,13 +3121,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "11.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -3088,8 +3166,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -3133,6 +3211,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "11.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",
@@ -3169,8 +3248,8 @@
   },
   {
     "created_at": "Wed Jan 17 07:03:04 +0000 2018",
-    "id": 953523046790434816,
-    "id_str": "953523046790434816",
+    "id": 0,
+    "id_str": "0",
     "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "truncated": false,
     "display_text_range": [
@@ -3184,8 +3263,8 @@
             {
                 "screen_name": "React Tweet",
                 "name": "React Tweet",
-                "id": 46003622,
-                "id_str": "46003622",
+                "id": 0,
+                "id_str": "0",
                 "indices": [
                     3,
                     18
@@ -3201,8 +3280,8 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-        "id": 14159148,
-        "id_str": "14159148",
+        "id": 0,
+        "id_str": "0",
         "name": "SAS",
         "screen_name": "SA",
         "location": "New York, NY",
@@ -3246,6 +3325,7 @@
         "profile_background_image_url_https": "",
         "profile_background_tile": false,
         "profile_image_url": "",
+        "profile_image_url_filename": "12.jpg",
         "profile_image_url_https": "",
         "profile_banner_url": "",
         "profile_link_color": "3B94D9",
@@ -3267,8 +3347,8 @@
     "contributors": null,
     "retweeted_status": {
         "created_at": "Mon Jan 15 22:09:12 +0000 2018",
-        "id": 953026304613474304,
-        "id_str": "953026304613474304",
+        "id": 0,
+        "id_str": "0",
         "full_text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "truncated": false,
         "display_text_range": [
@@ -3292,13 +3372,14 @@
             ],
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "12.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -3332,13 +3413,14 @@
         "extended_entities": {
             "media": [
                 {
-                    "id": 953025900294975488,
-                    "id_str": "953025900294975488",
+                    "id": 0,
+                    "id_str": "0",
                     "indices": [
                         218,
                         241
                     ],
                     "media_url": "",
+                    "media_url_filename": "12.jpg",
                     "media_url_https": "",
                     "url": "",
                     "display_url": "",
@@ -3376,8 +3458,8 @@
         "in_reply_to_user_id_str": null,
         "in_reply_to_screen_name": null,
         "user": {
-            "id": 46003622,
-            "id_str": "46003622",
+            "id": 0,
+            "id_str": "0",
             "name": "React Tweet",
             "screen_name": "React Tweet",
             "location": "New York, NY",
@@ -3421,6 +3503,7 @@
             "profile_background_image_url_https": "",
             "profile_background_tile": false,
             "profile_image_url": "",
+            "profile_image_url_filename": "12.jpg",
             "profile_image_url_https": "",
             "profile_banner_url": "",
             "profile_link_color": "0076BF",

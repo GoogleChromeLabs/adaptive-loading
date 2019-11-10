@@ -27,31 +27,31 @@ class Photos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imagePath: this.props.imagePath
+      photoPath: this.props.media[0].media_url
     };
   };
 
   loadImageHandler = () => {
-    const { imagePath } = this.props;
-    const newImagePath = imagePath.replace(IMAGE_TYPE.LIGHT, IMAGE_TYPE.HEAVY);
-    this.setState({imagePath: newImagePath});
+    const { media } = this.props;
+    const photoPath = media[0].media_url.replace(IMAGE_TYPE.LIGHT, IMAGE_TYPE.HEAVY);
+    this.setState({photoPath});
   };
 
   render () {
-    const { media } = this.props;
-    const { imagePath } = this.state;
+    const { media, playButton } = this.props;
+    const { photoPath } = this.state;
 
-    let mediaElements = [];
-    let mediaStyle = cloneDeep(styles.AdaptiveMedia);
+    const mediaElements = [];
+    const mediaStyle = cloneDeep(styles.AdaptiveMedia);
     if (media.length === 2) mediaStyle.height = '253px';
     if (media.length === 3) mediaStyle.height = '337px';
     if (media.length === 4) mediaStyle.height = '380px';
 
     // start media loop
-    media.forEach((m, i) => {
+    media.forEach((m, index) => {
       // set initial sizes / styles
-      let containStyle = {'width': '100%', 'position': 'relative', 'overflow': 'hidden'};
-      let photoStyle = {'width': '100%', 'position': 'relative', 'verticalAlign': 'bottom'};
+      const containStyle = {'width': '100%', 'position': 'relative', 'overflow': 'hidden'};
+      const photoStyle = {'width': '100%', 'position': 'relative', 'verticalAlign': 'bottom'};
       let mediaHeight = m.sizes.large.h, mediaWidth = m.sizes.large.w;
 
       /*
@@ -84,7 +84,7 @@ class Photos extends Component {
         containStyle.display = 'inline-block';
         containStyle.height = '100%';
         // give first image 1px margin right and calc width to adjust
-        if (i === 0) containStyle.marginRight = '1px'
+        if (index === 0) containStyle.marginRight = '1px'
         containStyle.width = 'calc(50% - .5px)';
 
         const ratio = (100 / mediaWidth) * (508 /2);
@@ -104,7 +104,7 @@ class Photos extends Component {
        * format three photos
        */
       if (media.length === 3)  {
-        if (i === 0) {
+        if (index === 0) {
           const maxHeight = 337;
           containStyle.width = `${100 * (2/3)}%`;
           containStyle.marginRight = '1px';
@@ -126,7 +126,7 @@ class Photos extends Component {
             photoStyle.left = `${((508 * (2/3)) - mediaWidth) / 2}px`;
           }
         }
-        if (i !== 0) {
+        if (index !== 0) {
           mediaHeight = m.sizes.medium.h;
           mediaWidth = m.sizes.medium.w;
           const maxHeight = 337 / 2;
@@ -155,7 +155,7 @@ class Photos extends Component {
        * format four photos
        */
       if (media.length === 4) {
-        if (i === 0) {
+        if (index === 0) {
           containStyle.width = '75%';
           containStyle.marginRight = '1px';
           containStyle.height = '380px';
@@ -177,7 +177,7 @@ class Photos extends Component {
             photoStyle.left = `${((508 * 0.75) - mediaWidth) / 2}px`;
           }
         }
-        if (i !== 0) {
+        if (index !== 0) {
           mediaHeight = m.sizes.medium.h;
           mediaWidth = m.sizes.medium.w;
           const maxHeight = 380 / 3;
@@ -202,16 +202,18 @@ class Photos extends Component {
           containStyle.width = 'calc(25% - 1px)';
         }
       }
+
       mediaElements.push(
-        <div className='AdaptiveMedia-photoContainer' style={containStyle} key={i}>
-          { imagePath.includes(IMAGE_TYPE.LIGHT) ? (
+        <div className='AdaptiveMedia-photoContainer' style={containStyle} key={index}>
+          { photoPath.includes(IMAGE_TYPE.LIGHT) ? (
             <div className='adaptive-photo'>
-              <img alt='tweet' src={imagePath} style={photoStyle} />
+              <img alt='photos' src={photoPath} style={photoStyle} />
               <button className='load-image'onClick={this.loadImageHandler}>Load Image</button>
             </div>
           ) : (
             <div className='adaptive-photo'>
-              <img alt='tweet' src={imagePath} style={photoStyle} />
+              <img alt='photos' src={photoPath} style={photoStyle} />
+              {playButton}
             </div>
           ) }
         </div>

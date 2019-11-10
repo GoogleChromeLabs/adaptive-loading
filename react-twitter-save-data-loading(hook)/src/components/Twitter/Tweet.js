@@ -60,7 +60,7 @@ class Tweet extends React.Component {
   render () {
     const {modalActive, modalIndex} = this.state;
     // MEMO: tweak
-    let {data, linkProps, imagePath} = this.props, isRT = false;
+    let {data, linkProps} = this.props, isRT = false;
     let MediaComponent = null, QuoteComponent = null;
     
     //Support for extended tweets
@@ -120,13 +120,13 @@ class Tweet extends React.Component {
     // use Media component if media entities exist
     if (data.entities && data.entities.media) {
       // MEMO: tweak
-      MediaComponent = <Media imagePath={imagePath} autoPlay={this.props.autoPlay} media={data.entities.media} />;
+      MediaComponent = <Media autoPlay={this.props.autoPlay} media={data.entities.media} />;
     }
 
     // extended_entities override, these are multi images, videos, gifs
     if (data.extended_entities && data.extended_entities.media) {
       // MEMO: tweak
-      MediaComponent = <Media imagePath={imagePath} autoPlay={this.props.autoPlay} media={data.extended_entities.media} />;
+      MediaComponent = <Media autoPlay={this.props.autoPlay} media={data.extended_entities.media} />;
     }
 
     // use Quote component if quoted status exists
@@ -139,7 +139,7 @@ class Tweet extends React.Component {
         {isRT ? <Context {... this.props} /> : null}
         <div className="content" style={styles.content}>
           {/* MEMO: tweak */}
-          <Header data={data} linkProps={linkProps} imagePath={imagePath} />
+          <Header data={data} linkProps={linkProps} />
           <a style={styles.link} href={`https://twitter.com/${data.user.screen_name}/status/${data.id_str}`} {...linkProps}>
             <Text data={data} />
           </a>
@@ -148,7 +148,7 @@ class Tweet extends React.Component {
           <Footer data={data} linkProps={linkProps} />
         </div>
         {/* MEMO: tweak */}
-        {modalActive ? <Modal data={data} modalIndex={modalIndex} imagePath={imagePath} /> : null}
+        {modalActive ? <Modal data={data} modalIndex={modalIndex} /> : null}
       </div>
     );
   }
