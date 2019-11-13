@@ -4,6 +4,7 @@
   "homepage": "/react-youtube-adaptive-loading",
   "private": false,
   "dependencies": {
+    "dotenv": "^8.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
