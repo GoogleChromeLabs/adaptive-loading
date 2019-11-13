@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-const YOUTUBE_API_DEV_MODE = true;
-const LOCAL_DEV_MODE = true;
+const YOUTUBE_API_DEV_MODE = false;
+const LOCAL_DEV_MODE = false;
+
+const YOUTUBE_API_KEY = 'AIzaSyDreslP_TSojaPkre74yyLj94e4_x5CR7c';
 
 const ADAPTIVE_FACTORS = {
   ECT_LIMIT: '4g',
@@ -33,5 +35,6 @@ export {
   YOUTUBE_API_DEV_MODE,
   LOCAL_DEV_MODE,
   ADAPTIVE_FACTORS,
-  YOUTUBE_API_REQUEST_AMOUNT
+  YOUTUBE_API_REQUEST_AMOUNT,
+  YOUTUBE_API_KEY
 };
