@@ -15,9 +15,9 @@
  */
 
 import React, { lazy, Suspense } from 'react';
+import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
-import { useHardwareConcurrency } from '../../utils/hooks';
 import { HARDWARE_CONCURRENCY_LIMIT } from '../../config';
 import './product.css';
 

@@ -15,11 +15,11 @@
  */
 
 import React, { Suspense, lazy, useState } from 'react';
+import { useMemoryStatus } from 'react-adaptive-hooks/memory';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import ManualConsole from './ManualConsole';
 import MemoryStatus from './MemoryStatus';
-import { useMemoryStatus } from '../../utils/hooks';
 import { DEVICE_MEMORY_LIMIT } from '../../config';
 import './main-content.css';
 

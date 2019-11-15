@@ -15,8 +15,8 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
 
-import { useNetworkStatus } from '../../utils/hooks';
 import './connection-aware-media.css';
 
 const MEDIA_TYPE = {

@@ -6,6 +6,7 @@
   "dependencies": {
     "fetch-intercept": "^2.3.1",
     "react": "^16.8.6",
+    "react-adaptive-hooks": "0.0.5",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
   },

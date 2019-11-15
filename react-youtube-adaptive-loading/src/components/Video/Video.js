@@ -1,8 +1,10 @@
 
 import React, { lazy, Suspense } from 'react';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
+import { useMemoryStatus } from 'react-adaptive-hooks/memory';
+import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
-import { useNetworkStatus, useMemoryStatus, useHardwareConcurrency } from '../../utils/hooks';
 import { ADAPTIVE_FACTORS } from '../../config';
 import './Video.scss';
 

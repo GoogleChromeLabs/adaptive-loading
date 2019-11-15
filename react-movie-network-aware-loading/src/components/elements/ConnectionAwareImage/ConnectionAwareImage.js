@@ -15,8 +15,8 @@
  */
 
 import React from 'react';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
 
-import { useNetworkStatus } from '../../../utils/hooks';
 import { IMAGE_BASE_URL, POSTER_SIZES } from '../../../config';
 
 const ConnectionAwareImage = ({ path, alt, ...rest }) => {

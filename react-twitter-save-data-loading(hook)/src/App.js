@@ -17,12 +17,12 @@
 import React, { useState } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
+import { useSaveData } from 'react-adaptive-hooks/save-data';
 
 import Tweet from './components/Twitter/Tweet';
 import Navbar from './components/Navbar/Navbar';
 import tweets from './data/tweets';
 import { IMAGE_TYPE } from './config';
-import { useSaveData } from './utils/hooks';
 import { checkMobile } from './utils/helpers';
 import './App.css';
 

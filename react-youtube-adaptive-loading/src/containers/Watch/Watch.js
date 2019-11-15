@@ -18,6 +18,9 @@ import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
+import { useMemoryStatus } from 'react-adaptive-hooks/memory';
+import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
 import WatchContent from './WatchContent/WatchContent';
 import * as watchActions from '../../store/actions/watch';
@@ -26,7 +29,6 @@ import { getChannelId } from '../../store/reducers/videos';
 import { getCommentNextPageToken } from '../../store/reducers/comments';
 import * as commentActions from '../../store/actions/comment';
 import { getSearchParam } from '../../services/url';
-import { useNetworkStatus, useMemoryStatus, useHardwareConcurrency } from '../../utils/hooks';
 import { ADAPTIVE_FACTORS } from '../../config';
 
 const Watch = ({

@@ -15,10 +15,10 @@
  */
 
 import React from 'react';
+import { useMemoryStatus } from 'react-adaptive-hooks/memory';
 
 import MemoryStatus from '../../components/MemoryStatus';
 import ModelViewer from '../../components/ModelViewer';
-import { useMemoryStatus } from '../../utils/hooks';
 import './memory-considerate-media.css';
 import { DEVICE_MEMORY_LIMIT } from '../../config';
 

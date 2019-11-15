@@ -15,9 +15,9 @@
  */
 
 import React, { useState, useRef } from 'react';
+import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
 import ToggleSwitch from '../../components/ToggleSwitch';
-import { useHardwareConcurrency } from '../../utils/hooks';
 import './cpu-considerate-media.css';
 
 const q240 = 'https://firebasestorage.googleapis.com/v0/b/devices-1b6e0.appspot.com/o/q240.mp4?alt=media&token=30d750a9-68ba-470e-999d-830c54a32c3c';

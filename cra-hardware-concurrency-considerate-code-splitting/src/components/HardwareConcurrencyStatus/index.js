@@ -15,8 +15,8 @@
  */
 
 import React from 'react';
+import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
-import { useHardwareConcurrency } from '../../utils/hooks';
 import { HARDWARE_CONCURRENCY_LIMIT } from '../../config';
 
 const HardwareConcurrencyStatus = () => {
