@@ -6,6 +6,7 @@
   "dependencies": {
     "@google/model-viewer": "^0.7.2",
     "react": "^16.11.0",
+    "react-adaptive-hooks": "0.0.5",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
     "react-toggle": "^4.1.1"

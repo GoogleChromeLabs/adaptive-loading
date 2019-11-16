@@ -15,8 +15,12 @@
  */
 
 import React from 'react';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
 
-import { useNetworkStatus } from '../../utils/hooks';
+import minResImage from '../../assets/images/min-res.jpg';
+import mediumResImage from '../../assets/images/medium-res.jpg';
+import maxResImage from '../../assets/images/max-res.jpg';
+import video from '../../assets/videos/4g-video.mp4';
 import './connection-aware-media.css';
 
 const ConnectionAwareMedia = () => {
@@ -27,19 +31,19 @@ const ConnectionAwareMedia = () => {
   let media;
   switch (effectiveConnectionType) {
     case 'slow-2g':
-      media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmin-res.jpg?v=1562842586912' alt='low resolution' />;
+      media = <img className='responsive' src={minResImage} alt='low resolution' />;
       break;
     case '2g':
-      media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmedium-res.jpg?v=1562842587169' alt='medium resolution' />;
+      media = <img className='responsive' src={mediumResImage} alt='medium resolution' />;
       break;
     case '3g':
-      media = <img className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2Fmax-res.jpg?v=1562842587982' alt='high resolution' />;
+      media = <img className='responsive' src={maxResImage} alt='high resolution' />;
       break;
     case '4g':
-      media = <video className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2F4g-video.mp4?v=1562842601068' controls />;
+      media = <video className='responsive' src={video} controls />;
       break;
     default:
-      media = <video className='responsive' src='https://cdn.glitch.com/8d7fb7f0-a9be-4a8c-96c7-8af286af487e%2F4g-video.mp4?v=1562842601068' controls />;
+      media = <video className='responsive' src={video} controls />;
       break;
   }
 

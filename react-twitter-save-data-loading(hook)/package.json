@@ -6,6 +6,7 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
+    "react-adaptive-hooks": "0.0.5",
     "react-dom": "^16.10.1",
     "react-scripts": "3.1.2",
     "react-toggle": "^4.1.1",

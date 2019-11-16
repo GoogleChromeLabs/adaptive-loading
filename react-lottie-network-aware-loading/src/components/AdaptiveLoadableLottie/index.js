@@ -15,10 +15,10 @@
  */
 
 import React, { lazy, Suspense, useState } from 'react';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
 
 import LazyLoadingErrorBoundary from '../LazyLoadingErrorBoundary';
 import ToggleSwitch from '../ToggleSwitch';
-import { useNetworkStatus } from '../../utils/hooks';
 import './adaptive-loadable-lottie.css';
 
 const HeavyWithAnimation = lazy(() => import(/* webpackChunkName: "heavy-with-animation" */ './HeavyWithAnimation'));
