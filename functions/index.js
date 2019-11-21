@@ -29,9 +29,7 @@ const stringSimilarity = require('string-similarity');
 const SIMILARITY_THRESHOLD = .88;
 const BUILD_PATH ='builds';
 const IMAGES_PATH = 'assets/images';
-// ray test touch <
 const PORT = parseInt(process.env.PORT, 10) || 5000;
-// ray test touch >
 
 // projects with client side routing
 const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
@@ -56,9 +54,7 @@ const deviceApi = (() => {
 })();
 
 app.get('/ping', (req, res) => {
-  // ray test touch <
   return res.send('pong');
-  // ray test touch >
 });
 
 app.get('/api/device', (req, res) => {
@@ -107,7 +103,6 @@ app.get('/dpr-aware-image', (req, res) => {
   const dpr = req.headers.dpr || 1;
   const url = `https://via.placeholder.com/${dpr * 400}/92c952`;
   
-  // ray test touch <
   try {
     return request.get(url).pipe(res);
   } catch (error) {
@@ -116,7 +111,6 @@ app.get('/dpr-aware-image', (req, res) => {
       message: error
     });
   }
-  // ray test touch >
 });
 
 app.get('/memory-considerate-image', (req, res) => {
@@ -143,7 +137,6 @@ app.get('/memory-considerate-image', (req, res) => {
 
   const type = mime[path.extname(file).slice(1)] || 'text/plain';
   const readStream = fs.createReadStream(file);
-  // ray test touch <
   readStream.on('open', function () {
     res.set('Content-Type', type);
     readStream.pipe(res);
@@ -153,7 +146,6 @@ app.get('/memory-considerate-image', (req, res) => {
     res.status(404).end('Not found');
   });
   return;
-  // ray test touch >
 });
 
 app.get('/connection-aware-image', (req, res) => {
@@ -189,7 +181,6 @@ app.get('/connection-aware-image', (req, res) => {
   const file = path.join(__dirname, IMAGES_PATH, fileName);
   const type = mime[path.extname(file).slice(1)] || 'text/plain';
   const readStream = fs.createReadStream(file);
-  // ray test touch <
   readStream.on('open', function () {
     res.set('Content-Type', type);
     readStream.pipe(res);
@@ -199,7 +190,6 @@ app.get('/connection-aware-image', (req, res) => {
     res.status(404).end('Not found');
   });
   return;
-  // ray test touch >
 });
 
 app.get('/network-memory-considerate-model', (req, res) => {
@@ -212,9 +202,7 @@ app.get('/network-memory-considerate-model', (req, res) => {
   const ECT_LIMIT = '4g';
   // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const experienceType = (ect === ECT_LIMIT && deviceMemory > MEMORY_LIMIT) ? 'heavy' : 'light';
-  // ray test touch <
   return res.json({experienceType});
-  // ray test touch >
 });
 
 app.get('/save-data', (req, res) => {
@@ -229,30 +217,22 @@ app.get('/save-data', (req, res) => {
   console.log('[server save-data route] requestSaveData => ', requestSaveData);
   console.log('[server save-data route] saveData => ', saveData);
 
-  // ray test touch <
   return res.status(200).json({saveData});
-  // ray test touch >
 });
 
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 // the react-router do the route part
 app.get(`/${REACT_MOVIE_NETWORK_AWARE_LOADING}/*`, (req, res) => {
-  // ray test touch <
   return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_MOVIE_NETWORK_AWARE_LOADING, 'index.html'));
-  // ray test touch >
 });
 
 app.get(`/${REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING}/*`, (req, res) => {
-  // ray test touch <
   return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING, 'index.html'));
-  // ray test touch >
 });
 
 app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
-  // ray test touch <
   return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_YOUTUBE_ADAPTIVE_LOADING, 'index.html'));
-  // ray test touch >
 });
 
 // ray test touch <
@@ -263,9 +243,7 @@ app.use(['/', '/react-hooks', '/demos', '/resources', '/*'], (req, res) => {
 
   return nextApp.prepare().then(() => nextHandle(req, res));
 });
-// ray test touch >
 
-// ray test touch <
 // TODO: no needed
 // app.set('views', `${__dirname}/${BUILD_PATH}`);
 // app.engine('html', require('ejs').renderFile);
@@ -280,13 +258,11 @@ app.use(['/', '/react-hooks', '/demos', '/resources', '/*'], (req, res) => {
 // });
 // ray test touch >
 
-// ray test touch <
 app.listen(
   PORT,
   () => {
     console.log(`> Ready on http://localhost:${PORT}`);
   }
 );
-// ray test touch >
 
 exports.app = functions.https.onRequest(app);
