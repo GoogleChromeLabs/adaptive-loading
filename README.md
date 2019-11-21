@@ -41,19 +41,8 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 
 ## Deployment
 
-### Functions deployment
-```
-cd functions
-npm install
-cd ..
-npm run deploy-functions
-```
-
-### Host deployment
-```
 npm run build
-npm run deploy-host
-```
+npm run deploy
 
 ## Team
 

@@ -36,6 +36,7 @@ const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
 const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
 const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
 const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
+const MICROSITE = 'microsite';
 
 app.disable('x-powered-by');
 app.use(cors());
@@ -239,7 +240,7 @@ app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
 // ray test touch <
 app.use(MICROSITE_ROUTES, (req, res) => {
   const next = require('next');
-  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/next`}});
+  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
   const micrositeHandle = micrositeApp.getRequestHandler();
 
   return micrositeApp.prepare().then(() => micrositeHandle(req, res));
