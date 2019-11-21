@@ -36,7 +36,7 @@ const Nav = () => {
     <nav>
       <ul>
         <li>
-          <SwitchWithLabel 
+          <SwitchWithLabel
             label='Animation On/Off'
             disabled={!manualEnabled}
             checked={isAnimationOn}

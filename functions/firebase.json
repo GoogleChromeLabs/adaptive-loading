@@ -2,7 +2,7 @@
   "hosting": {
     "public": "builds",
     "rewrites": [ {
-      "source": "**",
+      "source": "**/**",
       "function": "app"
     } ]
    }
