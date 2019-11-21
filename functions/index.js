@@ -35,6 +35,7 @@ const PORT = parseInt(process.env.PORT, 10) || 5000;
 const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
 const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
 const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
+const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
 
 app.disable('x-powered-by');
 app.use(cors());
@@ -236,12 +237,12 @@ app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
 });
 
 // ray test touch <
-app.use(['/', '/react-hooks', '/demos', '/resources', '/*'], (req, res) => {
+app.use(MICROSITE_ROUTES, (req, res) => {
   const next = require('next');
-  const nextApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/next`}});
-  const nextHandle = nextApp.getRequestHandler();
+  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/next`}});
+  const micrositeHandle = micrositeApp.getRequestHandler();
 
-  return nextApp.prepare().then(() => nextHandle(req, res));
+  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
 });
 
 // TODO: no needed
