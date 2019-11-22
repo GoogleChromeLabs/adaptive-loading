@@ -35,5 +35,6 @@ ReactDOM.render(
     <BrowserRouter basename={LOCAL_DEV_MODE ? null : '/react-youtube-adaptive-loading'}>
       <App/>
     </BrowserRouter>
-  </Provider>, document.getElementById('root'));
+  </Provider>, document.getElementById('root')
+);
 registerServiceWorker();

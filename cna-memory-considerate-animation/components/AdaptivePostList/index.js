@@ -16,7 +16,7 @@
 
 import { Fragment, useContext } from 'react';
 
-import AnimationEmulationContext from '../AnimationEmulationContext';
+import { AnimationEmulationContext } from '../../contexts';
 import AnimationPostList from '../AnimationPostList';
 import SimplePostList from '../SimplePostList';
 import Nav from '../Nav';

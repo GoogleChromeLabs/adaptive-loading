@@ -1,15 +1,19 @@
+
+// ray test touch <
 import React from 'react';
-import './AppLayout.scss';
+
 import HeaderNav from '../../containers/HeaderNav/HeaderNav';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import './AppLayout.scss';
 
-export function AppLayout(props) {
+export const AppLayout = ({ children }) => {
   return (
     <ScrollToTop>
       <div className='app-layout'>
-        <HeaderNav/>
-        {props.children}
+        <HeaderNav />
+        {children}
       </div>
     </ScrollToTop>
   );
-}
+};
+// ray test touch >
