@@ -25,6 +25,8 @@ import { Provider } from 'react-redux';
 import { configureStore } from './store/configureStore';
 import { LOCAL_DEV_MODE } from './config';
 
+require('dotenv').config();
+
 const store = configureStore();
 
 ReactDOM.render(
