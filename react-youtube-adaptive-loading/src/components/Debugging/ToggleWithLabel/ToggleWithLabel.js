@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
-.toggle-switch {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  font-size: 1.25rem;
-}
+import React from 'react';
+import Toggle from 'react-toggle'; // TODO: update -> deprecated lifecyle usage detected
+import 'react-toggle/style.css';
 
-.toggle-switch .react-toggle {
-  margin-right: 12px;
-}
+import './ToggleWithLabel.scss';
+
+const ToggleWithLabel = ({ label, ...rest }) => (
+  <div className='toggle-with-label'>
+    <Toggle {...rest} />
+    <label>{label}</label>
+  </div>
+);
+
+export default ToggleWithLabel;

@@ -38,7 +38,7 @@ const WatchContent = ({
   comments,
   amountComments,
   bottomReachedCallback,
-  isHeavyExperience
+  liteModeEnabled
 }) => {
   const shouldShowLoader = () => {
     return !!nextPageToken;
@@ -49,8 +49,8 @@ const WatchContent = ({
     video = require('../../../dummy-data/watch/video.json');
     channel = require('../../../dummy-data/watch/channel.json');
     const dummyRelatedVideos = require('../../../dummy-data/watch/related-videos.json');
-    relatedVideos = isHeavyExperience ? dummyRelatedVideos : dummyRelatedVideos.slice(0, YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS / 2);
-    comments = isHeavyExperience ? require('../../../dummy-data/watch/comments.json') : [];
+    relatedVideos = !liteModeEnabled ? dummyRelatedVideos : dummyRelatedVideos.slice(0, YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS / 2);
+    comments = !liteModeEnabled ? require('../../../dummy-data/watch/comments.json') : [];
     amountComments = 9473;
   }
 

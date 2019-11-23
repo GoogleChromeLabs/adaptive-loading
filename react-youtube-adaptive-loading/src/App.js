@@ -14,11 +14,16 @@
  * limitations under the License.
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { useNetworkStatus } from 'react-adaptive-hooks/network';
+import { useMemoryStatus } from 'react-adaptive-hooks/memory';
+import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
+import { ADAPTIVE_FACTORS } from './config';
+import { EmulationContext } from './contexts'
 import Home from './containers/Home/Home';
 import Watch from './containers/Watch/Watch';
 import Trending from './containers/Trending/Trending';
@@ -30,6 +35,31 @@ import { YOUTUBE_API_DEV_MODE } from './config';
 const API_KEY = YOUTUBE_API_DEV_MODE ? '' : process.env.REACT_APP_YOUTUBE_API_KEY;
 
 const App = ({ youtubeLibraryLoaded, location }) => {
+  // TODO: extract as custom hook
+  const { effectiveConnectionType } = useNetworkStatus();
+  const { deviceMemory } = useMemoryStatus();
+  const { numberOfLogicalProcessors } = useHardwareConcurrency();
+  console.log('[App] effectiveConnectionType, deviceMemory, numberOfLogicalProcessors => ', effectiveConnectionType, deviceMemory, numberOfLogicalProcessors);
+
+  const [manualEnabled, setManualEnabled] = useState(false);
+  const [isLiteModeOn, setIsLiteModeOn] = useState(false);
+
+  const isLiteModeEnv = !(
+    effectiveConnectionType === ADAPTIVE_FACTORS.ECT_LIMIT &&
+    deviceMemory > ADAPTIVE_FACTORS.DEVICE_MEMORY_LIMIT &&
+    numberOfLogicalProcessors > ADAPTIVE_FACTORS.HARDWARE_CONCURRENCY_LIMIT
+  );
+
+  const liteModeEnabled = manualEnabled ? isLiteModeOn : isLiteModeEnv;
+
+  const enableManualTestingHandler = event => {
+    setManualEnabled(event.target.checked);
+  };
+
+  const toggleLiteModeHandler = event => {
+    setIsLiteModeOn(event.target.checked);
+  };
+
   useEffect(() => {
     loadYoutubeApi();
   // eslint-disable-next-line
@@ -52,14 +82,23 @@ const App = ({ youtubeLibraryLoaded, location }) => {
   };
 
   return (
-    <AppLayout>
-      <Switch>
-        <Route path='/feed/trending' component={Trending}/>
-        <Route path='/results' render={() => <Search key={location.key}/>}/>
-        <Route path='/watch' render={() => <Watch key={location.key}/>}/>
-        <Route path='/' component={Home}/>
-      </Switch>
-    </AppLayout>
+    <EmulationContext.Provider
+      value={{
+        manualEnabled,
+        isLiteModeOn,
+        liteModeEnabled,
+        enableManualTestingHandler,
+        toggleLiteModeHandler
+      }}>
+      <AppLayout>
+        <Switch>
+          <Route path='/feed/trending' component={Trending}/>
+          <Route path='/results' render={() => <Search key={location.key}/>}/>
+          <Route path='/watch' render={() => <Watch key={location.key}/>}/>
+          <Route path='/' component={Home}/>
+        </Switch>
+      </AppLayout>
+    </EmulationContext.Provider>
   );
 };
 

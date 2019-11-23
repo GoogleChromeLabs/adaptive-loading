@@ -19,6 +19,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "react-test-renderer": "^16.8.6",
+    "react-toggle": "^4.1.1",
     "react-waypoint": "^9.0.2",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",

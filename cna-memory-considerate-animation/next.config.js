@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
-module.exports = {
+const withCSS = require('@zeit/next-css');
+
+module.exports = withCSS({
   distDir: './functions/next'
-};
+});

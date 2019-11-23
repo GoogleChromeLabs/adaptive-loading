@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { useNetworkStatus } from 'react-adaptive-hooks/network';
-import { useMemoryStatus } from 'react-adaptive-hooks/memory';
-import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
+import { EmulationContext } from '../../contexts';
 import WatchContent from './WatchContent/WatchContent';
 import * as watchActions from '../../store/actions/watch';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
@@ -29,7 +27,6 @@ import { getChannelId } from '../../store/reducers/videos';
 import { getCommentNextPageToken } from '../../store/reducers/comments';
 import * as commentActions from '../../store/actions/comment';
 import { getSearchParam } from '../../services/url';
-import { ADAPTIVE_FACTORS } from '../../config';
 
 const Watch = ({
   youtubeLibraryLoaded,
@@ -52,16 +49,7 @@ const Watch = ({
   // eslint-disable-next-line
   }, [youtubeLibraryLoaded]);
 
-  const { effectiveConnectionType } = useNetworkStatus();
-  const { deviceMemory } = useMemoryStatus();
-  const { numberOfLogicalProcessors } = useHardwareConcurrency();
-
-  const isHeavyExperience =
-    effectiveConnectionType === ADAPTIVE_FACTORS.ECT_LIMIT &&
-    deviceMemory > ADAPTIVE_FACTORS.DEVICE_MEMORY_LIMIT &&
-    numberOfLogicalProcessors > ADAPTIVE_FACTORS.HARDWARE_CONCURRENCY_LIMIT;
-
-  console.log('[containers Watch] isHeavyExperience => ', isHeavyExperience);
+  const { liteModeEnabled } = useContext(EmulationContext);
 
   const getVideoId = () => {
     return getSearchParam(location, 'v');
@@ -72,11 +60,13 @@ const Watch = ({
     if (!videoId) {
       history.push('/');
     }
-    fetchWatchDetails(videoId, channelId, isHeavyExperience);
+    // ray test touch <
+    fetchWatchDetails(videoId, channelId, !liteModeEnabled);
+    // ray test touch >
   };
 
   const fetchMoreComments = () => {
-    if (nextPageToken && isHeavyExperience) {
+    if (nextPageToken && !liteModeEnabled) {
       fetchCommentThread(getVideoId(), nextPageToken);
     }
   };
@@ -85,7 +75,7 @@ const Watch = ({
 
   return (
     <WatchContent
-      isHeavyExperience={isHeavyExperience}
+      liteModeEnabled={liteModeEnabled}
       videoId={videoId}
       channelId={channelId}
       bottomReachedCallback={fetchMoreComments}

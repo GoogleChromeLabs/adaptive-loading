@@ -1,5 +1,4 @@
 
-// ray test touch <
 import React from 'react';
 
 import HeaderNav from '../../containers/HeaderNav/HeaderNav';
@@ -16,4 +15,3 @@ export const AppLayout = ({ children }) => {
     </ScrollToTop>
   );
 };
-// ray test touch >

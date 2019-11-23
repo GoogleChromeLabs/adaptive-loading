@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-.toggle-switch {
+.toggle-with-label {
   display: flex;
   align-items: center;
   padding: 8px;
-  font-size: 1.25rem;
-}
 
-.toggle-switch .react-toggle {
-  margin-right: 12px;
+  & > .react-toggle {
+    margin-right: 8px;
+  }
 }
