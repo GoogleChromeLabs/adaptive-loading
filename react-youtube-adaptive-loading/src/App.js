@@ -41,7 +41,9 @@ const App = ({ youtubeLibraryLoaded, location }) => {
   } = useLiteModeDebugging();
 
   useEffect(() => {
-    loadYoutubeApi();
+    if (!YOUTUBE_API_DEV_MODE) {
+      loadYoutubeApi();
+    }
   // eslint-disable-next-line
   }, []);
 

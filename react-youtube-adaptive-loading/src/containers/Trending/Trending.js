@@ -63,6 +63,7 @@ class Trending extends Component {
   render() {
     const loaderActive = this.shouldShowLoader();
     const videos = YOUTUBE_API_DEV_MODE ? require('../../dummy-data/trending/trending.json') : this.props.videos;
+    // console.log('[dummy-data/trending/trending.json]', JSON.stringify(videos));
 
     return (
       <VideoList
