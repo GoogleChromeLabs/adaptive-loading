@@ -37,19 +37,19 @@ const Watch = ({
   nextPageToken,
   fetchCommentThread
 }) => {
+  const { liteModeEnabled } = useContext(EmulationContext);
+
   useEffect(() => {
     if (youtubeLibraryLoaded) {
       fetchWatchContent();
     }
   // eslint-disable-next-line
-  }, []);
+  }, [liteModeEnabled]);
 
   useEffect(() => {
     fetchWatchContent();
   // eslint-disable-next-line
   }, [youtubeLibraryLoaded]);
-
-  const { liteModeEnabled } = useContext(EmulationContext);
 
   const getVideoId = () => {
     return getSearchParam(location, 'v');

@@ -23,7 +23,7 @@ import { getSearchParam } from '../../services/url';
 
 const initialState = {
   byVideo: {},
-  byId: {},
+  byId: {}
 };
 
 export default (state = initialState, action) => {
@@ -58,18 +58,18 @@ const reduceCommentThread = (response, videoId, prevState) => {
 
   const byVideoComment = {
     nextPageToken: response.nextPageToken,
-    ids: commentIds,
+    ids: [...new Set(commentIds)]
   };
 
   return {
     ...prevState,
     byId: {
       ...prevState.byId,
-      ...newComments,
+      ...newComments
     },
     byVideo: {
       ...prevState.byVideo,
-      [videoId]: byVideoComment,
+      [videoId]: byVideoComment
     }
   };
 };
