@@ -3,8 +3,8 @@ import React, { useState, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Form, Icon, Image, Input, Menu } from 'semantic-ui-react';
 
-import CheckboxWithLabel from '../../components/Debugging/CheckboxWithLabel/CheckboxWithLabel';
-import ToggleWithLabel from '../../components/Debugging/ToggleWithLabel/ToggleWithLabel';
+import CheckboxWithLabel from '../../components/LiteModeDebugging/CheckboxWithLabel/CheckboxWithLabel';
+import ToggleWithLabel from '../../components/LiteModeDebugging/ToggleWithLabel/ToggleWithLabel';
 import { EmulationContext } from '../../contexts';
 import logo from '../../assets/images/logo.jpg';
 import './HeaderNav.scss';
