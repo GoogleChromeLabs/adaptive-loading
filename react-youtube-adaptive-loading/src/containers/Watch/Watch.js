@@ -60,9 +60,7 @@ const Watch = ({
     if (!videoId) {
       history.push('/');
     }
-    // ray test touch <
-    fetchWatchDetails(videoId, channelId, !liteModeEnabled);
-    // ray test touch >
+    fetchWatchDetails(videoId, channelId, liteModeEnabled);
   };
 
   const fetchMoreComments = () => {

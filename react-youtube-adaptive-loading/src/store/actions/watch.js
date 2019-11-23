@@ -18,9 +18,7 @@ import { createAction, createRequestTypes, FAILURE, REQUEST, SUCCESS } from './i
 
 export const WATCH_DETAILS = createRequestTypes('WATCH_DETAILS');
 export const details = {
-  // ray test touch <
-  request: (videoId, channelId, isHeavyMode) => createAction(WATCH_DETAILS[REQUEST], {videoId, channelId, isHeavyMode}),
-  // ray test touch >
+  request: (videoId, channelId, liteModeEnabled) => createAction(WATCH_DETAILS[REQUEST], {videoId, channelId, liteModeEnabled}),
   success: (response, videoId) => createAction(WATCH_DETAILS[SUCCESS], {response, videoId}),
   failure: response => createAction(WATCH_DETAILS[FAILURE], {response})
 };

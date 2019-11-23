@@ -27,9 +27,8 @@ import { REQUEST } from '../actions';
 import { SEARCH_LIST_RESPONSE, VIDEO_LIST_RESPONSE } from '../api/youtube-api-response-types';
 import { YOUTUBE_API_REQUEST_AMOUNT } from '../../config';
 
-// ray test touch <
-export function* fetchWatchDetails(videoId, channelId, isHeavyMode) {
-  const requests = isHeavyMode ? [
+export function* fetchWatchDetails(videoId, channelId, liteModeEnabled) {
+  const requests = !liteModeEnabled ? [
     buildVideoDetailRequest.bind(null, videoId),
     buildRelatedVideosRequest.bind(null, videoId),
     buildCommentThreadRequest.bind(null, videoId)
@@ -50,7 +49,6 @@ export function* fetchWatchDetails(videoId, channelId, isHeavyMode) {
     yield put(watchActions.details.failure(error));
   }
 };
-// ray test touch >
 
 function* fetchVideoDetails(responses, shouldFetchChannelInfo) {
   const searchListResponse = responses.find(response => response.result.kind === SEARCH_LIST_RESPONSE);
@@ -83,11 +81,9 @@ function* fetchVideoDetails(responses, shouldFetchChannelInfo) {
 /******************************************************************************/
 /******************************* WATCHERS *************************************/
 /******************************************************************************/
-// ray test touch <
 export function* watchWatchDetails() {
   while (true) {
-    const { videoId, channelId, isHeavyMode } = yield take(watchActions.WATCH_DETAILS[REQUEST]);
-    yield fork(fetchWatchDetails, videoId, channelId, isHeavyMode);
+    const { videoId, channelId, liteModeEnabled } = yield take(watchActions.WATCH_DETAILS[REQUEST]);
+    yield fork(fetchWatchDetails, videoId, channelId, liteModeEnabled);
   }
 };
-// ray test touch >
