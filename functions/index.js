@@ -237,19 +237,6 @@ app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
   res.sendFile(path.join(__dirname, BUILD_PATH, REACT_YOUTUBE_ADAPTIVE_LOADING, 'index.html'));
 });
 
-// TODO: remove after youtube demo completion
-app.get(`/react-youtube-adaptive-loading-live-1/*`, (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH, 'react-youtube-adaptive-loading-live-1', 'index.html'));
-});
-
-app.get(`/react-youtube-adaptive-loading-live-2/*`, (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH, 'react-youtube-adaptive-loading-live-2', 'index.html'));
-});
-
-app.get(`/react-youtube-adaptive-loading-live-3/*`, (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH, 'react-youtube-adaptive-loading-live-3', 'index.html'));
-});
-
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, BUILD_PATH));
 });

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-const YOUTUBE_API_DEV_MODE = true;
-const LOCAL_DEV_MODE = true;
+const YOUTUBE_API_DEV_MODE = false;
+const LOCAL_DEV_MODE = false;
 
 const ADAPTIVE_FACTORS = {
   ECT_LIMIT: '4g',

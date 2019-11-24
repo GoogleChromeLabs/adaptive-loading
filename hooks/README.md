@@ -198,7 +198,7 @@ const MyComponent = () => {
 
 ### Device Class
 
-* [Device-class aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-device-class-aware-code-splitting) ([Live](https://adaptive-loading.web.app/cra-device-class-aware-code-splitting/), [Moto G4](https://www.webpagetest.org/result/190828_2S_431d84f1cc15aace86d5046b348284b6/), [Galaxy S7](https://www.webpagetest.org/result/190828_SB_5b8fbb3a07e31f68f51681d6d67b7069/))
+* [Device-class aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-device-class-aware-code-splitting) ([Live](https://adaptive-loading.web.app/cra-device-class-aware-code-splitting/), [Moto G4](https://www.webpagetest.org/result/190828_2S_431d84f1cc15aace86d5046b348284b6/), [Galaxy S7](https://www.webpagetest.org/result/190828_SB_5b8fbb3a07e31f68f51681d6d67b7069/))
 * [UA-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/cra-ua-aware-code-splitting) with create-react-app ([Live](https://adaptive-loading.web.app/cra-ua-aware-code-splitting/))
 
 ### Save Data
