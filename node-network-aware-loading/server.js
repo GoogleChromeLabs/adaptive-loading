@@ -16,12 +16,12 @@
 
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
+const request = require('request');
 const cors = require('cors');
 
 const PORT = parseInt(process.env.PORT, 10) || 5000;
 const BUILD_PATH ='build';
-const IMAGES_PATH = `${BUILD_PATH}/assets/images`;
+const IMAGES_PATH = `assets/images/`;
 
 const app = express();
 app.disable('x-powered-by');
@@ -55,29 +55,15 @@ app.get('/connection-aware-image', (req, res) => {
       break;
   }
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
-
-  const file = path.join(__dirname, IMAGES_PATH, fileName);
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-    res.set('Content-Type', type);
-    readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-    console.log('[server connection-aware-image request] error => ', error);
-    res.set('Content-Type', 'text/plain');
-    res.status(404).end('Not found');
-  });
+  try {
+    console.log('[server connection-aware-image request proxy] domain => ', req.protocol, req.get('host'));
+    request.get(`${req.protocol}://${req.get('host')}/${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server connection-aware-image request proxy] error => ', error);
+    res.status(500).json({
+      message: error
+    });
+  }
 });
 
 // need to declare a "catch all" route on your express server 
