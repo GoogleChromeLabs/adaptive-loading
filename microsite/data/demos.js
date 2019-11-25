@@ -126,9 +126,9 @@ const demosMeta = [
   {
     id: 8,
     title: 'Memory considerate animation-toggling',
-    posterName: `cna-memory-animation`,
-    sourceCode: `${REPO_URL}tree/master/cna-memory-animation`,
-    liveDemo: 'https://cna-memory-animation.firebaseapp.com/'
+    posterName: `cna-memory-considerate-animation`,
+    sourceCode: `${REPO_URL}tree/master/cna-memory-considerate-animation`,
+    liveDemo: `${HOST_URL}cna-memory-considerate-animation/`
   },
   {
     id: 9,
