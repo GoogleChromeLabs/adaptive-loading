@@ -32,7 +32,9 @@ module.exports = withTM(withCSS({
     return config;
   },
   transpileModules: ['react-syntax-highlighter'],
-  distDir: './microsite',
+  // ray test touch <
+  distDir: './build',
+  // ray test touch >
   onDemandEntries: {
     // period (in ms) where the server will keep pages in the buffer
     maxInactiveAge: 25 * 1000,

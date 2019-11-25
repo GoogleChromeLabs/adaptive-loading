@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production && next start",
-    "deploy": "cp -r 'microsite' 'functions/' && firebase deploy",
+    "start": "next start",
     "serve": "firebase serve",
     "logs": "cd functions && npm run logs"
   },

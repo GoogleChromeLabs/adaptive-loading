@@ -15,6 +15,7 @@
  */
 
 import React, { useState } from 'react';
+import Head from 'next/head';
 import { AnimatePresence } from 'framer-motion';
 
 import Layout from '../components/Layout';
@@ -64,25 +65,31 @@ const MyApp = ({ Component, pageProps, router }) => {
   };
 
   return (
-    <AnimationEmulationContext.Provider
-      value={{
-        manualEnabled,
-        isAnimationOn,
-        animationAllowed,
-        enableManualAnimationHandler,
-        toggleAnimationHandler
-      }}>
-      <Layout clientHintDeviceMemory={clientHintDeviceMemory} hookMemoryStatus={hookMemoryStatus}>
-        { animationAllowed ? (
-          <AnimatePresence exitBeforeEnter>
+    <>
+      <Head>
+        <meta httpEquiv='Accept-CH' content='DPR, Width, Viewport-Width, ECT, Device-Memory' />
+        <meta httpEquiv='Accept-CH-Lifetime' content='86400' />
+      </Head>
+      <AnimationEmulationContext.Provider
+        value={{
+          manualEnabled,
+          isAnimationOn,
+          animationAllowed,
+          enableManualAnimationHandler,
+          toggleAnimationHandler
+        }}>
+        <Layout clientHintDeviceMemory={clientHintDeviceMemory} hookMemoryStatus={hookMemoryStatus}>
+          { animationAllowed ? (
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+          ) : (
             <Component {...pageProps} key={router.route} />
-          </AnimatePresence>
-        ) : (
-          <Component {...pageProps} key={router.route} />
-        ) }
-      </Layout>
-    </AnimationEmulationContext.Provider>
-  );
+          ) }
+        </Layout>
+      </AnimationEmulationContext.Provider>
+    </>
+  )
 };
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {

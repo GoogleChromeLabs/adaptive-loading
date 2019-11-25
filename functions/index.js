@@ -17,6 +17,9 @@
 const functions = require('firebase-functions');
 
 const express = require('express');
+// ray test touch <
+const next = require('next');
+// ray test touch >
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
@@ -35,6 +38,10 @@ const PORT = parseInt(process.env.PORT, 10) || 5000;
 const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
 const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
 const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
+// ray test touch <
+const CNA_MEMORY_CONSIDERATE_ANIMATION = 'cna-memory-considerate-animation';
+const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
+// ray test touch >
 const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
 const MICROSITE = 'microsite';
 
@@ -225,21 +232,36 @@ app.get('/save-data', (req, res) => {
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 // the react-router do the route part
-app.get(`/${REACT_MOVIE_NETWORK_AWARE_LOADING}/*`, (req, res) => {
+// ray test touch <
+app.use(`/${REACT_MOVIE_NETWORK_AWARE_LOADING}/*`, (req, res) => {
   return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_MOVIE_NETWORK_AWARE_LOADING, 'index.html'));
 });
 
-app.get(`/${REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING}/*`, (req, res) => {
+app.use(`/${REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING}/*`, (req, res) => {
   return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING, 'index.html'));
 });
 
-app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
+app.use(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
   return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_YOUTUBE_ADAPTIVE_LOADING, 'index.html'));
 });
 
+app.use(CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES, (req, res) => {
+  const BASENAME = `/${CNA_MEMORY_CONSIDERATE_ANIMATION}`;
+  const cnaMemoryConsiderateAnimationApp = next({dev: false, conf: {distDir: `${BUILD_PATH}${BASENAME}`}});
+  cnaMemoryConsiderateAnimationApp.setAssetPrefix(BASENAME);
+  if (req.originalUrl !== BASENAME) {
+    req.url = req.originalUrl.replace(BASENAME, '');
+  } else {
+    req.url = req.originalUrl.replace(BASENAME, '/');
+  }
+  const cnaMemoryConsiderateAnimationHandle = cnaMemoryConsiderateAnimationApp.getRequestHandler();
+
+  return cnaMemoryConsiderateAnimationApp.prepare().then(() => cnaMemoryConsiderateAnimationHandle(req, res));
+});
+// ray test touch >
+
 // ray test touch <
 app.use(MICROSITE_ROUTES, (req, res) => {
-  const next = require('next');
   const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
   const micrositeHandle = micrositeApp.getRequestHandler();
 
