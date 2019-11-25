@@ -16,12 +16,12 @@
 
 const express = require('express');
 const path = require('path');
+const request = require('request');
 const cors = require('cors');
-const fs = require('fs');
 
 const PORT = parseInt(process.env.PORT, 10) || 5000;
 const BUILD_PATH ='build';
-const IMAGES_PATH = `${BUILD_PATH}/assets/images`;
+const IMAGES_PATH = `static/images/`;
 
 const app = express();
 app.disable('x-powered-by');
@@ -43,35 +43,16 @@ app.get('/memory-considerate-image', (req, res) => {
   const deviceMemory = req.headers['device-memory'];
   console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
+  const fileName = deviceMemory < MEMORY_LIMIT ? 'min-res.jpg' : 'max-res.jpg';
 
-  const file = deviceMemory < MEMORY_LIMIT ?
-    path.join(__dirname, IMAGES_PATH, 'min-res.jpg') :
-    path.join(__dirname, IMAGES_PATH, 'max-res.jpg');
-
-  const dir = path.join(__dirname, BUILD_PATH);
-  if (file.indexOf(dir + path.sep) !== 0) {
-      return res.status(403).end('Forbidden');
+  try {
+    request.get(`${req.protocol}://${req.get('host')}/${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server memory-considerate-image request proxy] error => ', error);
+    res.status(500).json({
+      message: error
+    });
   }
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-      res.set('Content-Type', type);
-      readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-      res.set('Content-Type', 'text/plain');
-      res.status(404).end('Not found');
-  });
 });
 
 // need to declare a "catch all" route on your express server 

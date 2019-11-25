@@ -29,16 +29,17 @@ const stringSimilarity = require('string-similarity');
 
 const SIMILARITY_THRESHOLD = .88;
 const BUILD_PATH ='builds';
-const IMAGES_PATH = 'assets/images';
 const PORT = parseInt(process.env.PORT, 10) || 5000;
+const HOST = 'https://adaptive-loading.web.app/';
 
-// projects with client side routing
 const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
 const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
 const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
 const CNA_MEMORY_CONSIDERATE_ANIMATION = 'cna-memory-considerate-animation';
-const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
 const MICROSITE = 'microsite';
+const NODE_MEMORY_CONSIDERATE_LOADING = 'node-memory-considerate-loading';
+const NODE_NETWORK_AWARE_LOADING = 'node-network-aware-loading';
+const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
 const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
 
 app.disable('x-powered-by');
@@ -124,37 +125,22 @@ app.get('/memory-considerate-image', (req, res) => {
   // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const deviceMemory = req.headers['device-memory'];
   console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
+  const IMAGES_PATH = `static/${NODE_MEMORY_CONSIDERATE_LOADING}/images/`;
+  const fileName = deviceMemory < MEMORY_LIMIT ? 'min-res.jpg' : 'max-res.jpg';
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
-
-  const file = deviceMemory < MEMORY_LIMIT ?
-    path.join(__dirname, IMAGES_PATH, 'min-res.jpg') :
-    path.join(__dirname, IMAGES_PATH, 'max-res.jpg');
-
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-    res.set('Content-Type', type);
-    readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-    res.set('Content-Type', 'text/plain');
-    res.status(404).end('Not found');
-  });
-  return;
+  try {
+    return request.get(`${HOST}${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server memory-considerate-image request proxy] error => ', error);
+    return res.status(500).json({
+      message: error
+    });
+  }
 });
 
 app.get('/connection-aware-image', (req, res) => {
   console.log('[server connection-aware-image request] Effective Connection Type => ', req.headers.ect);
+  const IMAGES_PATH = `static/${NODE_NETWORK_AWARE_LOADING}/images/`;
   let fileName;
   switch(req.headers.ect) {
     case 'slow-2g':
@@ -172,29 +158,14 @@ app.get('/connection-aware-image', (req, res) => {
       break;
   }
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
-
-  const file = path.join(__dirname, IMAGES_PATH, fileName);
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-    res.set('Content-Type', type);
-    readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-    res.set('Content-Type', 'text/plain');
-    res.status(404).end('Not found');
-  });
-  return;
+  try {
+    return request.get(`${HOST}${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server connection-aware-image request proxy] error => ', error);
+    return res.status(500).json({
+      message: error
+    });
+  }
 });
 
 app.get('/network-memory-considerate-model', (req, res) => {

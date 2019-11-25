@@ -21,7 +21,7 @@ const cors = require('cors');
 
 const PORT = parseInt(process.env.PORT, 10) || 5000;
 const BUILD_PATH ='build';
-const IMAGES_PATH = `assets/images/`;
+const IMAGES_PATH = `static/images/`;
 
 const app = express();
 app.disable('x-powered-by');
@@ -56,7 +56,6 @@ app.get('/connection-aware-image', (req, res) => {
   }
 
   try {
-    console.log('[server connection-aware-image request proxy] domain => ', req.protocol, req.get('host'));
     request.get(`${req.protocol}://${req.get('host')}/${IMAGES_PATH}${fileName}`).pipe(res);
   } catch (error) {
     console.log('[server connection-aware-image request proxy] error => ', error);

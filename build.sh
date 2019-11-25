@@ -48,7 +48,9 @@ rootProject="microsite"
 mkdir -p "${multipleBuildsStaticPath}"
 cp -r ${rootProject}/public/static/* "${multipleBuildsStaticPath}"
 
-for PROJECT_WITH_STATIC in  cna-memory-considerate-animation
+for PROJECT_WITH_STATIC in  cna-memory-considerate-animation \
+                            node-network-aware-loading \
+                            node-memory-considerate-loading
 
 do
     mkdir -p "${multipleBuildsStaticPath}${PROJECT_WITH_STATIC}"
