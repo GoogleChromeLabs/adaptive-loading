@@ -19,6 +19,7 @@ import Link from 'next/link';
 
 import posts from '../../data/posts';
 import PostInfo from '../../components/PostInfo';
+import { ASSETS_SUB_PATH } from '../../config';
 
 const SimplePost = ({ post }) => {
   useEffect(() => {
@@ -28,7 +29,7 @@ const SimplePost = ({ post }) => {
   return (
     <div className='container post'>
       <div>
-        <img src={`/static/images/${post.id}.jpg`} />
+        <img src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
         <div>
           <PostInfo post={post} />
           <p>{post.text}</p>

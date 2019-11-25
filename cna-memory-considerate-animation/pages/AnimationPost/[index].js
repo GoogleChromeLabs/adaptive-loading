@@ -20,6 +20,7 @@ import { motion } from 'framer-motion';
 
 import posts from '../../data/posts';
 import PostInfo from '../../components/PostInfo';
+import { ASSETS_SUB_PATH } from '../../config';
 
 const easing = [0.175, 0.85, 0.42, 0.96];
 
@@ -72,7 +73,7 @@ const AnimationPost = ({ post }) => {
   return (
     <div className='container post'>
       <motion.div initial='exit' animate='enter' exit='exit'>
-        <motion.img variants={imageVariants} src={`/static/images/${post.id}.jpg`} />
+        <motion.img variants={imageVariants} src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
         <motion.div variants={textVariants}>
           <PostInfo post={post} />
           <p>{post.text}</p>

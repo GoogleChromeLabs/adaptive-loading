@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
+import { ASSETS_SUB_PATH } from '../../config';
+
 const PostInfo = ({ post }) => (
   <div className='post-info'>
     <div className='author'>
-      <img width={35} height={35} className='avatar' src={`/static/avatars/${post.author.avatar}`} />{' '}
+      <img width={35} height={35} className='avatar' src={`/static${ASSETS_SUB_PATH}/avatars/${post.author.avatar}`} />{' '}
       <strong>{post.author.name}</strong> ({post.author.age})
     </div>
     <time>{post.date}</time>

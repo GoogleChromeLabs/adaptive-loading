@@ -23,10 +23,8 @@ for PROJECT in  cra-battery-considerate-loading \
                 react-dixie-memory-considerate-loading \
                 react-lottie-network-aware-loading \
                 react-youtube-adaptive-loading \
-                # ray test touch <
                 microsite \
                 cna-memory-considerate-animation \
-                # ray test touch >
                 "react-twitter-save-data-loading(client-hint)" \
                 "react-twitter-save-data-loading(hook)"
 do
@@ -42,4 +40,17 @@ do
 
     cd ..
     echo "Done building ${PROJECT}."
+done
+
+multipleBuildsStaticPath="functions/builds/static/"
+
+rootProject="microsite"
+mkdir -p "${multipleBuildsStaticPath}"
+cp -r ${rootProject}/public/static/* "${multipleBuildsStaticPath}"
+
+for PROJECT_WITH_STATIC in  cna-memory-considerate-animation
+
+do
+    mkdir -p "${multipleBuildsStaticPath}${PROJECT_WITH_STATIC}"
+    cp -r ${PROJECT_WITH_STATIC}/public/static/* "${multipleBuildsStaticPath}${PROJECT_WITH_STATIC}"
 done
