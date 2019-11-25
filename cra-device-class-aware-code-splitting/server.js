@@ -20,11 +20,14 @@ const cors = require('cors');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
+
 const SIMILARITY_THRESHOLD = .88;
+const PORT = parseInt(process.env.PORT, 10) || 5000;
+const BUILD_PATH ='build';
 
 app.disable('x-powered-by');
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, BUILD_PATH)));
 
 // DeviceAtlas server-side API
 const deviceApi = (() => {
@@ -85,11 +88,12 @@ app.get('/api/device', (req, res) => {
 // that captures all page requests and directs them to the client
 // the react-router do the route part
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, BUILD_PATH, 'index.html'));
 });
 app.listen(
-  process.env.PORT || 5000,
+  PORT,
   () => {
-    console.log(`Frontend start on http://localhost:5000`);
+    console.log(`> Ready on http://localhost:${PORT}`);
   }
 );
+  

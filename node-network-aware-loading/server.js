@@ -19,14 +19,16 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 
-const IMAGES_PATH = 'public/assets/images';
+const PORT = parseInt(process.env.PORT, 10) || 5000;
+const BUILD_PATH ='build';
+const IMAGES_PATH = `${BUILD_PATH}/assets/images`;
 
 const app = express();
 app.disable('x-powered-by');
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', __dirname + '/public');
+app.use(express.static(path.join(__dirname, BUILD_PATH)));
+app.set('views', `${__dirname}/${BUILD_PATH}`);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -81,12 +83,12 @@ app.get('/connection-aware-image', (req, res) => {
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, BUILD_PATH, 'index.html'));
 });
 
 app.listen(
-  process.env.PORT || 5000,
+  PORT,
   () => {
-    console.log(`Frontend start on http://localhost:5000`);
+    console.log(`> Ready on http://localhost:${PORT}`);
   }
 );
