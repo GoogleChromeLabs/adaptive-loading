@@ -45,6 +45,7 @@ export class HomeContent extends Component {
   render() {
     const { showLoader, bottomReachedCallback } = this.props;
     const trendingVideos = YOUTUBE_API_DEV_MODE ? require('../../../dummy-data/home/trending-videos.json') : this.getTrendingVideos();
+    // console.log('[dummy-data/home/trending-videos.json]', JSON.stringify(trendingVideos));
     const categoryGrids = this.getVideoGridsForCategories();
 
     return (

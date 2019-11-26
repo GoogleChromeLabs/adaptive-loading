@@ -26,7 +26,7 @@ const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
         <input type='checkbox' onChange={onChangeHandler} {...rest} />
         {label}
       </label>
-      <style jsx global>{`
+      <style jsx>{`
         div.checkbox {
           margin-left: 20px;
           padding: 8px;

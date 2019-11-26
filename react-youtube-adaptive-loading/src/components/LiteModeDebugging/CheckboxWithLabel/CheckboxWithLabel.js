@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
-.toggle-switch {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  font-size: 1.25rem;
-}
+import React from 'react';
 
-.toggle-switch .react-toggle {
-  margin-right: 12px;
-}
+import './CheckboxWithLabel.scss';
+
+const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
+  const onChangeHandler = event => {
+    onChange(event.target.checked);
+  };
+
+  return (
+    <div className='checkbox'>
+      <input type='checkbox' onChange={onChangeHandler} {...rest} />
+      <label>{label}</label>
+    </div>
+  );
+};
+
+export default CheckboxWithLabel;

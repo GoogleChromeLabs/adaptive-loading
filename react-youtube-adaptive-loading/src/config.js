@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-const YOUTUBE_API_DEV_MODE = false;
+const YOUTUBE_API_DEV_MODE = true;
 const LOCAL_DEV_MODE = false;
 
 const ADAPTIVE_FACTORS = {
@@ -29,9 +29,15 @@ const YOUTUBE_API_REQUEST_AMOUNT = {
   RELATED_VIDEOS: 12
 };
 
+const ADAPTIVE_MODE = {
+  LITE: 'lite',
+  FULL: 'full'
+};
+
 export {
   YOUTUBE_API_DEV_MODE,
   LOCAL_DEV_MODE,
   ADAPTIVE_FACTORS,
-  YOUTUBE_API_REQUEST_AMOUNT
+  YOUTUBE_API_REQUEST_AMOUNT,
+  ADAPTIVE_MODE
 };

@@ -18,7 +18,7 @@ import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import Layout from '../components/Layout';
-import AnimationEmulationContext from '../components/AnimationEmulationContext';
+import { AnimationEmulationContext } from '../contexts';
 import { useMemoryStatus } from '../utils/hooks';
 import { DEVICE_MEMORY_LIMIT } from '../config';
 
@@ -69,8 +69,8 @@ const MyApp = ({ Component, pageProps, router }) => {
         manualEnabled,
         isAnimationOn,
         animationAllowed,
-        enableManualAnimationHandler: enableManualAnimationHandler,
-        toggleAnimationHandler: toggleAnimationHandler
+        enableManualAnimationHandler,
+        toggleAnimationHandler
       }}>
       <Layout clientHintDeviceMemory={clientHintDeviceMemory} hookMemoryStatus={hookMemoryStatus}>
         { animationAllowed ? (
@@ -82,7 +82,7 @@ const MyApp = ({ Component, pageProps, router }) => {
         ) }
       </Layout>
     </AnimationEmulationContext.Provider>
-  )
+  );
 };
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {

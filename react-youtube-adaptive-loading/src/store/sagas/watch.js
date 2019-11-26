@@ -27,8 +27,8 @@ import { REQUEST } from '../actions';
 import { SEARCH_LIST_RESPONSE, VIDEO_LIST_RESPONSE } from '../api/youtube-api-response-types';
 import { YOUTUBE_API_REQUEST_AMOUNT } from '../../config';
 
-export function* fetchWatchDetails(videoId, channelId, isHeavyExperience) {
-  const requests = isHeavyExperience ? [
+export function* fetchWatchDetails(videoId, channelId, liteModeEnabled) {
+  const requests = !liteModeEnabled ? [
     buildVideoDetailRequest.bind(null, videoId),
     buildRelatedVideosRequest.bind(null, videoId),
     buildCommentThreadRequest.bind(null, videoId)
@@ -83,7 +83,7 @@ function* fetchVideoDetails(responses, shouldFetchChannelInfo) {
 /******************************************************************************/
 export function* watchWatchDetails() {
   while (true) {
-    const { videoId, channelId, isHeavyExperience } = yield take(watchActions.WATCH_DETAILS[REQUEST]);
-    yield fork(fetchWatchDetails, videoId, channelId, isHeavyExperience);
+    const { videoId, channelId, liteModeEnabled } = yield take(watchActions.WATCH_DETAILS[REQUEST]);
+    yield fork(fetchWatchDetails, videoId, channelId, liteModeEnabled);
   }
 };

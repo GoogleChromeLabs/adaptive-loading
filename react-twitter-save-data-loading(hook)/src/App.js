@@ -23,7 +23,7 @@ import Tweet from './components/Twitter/Tweet';
 import Navbar from './components/Navbar/Navbar';
 import tweets from './data/tweets';
 import { IMAGE_TYPE } from './config';
-import { checkMobile } from './utils/helpers';
+import { checkIsSmallViewport } from './utils/helpers';
 import './App.css';
 
 const linkProps = {target: '_blank'};
@@ -85,7 +85,7 @@ const App = () => {
     );
   };
 
-  const itemSize = checkMobile() ? 420 : 540;
+  const itemSize = checkIsSmallViewport() ? 420 : 540;
   return (
     <div className='tweet-page'>
       <Navbar

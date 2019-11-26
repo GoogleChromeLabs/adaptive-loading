@@ -18,7 +18,7 @@ import { useContext } from 'react';
 
 import SwitchWithLabel from '../SwitchWithLabel';
 import CheckboxWithLabel from '../CheckboxWithLabel';
-import AnimationEmulationContext from '../AnimationEmulationContext';
+import { AnimationEmulationContext } from '../../contexts';
 
 const githubLink = {
   label: 'GitHub',

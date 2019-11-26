@@ -1,6 +1,6 @@
 import {fork, take} from 'redux-saga/effects';
 import {REQUEST} from '../actions';
-import * as commentActions from '../actions/comment'
+import * as commentActions from '../actions/comment';
 import * as api from '../api/youtube-api';
 import {fetchEntity} from './index';
 

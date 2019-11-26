@@ -38,21 +38,25 @@ const WatchContent = ({
   comments,
   amountComments,
   bottomReachedCallback,
-  isHeavyExperience
+  liteModeEnabled
 }) => {
   const shouldShowLoader = () => {
     return !!nextPageToken;
   };
 
   if (YOUTUBE_API_DEV_MODE) {
-    videoId = '3C0btIJjrW8';
     video = require('../../../dummy-data/watch/video.json');
+    videoId = video.id;
     channel = require('../../../dummy-data/watch/channel.json');
     const dummyRelatedVideos = require('../../../dummy-data/watch/related-videos.json');
-    relatedVideos = isHeavyExperience ? dummyRelatedVideos : dummyRelatedVideos.slice(0, YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS / 2);
-    comments = isHeavyExperience ? require('../../../dummy-data/watch/comments.json') : [];
-    amountComments = 9473;
+    relatedVideos = !liteModeEnabled ? dummyRelatedVideos : dummyRelatedVideos.slice(0, YOUTUBE_API_REQUEST_AMOUNT.RELATED_VIDEOS / 2);
+    comments = !liteModeEnabled ? require('../../../dummy-data/watch/comments.json') : [];
+    amountComments = 93283;
   }
+  // console.log('[dummy-data/watch/video.json]', JSON.stringify(video));
+  // console.log('[dummy-data/watch/channel.json]', JSON.stringify(channel));
+  // console.log('[dummy-data/watch/related-videos.json]', JSON.stringify(relatedVideos));
+  // console.log('[dummy-data/watch/comments.json]', JSON.stringify(comments), amountComments);
 
   if (!videoId) {
     return <div />

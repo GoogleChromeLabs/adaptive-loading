@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext, useMemo } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { useNetworkStatus } from 'react-adaptive-hooks/network';
-import { useMemoryStatus } from 'react-adaptive-hooks/memory';
-import { useHardwareConcurrency } from 'react-adaptive-hooks/hardware-concurrency';
 
+import { EmulationContext } from '../../contexts';
 import WatchContent from './WatchContent/WatchContent';
 import * as watchActions from '../../store/actions/watch';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
@@ -29,7 +27,7 @@ import { getChannelId } from '../../store/reducers/videos';
 import { getCommentNextPageToken } from '../../store/reducers/comments';
 import * as commentActions from '../../store/actions/comment';
 import { getSearchParam } from '../../services/url';
-import { ADAPTIVE_FACTORS } from '../../config';
+import { ADAPTIVE_MODE } from '../../config';
 
 const Watch = ({
   youtubeLibraryLoaded,
@@ -40,52 +38,57 @@ const Watch = ({
   nextPageToken,
   fetchCommentThread
 }) => {
+  const { liteModeEnabled, toggleLiteModeHandler, enableManualTestingHandler } = useContext(EmulationContext);
+
   useEffect(() => {
     if (youtubeLibraryLoaded) {
       fetchWatchContent();
     }
   // eslint-disable-next-line
-  }, []);
+  }, [liteModeEnabled]);
 
   useEffect(() => {
     fetchWatchContent();
   // eslint-disable-next-line
   }, [youtubeLibraryLoaded]);
 
-  const { effectiveConnectionType } = useNetworkStatus();
-  const { deviceMemory } = useMemoryStatus();
-  const { numberOfLogicalProcessors } = useHardwareConcurrency();
-
-  const isHeavyExperience =
-    effectiveConnectionType === ADAPTIVE_FACTORS.ECT_LIMIT &&
-    deviceMemory > ADAPTIVE_FACTORS.DEVICE_MEMORY_LIMIT &&
-    numberOfLogicalProcessors > ADAPTIVE_FACTORS.HARDWARE_CONCURRENCY_LIMIT;
-
-  console.log('[containers Watch] isHeavyExperience => ', isHeavyExperience);
-
-  const getVideoId = () => {
+  const getVideoIdParam = () => {
     return getSearchParam(location, 'v');
   };
 
+  const getAdaptiveModeParam = () => {
+    return getSearchParam(location, 'mode');
+  };
+
   const fetchWatchContent = () => {
-    const videoId = getVideoId();
+    const videoId = getVideoIdParam();
     if (!videoId) {
       history.push('/');
     }
-    fetchWatchDetails(videoId, channelId, isHeavyExperience);
+    fetchWatchDetails(videoId, channelId, liteModeEnabled);
   };
 
   const fetchMoreComments = () => {
-    if (nextPageToken && isHeavyExperience) {
-      fetchCommentThread(getVideoId(), nextPageToken);
+    if (nextPageToken && !liteModeEnabled) {
+      fetchCommentThread(getVideoIdParam(), nextPageToken);
     }
   };
 
-  const videoId = getVideoId();
+  const videoId = getVideoIdParam();
+
+  const adaptiveMode = getAdaptiveModeParam();
+  useMemo(() => {
+    const isParamDebugging = adaptiveMode === ADAPTIVE_MODE.LITE || adaptiveMode === ADAPTIVE_MODE.FULL;
+    if (isParamDebugging) {
+      enableManualTestingHandler(isParamDebugging);
+      toggleLiteModeHandler(adaptiveMode === ADAPTIVE_MODE.LITE);
+    }
+  // eslint-disable-next-line
+  }, [adaptiveMode]);
 
   return (
     <WatchContent
-      isHeavyExperience={isHeavyExperience}
+      liteModeEnabled={liteModeEnabled}
       videoId={videoId}
       channelId={channelId}
       bottomReachedCallback={fetchMoreComments}

@@ -18,7 +18,7 @@ import { createAction, createRequestTypes, FAILURE, REQUEST, SUCCESS } from './i
 
 export const WATCH_DETAILS = createRequestTypes('WATCH_DETAILS');
 export const details = {
-  request: (videoId, channelId, isHeavyExperience) => createAction(WATCH_DETAILS[REQUEST], {videoId, channelId, isHeavyExperience}),
+  request: (videoId, channelId, liteModeEnabled) => createAction(WATCH_DETAILS[REQUEST], {videoId, channelId, liteModeEnabled}),
   success: (response, videoId) => createAction(WATCH_DETAILS[SUCCESS], {response, videoId}),
   failure: response => createAction(WATCH_DETAILS[FAILURE], {response})
 };

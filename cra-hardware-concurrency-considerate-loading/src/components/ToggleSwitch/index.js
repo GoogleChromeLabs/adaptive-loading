@@ -15,7 +15,8 @@
  */
 
 import React from 'react';
-import Toggle from 'react-toggle';
+import Toggle from 'react-toggle'; // TODO: update -> deprecated lifecyle usage detected
+import 'react-toggle/style.css';
 
 import './toggle-switch.css';
 
