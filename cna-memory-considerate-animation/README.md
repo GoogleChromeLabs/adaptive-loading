@@ -1,7 +1,7 @@
 
 # Demo: Memory-considerate animation toggling in Next
 
-[Live Demo](https://cna-memory-animation.firebaseapp.com/)
+[Live Demo](https://adaptive-loading.web.app/cna-memory-considerate-animation/)
 
 A demo showing how to use memory-considerate animation toggling in Next.
 
