@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useMemo } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -27,6 +27,7 @@ import { getChannelId } from '../../store/reducers/videos';
 import { getCommentNextPageToken } from '../../store/reducers/comments';
 import * as commentActions from '../../store/actions/comment';
 import { getSearchParam } from '../../services/url';
+import { ADAPTIVE_MODE } from '../../config';
 
 const Watch = ({
   youtubeLibraryLoaded,
@@ -37,7 +38,7 @@ const Watch = ({
   nextPageToken,
   fetchCommentThread
 }) => {
-  const { liteModeEnabled } = useContext(EmulationContext);
+  const { liteModeEnabled, toggleLiteModeHandler, enableManualTestingHandler } = useContext(EmulationContext);
 
   useEffect(() => {
     if (youtubeLibraryLoaded) {
@@ -51,12 +52,16 @@ const Watch = ({
   // eslint-disable-next-line
   }, [youtubeLibraryLoaded]);
 
-  const getVideoId = () => {
+  const getVideoIdParam = () => {
     return getSearchParam(location, 'v');
   };
 
+  const getAdaptiveModeParam = () => {
+    return getSearchParam(location, 'mode');
+  };
+
   const fetchWatchContent = () => {
-    const videoId = getVideoId();
+    const videoId = getVideoIdParam();
     if (!videoId) {
       history.push('/');
     }
@@ -65,11 +70,20 @@ const Watch = ({
 
   const fetchMoreComments = () => {
     if (nextPageToken && !liteModeEnabled) {
-      fetchCommentThread(getVideoId(), nextPageToken);
+      fetchCommentThread(getVideoIdParam(), nextPageToken);
     }
   };
 
-  const videoId = getVideoId();
+  const videoId = getVideoIdParam();
+
+  const adaptiveMode = getAdaptiveModeParam();
+  useMemo(() => {
+    const isParamDebugging = adaptiveMode === ADAPTIVE_MODE.LITE || adaptiveMode === ADAPTIVE_MODE.FULL;
+    if (isParamDebugging) {
+      enableManualTestingHandler(isParamDebugging);
+      toggleLiteModeHandler(adaptiveMode === ADAPTIVE_MODE.LITE);
+    }
+  }, [adaptiveMode]);
 
   return (
     <WatchContent

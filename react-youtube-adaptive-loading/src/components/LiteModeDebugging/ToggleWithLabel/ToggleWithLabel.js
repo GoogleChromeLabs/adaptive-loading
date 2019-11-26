@@ -20,11 +20,17 @@ import 'react-toggle/style.css';
 
 import './ToggleWithLabel.scss';
 
-const ToggleWithLabel = ({ label, ...rest }) => (
-  <div className='toggle-with-label'>
-    <Toggle {...rest} />
-    <label>{label}</label>
-  </div>
-);
+const ToggleWithLabel = ({ label, onChange, ...rest }) => {
+  const onChangeHandler = event => {
+    onChange(event.target.checked);
+  };
+
+  return (
+    <div className='toggle-with-label'>
+      <Toggle onChange={onChangeHandler} {...rest} />
+      <label>{label}</label>
+    </div>
+  );
+};
 
 export default ToggleWithLabel;

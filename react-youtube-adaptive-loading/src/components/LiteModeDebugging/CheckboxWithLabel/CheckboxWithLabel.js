@@ -18,11 +18,17 @@ import React from 'react';
 
 import './CheckboxWithLabel.scss';
 
-const CheckboxWithLabel = ({ label, ...rest }) => (
-  <div className='checkbox'>
-    <input type='checkbox' {...rest} />
-    <label>{label}</label>
-  </div>
-);
+const CheckboxWithLabel = ({ label, onChange, ...rest }) => {
+  const onChangeHandler = event => {
+    onChange(event.target.checked);
+  };
+
+  return (
+    <div className='checkbox'>
+      <input type='checkbox' onChange={onChangeHandler} {...rest} />
+      <label>{label}</label>
+    </div>
+  );
+};
 
 export default CheckboxWithLabel;

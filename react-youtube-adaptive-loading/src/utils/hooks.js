@@ -38,12 +38,12 @@ const useLiteModeDebugging = () => {
 
   const liteModeEnabled = manualEnabled ? isLiteModeOn : isLiteModeEnv;
 
-  const enableManualTestingHandler = event => {
-    setManualEnabled(event.target.checked);
+  const enableManualTestingHandler = isManual => {
+    setManualEnabled(isManual);
   };
 
-  const toggleLiteModeHandler = event => {
-    setIsLiteModeOn(event.target.checked);
+  const toggleLiteModeHandler = isLite => {
+    setIsLiteModeOn(isLite);
   };
 
   return {
