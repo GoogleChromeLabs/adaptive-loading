@@ -16,17 +16,19 @@
 
 const express = require('express');
 const path = require('path');
+const request = require('request');
 const cors = require('cors');
-const fs = require('fs');
 
-const IMAGES_PATH = 'public/assets/images';
+const PORT = parseInt(process.env.PORT, 10) || 5000;
+const BUILD_PATH ='build';
+const IMAGES_PATH = `static/images/`;
 
 const app = express();
 app.disable('x-powered-by');
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', __dirname + '/public');
+app.use(express.static(path.join(__dirname, BUILD_PATH)));
+app.set('views', `${__dirname}/${BUILD_PATH}`);
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -41,44 +43,27 @@ app.get('/memory-considerate-image', (req, res) => {
   const deviceMemory = req.headers['device-memory'];
   console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
+  const fileName = deviceMemory < MEMORY_LIMIT ? 'min-res.jpg' : 'max-res.jpg';
 
-  const file = deviceMemory < MEMORY_LIMIT ?
-    path.join(__dirname, IMAGES_PATH, 'min-res.jpg') :
-    path.join(__dirname, IMAGES_PATH, 'max-res.jpg');
-
-  const dir = path.join(__dirname, 'public');
-  if (file.indexOf(dir + path.sep) !== 0) {
-      return res.status(403).end('Forbidden');
+  try {
+    request.get(`${req.protocol}://${req.get('host')}/${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server memory-considerate-image request proxy] error => ', error);
+    res.status(500).json({
+      message: error
+    });
   }
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-      res.set('Content-Type', type);
-      readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-      res.set('Content-Type', 'text/plain');
-      res.status(404).end('Not found');
-  });
 });
 
+// need to declare a "catch all" route on your express server 
+// that captures all page requests and directs them to the client
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, BUILD_PATH, 'index.html'));
 });
 
 app.listen(
-  process.env.PORT || 5000,
+  PORT,
   () => {
-    console.log(`Frontend start on http://localhost:5000`);
+    console.log(`> Ready on http://localhost:${PORT}`);
   }
 );

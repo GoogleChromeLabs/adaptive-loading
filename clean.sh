@@ -24,6 +24,8 @@ for PROJECT in  functions \
                 react-dixie-memory-considerate-loading \
                 react-lottie-network-aware-loading \
                 react-youtube-adaptive-loading \
+                microsite \
+                cna-memory-considerate-animation \
                 "react-twitter-save-data-loading(client-hint)" \
                 "react-twitter-save-data-loading(hook)"
 do
