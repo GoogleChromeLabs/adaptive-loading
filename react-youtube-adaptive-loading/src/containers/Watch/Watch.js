@@ -83,6 +83,7 @@ const Watch = ({
       enableManualTestingHandler(isParamDebugging);
       toggleLiteModeHandler(adaptiveMode === ADAPTIVE_MODE.LITE);
     }
+  // eslint-disable-next-line
   }, [adaptiveMode]);
 
   return (
