@@ -17,3 +17,7 @@ npm install
 npm start
 npm run build
 ```
+
+## Glitch Source
+* [Link to Glitch App](https://anton-karlovskiy-adaptive-youtube.glitch.me/)
+* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-adaptive-youtube/)

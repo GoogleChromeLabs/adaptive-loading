@@ -49,6 +49,7 @@ const Layout = ({ children, clientHintDeviceMemory, hookMemoryStatus }) => {
             background: #fff;
             color: #454545;
             text-rendering: optimizeLegibility;
+            font-family: Arial, sans-serif;
           }
           a {
             color: #1b789e;

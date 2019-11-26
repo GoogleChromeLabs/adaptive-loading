@@ -18,6 +18,7 @@
     "build-firebase": "cd \"functions\" && npm install"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "framer-motion": "^1.6.7",
     "next": "9.0.6",
     "react": "16.9.0",

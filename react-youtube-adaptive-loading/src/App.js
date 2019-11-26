@@ -25,13 +25,25 @@ import Trending from './containers/Trending/Trending';
 import Search from './containers/Search/Search';
 import { AppLayout } from './components/AppLayout/AppLayout';
 import { youtubeLibraryLoaded } from './store/actions/api';
+import { EmulationContext } from './contexts'
+import { useLiteModeDebugging } from './utils/hooks';
 import { YOUTUBE_API_DEV_MODE } from './config';
 
 const API_KEY = YOUTUBE_API_DEV_MODE ? '' : process.env.REACT_APP_YOUTUBE_API_KEY;
 
 const App = ({ youtubeLibraryLoaded, location }) => {
+  const {
+    manualEnabled,
+    isLiteModeOn,
+    liteModeEnabled,
+    enableManualTestingHandler,
+    toggleLiteModeHandler
+  } = useLiteModeDebugging();
+
   useEffect(() => {
-    loadYoutubeApi();
+    if (!YOUTUBE_API_DEV_MODE) {
+      loadYoutubeApi();
+    }
   // eslint-disable-next-line
   }, []);
 
@@ -52,14 +64,23 @@ const App = ({ youtubeLibraryLoaded, location }) => {
   };
 
   return (
-    <AppLayout>
-      <Switch>
-        <Route path='/feed/trending' component={Trending}/>
-        <Route path='/results' render={() => <Search key={location.key}/>}/>
-        <Route path='/watch' render={() => <Watch key={location.key}/>}/>
-        <Route path='/' component={Home}/>
-      </Switch>
-    </AppLayout>
+    <EmulationContext.Provider
+      value={{
+        manualEnabled,
+        isLiteModeOn,
+        liteModeEnabled,
+        enableManualTestingHandler,
+        toggleLiteModeHandler
+      }}>
+      <AppLayout>
+        <Switch>
+          <Route path='/feed/trending' component={Trending}/>
+          <Route path='/results' render={() => <Search key={location.key}/>}/>
+          <Route path='/watch' render={() => <Watch key={location.key}/>}/>
+          <Route path='/' component={Home}/>
+        </Switch>
+      </AppLayout>
+    </EmulationContext.Provider>
   );
 };
 

@@ -14,19 +14,10 @@
  * limitations under the License.
  */
 
-import { useState } from 'react';
+import { createContext } from 'react';
 
-const useHardwareConcurrency = () => {
-  let initialHardwareConcurrency;
-  if ('hardwareConcurrency' in navigator) {
-    initialHardwareConcurrency = {numberOfLogicalProcessors: navigator.hardwareConcurrency};
-  } else {
-    initialHardwareConcurrency = {unsupported: true};
-  }
+const EmulationContext = createContext();
 
-  const [hardwareConcurrency] = useState(initialHardwareConcurrency);
-
-  return { ...hardwareConcurrency };
+export {
+  EmulationContext
 };
-
-export { useHardwareConcurrency };
