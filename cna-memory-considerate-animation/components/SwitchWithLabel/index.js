@@ -23,7 +23,7 @@ const SwitchWithLabel = ({ label, ...rest }) => (
     <label>
       {label}
     </label>
-    <style jsx global>{`
+    <style jsx>{`
       .switch-with-label {
         display: flex;
         align-items: center;
@@ -31,7 +31,7 @@ const SwitchWithLabel = ({ label, ...rest }) => (
         border: 1px solid #1890ff;
         border-radius: 20px;
       }
-      .switch-with-label .react-toggle {
+      .switch-with-label :global(.react-toggle) {
         margin-right: 12px;
       }
     `}</style>
