@@ -17,6 +17,7 @@
 import Link from 'next/link';
 
 import PostInfo from '../PostInfo';
+import { ASSETS_SUB_PATH } from '../../config';
 
 const SimplePostList = ({ posts }) => (
   <div className='posts'>
@@ -26,7 +27,7 @@ const SimplePostList = ({ posts }) => (
           <Link scroll={false} href='/SimplePost/[index]' as={`/simplePost/${post.id}`}>
             <a>
               <div>
-                <img src={`/static/images/${post.id}.jpg`} />
+                <img src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
               </div>
               <div>{post.title}</div>
             </a>

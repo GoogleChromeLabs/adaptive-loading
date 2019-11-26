@@ -18,6 +18,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 import PostInfo from '../PostInfo';
+import { ASSETS_SUB_PATH } from '../../config';
 
 const postVariants = {
   initial: {scale: 0.96, y: 30, opacity: 0},
@@ -44,7 +45,7 @@ const AnimationPostList = ({ posts }) => (
               <Link scroll={false} href='/AnimationPost/[index]' as={`/animationPost/${post.id}`}>
                 <a>
                   <motion.div whileHover='hover' variants={{hover: {scale: 0.96}}}>
-                    <img src={`/static/images/${post.id}.jpg`} />
+                    <img src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
                   </motion.div>
                   <div>{post.title}</div>
                 </a>

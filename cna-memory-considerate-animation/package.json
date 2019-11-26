@@ -8,21 +8,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "next": "npm run build-firebase && npm install && npm run dev",
-    "preserve": "npm run build-all",
-    "serve": "firebase serve",
-    "predeploy": "npm run build-all",
-    "deploy": "firebase deploy",
-    "build-all": "npm run build-next && npm run build-firebase",
-    "build-next": "npm install && npm run build",
-    "build-firebase": "cd \"functions\" && npm install"
+    "start-node": "node server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "express": "^4.17.1",
     "framer-motion": "^1.6.7",
-    "next": "9.0.6",
-    "react": "16.9.0",
-    "react-dom": "16.9.0",
+    "next": "9.1.1",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
     "react-toggle": "^4.0.2"
   }
 }

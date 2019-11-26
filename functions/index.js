@@ -17,6 +17,7 @@
 const functions = require('firebase-functions');
 
 const express = require('express');
+const next = require('next');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
@@ -28,19 +29,21 @@ const stringSimilarity = require('string-similarity');
 
 const SIMILARITY_THRESHOLD = .88;
 const BUILD_PATH ='builds';
-const IMAGES_PATH = 'assets/images';
+const PORT = parseInt(process.env.PORT, 10) || 5000;
+const HOST = 'https://adaptive-loading.web.app/';
 
-// projects with client side routing
 const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
 const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
 const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
+const CNA_MEMORY_CONSIDERATE_ANIMATION = 'cna-memory-considerate-animation';
+const MICROSITE = 'microsite';
+const NODE_MEMORY_CONSIDERATE_LOADING = 'node-memory-considerate-loading';
+const NODE_NETWORK_AWARE_LOADING = 'node-network-aware-loading';
+const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
+const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
 
 app.disable('x-powered-by');
 app.use(cors());
-app.use(express.static(path.join(__dirname, BUILD_PATH)));
-app.set('views', `${__dirname}/${BUILD_PATH}`);
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
 
 // DeviceAtlas server-side API
 const deviceApi = (() => {
@@ -57,7 +60,7 @@ const deviceApi = (() => {
 })();
 
 app.get('/ping', (req, res) => {
-  res.send('pong');
+  return res.send('pong');
 });
 
 app.get('/api/device', (req, res) => {
@@ -107,10 +110,10 @@ app.get('/dpr-aware-image', (req, res) => {
   const url = `https://via.placeholder.com/${dpr * 400}/92c952`;
   
   try {
-    request.get(url).pipe(res);
+    return request.get(url).pipe(res);
   } catch (error) {
     console.log('[server dpr-aware-image request proxy] error => ', error);
-    res.status(500).json({
+    return res.status(500).json({
       message: error
     });
   }
@@ -122,36 +125,22 @@ app.get('/memory-considerate-image', (req, res) => {
   // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const deviceMemory = req.headers['device-memory'];
   console.log('[server memory-considerate-image request] Device Memory => ', deviceMemory);
+  const IMAGES_PATH = `static/${NODE_MEMORY_CONSIDERATE_LOADING}/images/`;
+  const fileName = deviceMemory < MEMORY_LIMIT ? 'min-res.jpg' : 'max-res.jpg';
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
-
-  const file = deviceMemory < MEMORY_LIMIT ?
-    path.join(__dirname, IMAGES_PATH, 'min-res.jpg') :
-    path.join(__dirname, IMAGES_PATH, 'max-res.jpg');
-
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-      res.set('Content-Type', type);
-      readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-      res.set('Content-Type', 'text/plain');
-      res.status(404).end('Not found');
-  });
+  try {
+    return request.get(`${HOST}${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server memory-considerate-image request proxy] error => ', error);
+    return res.status(500).json({
+      message: error
+    });
+  }
 });
 
 app.get('/connection-aware-image', (req, res) => {
   console.log('[server connection-aware-image request] Effective Connection Type => ', req.headers.ect);
+  const IMAGES_PATH = `static/${NODE_NETWORK_AWARE_LOADING}/images/`;
   let fileName;
   switch(req.headers.ect) {
     case 'slow-2g':
@@ -169,28 +158,14 @@ app.get('/connection-aware-image', (req, res) => {
       break;
   }
 
-  const mime = {
-    html: 'text/html',
-    txt: 'text/plain',
-    css: 'text/css',
-    gif: 'image/gif',
-    jpg: 'image/jpeg',
-    png: 'image/png',
-    svg: 'image/svg+xml',
-    js: 'application/javascript'
-  };
-
-  const file = path.join(__dirname, IMAGES_PATH, fileName);
-  const type = mime[path.extname(file).slice(1)] || 'text/plain';
-  const readStream = fs.createReadStream(file);
-  readStream.on('open', function () {
-      res.set('Content-Type', type);
-      readStream.pipe(res);
-  });
-  readStream.on('error', function () {
-      res.set('Content-Type', 'text/plain');
-      res.status(404).end('Not found');
-  });
+  try {
+    return request.get(`${HOST}${IMAGES_PATH}${fileName}`).pipe(res);
+  } catch (error) {
+    console.log('[server connection-aware-image request proxy] error => ', error);
+    return res.status(500).json({
+      message: error
+    });
+  }
 });
 
 app.get('/network-memory-considerate-model', (req, res) => {
@@ -203,7 +178,7 @@ app.get('/network-memory-considerate-model', (req, res) => {
   const ECT_LIMIT = '4g';
   // inspired by https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/#device_hints
   const experienceType = (ect === ECT_LIMIT && deviceMemory > MEMORY_LIMIT) ? 'heavy' : 'light';
-  res.json({experienceType});
+  return res.json({experienceType});
 });
 
 app.get('/save-data', (req, res) => {
@@ -218,33 +193,49 @@ app.get('/save-data', (req, res) => {
   console.log('[server save-data route] requestSaveData => ', requestSaveData);
   console.log('[server save-data route] saveData => ', saveData);
 
-  res.status(200).json({saveData});
+  return res.status(200).json({saveData});
 });
 
 // need to declare a "catch all" route on your express server 
 // that captures all page requests and directs them to the client
 // the react-router do the route part
-
-app.get(`/${REACT_MOVIE_NETWORK_AWARE_LOADING}/*`, (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH, REACT_MOVIE_NETWORK_AWARE_LOADING, 'index.html'));
+app.use(`/${REACT_MOVIE_NETWORK_AWARE_LOADING}/*`, (req, res) => {
+  return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_MOVIE_NETWORK_AWARE_LOADING, 'index.html'));
 });
 
-app.get(`/${REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING}/*`, (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH, REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING, 'index.html'));
+app.use(`/${REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING}/*`, (req, res) => {
+  return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING, 'index.html'));
 });
 
-app.get(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH, REACT_YOUTUBE_ADAPTIVE_LOADING, 'index.html'));
+app.use(`/${REACT_YOUTUBE_ADAPTIVE_LOADING}/*`, (req, res) => {
+  return res.sendFile(path.join(__dirname, BUILD_PATH, REACT_YOUTUBE_ADAPTIVE_LOADING, 'index.html'));
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, BUILD_PATH));
+app.use(CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES, (req, res) => {
+  const BASENAME = `/${CNA_MEMORY_CONSIDERATE_ANIMATION}`;
+  const cnaMemoryConsiderateAnimationApp = next({dev: false, conf: {distDir: `${BUILD_PATH}${BASENAME}`}});
+  cnaMemoryConsiderateAnimationApp.setAssetPrefix(BASENAME);
+  if (req.originalUrl !== BASENAME) {
+    req.url = req.originalUrl.replace(BASENAME, '');
+  } else {
+    req.url = req.originalUrl.replace(BASENAME, '/');
+  }
+  const cnaMemoryConsiderateAnimationHandle = cnaMemoryConsiderateAnimationApp.getRequestHandler();
+
+  return cnaMemoryConsiderateAnimationApp.prepare().then(() => cnaMemoryConsiderateAnimationHandle(req, res));
+});
+
+app.use(MICROSITE_ROUTES, (req, res) => {
+  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
+  const micrositeHandle = micrositeApp.getRequestHandler();
+
+  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
 });
 
 app.listen(
-  process.env.PORT || 5000,
+  PORT,
   () => {
-    console.log(`Frontend start on http://localhost:5000`);
+    console.log(`> Ready on http://localhost:${PORT}`);
   }
 );
 
