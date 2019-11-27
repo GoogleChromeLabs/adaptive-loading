@@ -26,6 +26,9 @@ const request = require('request');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
+// ray test touch <
+const cacheableResponse = require('cacheable-response');
+// ray test touch >
 
 const SIMILARITY_THRESHOLD = .88;
 const BUILD_PATH ='builds';
@@ -40,7 +43,14 @@ const MICROSITE = 'microsite';
 const NODE_MEMORY_CONSIDERATE_LOADING = 'node-memory-considerate-loading';
 const NODE_NETWORK_AWARE_LOADING = 'node-network-aware-loading';
 const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
-const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
+// ray test touch <
+const MICROSITE_ROUTES = {
+  INDEX: '/',
+  REACT_HOOKS: '/react-hooks',
+  DEMOS: '/demos',
+  RESOURCES: '/resources'
+};
+// ray test touch >
 
 app.disable('x-powered-by');
 app.use(cors());
@@ -225,12 +235,31 @@ app.use(CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES, (req, res) => {
   return cnaMemoryConsiderateAnimationApp.prepare().then(() => cnaMemoryConsiderateAnimationHandle(req, res));
 });
 
-app.use(MICROSITE_ROUTES, (req, res) => {
-  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
-  const micrositeHandle = micrositeApp.getRequestHandler();
+// ray test touch <
+// app.use(MICROSITE_ROUTES, (req, res) => {
+//   const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
+//   const micrositeHandle = micrositeApp.getRequestHandler();
 
-  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
+//   return micrositeApp.prepare().then(() => micrositeHandle(req, res));
+// });
+
+const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
+const micrositeHandle = micrositeApp.getRequestHandler();
+
+const ssrCache = cacheableResponse({
+  ttl: 1000 * 60 * 60, // 1hour
+  get: async ({ req, res, pagePath, queryParams }) => ({
+    data: await micrositeApp.renderToHTML(req, res, pagePath, queryParams),
+  }),
+  send: ({ data, res }) => res.send(data)
 });
+
+app.get(MICROSITE_ROUTES.INDEX, (req, res) => ssrCache({req, res, pagePath: MICROSITE_ROUTES.INDEX}));
+app.get(MICROSITE_ROUTES.REACT_HOOKS, (req, res) => ssrCache({req, res, pagePath: MICROSITE_ROUTES.REACT_HOOKS}));
+app.get(MICROSITE_ROUTES.DEMOS, (req, res) => ssrCache({req, res, pagePath: MICROSITE_ROUTES.DEMOS}));
+app.get(MICROSITE_ROUTES.RESOURCES, (req, res) => ssrCache({req, res, pagePath: MICROSITE_ROUTES.RESOURCES}));
+app.get('*', (req, res) => micrositeHandle(req, res));
+// ray test touch >
 
 app.listen(
   PORT,

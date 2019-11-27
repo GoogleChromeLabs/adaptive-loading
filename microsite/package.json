@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "cacheable-response": "^1.9.2",
     "github-markdown-css": "^3.0.1",
     "lazysizes": "^5.2.0-beta1",
     "next": "9.1.1",
