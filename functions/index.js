@@ -41,7 +41,7 @@ const MICROSITE = 'microsite';
 const NODE_MEMORY_CONSIDERATE_LOADING = 'node-memory-considerate-loading';
 const NODE_NETWORK_AWARE_LOADING = 'node-network-aware-loading';
 const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
-const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources'];
+const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
 
 app.disable('x-powered-by');
 app.use(cors());
@@ -228,29 +228,27 @@ app.use(CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES, (req, res) => {
 
 app.use(MICROSITE_ROUTES, (req, res) => {
   const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
-
-  const ssrCache = cacheableResponse({
-    ttl: 1000 * 60 * 60, // 1hour
-    get: async ({ req, res, pagePath, queryParams }) => ({
-      data: await micrositeApp.renderToHTML(req, res, pagePath, queryParams),
-    }),
-    send: ({ data, res }) => res.send(data)
-  });
-  
-  return ssrCache({req, res, pagePath: req.path});
-});
-
-app.use('/*', (req, res) => {
-  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
   const micrositeHandle = micrositeApp.getRequestHandler();
-  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
-});
 
-app.listen(
-  PORT,
-  () => {
-    console.log(`> Ready on http://localhost:${PORT}`);
-  }
-);
+  micrositeApp.prepare()
+    .then(() => {
+      const ssrCache = cacheableResponse({
+        ttl: 1000 * 60 * 60, // 1hour
+        get: async ({ req, res, pagePath, queryParams }) => ({
+          data: await micrositeApp.renderToHTML(req, res, pagePath, queryParams),
+        }),
+        send: ({ data, res }) => res.send(data)
+      });
+      if (req.path.includes('/_next')) {
+        micrositeHandle(req, res);
+      } else {
+        ssrCache({req, res, pagePath: req.path});
+      }
+    })
+    .catch(exception => {
+      console.error(exception.stack);
+      process.exit(1);
+    });
+});
 
 exports.app = functions.https.onRequest(app);
