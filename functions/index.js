@@ -226,12 +226,6 @@ app.use(CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES, (req, res) => {
   return cnaMemoryConsiderateAnimationApp.prepare().then(() => cnaMemoryConsiderateAnimationHandle(req, res));
 });
 
-app.use('/_next/*', (req, res) => {
-  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
-  const micrositeHandle = micrositeApp.getRequestHandler();
-  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
-});
-
 app.use(MICROSITE_ROUTES, (req, res) => {
   const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
 
@@ -244,6 +238,12 @@ app.use(MICROSITE_ROUTES, (req, res) => {
   });
   
   return ssrCache({req, res, pagePath: req.path});
+});
+
+app.use('/*', (req, res) => {
+  const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
+  const micrositeHandle = micrositeApp.getRequestHandler();
+  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
 });
 
 app.listen(
