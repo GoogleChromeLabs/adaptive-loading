@@ -29,15 +29,15 @@ const SimplePost = ({ post }) => {
   return (
     <div className='container post'>
       <div>
-        <img src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
-        <div>
-          <PostInfo post={post} />
-          <p>{post.text}</p>
-        </div>
         <div>
           <Link href='/'>
             <a>Back to list</a>
           </Link>
+        </div>
+        <img src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
+        <div>
+          <PostInfo post={post} />
+          <p>{post.text}</p>
         </div>
       </div>
       <style jsx>{`
