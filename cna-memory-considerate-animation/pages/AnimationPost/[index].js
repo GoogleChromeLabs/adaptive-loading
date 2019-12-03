@@ -73,15 +73,15 @@ const AnimationPost = ({ post }) => {
   return (
     <div className='container post'>
       <motion.div initial='exit' animate='enter' exit='exit'>
-        <motion.img variants={imageVariants} src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
-        <motion.div variants={textVariants}>
-          <PostInfo post={post} />
-          <p>{post.text}</p>
-        </motion.div>
         <motion.div variants={backVariants}>
           <Link href='/'>
             <a>Back to list</a>
           </Link>
+        </motion.div>
+        <motion.img variants={imageVariants} src={`/static${ASSETS_SUB_PATH}/images/${post.id}.jpg`} />
+        <motion.div variants={textVariants}>
+          <PostInfo post={post} />
+          <p>{post.text}</p>
         </motion.div>
       </motion.div>
       <style jsx>{`
