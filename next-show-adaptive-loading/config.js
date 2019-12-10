@@ -4,8 +4,8 @@
 
 const TMDB_API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335'; // TODO: replace API_KEY, it's from react-movie-network-aware-loading
 const TMDB_API_VERSION = 3;
-const POPULAR_TV_SHOWS = '/tv/popular/';
-const SEARCH_TV_SHOWS = '/search/tv/';
+const POPULAR_TV_SHOWS = '/tv/popular';
+const SEARCH_TV_SHOWS = '/search/tv';
 const TMDB_LANGUAGE = 'en-US';
 
 const getTmdbAPIEndpoint = (tmdbCategory, apiKey=TMDB_API_KEY, language=TMDB_LANGUAGE) => {

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@zeit/next-css": "1.0.1",
+    "express": "^4.17.1",
     "isomorphic-unfetch": "^3.0.0",
     "lazysizes": "^5.2.0-beta1",
     "next": "9.1.4",
