@@ -37,10 +37,16 @@ const REACT_MOVIE_NETWORK_AWARE_LOADING = 'react-movie-network-aware-loading';
 const REACT_SHRINE_NETWORK_AWARE_CODE_SPLITTING = 'react-shrine-network-aware-code-splitting';
 const REACT_YOUTUBE_ADAPTIVE_LOADING = 'react-youtube-adaptive-loading';
 const CNA_MEMORY_CONSIDERATE_ANIMATION = 'cna-memory-considerate-animation';
+// ray test touch <
+const NEXT_SHOW_ADAPTIVE_LOADING = 'next-show-adaptive-loading';
+// ray test touch >
 const MICROSITE = 'microsite';
 const NODE_MEMORY_CONSIDERATE_LOADING = 'node-memory-considerate-loading';
 const NODE_NETWORK_AWARE_LOADING = 'node-network-aware-loading';
 const CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES = [`/${CNA_MEMORY_CONSIDERATE_ANIMATION}`, `/${CNA_MEMORY_CONSIDERATE_ANIMATION}/*`];
+// ray test touch <
+const NEXT_SHOW_ADAPTIVE_LOADING_ROUTES = [`/${NEXT_SHOW_ADAPTIVE_LOADING}`, `/${NEXT_SHOW_ADAPTIVE_LOADING}/*`];
+// ray test touch >
 const MICROSITE_ROUTES = ['/', '/react-hooks', '/demos', '/resources', '/*'];
 
 app.disable('x-powered-by');
@@ -225,6 +231,22 @@ app.use(CNA_MEMORY_CONSIDERATE_ANIMATION_ROUTES, (req, res) => {
 
   return cnaMemoryConsiderateAnimationApp.prepare().then(() => cnaMemoryConsiderateAnimationHandle(req, res));
 });
+
+// ray test touch <
+app.use(NEXT_SHOW_ADAPTIVE_LOADING_ROUTES, (req, res) => {
+  const BASENAME = `/${NEXT_SHOW_ADAPTIVE_LOADING}`;
+  const nextShowAdaptiveLoading = next({dev: false, conf: {distDir: `${BUILD_PATH}${BASENAME}`}});
+  nextShowAdaptiveLoading.setAssetPrefix(BASENAME);
+  if (req.originalUrl !== BASENAME) {
+    req.url = req.originalUrl.replace(BASENAME, '');
+  } else {
+    req.url = req.originalUrl.replace(BASENAME, '/');
+  }
+  const nextShowAdaptiveLoadingHandle = nextShowAdaptiveLoading.getRequestHandler();
+
+  return nextShowAdaptiveLoading.prepare().then(() => nextShowAdaptiveLoadingHandle(req, res));
+});
+// ray test touch >
 
 app.use(MICROSITE_ROUTES, (req, res) => {
   const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});

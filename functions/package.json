@@ -31,7 +31,10 @@
     "react-syntax-highlighter": "^11.0.2",
     "react-toggle": "^4.0.2",
     "request": "^2.88.0",
-    "string-similarity": "^3.0.0"
+    "string-similarity": "^3.0.0",
+    "react-adaptive-hooks": "0.0.8",
+    "next-transpile-modules": "^2.3.1",
+    "isomorphic-unfetch": "^3.0.0"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.1.6"
