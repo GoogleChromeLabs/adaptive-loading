@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import fetch from 'isomorphic-unfetch';
+
+import EpisodesForSeasons from '../components/EpisodesForSeasons';
 // TODO: confirm if we go with this
-// import { useState } from 'react';
 // import StatList from '../components/StatList';
-// import EpisodesForSeasons from '../components/EpisodesForSeasons';
 
 import Banner from '../components/Banner';
 import { useCheckLiteMode } from '../utils/hooks';
 import { getTmdbAPIEndpoint, BACKDROP_SIZES, TMDB_IMAGES_BASE_URL } from '../config';
 import { QUERY_PARAMS } from '../utils/constants';
 
-// TODO: confirm if we go with this
-// const createEpisodeInSeason = (seasons, episode) => {
-//   return {...(seasons[episode.season] || {}), [episode.episode]: episode};
-// };
-
-const Show = ({ backdropPath, name, clientHint }) => {
-  // TODO: confirm if we go with this
-  // const [currentSeason, setCurrentSeason] = useState(Object.keys(seasons).slice().pop());
-  // const setSeason = season => {
-  //   return () => setCurrentSeason(season);
-  // };
+const Show = ({ backdropPath, name, clientHint, seasonNumbers }) => {
+  const router = useRouter();
+  const [currentSeasonNumber, setCurrentSeasonNumber] = useState(seasonNumbers[seasonNumbers.length - 1]);
   const isLiteMode = useCheckLiteMode(clientHint.ect, clientHint.deviceMemory);
+
+  const setSeasonNumber = seasonNumber => {
+    return () => setCurrentSeasonNumber(seasonNumber);
+  };
+  
   const backdropSize = isLiteMode ? BACKDROP_SIZES.W300 : BACKDROP_SIZES.W1280;
 
   return (
@@ -45,11 +45,11 @@ const Show = ({ backdropPath, name, clientHint }) => {
         {/* TODO: confirm if we go with this */}
         {/* <StatList stats={stats} /> */}
       </Banner>
-      {/* TODO: confirm if we go with this */}
-      {/* <EpisodesForSeasons
-        seasons={seasons}
-        setSeason={setSeason}
-        currentSeason={currentSeason} /> */}
+      <EpisodesForSeasons
+        showId={router.query[QUERY_PARAMS.ID]}
+        seasonNumbers={seasonNumbers}
+        setSeasonNumber={setSeasonNumber}
+        currentSeasonNumber={currentSeasonNumber} />
     </>
   );
 };
@@ -65,18 +65,17 @@ Show.getInitialProps = async ({ query, req }) => {
     ect: req ? req.headers['ect'] : null
   };
 
+  const seasonNumbers = show.seasons.map(season => season.season_number);
+
   return {
     backdropPath: show.backdrop_path || '',
     name: show.name,
-    clientHint
+    clientHint,
+    seasonNumbers
   };
 
-
+  
   // TODO: confirm if we go with this
-  // const seasons = show.episodes.reduce((seasons, episode) => {
-  //   seasons[episode.season] = createEpisodeInSeason(seasons, episode);
-  //   return seasons;
-  // }, {});
   // const stats = [
   //   {
   //     label: 'Rating',

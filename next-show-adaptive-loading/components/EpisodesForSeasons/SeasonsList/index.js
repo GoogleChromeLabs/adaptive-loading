@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-const SeasonsList = ({ seasons, currentSeason, clickHandler }) => (
+const SeasonsList = ({ seasonNumbers, currentSeasonNumber, clickHandler }) => (
   <div>
-    { Object.keys(seasons).map(season => {
-      const activeClass = currentSeason === season ? 'active' : '';
+    { seasonNumbers.map(seasonNumber => {
+      const activeClass = currentSeasonNumber === seasonNumber ? 'active' : '';
       
       return (
         <div
-          key={season}
-          onClick={clickHandler(season)}
+          key={seasonNumber}
+          onClick={clickHandler(seasonNumber)}
           className={activeClass}>
-          Season {season}
+          Season {seasonNumber}
           <style jsx>{`
             div {
               cursor: pointer;
