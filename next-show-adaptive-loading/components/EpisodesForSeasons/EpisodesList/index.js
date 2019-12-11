@@ -16,9 +16,9 @@
 
 import CircleNumber from '../../CircleNumber';
 
-const EpisodesList = ({ episodes }) => (
+const EpisodesList = ({ loading, episodes }) => (
   <div>
-    { episodes.map(episode => {
+    { !loading ? episodes.map(episode => {
       const { name, number } = episode;
 
       return (
@@ -27,7 +27,9 @@ const EpisodesList = ({ episodes }) => (
           <span>&nbsp;{name}</span>
         </div>
       );
-    }) }
+    }) : (
+      <>Loading...</>
+    ) }
     <style jsx>{`
       .episodes-list {
         margin-bottom: 30px;

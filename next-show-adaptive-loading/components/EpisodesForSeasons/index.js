@@ -21,15 +21,17 @@ import EpisodesList from './EpisodesList';
 import SeasonsList from './SeasonsList';
 import { getTmdbAPIEndpoint } from '../../config';
 
-
 const EpisodesForSeasons = ({ showId, seasonNumbers, setSeasonNumber, currentSeasonNumber }) => {
   const [episodes, setEpisods] = useState([]);
+  const [isLoadingEpisodes, setIsLoadingEpisodes] = useState(false);
   useEffect(() => {
+    setIsLoadingEpisodes(true);
     fetch(getTmdbAPIEndpoint(`/tv/${showId}/season/${currentSeasonNumber}`))
       .then(response => response.json())
       .then(season => {
         const episodes = season.episodes.map(episode => ({name: episode.name, number: episode.episode_number}));
         setEpisods(episodes);
+        setIsLoadingEpisodes(false);
       })
   }, [currentSeasonNumber]);
 
@@ -40,18 +42,18 @@ const EpisodesForSeasons = ({ showId, seasonNumbers, setSeasonNumber, currentSea
           seasonNumbers={seasonNumbers}
           currentSeasonNumber={currentSeasonNumber}
           clickHandler={setSeasonNumber} />
-        <EpisodesList episodes={episodes} />
+        <EpisodesList loading={isLoadingEpisodes} episodes={episodes} />
       </div>
       <style jsx>{`
-      .episodes-for-seasons {
-        display: flex;
-        padding: 0 24px;
-        width: 60%;
-        margin: 0 auto;
-      }
-      .episodes-for-seasons > :global(div:first-child) {
-        margin-right: 48px;
-      }
+        .episodes-for-seasons {
+          display: flex;
+          padding: 0 24px;
+          width: 60%;
+          margin: 0 auto;
+        }
+        .episodes-for-seasons > :global(div:first-child) {
+          margin-right: 48px;
+        }
       `}</style>
     </>
   );
