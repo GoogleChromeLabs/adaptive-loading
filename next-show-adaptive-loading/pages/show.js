@@ -19,15 +19,14 @@ import { useRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 
 import EpisodesForSeasons from '../components/EpisodesForSeasons';
-// TODO: confirm if we go with this
-// import StatList from '../components/StatList';
+import StatList from '../components/StatList';
 
 import Banner from '../components/Banner';
 import { useCheckLiteMode } from '../utils/hooks';
 import { getTmdbAPIEndpoint, BACKDROP_SIZES, TMDB_IMAGES_BASE_URL } from '../config';
 import { QUERY_PARAMS } from '../utils/constants';
 
-const Show = ({ backdropPath, name, clientHint, seasonNumbers }) => {
+const Show = ({ backdropPath, name, clientHint, seasonNumbers, stats }) => {
   const router = useRouter();
   const [currentSeasonNumber, setCurrentSeasonNumber] = useState(seasonNumbers[seasonNumbers.length - 1]);
   const isLiteMode = useCheckLiteMode(clientHint.ect, clientHint.deviceMemory);
@@ -42,8 +41,7 @@ const Show = ({ backdropPath, name, clientHint, seasonNumbers }) => {
     <>
       <Banner bannerImage={backdropPath ? `${TMDB_IMAGES_BASE_URL}${backdropSize}${backdropPath}` : null}>
         <h1>{name}</h1>
-        {/* TODO: confirm if we go with this */}
-        {/* <StatList stats={stats} /> */}
+        <StatList stats={stats} />
       </Banner>
       <EpisodesForSeasons
         showId={router.query[QUERY_PARAMS.ID]}
@@ -67,31 +65,29 @@ Show.getInitialProps = async ({ query, req }) => {
 
   const seasonNumbers = show.seasons.map(season => season.season_number);
 
+  const stats = [
+    {
+      label: 'User score',
+      unit: '%',
+      value: show.vote_average * 10
+    },
+    {
+      label: 'Seasons available',
+      value: show.number_of_seasons
+    },
+    {
+      label: 'Episodes available',
+      value: show.number_of_episodes
+    }
+  ];
+
   return {
     backdropPath: show.backdrop_path || '',
     name: show.name,
     clientHint,
-    seasonNumbers
+    seasonNumbers,
+    stats
   };
-
-  
-  // TODO: confirm if we go with this
-  // const stats = [
-  //   {
-  //     label: 'Rating',
-  //     unit: 'stars',
-  //     value: (show.rating.percentage / 100 * 5).toFixed(1)
-  //   },
-  //   {
-  //     label: 'Seasons available',
-  //     value: show.num_seasons
-  //   },
-  //   {
-  //     label: 'Episodes available',
-  //     value: show.episodes.length
-  //   }
-  // ];
-  // return {show, seasons, stats};
 };
 
 export default Show;

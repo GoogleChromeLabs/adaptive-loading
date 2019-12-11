@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-// TODO: confirm if we go with this
 import Stat from './Stat';
 
 const StatList = ({ stats }) => (
