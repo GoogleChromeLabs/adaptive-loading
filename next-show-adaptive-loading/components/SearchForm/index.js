@@ -36,6 +36,9 @@ const SearchForm = ({ shows }) => {
         </form>
       </div>
       <style jsx>{`
+        h1 {
+          margin-top: 36px;
+        }
         form {
           display: flex;
           width: 294px;

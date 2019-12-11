@@ -42,6 +42,8 @@ const LiteModeDebugging = () => {
           onChange={enableManualTestingHandler} />
       </div>
       <style jsx>{`
+        position: absolute;
+        top: 0;
         display: flex;
       `}</style>
     </>
