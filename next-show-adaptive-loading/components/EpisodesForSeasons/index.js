@@ -48,8 +48,7 @@ const EpisodesForSeasons = ({ showId, seasonNumbers, setSeasonNumber, currentSea
         .episodes-for-seasons {
           display: flex;
           padding: 0 24px;
-          width: 60%;
-          margin: 0 auto;
+          justify-content: center;
         }
         .episodes-for-seasons > :global(div:first-child) {
           margin-right: 48px;
