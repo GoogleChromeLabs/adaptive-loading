@@ -23,6 +23,12 @@ const serializeToQueryParam = (queryObject, prefix) => {
   return prefix ? `${prefix}?${queryString.join('&')}` : queryString.join('&');
 };
 
+const checkIsSmallViewport = () => {
+  const isSmallViewport = window.matchMedia('(max-width: 767px)').matches;
+  return isSmallViewport;
+};
+
 export {
-  serializeToQueryParam
+  serializeToQueryParam,
+  checkIsSmallViewport
 };

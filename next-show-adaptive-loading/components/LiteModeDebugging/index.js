@@ -14,13 +14,19 @@
  * limitations under the License.
  */
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import CheckboxWithLabel from './CheckboxWithLabel';
 import ToggleWithLabel from './ToggleWithLabel';
 import { EmulationContext } from '../../contexts';
+import { checkIsSmallViewport } from '../../utils/helpers';
 
 const LiteModeDebugging = () => {
+  const [isSmallViewport, setIsSmallViewport] = useState(false);
+  useEffect(() => {
+    setIsSmallViewport(checkIsSmallViewport());
+  }, []);
+
   const {
     manualEnabled,
     isLiteModeOn,
@@ -32,12 +38,12 @@ const LiteModeDebugging = () => {
     <>
       <div>
         <ToggleWithLabel
-          label='Poor Network/Memory On/Off'
+          label={isSmallViewport ? 'Poor' : 'Poor Network/Memory On/Off'}
           disabled={!manualEnabled}
           checked={isLiteModeOn}
           onChange={toggleLiteModeHandler} />
         <CheckboxWithLabel
-          label='Enable Manual Testing'
+          label={isSmallViewport ? 'Testing' : 'Enable Manual Testing'}
           checked={manualEnabled}
           onChange={enableManualTestingHandler} />
       </div>
