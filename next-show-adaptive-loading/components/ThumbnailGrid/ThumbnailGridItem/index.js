@@ -50,11 +50,16 @@ const ThumbnailGridItem = ({ id, thumbnail }) => {
       ) }
       <style jsx>{`
         .zoom-effect {
-          padding: 2px 8px;
+          padding: 2px 4px;
           transition: 0.4s ease all;
         }
         .zoom-effect:hover {
           transform: scale(0.95);
+        }
+        @media only screen and (max-width: 767px)  {
+          img.lazyload {
+            width: 170px;
+          }
         }
       `}</style>
     </>
