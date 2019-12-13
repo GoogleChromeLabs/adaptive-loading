@@ -26,6 +26,7 @@ const request = require('request');
 const app = express();
 const DeviceApiWeb = require('deviceatlas-deviceapi').DeviceApiWeb;
 const stringSimilarity = require('string-similarity');
+const cacheableResponse = require('cacheable-response');
 
 const SIMILARITY_THRESHOLD = .88;
 const BUILD_PATH ='builds';
@@ -229,14 +230,25 @@ app.use(MICROSITE_ROUTES, (req, res) => {
   const micrositeApp = next({dev: false, conf: {distDir: `${BUILD_PATH}/${MICROSITE}`}});
   const micrositeHandle = micrositeApp.getRequestHandler();
 
-  return micrositeApp.prepare().then(() => micrositeHandle(req, res));
+  micrositeApp.prepare()
+    .then(() => {
+      const ssrCache = cacheableResponse({
+        ttl: 1000 * 60 * 60, // 1hour
+        get: async ({ req, res, pagePath, queryParams }) => ({
+          data: await micrositeApp.renderToHTML(req, res, pagePath, queryParams),
+        }),
+        send: ({ data, res }) => res.send(data)
+      });
+      if (req.path.includes('/_next')) {
+        micrositeHandle(req, res);
+      } else {
+        ssrCache({req, res, pagePath: req.path});
+      }
+    })
+    .catch(exception => {
+      console.error(exception.stack);
+      process.exit(1);
+    });
 });
-
-app.listen(
-  PORT,
-  () => {
-    console.log(`> Ready on http://localhost:${PORT}`);
-  }
-);
 
 exports.app = functions.https.onRequest(app);

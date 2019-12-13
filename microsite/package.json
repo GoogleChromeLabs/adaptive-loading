@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "serve": "firebase serve",
-    "logs": "cd functions && npm run logs"
+    "start": "next start"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

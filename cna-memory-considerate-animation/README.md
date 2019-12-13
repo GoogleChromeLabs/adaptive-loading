@@ -1,7 +1,7 @@
 
 # Demo: Memory-considerate animation toggling in Next
 
-[Live Demo](https://cna-memory-animation.firebaseapp.com/)
+[Live Demo](https://adaptive-loading.web.app/cna-memory-considerate-animation/)
 
 A demo showing how to use memory-considerate animation toggling in Next.
 
@@ -21,3 +21,7 @@ npm run dev
 npm run build
 npm start
 ```
+
+## Glitch Source
+* [Link to Glitch App](https://anton-karlovskiy-cna-memory-considerate-animation.glitch.me/)
+* [Link to Project on Glitch](https://glitch.com/~anton-karlovskiy-cna-memory-considerate-animation/)

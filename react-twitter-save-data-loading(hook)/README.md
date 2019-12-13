@@ -14,7 +14,6 @@ cd react-twitter-save-data-loading(hook)
 npm install
 npm start
 npm run build
-npm run server
 ```
 
 ## Glitch Source
