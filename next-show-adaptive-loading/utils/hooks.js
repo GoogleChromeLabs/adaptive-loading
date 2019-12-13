@@ -16,8 +16,11 @@
 
 import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { useMemoryStatus } from 'react-adaptive-hooks/memory';
-import { useNetworkStatus } from 'react-adaptive-hooks/network';
+// ray test touch <
+// import { useMemoryStatus } from 'react-adaptive-hooks/memory';
+// import { useNetworkStatus } from 'react-adaptive-hooks/network';
+import { useNetworkStatus, useMemoryStatus } from 'react-adaptive-hooks/dist/index.umd.js';
+// ray test touch >
 
 import { EmulationContext } from '../contexts';
 import { ADAPTIVE_FACTORS, checkLiteMode } from '../config';

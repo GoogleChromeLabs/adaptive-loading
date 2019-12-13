@@ -60,7 +60,7 @@ const theme = {
     },
     text: {
       primary: '#fff',
-      secondary: 'rgb(214, 216, 218)'
+      secondary: '#333'
     },
     background: {
       paper: '#fff',

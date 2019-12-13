@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-import LiteModeDebugging from '../../components/LiteModeDebugging';
+
+import TopNav from '../../components/TopNav';
 import globalStyles from '../../styles/global.js';
 
 const Layout = ({ children }) => (
-  <div>
-    <LiteModeDebugging />
-    {children}
+  <>
+    <div>
+      <TopNav />
+      {children}
+    </div>
     <style jsx global>
       {globalStyles}
     </style>
-  </div>
+  </>
 );
 
 export default Layout;

@@ -33,7 +33,7 @@ const SeasonsList = ({ seasonNumbers, currentSeasonNumber, clickHandler }) => (
               font-size: 20px;
             }
             div.active {
-              border-bottom: 1px solid #fff;
+              text-decoration: underline;
               padding-bottom: 0px;
             }
           `}</style>

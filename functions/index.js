@@ -19,7 +19,6 @@ const functions = require('firebase-functions');
 const express = require('express');
 const next = require('next');
 const path = require('path');
-const fs = require('fs');
 const cors = require('cors');
 
 const request = require('request');

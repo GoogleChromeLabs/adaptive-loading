@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import theme from '../../styles/theme';
+
 const CircleNumber = ({ number }) => (
   <>
     <span>{number}</span>
@@ -24,8 +26,8 @@ const CircleNumber = ({ number }) => (
       padding: 5px;
       margin-right: 10px;
       border-radius: 50%;
-      color: #333;
-      background-color: #fff;
+      color: ${theme.palette.text.secondary};
+      background-color: ${theme.palette.background.paper};
       text-align: center;
     `}</style>
   </>
