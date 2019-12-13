@@ -15,10 +15,12 @@
  */
 
 const DEVICE_MEMORY_LIMIT = 4; // Threshold is 4GB RAM
+const DEFAULT_DEVICE_MEMORY_LIMIT = 12;
 const LOCAL_DEV_MODE = true;
 const ASSETS_SUB_PATH = LOCAL_DEV_MODE ? '' : '/cna-memory-considerate-animation';
 
 export {
   DEVICE_MEMORY_LIMIT,
+  DEFAULT_DEVICE_MEMORY_LIMIT,
   ASSETS_SUB_PATH
 };

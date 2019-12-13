@@ -14,8 +14,23 @@
  * limitations under the License.
  */
 
+const withTM = require('next-transpile-modules');
 const withCSS = require('@zeit/next-css');
 
-module.exports = withCSS({
-  distDir: './build'
-});
+module.exports = withTM(withCSS({
+  webpack: function (config) {
+    config.module.rules.push({
+      test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 100000,
+          name: '[name].[ext]'
+        }
+      }
+    })
+    return config
+  },
+  distDir: './build',
+  transpileModules: ['react-adaptive-hooks']
+}));

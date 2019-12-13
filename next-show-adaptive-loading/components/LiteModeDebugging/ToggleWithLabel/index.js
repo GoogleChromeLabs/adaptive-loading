@@ -29,7 +29,7 @@ const ToggleWithLabel = ({ label, onChange, ...rest }) => {
         <Toggle onChange={onChangeHandler} {...rest} />
         <label>{label}</label>
       </div>
-      <style jsx global>{`
+      <style jsx>{`
         .toggle-with-label {
           display: flex;
           align-items: center;
