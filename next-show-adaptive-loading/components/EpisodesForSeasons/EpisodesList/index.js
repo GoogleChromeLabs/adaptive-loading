@@ -24,7 +24,7 @@ const EpisodesList = ({ loading, episodes }) => (
       return (
         <div key={number} className='episodes-list'>
           <CircleNumber number={number} />
-          <span>&nbsp;{name}</span>
+          <span>{name}</span>
         </div>
       );
     }) : (
@@ -32,6 +32,8 @@ const EpisodesList = ({ loading, episodes }) => (
     ) }
     <style jsx>{`
       .episodes-list {
+        display: flex;
+        align-items: center;
         margin-bottom: 30px;
         text-align: left;
       }

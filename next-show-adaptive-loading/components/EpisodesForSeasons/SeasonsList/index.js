@@ -31,6 +31,7 @@ const SeasonsList = ({ seasonNumbers, currentSeasonNumber, clickHandler }) => (
               padding-bottom: 1px;
               margin-bottom: 10px;
               font-size: 20px;
+              white-space:nowrap;
             }
             div.active {
               text-decoration: underline;
