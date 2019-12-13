@@ -14,23 +14,29 @@
  * limitations under the License.
  */
 
-import theme from '../../styles/theme';
+import { useContext } from 'react';
 
-const CircleNumber = ({ number }) => (
-  <>
-    <span>{number}</span>
-    <style jsx>{`
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      padding: 5px;
-      margin-right: 10px;
-      border-radius: 50%;
-      color: ${theme.palette.text.secondary};
-      background-color: ${theme.palette.background.paper};
-      text-align: center;
-    `}</style>
-  </>
-);
+import { AppContext } from '../../contexts';
+
+const CircleNumber = ({ number }) => {
+  const { theme } = useContext(AppContext);
+
+  return (
+    <>
+      <span>{number}</span>
+      <style jsx>{`
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        padding: 5px;
+        margin-right: 10px;
+        border-radius: 50%;
+        color: ${theme.palette.text.secondary};
+        background-color: ${theme.palette.background.paper};
+        text-align: center;
+      `}</style>
+    </>
+  );
+};
 
 export default CircleNumber;

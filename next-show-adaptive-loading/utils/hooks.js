@@ -22,14 +22,14 @@ import { useRouter } from 'next/router';
 import { useNetworkStatus, useMemoryStatus } from 'react-adaptive-hooks/dist/index.umd.js';
 // ray test touch >
 
-import { EmulationContext } from '../contexts';
+import { AppContext } from '../contexts';
 import { ADAPTIVE_FACTORS, checkLiteMode } from '../config';
 import { QUERY_PARAMS, ADAPTIVE_MODE } from './constants';
 
 const useCheckLiteMode = (clientHintEct, clientHintDeviceMemory) => {
   const { effectiveConnectionType } = useNetworkStatus(clientHintEct || ADAPTIVE_FACTORS.DEFAULT_ECT);
   const { deviceMemory } = useMemoryStatus({deviceMemory: clientHintDeviceMemory || ADAPTIVE_FACTORS.DEFAULT_DEVICE_MEMORY});
-  const { manualEnabled, isLiteModeOn } = useContext(EmulationContext);
+  const { manualEnabled, isLiteModeOn } = useContext(AppContext);
   
   let isLiteMode = checkLiteMode(effectiveConnectionType, deviceMemory);
   if (manualEnabled) {

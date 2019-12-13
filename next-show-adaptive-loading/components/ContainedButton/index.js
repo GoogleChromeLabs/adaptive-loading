@@ -14,26 +14,32 @@
  * limitations under the License.
  */
 
-import theme from '../../styles/theme';
+import { useContext } from 'react';
 
-const ContainedButton = ({ children, ...rest }) => (
-  <>
-    <button {...rest}>{children}</button>
-    <style jsx>{`
-      padding: 8px 16px;
-      min-height: 32px;
-      cursor: pointer;
-      font-family: ${theme.typography.button.fontFamily};
-      font-weight: ${theme.typography.fontWeightBold};
-      font-size: ${theme.typography.button.fontSize};
-      line-height: ${theme.typography.button.lineHeight};
-      letter-spacing: ${theme.typography.button.letterSpacing};
-      color: ${theme.palette.primary.contrastText};
-      background-color: ${theme.palette.primary.main};
-      border: none;
-      border-radius: 2px;
-    `}</style>
-  </>
-);
+import { AppContext } from '../../contexts';
+
+const ContainedButton = ({ children, ...rest }) => {
+  const { theme } = useContext(AppContext);
+
+  return (
+    <>
+      <button {...rest}>{children}</button>
+      <style jsx>{`
+        padding: 8px 16px;
+        min-height: 32px;
+        cursor: pointer;
+        font-family: ${theme.typography.button.fontFamily};
+        font-weight: ${theme.typography.fontWeightBold};
+        font-size: ${theme.typography.button.fontSize};
+        line-height: ${theme.typography.button.lineHeight};
+        letter-spacing: ${theme.typography.button.letterSpacing};
+        color: ${theme.palette.primary.contrastText};
+        background-color: ${theme.palette.primary.main};
+        border: none;
+        border-radius: 2px;
+      `}</style>
+    </>
+  );
+};
 
 export default ContainedButton;

@@ -16,8 +16,8 @@
 
 import { createContext } from 'react';
 
-const EmulationContext = createContext();
+const AppContext = createContext();
 
 export {
-  EmulationContext
+  AppContext
 };

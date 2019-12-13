@@ -1,5 +1,5 @@
 
-import HomeLink from '../HomeLink';
+import HomeLink from './HomeLink';
 import LiteModeDebugging from '../LiteModeDebugging';
 
 const TopNav = () => (

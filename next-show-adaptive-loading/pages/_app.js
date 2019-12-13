@@ -16,8 +16,9 @@
 
 import Head from '../components/Head';
 import Layout from '../hoc/Layout';
-import { EmulationContext } from '../contexts';
+import { AppContext } from '../contexts';
 import { useLiteModeDebugging } from '../utils/hooks';
+import theme from '../styles/theme';
 
 const MyApp = ({ Component, pageProps }) => {
   const {
@@ -33,17 +34,18 @@ const MyApp = ({ Component, pageProps }) => {
         <meta httpEquiv='Accept-CH' content='DPR, Width, Viewport-Width, ECT, Device-Memory' />
         <meta httpEquiv='Accept-CH-Lifetime' content='86400' />
       </Head>
-      <EmulationContext.Provider
+      <AppContext.Provider
         value={{
           manualEnabled,
           isLiteModeOn,
           enableManualTestingHandler,
-          toggleLiteModeHandler
+          toggleLiteModeHandler,
+          theme
         }}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </EmulationContext.Provider>
+      </AppContext.Provider>
     </>
   );
 };
