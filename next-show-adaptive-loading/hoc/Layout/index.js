@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 import TopNav from '../../components/TopNav';
 import globalStyles from '../../styles/global.js';
 
