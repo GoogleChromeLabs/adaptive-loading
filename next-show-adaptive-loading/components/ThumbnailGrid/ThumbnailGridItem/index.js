@@ -14,56 +14,37 @@
  * limitations under the License.
  */
 
-import { useEffect } from 'react';
 import Link from 'next/link';
 
 import { PAGES, QUERY_PARAMS } from '../../../utils/constants';
 import { serializeToQueryParam } from '../../../utils/helpers';
 
-const ThumbnailGridItem = ({ id, thumbnail }) => {
-  useEffect(() => {
-    (async () => {
-      if ('loading' in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img.lazyload');
-        images.forEach(img => {
-          img.src = img.dataset.src;
-        });
-      } else {
-        // Dynamically import the LazySizes library
-        await import('lazysizes');
-        // Initiate LazySizes (reads data-src & class=lazyload)
-        lazySizes.init(); // lazySizes works off a global.
+const ThumbnailGridItem = ({ id, thumbnail }) => (
+  <>
+    { thumbnail && (
+      <Link href={serializeToQueryParam({[QUERY_PARAMS.ID]: id}, PAGES.SHOW)}>
+        <a>
+          <div className='zoom-effect'>
+            <img src={thumbnail} className='lazyload' loading='lazy' width='200px' />
+          </div>
+        </a>
+      </Link>
+    ) }
+    <style jsx>{`
+      .zoom-effect {
+        padding: 2px 4px;
+        transition: 0.4s ease all;
       }
-    })();
-  }, [thumbnail]);
-
-  return (
-    <>
-      { thumbnail && (
-        <Link href={serializeToQueryParam({[QUERY_PARAMS.ID]: id}, PAGES.SHOW)}>
-          <a>
-            <div className='zoom-effect'>
-              <img data-src={thumbnail} className='lazyload' loading='lazy' width='200px' />
-            </div>
-          </a>
-        </Link>
-      ) }
-      <style jsx>{`
-        .zoom-effect {
-          padding: 2px 4px;
-          transition: 0.4s ease all;
+      .zoom-effect:hover {
+        transform: scale(0.95);
+      }
+      @media only screen and (max-width: 767px)  {
+        img.lazyload {
+          width: 170px;
         }
-        .zoom-effect:hover {
-          transform: scale(0.95);
-        }
-        @media only screen and (max-width: 767px)  {
-          img.lazyload {
-            width: 170px;
-          }
-        }
-      `}</style>
-    </>
-  );
-};
+      }
+    `}</style>
+  </>
+);
 
 export default ThumbnailGridItem;
