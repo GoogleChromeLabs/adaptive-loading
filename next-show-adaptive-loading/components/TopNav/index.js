@@ -29,6 +29,7 @@ const TopNav = () => {
     <div className='top-nav'>
       <div className='links'>
         <HomeLink />
+        <div className='separator' />
         <BackLink />
       </div>
       <LiteModeDebugging />
@@ -45,13 +46,18 @@ const TopNav = () => {
       }
       .links {
         display: flex;
+        padding: 12px 0;
       }
       :global(a) {
         color: ${theme.palette.text.primary};
         text-decoration: none;
       }
       :global(h3.link) {
-        margin: 12px 8px;
+        margin: 0 8px;
+      }
+      .separator {
+        width: 2px;
+        background-color: ${theme.palette.text.primary};
       }
     `}</style>
     </>

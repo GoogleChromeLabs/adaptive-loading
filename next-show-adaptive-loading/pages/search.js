@@ -19,7 +19,7 @@ import fetch from 'isomorphic-unfetch';
 
 import SearchForm from '../components/SearchForm';
 import ThumbnailGrid from '../components/ThumbnailGrid';
-import Navigation from '../components/Navigation';
+import Pagination from '../components/Pagination';
 import CreditSource from '../components/CreditSource';
 import { useCheckLiteMode } from '../utils/hooks';
 import { serializeToQueryParam } from '../utils/helpers';
@@ -46,7 +46,7 @@ const Search = ({ shows, clientHint }) => {
     <>
       <SearchForm shows={shows} />
       <ThumbnailGrid thumbnailGridItems={thumbnailGridItems} />
-      <Navigation url={serializeToQueryParam({[QUERY_PARAMS.QUERY]: query, [QUERY_PARAMS.PAGE]: ''}, PAGES.SEARCH)} page={parseInt(page)} />
+      <Pagination url={serializeToQueryParam({[QUERY_PARAMS.QUERY]: query, [QUERY_PARAMS.PAGE]: ''}, PAGES.SEARCH)} page={parseInt(page)} />
       <CreditSource />
     </>
   );

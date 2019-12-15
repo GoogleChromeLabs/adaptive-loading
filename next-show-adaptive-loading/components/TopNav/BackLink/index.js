@@ -30,7 +30,7 @@ const BackLink = () => {
   return (
     <>
       <a href='#' onClick={backHandler}>
-        <h3>Back</h3>
+        <h3 className='link'>Back</h3>
       </a>
       <style jsx>{`
         a {

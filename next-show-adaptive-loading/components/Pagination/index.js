@@ -18,7 +18,7 @@ import Link from 'next/link';
 
 import ContainedButton from '../ContainedButton';
 
-const Navigation = ({ url, page }) => (
+const Pagination = ({ url, page }) => (
   <div>
     { page > 1 && (
       <Link href={`${url}${page - 1}`}>
@@ -35,4 +35,4 @@ const Navigation = ({ url, page }) => (
   </div>
 );
 
-export default Navigation;
+export default Pagination;

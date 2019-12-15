@@ -29,7 +29,7 @@ export default css.global`
   body {
     padding: 0;
     margin: 0;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     background: ${theme.palette.background.default};
     color: ${theme.palette.text.primary};
     font-size: ${theme.typography.fontSize}px;
