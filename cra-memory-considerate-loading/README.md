@@ -1,9 +1,9 @@
 
-# Demo: Memory-considerate resource loading in React
+# Demo: Memory-considerate resource loading in React.js
 
 [Live Demo](https://adaptive-loading.web.app/cra-memory-considerate-loading)
 
-A demo showing how to use memory-considerate resource loading in React.
+A demo showing how to use memory-considerate resource loading in React.js.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

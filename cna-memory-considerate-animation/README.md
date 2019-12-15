@@ -10,7 +10,7 @@ When the app is executed
 * on the client-side, Memory Hook
 is used for the signals.
 
-This project was bootstrapped with [Create React App](https://github.com/zeit/create-next-app).
+This project was bootstrapped with [Create Next App](https://github.com/zeit/next.js).
 
 ## Installation
 ```

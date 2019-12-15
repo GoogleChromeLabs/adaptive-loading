@@ -38,10 +38,11 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [React Dixie Mesh - memory considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-dixie-memory-considerate-loading) ([demo](https://adaptive-loading.web.app/react-dixie-memory-considerate-loading/))
 * [React Lottie - network-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-lottie-network-aware-loading) ([demo](https://adaptive-loading.web.app/react-lottie-network-aware-loading/))
 * [React Youtube - adaptive loading with mix of network, memory and hardware concurrency](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-youtube-adaptive-loading) ([demo](https://adaptive-loading.web.app/react-youtube-adaptive-loading/))
+* [Next Show - adaptive loading with mix of network, memory and Client Hints](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/next-show-adaptive-loading) ([demo](https://adaptive-loading.web.app/next-show-adaptive-loading/))
 
 ## Deployment
 
-npm run build
+npm run build  
 npm run deploy
 
 ## Team

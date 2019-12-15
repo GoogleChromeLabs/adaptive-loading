@@ -1,5 +1,5 @@
 
-# Demo: React-movie network-aware resource loading in React
+# Demo: React-movie network-aware resource loading in React.js
 
 [React Movie](https://github.com/oliver-gomes/react-movie) is an application for browsing the latest movies, viewing summaries of them and seeing a cast list.
 
