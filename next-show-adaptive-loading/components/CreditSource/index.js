@@ -20,7 +20,7 @@ const CreditSource = () => (
   <>
     <a
       className='github-link'
-      href='https://www.github.com/timneutkens/next-episode'>
+      href='https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/next-show-adaptive-loading/'>
       <ContainedButton>
         Github.com
       </ContainedButton>
