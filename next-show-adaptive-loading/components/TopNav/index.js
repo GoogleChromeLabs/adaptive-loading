@@ -18,7 +18,7 @@ import { useContext } from 'react';
 
 import HomeLink from './HomeLink';
 import BackLink from './BackLink';
-import LiteModeDebugging from '../LiteModeDebugging';
+import LiteModeDebuggingWidgets from '../LiteModeDebuggingWidgets';
 import { AppContext } from '../../contexts';
 
 const TopNav = () => {
@@ -32,7 +32,7 @@ const TopNav = () => {
         <div className='separator' />
         <BackLink />
       </div>
-      <LiteModeDebugging />
+      <LiteModeDebuggingWidgets />
     </div>
     <style jsx>{`
       .top-nav {

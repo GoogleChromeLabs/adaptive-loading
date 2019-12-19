@@ -21,7 +21,7 @@ import ToggleWithLabel from './ToggleWithLabel';
 import { AppContext } from '../../contexts';
 import { checkIsSmallViewport } from '../../utils/helpers';
 
-const LiteModeDebugging = () => {
+const LiteModeDebuggingWidgets = () => {
   const [isSmallViewport, setIsSmallViewport] = useState(false);
   useEffect(() => {
     setIsSmallViewport(checkIsSmallViewport());
@@ -54,4 +54,4 @@ const LiteModeDebugging = () => {
   );
 };
 
-export default LiteModeDebugging;
+export default LiteModeDebuggingWidgets;

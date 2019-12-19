@@ -15,6 +15,7 @@
  */
 
 import TopNav from '../../components/TopNav';
+import LiteModeDebuggingLinks from '../../components/LiteModeDebuggingLinks';
 import globalStyles from '../../styles/global.js';
 
 const Layout = ({ children }) => (
@@ -22,6 +23,7 @@ const Layout = ({ children }) => (
     <div>
       <TopNav />
       {children}
+      <LiteModeDebuggingLinks />
     </div>
     <style jsx global>
       {globalStyles}
