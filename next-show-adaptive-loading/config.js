@@ -65,6 +65,8 @@ const checkLiteMode = (ect, deviceMemory) => {
   return (ect !== ADAPTIVE_FACTORS.ECT_LIMIT || deviceMemory < ADAPTIVE_FACTORS.DEVICE_MEMORY_LIMIT);
 };
 
+const LOCAL_DEV_MODE = true;
+
 export {
   TMDB_API_POPULAR_TV_SHOWS,
   TMDB_API_SEARCH_TV_SHOWS,
@@ -73,5 +75,6 @@ export {
   BACKDROP_SIZES,
   ADAPTIVE_FACTORS,
   getTmdbAPIEndpoint,
-  checkLiteMode
+  checkLiteMode,
+  LOCAL_DEV_MODE
 };
