@@ -25,6 +25,7 @@ for PROJECT in  cra-battery-considerate-loading \
                 react-youtube-adaptive-loading \
                 microsite \
                 cna-memory-considerate-animation \
+                next-show-adaptive-loading \
                 "react-twitter-save-data-loading(client-hint)" \
                 "react-twitter-save-data-loading(hook)"
 do

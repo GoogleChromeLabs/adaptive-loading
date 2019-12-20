@@ -1,5 +1,5 @@
 
-# Demo: Network-aware data fetching in React
+# Demo: Network-aware data fetching in React.js
 
 [Live Demo](https://adaptive-loading.web.app/cra-network-aware-data-fetching)
 

@@ -1,5 +1,5 @@
 
-# Demo: React-twitter save-data resource loading in React
+# Demo: React-twitter save-data resource loading in React.js
 
 [Live Demo](https://adaptive-loading.web.app/react-twitter-save-data-loading(hook))
 

@@ -3,7 +3,7 @@
 
 [Live Demo](https://adaptive-loading.web.app/cra-network-aware-code-splitting)
 
-A demo showing how to use network-aware code-splitting in React.
+A demo showing how to use network-aware code-splitting in React.js.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

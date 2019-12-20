@@ -1,9 +1,9 @@
 
-# Demo: Battery-considerate resource loading in React
+# Demo: Battery-considerate resource loading in React.js
 
 [Live Demo](https://adaptive-loading.web.app/cra-battery-considerate-loading)
 
-A demo showing how to use battery-considerate resource loading in React.
+A demo showing how to use battery-considerate resource loading in React.js.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

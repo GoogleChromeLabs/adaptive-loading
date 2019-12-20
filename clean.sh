@@ -26,6 +26,7 @@ for PROJECT in  functions \
                 react-youtube-adaptive-loading \
                 microsite \
                 cna-memory-considerate-animation \
+                next-show-adaptive-loading \
                 "react-twitter-save-data-loading(client-hint)" \
                 "react-twitter-save-data-loading(hook)"
 do

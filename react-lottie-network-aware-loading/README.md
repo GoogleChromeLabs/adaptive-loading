@@ -1,5 +1,5 @@
 
-# Demo: React-lottie network-aware resource loading in React
+# Demo: React-lottie network-aware resource loading in React.js
 
 [Live Demo](https://adaptive-loading.web.app/react-lottie-network-aware-loading/)
 

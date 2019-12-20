@@ -1,9 +1,9 @@
 
-# Demo: Network-aware only-if-cached based resource loading in React
+# Demo: Network-aware only-if-cached based resource loading in React.js
 
 [Live Demo](https://adaptive-loading.web.app/cra-network-aware-only-if-cached-loading)
 
-A demo showing how to use network-aware resource loading in React using `only-if-cached` mode in fetch request.
+A demo showing how to use network-aware resource loading in React.js using `only-if-cached` mode in fetch request.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
