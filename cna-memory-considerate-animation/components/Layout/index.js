@@ -16,8 +16,7 @@
 
 import Head from 'next/head';
 
-import MemoryStatusByClientHint from '../MemoryStatusByClientHint';
-import MemoryStatusByHook from '../MemoryStatusByHook';
+import MemoryStatus from '../MemoryStatus';
 
 const layoutStyle = {
   margin: 10,
@@ -25,59 +24,55 @@ const layoutStyle = {
   border: '1px solid #DDD'
 };
 
-const Layout = ({ children, clientHintDeviceMemory, hookMemoryStatus }) => {
-  return (
+const Layout = ({ children, memoryStatus }) => (
+  <>
+    <Head>
+      <title>Adaptive Animation</title>
+    </Head>
     <div style={layoutStyle}>
-      <Head>
-        <title>Adaptive Animation</title>
-      </Head>
       <div className='page-wrapper'>
         <div className='content-wrapper'>
           {children}
         </div>
-        <style jsx global>{`
-          *,
-          *::before,
-          *::after {
-            box-sizing: border-box;
-          }
-          body {
-            margin: 0;
-            font-size: 20px;
-            line-height: 1.7;
-            font-weight: 400;
-            background: #fff;
-            color: #454545;
-            text-rendering: optimizeLegibility;
-            font-family: Arial, sans-serif;
-          }
-          a {
-            color: #1b789e;
-            text-decoration: none;
-          }
-          a:hover {
-            color: #166281;
-          }
-          img {
-            max-width: 100%;
-          }
-          .content-wrapper {
-            max-width: 900px;
-            text-align: center;
-            margin: 0 auto;
-          }
-          .container {
-            overflow: hidden;
-          }
-        `}</style>
       </div>
-      { clientHintDeviceMemory ? (
-        <MemoryStatusByClientHint clientHintDeviceMemory={clientHintDeviceMemory} />
-      ) : (
-        <MemoryStatusByHook memoryStatus={hookMemoryStatus} />
-      ) }
+      <MemoryStatus memoryStatus={memoryStatus} />
     </div>
-  );
-};
+    <style jsx global>{`
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.7;
+        font-weight: 400;
+        background: #fff;
+        color: #454545;
+        text-rendering: optimizeLegibility;
+        font-family: Arial, sans-serif;
+      }
+      a {
+        color: #1b789e;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #166281;
+      }
+      img {
+        max-width: 100%;
+      }
+      .content-wrapper {
+        max-width: 900px;
+        text-align: center;
+        margin: 0 auto;
+      }
+      .container {
+        overflow: hidden;
+      }
+    `}</style>
+  </>
+);
 
 export default Layout;

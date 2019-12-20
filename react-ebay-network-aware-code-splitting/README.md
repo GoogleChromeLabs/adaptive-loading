@@ -1,5 +1,5 @@
 
-# Demo: React-eBay network-aware code-splitting in React
+# Demo: React-eBay network-aware code-splitting in React.js
 
 [Live Demo](https://adaptive-loading.web.app/react-ebay-network-aware-code-splitting)
 

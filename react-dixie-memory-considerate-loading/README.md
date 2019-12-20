@@ -1,5 +1,5 @@
 
-# Demo: React-dixie memory considerate resource loading in React
+# Demo: React-dixie memory considerate resource loading in React.js
 
 [Live Demo](https://adaptive-loading.web.app/react-dixie-memory-considerate-loading)
 

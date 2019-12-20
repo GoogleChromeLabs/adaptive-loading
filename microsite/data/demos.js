@@ -75,6 +75,13 @@ const demosMeta = [
     liveDemo: `${HOST_URL}react-youtube-adaptive-loading/`
   },
   {
+    id: 25,
+    title: 'Next Show - adaptive loading with mix of network, memory and Client Hints',
+    posterName: `next-show-adaptive-loading`,
+    sourceCode: `${REPO_URL}tree/master/next-show-adaptive-loading`,
+    liveDemo: `${HOST_URL}next-show-adaptive-loading/`
+  },
+  {
     id: 1,
     title: 'Network-aware loading',
     posterName: `cra-network-aware-loading`,
