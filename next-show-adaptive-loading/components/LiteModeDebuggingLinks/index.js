@@ -36,6 +36,8 @@ const LiteModeDebuggingLinks = () => {
         </a>
       </div>
       <style jsx>{`
+        display: flex;
+        justify-content: center;
         padding: 16px 24px;
         margin: 8px 12px;
         a {
@@ -44,6 +46,9 @@ const LiteModeDebuggingLinks = () => {
         }
         a:first-child {
           margin-right: 24px;
+        }
+        @media only screen and (max-width: 767px)  {
+          flex-direction: column;
         }
       `}</style>
     </>
