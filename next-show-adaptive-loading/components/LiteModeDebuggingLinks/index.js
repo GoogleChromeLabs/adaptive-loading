@@ -18,24 +18,23 @@ import { useRouter } from 'next/router';
 
 import { ADAPTIVE_MODE } from '../../utils/constants';
 import { serializeToQueryParam } from '../../utils/helpers';
-import { LOCAL_DEV_MODE } from '../../config';
 
 const LiteModeDebuggingLinks = () => {
   const router = useRouter();
-  const rootPath = LOCAL_DEV_MODE ? '' : '/next-show-adaptive-loading';
-  const pathname = `${rootPath}${router.pathname}`;
 
   return (
     <>
       <div>
-        <a href={serializeToQueryParam({...router.query, mode: ADAPTIVE_MODE.LITE}, pathname)}>
+        <a href={serializeToQueryParam({...router.query, mode: ADAPTIVE_MODE.LITE}, router.pathname)}>
           Direct link to force slow mode
         </a>
-        <a href={serializeToQueryParam({...router.query, mode: ADAPTIVE_MODE.FULL}, pathname)}>
+        <a href={serializeToQueryParam({...router.query, mode: ADAPTIVE_MODE.FULL}, router.pathname)}>
           Direct link to force normal mode
         </a>
       </div>
       <style jsx>{`
+        display: flex;
+        justify-content: center;
         padding: 16px 24px;
         margin: 8px 12px;
         a {
@@ -44,6 +43,9 @@ const LiteModeDebuggingLinks = () => {
         }
         a:first-child {
           margin-right: 24px;
+        }
+        @media only screen and (max-width: 767px)  {
+          flex-direction: column;
         }
       `}</style>
     </>
