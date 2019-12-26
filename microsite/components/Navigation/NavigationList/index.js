@@ -35,9 +35,9 @@ const NavigationList = () => (
         }
         ul:hover {
           color: #9e9e9e;
-          ${theme.linkHoveringEffect}
+          ${theme.animation.linkHoveringEffect}
         }
-        @media screen and (max-width: ${theme.breakpoint.tablet - 1}px) {
+        @media screen and (max-width: ${theme.breakpoints.md - 1}px) {
           ul {
             position: absolute;
             left: 0;

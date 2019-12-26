@@ -72,7 +72,7 @@ const Description = () => (
       a:visited {
         color: #a6a6a6;
       }
-      @media screen and (max-width: ${theme.breakpoint.tablet - 1}px) {
+      @media screen and (max-width: ${theme.breakpoints.md - 1}px) {
         .highlights {
           display: none;
         }
@@ -125,7 +125,7 @@ const Illustration = () => (
       .illustration > .low-data:hover {
         ${theme.imageHoveringEffect}
       }
-      @media screen and (max-width: ${theme.breakpoint.mobile - 1}px) {
+      @media screen and (max-width: ${theme.breakpoints.sm - 1}px) {
         .illustration {
           flex-direction: column;
         }

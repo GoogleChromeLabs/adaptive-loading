@@ -71,7 +71,7 @@ const SideDrawer = ({ isOpened, onClose }) => {
           //   height: 11%;
           //   margin-bottom: 32px;
           // }
-          @media (min-width: ${theme.breakpoint.mobile}px) {
+          @media (min-width: ${theme.breakpoints.sm}px) {
             .side-drawer {
               // display: none;
             }

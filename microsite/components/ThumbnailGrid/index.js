@@ -81,7 +81,7 @@ const ThumbnailGrid = ({ children }) => {
           .links a:hover {
             text-decoration: underline;
           }
-          @media screen and (min-width: ${theme.breakpoint.mobile}px) {
+          @media screen and (min-width: ${theme.breakpoints.sm}px) {
             .thumbnail {
               height: 172px;
             }
@@ -109,13 +109,13 @@ const ThumbnailGrid = ({ children }) => {
           grid-row-gap: 76px;
           grid-template-columns: auto auto;
         }
-        @media screen and (min-width: ${theme.breakpoint.mobile}px) {
+        @media screen and (min-width: ${theme.breakpoints.sm}px) {
           .grid-container {
             grid-column-gap: 20px;
             grid-row-gap: 72px;
           }
         }
-        @media screen and (min-width: ${theme.breakpoint.tablet}px) {
+        @media screen and (min-width: ${theme.breakpoints.md}px) {
           .grid-container {
             grid-column-gap: 40px;
             grid-row-gap: 80px;
