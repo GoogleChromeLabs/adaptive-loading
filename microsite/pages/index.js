@@ -33,15 +33,11 @@ const Description = () => (
     <div className='highlights'>
       <h4 className='uppercase'>HIGHLIGHTS</h4>
       <ul>
-        <li>
-          <a href={highlights.gitHub.href}>{highlights.gitHub.title}</a>
-        </li>
-        <li>
-          <a href={highlights.chromeDevSummitTalk.href}>{highlights.chromeDevSummitTalk.title}</a>
-        </li>
-        <li>
-          <a href={highlights.deviceYearClass.href}>{highlights.deviceYearClass.title}</a>
-        </li>
+        { highlights.map(highlight => (
+          <li key={highlight.title}>
+            <a href={highlight.href}>{highlight.title}</a>
+          </li>
+        )) }
       </ul>
     </div>
     <style jsx>{`
