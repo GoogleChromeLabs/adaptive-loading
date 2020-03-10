@@ -86,13 +86,13 @@ const Thumbnail = ({
         .clickable:hover {
           opacity: 0.8;
         }
-        @media only screen and (min-width: ${theme.breakpoint.mobile}px) {
+        @media only screen and (min-width: ${theme.breakpoints.sm}px) {
           .thumbnail img {
             width: 413.5px;
             height: 164px;
           }
         }
-        @media only screen and (min-width: ${theme.breakpoint.tablet}px) {
+        @media only screen and (min-width: ${theme.breakpoints.md}px) {
           .thumbnail img {
             width: 272px;
             height: 164px;
