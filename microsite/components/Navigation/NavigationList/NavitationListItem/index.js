@@ -33,13 +33,13 @@ const NavitationListItem = ({ title, href, as }) => {
       <style jsx>{`
         li:hover {
           color: #fff;
-          ${theme.linkHoveringEffect}
+          ${theme.animation.linkHoveringEffect}
         }
         a {
           position: relative;
           display: inline-block;
           line-height: 48px;
-          ${theme.linkHoveringEffect}
+          ${theme.animation.linkHoveringEffect}
         }
         a > span {
           position: absolute;
@@ -52,7 +52,7 @@ const NavitationListItem = ({ title, href, as }) => {
           transform-origin: bottom;
           transition: transform 235ms cubic-bezier(.4,0,.2,1);
         }
-        @media only screen and (min-width: ${theme.breakpoint.tablet}px) {
+        @media only screen and (min-width: ${theme.breakpoints.md}px) {
           a {
             line-height: 72px;
             margin: 0 16px;

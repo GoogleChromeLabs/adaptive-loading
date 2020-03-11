@@ -34,8 +34,6 @@ export default ({ title, description, keywords, canonical, children }) => (
     <link rel='icon' type='image/png' sizes='16x16' href={head.favicon16} />
     <link rel='manifest' href='/static/head/site.webmanifest' />
     <link rel='canonical' href={canonical} />
-    {/* TODO: performance considering */}
-    {/* <link href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet' /> */}
     {children}
   </Head>
 );

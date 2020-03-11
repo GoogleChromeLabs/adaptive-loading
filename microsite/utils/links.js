@@ -37,20 +37,20 @@ const pages = {
   }
 };
 
-const highlights = {
-  gitHub: {
+const highlights = [
+  {
     title: 'GitHub',
     href: 'https://github.com/GoogleChromeLabs/react-adaptive-hooks/'
   },
-  chromeDevSummitTalk: {
+  {
     title: 'Chrome Dev Summit talk',
     href: 'https://www.youtube.com/watch?v=puUPpVrIRkc'
   },
-  deviceYearClass: {
+  {
     title: 'Device Year class',
     href: 'https://engineering.fb.com/android/year-class-a-classification-system-for-android/'
   }
-};
+];
 
 export {
   pages,

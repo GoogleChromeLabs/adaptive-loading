@@ -23,9 +23,9 @@ export default css.global`
     box-sizing: border-box;
   }
   body {
-    background: ${theme.colors.background};
-    color: ${theme.colors.text};
-    font-family: ${theme.fontFamily.roboto};
+    background: ${theme.palette.background.default};
+    color: ${theme.palette.text.primary};
+    font-family: ${theme.typography.fontFamily};
     margin: 0;
     padding: 0;
     font-size: calc(10px + 1vmin);
@@ -33,7 +33,7 @@ export default css.global`
   }
   p {
     font-size: 1em;
-    color: ${theme.colors.subText};
+    color: ${theme.palette.text.secondary};
     margin: 0;
     margin-bottom: 16px;
     line-height: 1.5;
@@ -62,12 +62,12 @@ export default css.global`
     margin: 0;
     padding: 0;
   }
-  @media screen and (min-width: ${theme.breakpoint.mobile}px) {
+  @media screen and (min-width: ${theme.breakpoints.sm}px) {
     h1 {
       font-size: 50px;
     }
   }
-  @media screen and (min-width: ${theme.breakpoint.tablet}px) {
+  @media screen and (min-width: ${theme.breakpoints.md}px) {
     h1 {
       font-size: 60px;
     }

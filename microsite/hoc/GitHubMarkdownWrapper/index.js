@@ -28,12 +28,12 @@ const GitHubMarkdownWrapper = ({ children }) => (
         min-width: 200px;
         max-width: 1260px;
         padding: 0 20px;
-        color: ${theme.colors.subText};
-        font-family: ${theme.fontFamily.roboto};
+        color: ${theme.palette.text.secondary};
+        font-family: ${theme.typography.fontFamily};
         font-size: 1em;
       }
       .markdown-body :global(h1) {
-        color: ${theme.colors.text};
+        color: ${theme.palette.text.primary};
         border-bottom: 1px solid #eaecef;
       }
       .markdown-body :global(h2) {
@@ -43,7 +43,7 @@ const GitHubMarkdownWrapper = ({ children }) => (
         font-size: 1.1em;
       }
       .markdown-body :global(a) {
-        color: ${theme.colors.anchorTextOnDark};
+        color: ${theme.palette.text.anchorTextOnDark};
       }
       .markdown-body :global(p) {
         font-size: 1em;

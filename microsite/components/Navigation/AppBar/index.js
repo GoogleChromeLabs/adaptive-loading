@@ -47,7 +47,7 @@ const AppBar = ({ openDrawer }) => (
         display: flex;
         justify-content: space-between;
         color: white;
-        background-color: ${theme.colors.headerBackground};
+        background-color: ${theme.palette.background.header};
         transition: box-shadow 200ms linear;
         box-shadow: 0 2px 4px rgba(0,0,0,.5);
         z-index: 10;
@@ -70,7 +70,7 @@ const AppBar = ({ openDrawer }) => (
       .top-app-bar-section__end {
         justify-content: flex-end;
       }
-      @media screen and (min-width: ${theme.breakpoint.tablet}px) {
+      @media screen and (min-width: ${theme.breakpoints.md}px) {
         .top-app-bar {
           height: auto;
         }

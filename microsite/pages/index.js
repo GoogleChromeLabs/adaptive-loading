@@ -33,15 +33,11 @@ const Description = () => (
     <div className='highlights'>
       <h4 className='uppercase'>HIGHLIGHTS</h4>
       <ul>
-        <li>
-          <a href={highlights.gitHub.href}>{highlights.gitHub.title}</a>
-        </li>
-        <li>
-          <a href={highlights.chromeDevSummitTalk.href}>{highlights.chromeDevSummitTalk.title}</a>
-        </li>
-        <li>
-          <a href={highlights.deviceYearClass.href}>{highlights.deviceYearClass.title}</a>
-        </li>
+        { highlights.map(highlight => (
+          <li key={highlight.title}>
+            <a href={highlight.href}>{highlight.title}</a>
+          </li>
+        )) }
       </ul>
     </div>
     <style jsx>{`
@@ -72,7 +68,7 @@ const Description = () => (
       a:visited {
         color: #a6a6a6;
       }
-      @media screen and (max-width: ${theme.breakpoint.tablet - 1}px) {
+      @media screen and (max-width: ${theme.breakpoints.md - 1}px) {
         .highlights {
           display: none;
         }
@@ -125,7 +121,7 @@ const Illustration = () => (
       .illustration > .low-data:hover {
         ${theme.imageHoveringEffect}
       }
-      @media screen and (max-width: ${theme.breakpoint.mobile - 1}px) {
+      @media screen and (max-width: ${theme.breakpoints.sm - 1}px) {
         .illustration {
           flex-direction: column;
         }
