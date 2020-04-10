@@ -42,9 +42,10 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 
 ## Deployment
 
-`npm run build`  
-`npm run deploy`
-
+```sh
+npm run build  
+npm run deploy
+```
 ## Team
 
 This project is brought to you by [Addy Osmani](https://github.com/addyosmani) and [Anton Karlovskiy](https://github.com/anton-karlovskiy).
