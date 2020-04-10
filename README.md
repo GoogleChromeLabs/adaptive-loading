@@ -42,8 +42,8 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 
 ## Deployment
 
-npm run build  
-npm run deploy
+`npm run build`  
+`npm run deploy`
 
 ## Team
 
