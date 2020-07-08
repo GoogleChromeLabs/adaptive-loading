@@ -37,8 +37,8 @@ This repo contains several different pieces for the Adaptive Loading project: Re
 * [React eBay - network-aware code-splitting](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-ebay-network-aware-code-splitting) ([demo](https://adaptive-loading.web.app/react-ebay-network-aware-code-splitting/))
 * [React Dixie Mesh - memory considerate loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-dixie-memory-considerate-loading) ([demo](https://adaptive-loading.web.app/react-dixie-memory-considerate-loading/))
 * [React Lottie - network-aware loading](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-lottie-network-aware-loading) ([demo](https://adaptive-loading.web.app/react-lottie-network-aware-loading/))
-* [React Youtube - adaptive loading with mix of network, memory and hardware concurrency](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-youtube-adaptive-loading) ([demo](https://adaptive-loading.web.app/react-youtube-adaptive-loading/))
-* [Next Show - adaptive loading with mix of network, memory and Client Hints](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/next-show-adaptive-loading) ([demo](https://adaptive-loading.web.app/next-show-adaptive-loading/), [WPT](https://www.webpagetest.org/video/compare.php?tests=191220_YV_f523eb63831516f1b2c3c36086034cfc,191220_Z3_90649a7fe05971268a38885c78b3250b))
+* [React Youtube - adaptive loading with a mix of network, memory and hardware concurrency](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/react-youtube-adaptive-loading) ([demo](https://adaptive-loading.web.app/react-youtube-adaptive-loading/))
+* [Next Show - adaptive loading with a mix of network, memory and Client Hints](https://github.com/GoogleChromeLabs/adaptive-loading/tree/master/next-show-adaptive-loading) ([demo](https://adaptive-loading.web.app/next-show-adaptive-loading/), [WPT](https://www.webpagetest.org/video/compare.php?tests=191220_YV_f523eb63831516f1b2c3c36086034cfc,191220_Z3_90649a7fe05971268a38885c78b3250b))
 
 ## Deployment
 

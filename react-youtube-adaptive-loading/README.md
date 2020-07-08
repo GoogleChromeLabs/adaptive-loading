@@ -1,5 +1,5 @@
 
-# Demo: React-youtube adaptive loading with mix of network, memory and hardware concurrency in React.js
+# Demo: React-youtube adaptive loading with a mix of network, memory and hardware concurrency in React.js
 
 [Live Demo](https://adaptive-loading.web.app/react-youtube-adaptive-loading/)
 
