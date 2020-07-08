@@ -69,14 +69,14 @@ const demosMeta = [
   },
   {
     id: 24,
-    title: 'React Youtube - adaptive loading with mix of network, memory and CPU',
+    title: 'React Youtube - adaptive loading with a mix of network, memory and CPU',
     posterName: 'react-youtube-adaptive-loading',
     sourceCode: `${REPO_URL}tree/master/react-youtube-adaptive-loading`,
     liveDemo: `${HOST_URL}react-youtube-adaptive-loading/`
   },
   {
     id: 25,
-    title: 'Next Show - adaptive loading with mix of network, memory and Client Hints',
+    title: 'Next Show - adaptive loading with a mix of network, memory and Client Hints',
     posterName: 'next-show-adaptive-loading',
     sourceCode: `${REPO_URL}tree/master/next-show-adaptive-loading`,
     liveDemo: `${HOST_URL}next-show-adaptive-loading/`

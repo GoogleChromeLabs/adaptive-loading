@@ -17,7 +17,7 @@
 import Link from 'next/link';
 
 import NavigationList from '../NavigationList';
-import SvgIcon from '../../SvgIcon';
+import SvgIconButton from '../../SvgIconButton';
 import theme from '../../../styles/theme';
 import { pages } from '../../../utils/links';
 
@@ -27,15 +27,15 @@ const AppBar = ({ openDrawer }) => (
       <div className='top-app-bar-row'>
         <div className='top-app-bar-section top-app-bar-section__start'>
           {/* TODO: side drawer hidden for now */}
-          {/* <SvgIcon name='menu' withHoverEffect onClick={openDrawer} /> */}
+          {/* <SvgIconButton name='menu' withHoverEffect onClick={openDrawer} /> */}
           <Link href={pages.home.href} as={pages.home.as}>
-            <a><SvgIcon name='main' /></a>
+            <a><SvgIconButton name='main' /></a>
           </Link>
         </div>
         <div className='top-app-bar-section top-app-bar-section__end'>
           <NavigationList />
           {/* TODO: search button hidden for now */}
-          {/* <SvgIcon name='search' withHoverEffect onClick={() => console.log('[AppBar] search click')} /> */}
+          {/* <SvgIconButton name='search' withHoverEffect onClick={() => console.log('[AppBar] search click')} /> */}
         </div>
       </div>
     </header>
@@ -44,7 +44,6 @@ const AppBar = ({ openDrawer }) => (
         position: fixed;
         width: 100%;
         height: 112px;
-        display: flex;
         justify-content: space-between;
         color: white;
         background-color: ${theme.palette.background.header};

@@ -1,5 +1,5 @@
 
-# Demo: Next-show adaptive loading with mix of network hook, memory hook and Client Hints in Next.js
+# Demo: Next-show adaptive loading with a mix of network hook, memory hook and Client Hints in Next.js
 
 Inspired by [Next Episode](https://www.github.com/timneutkens/next-episode).
 
