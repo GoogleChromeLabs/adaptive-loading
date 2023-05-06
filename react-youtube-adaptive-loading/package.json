@@ -17,7 +17,7 @@
     "react-linkify": "^0.2.2",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.0",
+    "react-scripts": "5.0.1",
     "react-test-renderer": "^16.8.6",
     "react-toggle": "^4.1.1",
     "react-waypoint": "^9.0.2",
