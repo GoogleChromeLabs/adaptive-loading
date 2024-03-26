@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "framer-motion": "^1.6.7",
     "next": "9.1.4",
     "next-transpile-modules": "^2.3.1",
