@@ -6795,6 +6795,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-adaptive-hooks@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-adaptive-hooks/-/react-adaptive-hooks-0.0.5.tgz#7156e688f7164dca4866a5f78ad172c8ffeb3d04"
+
 react-app-polyfill@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-1.0.1.tgz#809a858e44f9564c7f4205e173076f90048274f1"
@@ -8158,8 +8162,8 @@ url-loader@1.1.2:
     schema-utils "^1.0.0"
 
 url-parse@^1.4.3:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.10.tgz#9d3c2f736c1d75dd3bd2be507dcc111f1e2ea9c1"
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
