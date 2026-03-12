@@ -11,7 +11,7 @@
     "@zeit/next-css": "^1.0.1",
     "github-markdown-css": "^3.0.1",
     "lazysizes": "^5.2.0-beta1",
-    "next": "9.1.4",
+    "next": "9.5.5",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-markdown": "^4.2.2",
